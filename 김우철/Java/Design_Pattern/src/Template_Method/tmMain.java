@@ -1,0 +1,10 @@
+package Template_Method;
+
+public class tmMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
