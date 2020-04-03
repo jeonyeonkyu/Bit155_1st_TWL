@@ -86,7 +86,7 @@ where sal > (select avg(sal)
                                         from emp
                                         where ename like '%S%');
 
---11. 커미션을 받는 사원과 부서번호, 월급이 같은 사원의(0도 커미션을 받음) ???
+--11. 커미션을 받는 사원과 부서번호, 월급이 같은 사원의(0도 커미션을 받음) 
 -- 이름, 월급, 부서번호를 출력하라.
 /*
 select DISTINCT e.ename, e.sal, s.deptno
@@ -100,7 +100,7 @@ from emp
 where deptno in (select deptno from emp where comm is not null)
 and sal in (select sal from emp where comm is not null);
 
---12. 30번 부서 사원들과 월급과 커미션이 같지 않은(0도 커미션을 받음) ???
+--12. 30번 부서 사원들과 월급과 커미션이 같지 않은(0도 커미션을 받음) 
 -- 사원들의 이름, 월급, 커미션을 출력하라.
 --30번부서들과 월급이 같지 않고, 30번 부서들과 커미션이 같지 않은...
 /*select e.ename, e.sal, e.comm
@@ -170,12 +170,10 @@ ex)
 
 한글문제(unicode : 2byte) >> 한글,영문자,특수문자,공백
 
-nchar(20) >> 20 >> 글자수 >> 총byte >> 2 * 20 >> 40byte
+nchar(20) >> 20 >> 글자수(영어,한글 상관없이) >> 총byte >> 2 * 20 >> 40byte
 nvarchar(10) >> 10글자
 
 */
-
-
 
 --1.가장 일반적인 insert
 insert into temp(id,name)
@@ -188,10 +186,250 @@ commit;
 --2.컬럼 목록 생략(되도록 하지 마셈 / 가독성 떨어짐)
 insert into temp 
 values(200,'김유신'); --데이터가 컬럼의 개수, 순서와 일치해야 한다
+commit;
+
+--1.문제 상황
+insert into temp(id, name) --id primary key
+values(100, '아무개');
+
+--2.문제 상황
+insert into temp(name)
+values('아무개');
+----------------------------------------------------
+--일반 SQL 문은 프로그램적 요소(X)
+--PL/SQL(고급 SQL) : 프로그래밍 적인 요소(제어문, 변수), 옛날에 만들어서 투박함
+--create table temp2(id varchar2(20));
+
+--데이터 테스트.. 일일이 1000건 1000번 실행...(데이터를 많이 넣고 싶을때 사용)
+--BEGIN
+--    FOR i IN 1..1000 LOOP
+--        insert into temp2(id) values('A' || to_char(i));
+--    END LOOP;
+--END;
+--
+--select * from temp2;
+--commit;
+--
+--select * from temp2 order by id desc;
+
+-----------------------------------------------
+create table temp3(
+    memberid number(3) not null,
+    name varchar2(10), --null 허용
+    regdate date default sysdate --기본값 설정하기(날짜 insert 하지 않으면...)
+);
+
+select sysdate from dual;
+
+insert into temp3(memberid, name, regdate)
+values(100, '홍길동', '2020-04-03'); --날짜를 직접 넣어도 상관없음
 
 
+select * from temp3;
+commit;
 
+insert into temp3(memberid, name)
+values(200, '아무개');
 
+insert into temp3(memberid)
+values(300);
+
+-----
+
+select * from temp3;
+--300   null   2020-04-03 12:15:35
+
+insert into temp3(name)
+values('이름만'); --null값은 데이터 안들어감
+
+--insert(TIP)
+--1. 대량 데이터 insert 하기 
+
+create table temp4(id number);
+create table temp5(num number);
+
+insert into temp4(id) values(1);
+insert into temp4(id) values(2);
+insert into temp4(id) values(3);
+insert into temp4(id) values(4);
+insert into temp4(id) values(5);
+insert into temp4(id) values(6);
+insert into temp4(id) values(7);
+insert into temp4(id) values(8);
+insert into temp4(id) values(9);
+insert into temp4(id) values(10);
+commit;
+
+select * from temp4;
+
+--★
+--요구사항 : temp4에 있는 모든 데이터를 temp5에 넣어보기
+--insert into 테이블명(컬럼리스트) values(값리스트);
+--insert into 테이블명(칼럼리스트) select 절 (컬럼리스트의 개수와 타입 동일) 조건
+
+insert into temp5(num)
+select id from temp4;
+--temp4의 데이터를 temp5에 이동
+select * from temp5;
+
+--2. insert TIP
+--테이블이 없는 상황에서[테이블 생성] + [대량 데이터 삽입]
+--단 복사 개념(제약 정보는 복사가 안됨 ex)foreign key, primary key 등..)
+--순수한 테이블 구조(schema), 컬럼이름과 타입이 복사됨
+
+--create table copyemp(id number)
+create table copyemp --emp랑 같은 구조를 만들고.... 데이터 삽입까지함
+as 
+    select * from emp;
+
+select * from copyemp;
+
+create table copyemp2
+as 
+    select empno, ename, sal 
+    from emp
+    where deptno = 30;
+
+select * from copyemp2;
+select * from col where tname='COPYEMP2';
+
+--질문 : 구조(틀)만 복사하고 데이터는 복사하고 싶지 않을 때
+create table copyemp3
+as 
+    select empno, ename, sal 
+    from emp where 1=2;
+
+select * from copyemp3;
+
+/*
+update table_name
+set colum1 = value1, colum2 = value2...
+where 조건
+
+update table_name
+set column1 = (subquery)
+*/
+
+select * from copyemp;
+rollback;
+
+update copyemp
+set sal = 0
+where deptno=20;
+
+select * from copyemp order by deptno;
+commit;
+
+update copyemp
+set sal = (select sum(sal) from emp)
+where deptno = 20;
+
+select * from copyemp;
+commit;
+
+--여러개의 컬럼을 update
+update copyemp 
+set ename='AAAA', job='BBBB', hiredate=sysdate, sal=1111
+where deptno = 10;
+
+select * from copyemp where deptno=10;
+commit;
+
+------[update end]-------------
+--[delete]
+--원칙>> delete -> commit, rollback -> 복원 불가 -> 단 백업..
+
+delete from copyemp;
+
+select * from copyemp;
+rollback;
+
+delete from copyemp where deptno in (10,20);
+
+select * from copyemp where deptno in (10,20);
+commit;
+------------------------------[delete end]--------------
+/*
+APP(JAVA) -> JDBC API -> ORACLE(DB)
+
+CRUD
+create : insert
+read : select
+update : update
+delete : delete
+
+(DML : insert, update, delete) 트랜잭션(commit, rollback은 강제)
+
+JDBC -> Oracle -> Emp 테이블 작업
+전체조회(함수)
+조건조회(사번이 100인 사원의 이름) (함수)
+삭제 (함수)
+수정 (함수)
+삽입 (함수)
+JAVA
+public List<Emp> getEmpAllList() {String sql = "select * from emp"}
+public Emp getEmpListByEmpno() { String sql = "select ...where empno=777")
+public int insertEmpDate(Emp emp) {String sql = "insert into emp()..."}
+*/
+----------------------------------
+
+--[DDL]
+--create, alter, drop (테이블 기준)
+
+select * from tab;
+select * from tab where tname='BOARD';
+
+drop table board;
+
+create table board(
+    boardid NUMBER,
+    title nvarchar2(100), --한글,영문자 상관없이 100자
+    content nvarchar2(2000),
+    regdate date  
+);
+
+select * from tab where tname = 'BOARD';
+--학생 성적 테이블
+--국어, 영어, 수학, 총점컬럼
+--10    10   10    30
+--국어, 영어, 수학 점수가 들어오면 자동으로 총점 계산이 되면 좋지 않을까...
+--oracle 11g 버전(가상컬럼(조합컬럼)) -> 되게 유용
+--가상칼럼안에는 데이터를 직접 넣을 수 없다.
+create table vtable(
+    no1 number,
+    no2 number,
+    no3 number generated always as (no1 + no2) virtual
+);
+
+--굳이 외울필요 없음
+create table vtable2
+(
+    no number, --순번
+    p_code char(4), --제품코드(A001, A002)
+    p_date char(8), --입고일(2020011)
+    p_qty number, --수량
+    p_bungi number generated always as (
+                                            case when substr(p_date,5,2) in ('01','02','03') then 1
+                                                 when substr(p_date,5,2) in ('04','05','06') then 2
+                                                 when substr(p_date,5,2) in ('07','08','09') then 3
+                                                 else 4
+                                            end
+                                        ) virtual
+);
+
+select column_name, data_type, data_default
+from user_tab_columns where table_name='VTABLE2';
+
+insert into vtable2(p_date) values('20200101');
+insert into vtable2(p_date) values('20200126');
+insert into vtable2(p_date) values('20200301');
+insert into vtable2(p_date) values('20200601');
+insert into vtable2(p_date) values('20201201');
+
+select * from vtable2;
+
+select * from vtable2 where p_bungi = 2;
+commit;
 
 
 
