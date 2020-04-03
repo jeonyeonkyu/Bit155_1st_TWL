@@ -1,0 +1,108 @@
+https://www.humanbenchmark.com/tests/reactiontime
+
+비동기 연습하기 좋음 / 반응속도 테스트(클릭 이벤트)
+
+classList.contains로 현재 클래스 파악 가능
+
+클래스는 여러 스타일을 한 번에 적용할 수 있어 좋음
+적용전 
+스크린.style.backgroundColor = 'red';
+스크린.style.color = 'white;
+
+적용후(css에 정의해놓고 가져다쓰면됨)
+스크린.classList.add('ready');
+
+
+시간체크1
+var 시작시간 = new Date();
+
+스크린.addEventListener("click", function() {
+  var 끝시간 = new Date();
+  console.log((끝시간 - 시작시간) / 1000); //밀리초 단위
+=> 
+new Date();를 하는순간 그 시각이 저장
+=> 보통은 이거 많이 사용
+
+시간체크2
+console.time("시간2");
+
+스크린.addEventListener("click", function() {
+  console.timeEnd("시간2");
+=> 보통 디버깅할때 쓰는 코드
+
+
+시간체크3
+var 시작시간 = performance.now();
+
+스크린.addEventListener("click", function() {
+  var 끝시간 = performance.now();
+  console.log((끝시간 - 시작시간) / 1000);
+=> 뒤에 소수점이 많이 붙음
+=> 정밀한 시간체크하고싶을시 이거 사용
+
+
+
+예약어는 변수명으로 못씀
+ex) var이나 else 등
+
+자나깨나 스코프 조심! / 사용하고 있는 변수들의 위치를 파악해라
+=> 함수안에 있는지 밖에 있는지..
+
+
+호출스택(일반 스택 구조랑 같음) 
+=> LIFO(후입선출) 구조
+
+
+function a(){
+  function b(){
+    function c() {
+      console.log('c');
+    }
+    c();
+    console.log('b');
+  }
+  b();
+  console.log('a');
+}
+
+c->b->a 순으로 찍힘
+함수선언을 신경쓰지말고 함수로드를 신경써라[() 붙힌거]
+
+호출이되는순간 호출스택에 들어가고 함수실행이 다끝나면 호출스택에서
+빠져나감
+
+비동기함수는 클릭을 하는 순간 호출스택에 들어감
+실행이끝나고 함수가사라지면 함수안의 변수들이 다 날라감
+
+
+  var 타임아웃 = setTimeout(function() {
+      시작시간 = new Date();
+      스크린.click();
+    }, Math.floor(Math.random() * 1000) + 2000);
+     if(){
+      clearTimeout(타임아웃);
+    }
+    clearTimeout로 setTimeout 취소가능
+
+재귀할시
+function a(){
+   a();
+}
+a();
+=> a가 계속 쌓임, 호출스택은 사이즈 한계(Maximum call stack exceeded 에러)가 있음
+2018년 기준 사파리에서만 이러한 문제를 해결할 수 있음(꼬리재귀 -> 호출스택을 터뜨리지않고 재귀를 씀)
+하지만 다른브라우저에서 꼼수를 이용해 이를 해결할 수 있음
+
+function a(){
+  setTimeout(function() {
+    a();
+  }, 0);
+}
+-> 비동기로 호출스택을 비워줌
+-> 이해잘안됨
+
+실행하지않고 코드만 보고 
+해석을 할 줄 알아야함
+문법 or 인터프리터의 동작 등을
+알야야함(스코프, 프로토타입, 호출스택 등)
+

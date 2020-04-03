@@ -1,0 +1,92 @@
+빈값은 null 이아닌 무조껀 undefined
+
+Array(숫자)
+=> 빈배열 만들 수 있음 / 이경우는 empty가 들어감
+그닥 추천하는것은 아님
+
+empty 특징
+: 반복문 불가
+후보군.forEach(function(e) {
+  console.log(e)
+});
+=> 45개의 undefined가 뜨는것이 아니라 하나의 undefined 가 뜸
+
+var 필 = 후보군.fill();
+-> 45개의 undefined가 채워짐
+
+
+필.forEach(function(요소, 인덱스) {
+  필[인덱스] = 인덱스 + 1; 
+  console.log(요소, 인덱스 + 1);
+});
+
+-> 1부터 45까지 배열에 채워줌 / but 더좋은 방법이 있음
+
+
+var 맵 = 필.map(function(요소, 인덱스) {
+  return 인덱스 + 1;
+});
+map -> 매핑!
+
+for문은 자신이 정확하게 몇번 반복을 돌아아햘지 알때
+while은 기준값이 바뀌거나(숫자 뽑기시 남아있는 개수가 계속 줄어듬)
+몇번 돌아야하는지 잘 모를때
+
+후보군.splice(Math.floor(Math.random() * 후보군.length), 1)[0];
+=> 랜덤한 자리수에서 맨 앞의 한개를 뽑음
+
+
+당첨숫자들.sort()
+-> 앞자리 정렬 -> 뒷자리 정렬
+ex) 2,45,13,43일시
+13, 2, 43, 45
+
+
+ 당첨숫자들.sort(function(p, c) {
+    return p - c;
+  }),
+-> 숫자 크기대로 정렬(오름차순)
+-> 여기서 p는 이전숫자 ,c는 현재 숫자
+
+c - p 하면 내림차순
+
+뺀 결과가 0보다 크면 순서를 바꿈
+
+var 결과창 = document.getElementById('결과창');
+=> Html태그의 id값을 가져옴
+=> querySelector('#결과창') 도 쓰임 ( #은 아이디를 찾음)
+=> querySelector(.결과창') : .은 클래스를 찾음
+=> querySelectorAll은 여러 태그 동시 선택
+=> 강사님은 querySelector 쓰는것을 추천
+
+
+
+getElementsByTagName -> 태그 이름으로 찾기
+
+var 보너스칸 = document.getElementsByClassName("보너스")[0]
+-> 클래스
+-> 클래스는 여러번 사용할 수 있기 때문에 인덱스를 붙여줌
+-> id는 무조건 한번 사용 가능
+
+
+비동기의 또 다른 예
+1초뒤 2초뒤..에 한다 등
+
+
+반복문 안에 비동기 사용
+-> 클로저와 관련 / 뒤에서 배움
+
+
+js에서 css 적용시 유의할점
+ex) '-'경우 
+border-radius => borderRadius
+
+var 공 = document.createElement("div");
+공.id = "공아이디" + 숫자;
+=> html의 id 바꿀 수 있음
+
+html에서는 class를 그대로 쓸 수 있지만
+js에서는 className으로 써야 한다.
+
+
+

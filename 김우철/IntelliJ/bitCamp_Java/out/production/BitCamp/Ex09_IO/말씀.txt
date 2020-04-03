@@ -1,0 +1,28 @@
+I/O는 클래스를 공부하는 것
+
+byteArray는 걍 안해도됨
+
+FileInput(Output)만 잘 다뤄도 ㅅㅅ
+
+★보조스트림
+완전 많ㅇ ㅣ쓰는것 = buffer
+>>성능 향상 : 당연하게 씀
+>>모아서 보내는 성질때문에 한줄씩 read 가능 : 엔터 구분 가능
+
+>>독자적인 실행이 안됨 : 주 클래스에 의존
+
+다형성을 알면 자바 API문서가 읽혀지기 시작함
+>>거의 다 다형성을 적용했기 때문에..
+
+★문자기반 스트림
+2byte의 단위
+Reader와 Writer 클래스 -> 추상 클래스임
+>>문자기반 입력(출력)스트림의 최고 조상
+
+
+FileReader / FileWriter 를 FileInputStream이랑 FileOutputStream보다 더 자주씀
+>>왜? 어차피 한글 쓸거니까@@
+>>이것도 char[]을 가지고 노는것
+
+한글1자 >> 2byte >> Stream 빨대 불가능(기본적으로 byte라는 단위라서)
+: 그래서 통로가 2byte인 FileReader랑 FileWriter를 만듬

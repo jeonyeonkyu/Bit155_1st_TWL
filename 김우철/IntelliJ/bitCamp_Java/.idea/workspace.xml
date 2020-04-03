@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a23db5c6-419a-4afe-af34-4e0b73a521b1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZLgDA1f4PSUHeyUTmoI8kMSZop" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../asdsad" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\Desktop\code\IntelliJ\bitCamp_Java\src\Ex10_Thread\Quiz" />
+      <recent name="C:\Users\bitcamp\Desktop\code\IntelliJ\bitCamp_Java\src\Ex10_Thread" />
+      <recent name="D:\kimwoocheol\PersonelStudy\IntelliJ\BitCamp\src\Ex09_IO" />
+      <recent name="D:\kimwoocheol\PersonelStudy\IntelliJ\BitCamp\src\HomeWork_Bank\Team_4" />
+      <recent name="D:\kimwoocheol\PersonelStudy\IntelliJ\BitCamp\src\HomeWork_Bank\Team_3" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Ex04_Multi_Thread_Word_Game">
+    <configuration name="Ex01_Single_Thread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ex10_Thread.Ex01_Single_Thread" />
+      <module name="BitCamp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ex10_Thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex02_Multi_Thread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ex10_Thread.Ex02_Multi_Thread" />
+      <module name="BitCamp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ex10_Thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex03_Single_Word_Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ex10_Thread.Ex03_Single_Word_Game" />
+      <module name="BitCamp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ex10_Thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex04_Multi_Thread_Word_Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ex10_Thread.Ex04_Multi_Thread_Word_Game" />
+      <module name="BitCamp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ex10_Thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex09_File_Format" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ex09_IO.Ex09_File_Format" />
+      <module name="BitCamp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ex09_IO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Ex09_File_Format" />
+      <item itemvalue="Application.Ex01_Single_Thread" />
+      <item itemvalue="Application.Ex02_Multi_Thread" />
+      <item itemvalue="Application.Ex03_Single_Word_Game" />
+      <item itemvalue="Application.Ex04_Multi_Thread_Word_Game" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Ex04_Multi_Thread_Word_Game" />
+        <item itemvalue="Application.Ex03_Single_Word_Game" />
+        <item itemvalue="Application.Ex02_Multi_Thread" />
+        <item itemvalue="Application.Ex01_Single_Thread" />
+        <item itemvalue="Application.Ex09_File_Format" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a23db5c6-419a-4afe-af34-4e0b73a521b1" name="Default Changelist" comment="" />
+      <created>1584623665667</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584623665667</updated>
+      <workItem from="1584623669180" duration="6491000" />
+      <workItem from="1584662099613" duration="12448000" />
+      <workItem from="1584754038059" duration="8837000" />
+      <workItem from="1585059108567" duration="629000" />
+      <workItem from="1585140133510" duration="2538000" />
+      <workItem from="1585216321139" duration="1801000" />
+      <workItem from="1585481342398" duration="1868000" />
+      <workItem from="1585579069249" duration="1228000" />
+      <workItem from="1585658954266" duration="690000" />
+      <workItem from="1585785303177" duration="1476000" />
+      <workItem from="1585871876661" duration="1626000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1076" y="399" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585785523523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1076" y="399" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585785523523" />
+    <state x="980" y="219" key="FileChooserDialogImpl" timestamp="1585872742109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="980" y="219" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585872742109" />
+    <state width="1387" height="211" key="GridCell.Tab.0.bottom" timestamp="1585873536867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1387" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585873536867" />
+    <state width="1387" height="211" key="GridCell.Tab.0.center" timestamp="1585873536867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1387" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585873536867" />
+    <state width="1387" height="211" key="GridCell.Tab.0.left" timestamp="1585873536867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1387" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585873536867" />
+    <state width="1387" height="211" key="GridCell.Tab.0.right" timestamp="1585873536867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1387" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585873536867" />
+    <state x="768" y="110" key="SettingsEditor" timestamp="1585871938227">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="768" y="110" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585871938227" />
+    <state x="936" y="292" key="com.intellij.ide.util.TipDialog" timestamp="1585871876081">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="936" y="292" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585871876081" />
+  </component>
+</project>

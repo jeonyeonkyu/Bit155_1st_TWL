@@ -1,0 +1,50 @@
+vue-devtools 설명
+
+크롬확장에서 설치
+(vue.js쓸떄 무조껀 설치)
+vue.js devtools
+
+console.log 찍지 않아도 data 볼수 있음
+data 변경도 가능..
+
+배포환경에서는 vue-devtools를 못 보게 해야 보안에 좋음
+Vue.config.devtools = false;
+
+컴포넌트이름은 두단어이상으로 짓는게 좋다
+>>공식문서에 있음
+>> html과 헷갈릴 수 있으므로..
+
+npm run dev하면 dist가 만들어지지않음
+-> 메모리에 저장되기 때문
+주의할점
+-> 생성되는 localhost:[포트번호]로 들어가야됨
+-> OO.html에서 f1눌러서 들어가면안됨
+
+class와 style은 v-bind할때 객체형식을 지원해서 다음과 같은 것을 할 수 있다.
+  <div id="computer" :class="{state: true, hello: false }" :style="{backgroundImage: '', fontSize: '14px '}"></div> 
+
+@@
+<button @click="onClickButton('바위')">바위</button>
+<button @click="onClickButton('가위')">가위</button>
+<button @click="onClickButton('보')">보</button>
+
+onClickButton(choice) {
+
+}
+->인수를 넣어줘서 매개변수로 넘겨주는거 가능(하지만 제로초는 마음에 들지 않음)
+ @@
+
+라이프 사이클
+create / mounted/ updated / destroyed 
+이 4개만 외우면 됨
+create와 mounted의 차이점은 알아두자
+
+로직보단 라이프사이클이 중요!!
+
+vue devtools에서 많은 것을 볼수 있음(프레임, 등)
+60프레임 이상이여야 좋음
+
+요즘은 jQuery안배워도됨 (JS를 더 깊게 파는게 중요)
+
+리액트나 뷰를 먼저 배우셈
+
