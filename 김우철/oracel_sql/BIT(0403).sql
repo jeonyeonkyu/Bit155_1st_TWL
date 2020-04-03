@@ -163,8 +163,34 @@ char(20)    >> '홍길동' >> 6byte >> [홍길동    ] >> 20byte
 varchar(20) >> '홍길동' >> 6byte >> [홍길동] >> 6byte
 ex)
 고정길이 데이터 : 남, 여
+가변길이 데이터 : 이름...
+
+성능상의 문제 : char() > varchar() 우선..
+그럼....고정길이 데이터 char() .... 남여, 주민번호, 우편번호
+
+한글문제(unicode : 2byte) >> 한글,영문자,특수문자,공백
+
+nchar(20) >> 20 >> 글자수 >> 총byte >> 2 * 20 >> 40byte
+nvarchar(10) >> 10글자
+
 */
+
+
+
+--1.가장 일반적인 insert
+insert into temp(id,name)
+values(100,'홍길동');
+
 select * from temp;
+--실반영
+commit;
+
+--2.컬럼 목록 생략(되도록 하지 마셈 / 가독성 떨어짐)
+insert into temp 
+values(200,'김유신'); --데이터가 컬럼의 개수, 순서와 일치해야 한다
+
+
+
 
 
 
