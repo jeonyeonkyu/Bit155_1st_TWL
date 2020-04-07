@@ -64,7 +64,7 @@ ex) where gender in ('남','여')
 
 --제약을 만드는 시점
 --1.테이블 만들면서 바로 생성(create table ...)
---2.테이블 생성 이후 추가(제약)(alter table add constraint) ...)(어쩌면 이 방법이 많이 쓰일 수 있음)
+--2.테이블 생성 이후 추가(제약)(alter table add constraint) ...)(어쩌면 이 방법이 많이 쓰일 수 있음 / 쌤은 이거 추천)
 --  2번은 자동화된 툴 들이 사용하는 방법
 
 --1.제약 정보 확인하기(이것은 암기하면 편함)
@@ -127,7 +127,7 @@ create table temp9(
 
 --기존 테이블에 제약 추가하기
 --주의) 기존 데이터가 있는 경우 제약을 위반하는 데이터가 있으면 제약은 추가되지 않음
---제약 걸기전에 데이터 검사 작접 선행
+--제약 걸기전에 데이터 검사 직접 선행
 
 --★
 alter table temp9
@@ -202,7 +202,7 @@ alter table c_dept
 add constraint pk_c_dept_deptno primary key(deptno);
 --2.
 alter table c_emp 
-add constraint fk_c_emp_empno foreign key(deptno) references c_dept(deptno);
+add constraint fk_c_emp_deptno foreign key(deptno) references c_dept(deptno);
 --c_emp(deptno) --- c_dept(deptno) 관계가 설정(1:N) / 다대다는 별로 없음
 --1:1예시 
 --회원에 5가지 정보중 2가지 정보(id,이름)만 사용하면 나머지 3개의 정보(id,나이,주소)는 다른 테이블에 넣고 일대일 관계(id - id)를 맺어줌
