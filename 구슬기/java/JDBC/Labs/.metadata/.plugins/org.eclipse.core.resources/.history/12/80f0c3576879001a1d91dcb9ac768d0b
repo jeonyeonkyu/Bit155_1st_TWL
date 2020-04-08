@@ -1,0 +1,26 @@
+package DAO;
+
+import java.util.List;
+
+import DTO.Dept;
+
+//DAO 
+//1. DB연결
+//2. CRUD 함수
+//3. 하나의 테이블을 대상으로 () >> Dept 테이블 대상으로 함수를 몇개 만들어야 할까요?? 
+//(select(전체조회) 
+//, select(1건..조건(PK)) where
+//, insert 
+//, update 
+//, delete)    이렇게 다섯개
+
+
+public class DeptDao {
+	
+	//1. 전체조회 >> select 결과 >> return Multi row
+	public List<Dept> getDeptAllList(){
+		//DB 연결 >> 명령 >> 명령실행 >> 처리 
+		return null;
+	}
+
+}

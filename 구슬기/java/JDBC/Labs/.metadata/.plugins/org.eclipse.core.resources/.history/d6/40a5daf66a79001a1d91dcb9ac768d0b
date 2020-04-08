@@ -1,0 +1,18 @@
+import DAO.DeptDao;
+import DTO.Dept;
+
+public class Program {
+
+	public static void main(String[] args) {
+		//여기서 화면과 로직을 다 제어한다.
+		DeptDao dao = new DeptDao();
+		Dept dept = new Dept();
+		dept.setDeptno(10);
+		dept.setDname("IT");
+	    dept.setLoc("seoul");
+	     
+		int row = dao.insertDept(dept);
+
+	}
+
+}
