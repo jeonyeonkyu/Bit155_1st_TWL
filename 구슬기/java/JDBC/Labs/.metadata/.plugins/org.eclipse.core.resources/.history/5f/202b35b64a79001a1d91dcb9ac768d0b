@@ -1,0 +1,42 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+import kr.or.bit.utils.ConnectionHelper;
+
+public class Ex03_ConnectionHelper {
+
+	public static void main(String[] args) throws SQLException {
+		Connection conn = null;
+		conn = ConnectionHelper.getConnection("oracle");
+		System.out.println(conn.toString());
+		System.out.println(conn.getMetaData().getDatabaseProductName()); //Oracle
+		System.out.println(conn.getMetaData().getDatabaseProductVersion());  //Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+		
+		System.out.println("연결여부 : " + conn.isClosed()); //false 나와야 함
+		
+		ConnectionHelper.close(conn);  //원하는 객체의 주소만 던지면 됨
+		System.out.println("연결여부 : " + conn.isClosed());  //false
+		
+		
+		
+		Connection conn1 = ConnectionHelper.getConnection("oracle");
+		System.out.println(conn1.toString());
+		
+		Connection conn2 = ConnectionHelper.getConnection("oracle");
+		System.out.println(conn2.toString());
+		/*//conn1,conn2 라고 하는 참조변수가 갖고있는 주소값은 같을까 다를까?  다르다.
+		//ConnectionHelper.getConnection 호출할때 마다 내부에서 (new 작업 연결객체 생성)
+		//oracle.jdbc.driver.T4CConnection@7bd4937b
+		//oracle.jdbc.driver.T4CConnection@21e360a
+		//하나의 APP 연결객체 하나만 사용 하면 되지 않나?
+		// 하나를 만들어서 재사용(공유) 
+		// 그래서 나오는게 Singleton pattern
+		*/
+		
+		Connection conn3 = ConnectionHelper.getConnection("oracle","hr","1004");
+		System.out.println(conn3.toString()); //oracle.jdbc.driver.T4CConnection@5ba3f27a
+		
+		
+
+	}
+
+}
