@@ -8,11 +8,9 @@ public class AutomaticOperationCar extends Car{
 		System.out.println("자동 기어 변속");
 	}
 	
-	void runSomething() {
-		System.out.println("스무스하게 ~ 브레이크~!!");
-	}
-
 }
+
+
 
 //템플릿 메소드를 사용하지 않았을 때 
 //public class AutomaticOperationCar2{

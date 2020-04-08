@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Template_Method.Ex2.Car" project="Design_Pattern" 
     file="/Design_Pattern/src/Template_Method/Ex2/Car.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="265" y="157"/>    
+    <position height="-1" width="-1" x="297" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="Template_Method.Ex2.Main" project="Design_Pattern" 
     file="/Design_Pattern/src/Template_Method/Ex2/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="513" y="198"/>    
+    <position height="-1" width="-1" x="495" y="182"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
