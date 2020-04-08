@@ -10,6 +10,7 @@ public class PizzaFactory extends Factory {
 			return new TomatoPizza();
 		case "Pepperoni":
 			return new PepperoniPizza();
+			
 		}
 
 		return null;

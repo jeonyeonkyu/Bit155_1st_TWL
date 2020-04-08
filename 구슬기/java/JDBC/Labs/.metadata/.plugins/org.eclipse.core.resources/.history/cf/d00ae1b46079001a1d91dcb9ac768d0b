@@ -1,0 +1,14 @@
+/*
+//같은 DB를 놓고 둘이 수정을 할때 너구리가 수정해놓고 의사반영(commit,rollback)을 하지 않으면 
+//작동하지 않는다.
+//너구리가 의사반영(commit,rollback) 을 하는 순간, 고양이의 cmd 는 밀려있던 작업들이 진행된다.
+*/
+
+
+public class Ex06_Oracle_Transaction {
+	public static void main(String[] args) {
+		
+
+	}
+
+}
