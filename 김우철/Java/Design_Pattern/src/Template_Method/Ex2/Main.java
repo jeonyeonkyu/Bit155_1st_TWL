@@ -8,9 +8,11 @@ public class Main {
 		Car labo = new ManualOperationCar();
 		Car bmw = new AutomaticOperationCar();
 		
-		labo.playWithOwner();
-		System.out.println("\n\n");
+		System.out.println("[AutomaticOperationCar]");
 		bmw.playWithOwner();
+		System.out.println("\n");
+		System.out.println("[ManualOperationCar]");
+		labo.playWithOwner();
 
 	}
 

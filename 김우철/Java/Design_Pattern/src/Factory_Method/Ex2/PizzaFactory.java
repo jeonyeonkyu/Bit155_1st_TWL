@@ -1,10 +1,8 @@
 package Factory_Method.Ex2;
 
-public class PizzaFactory extends Factory {
+public class PizzaFactory implements Factory {
 
-	@Override
 	public Pizza createPizza(String name) {
-
 		switch (name) {
 		case "Tomato":
 			return new TomatoPizza();
@@ -12,8 +10,8 @@ public class PizzaFactory extends Factory {
 			return new PepperoniPizza();
 			
 		}
-
 		return null;
 	}
+
 
 }
