@@ -331,16 +331,18 @@ create table score(
     majorCode number(10)
 );
 
-alter table score
-add constraint pk_score_id primary key(id);
-
 create table major(
     majorCode number(10) constraint pk_major_majorCode primary key,
     majorName varchar2(10) not null
 );
 
 alter table score
+add constraint pk_score_id primary key(id);
+
+alter table score
 add constraint fk_score_majorCode foreign key(majorCode) references major(majorCode);
+
+
 
 --인서트 데이터
 
@@ -376,7 +378,13 @@ values(4,'이정아',2000);
 select * from score;
 select * from major;
 
+select s.id, s.name, s.sum, s.avg, s.majorCode, m.majorName
+from score s join major m
+on s.majorcode = m.majorcode;
+
 commit;
+
+
 
 --3번쨰 방법
 create table major(

@@ -573,9 +573,18 @@ where e.sal = s.sal and e.comm = s.comm;
 --    직업,월급,부서명,커미션을 출력하되 커미션이 책정되지 않은 사원은 NoCommission
 --    으로 표시하고, 커미션의 컬럼명은 Comm으로 나오게 출력하시오.
 --    단, 최고월급부터 출력되게 하시오
+select e.empno, e.ename, e.job, e.sal, s.dname, decode(e.comm, null, 'NoCommission', e.comm) as "Comm"
+from emp e, (select job, mgr, dname
+            from emp e join dept d
+            on e.deptno = d.deptno
+            where d.loc = 'DALLAS') s
+where e.job = s.job and e.mgr = s.mgr
+order by sal desc;
 
+select * from dept;
 
-
+select * from emp
+where deptno = 20;
 
 
 
