@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <interface id="1" language="java" name="Factory_Method.Ex2.Factory" project="Design_Pattern" 
+  <class id="1" language="java" name="Factory_Method.Ex2.Factory" project="Design_Pattern" 
     file="/Design_Pattern/src/Factory_Method/Ex2/Factory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="387" y="126"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="2" language="java" name="Factory_Method.Ex2.Pizza" project="Design_Pattern" 
-    file="/Design_Pattern/src/Factory_Method/Ex2/Pizza.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="811" y="268"/>    
+    <position height="-1" width="-1" x="595" y="95"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <interface id="2" language="java" name="Factory_Method.Ex2.Pizza" project="Design_Pattern" 
+    file="/Design_Pattern/src/Factory_Method/Ex2/Pizza.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="222" y="236"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
   <class id="3" language="java" name="Factory_Method.Ex2.TomatoPizza" project="Design_Pattern" 
     file="/Design_Pattern/src/Factory_Method/Ex2/TomatoPizza.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="626" y="174"/>    
+    <position height="-1" width="-1" x="391" y="297"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="Factory_Method.Ex2.PizzaFactory" project="Design_Pattern" 
     file="/Design_Pattern/src/Factory_Method/Ex2/PizzaFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="384" y="300"/>    
+    <position height="-1" width="-1" x="600" y="259"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="Factory_Method.Ex2.Main" project="Design_Pattern" 
     file="/Design_Pattern/src/Factory_Method/Ex2/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="185" y="132"/>    
+    <position height="-1" width="-1" x="79" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,33 +48,33 @@
   </class>  
   <class id="6" language="java" name="Factory_Method.Ex2.PepperoniPizza" project="Design_Pattern" 
     file="/Design_Pattern/src/Factory_Method/Ex2/PepperoniPizza.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="626" y="348"/>    
+    <position height="-1" width="-1" x="390" y="158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="7">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <realization id="8">    
+  <dependency id="7">    
     <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <realization id="8">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
   </realization>  
   <dependency id="9">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="10">    
+  <generalization id="10">    
     <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="TARGET" refId="1"/>  
   </generalization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

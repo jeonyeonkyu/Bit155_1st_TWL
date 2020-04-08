@@ -1,7 +1,6 @@
 package Factory_Method.Ex2;
 
-public class PizzaFactory implements Factory {
-
+public class PizzaFactory extends Factory {
 	public Pizza createPizza(String name) {
 		switch (name) {
 		case "Tomato":
@@ -12,6 +11,4 @@ public class PizzaFactory implements Factory {
 		}
 		return null;
 	}
-
-
 }
