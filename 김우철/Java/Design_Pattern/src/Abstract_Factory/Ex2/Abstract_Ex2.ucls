@@ -39,7 +39,7 @@
   </interface>  
   <class id="5" language="java" name="Abstract_Factory.Ex2.Computer" project="Design_Pattern" 
     file="/Design_Pattern/src/Abstract_Factory/Ex2/Computer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="513" y="396"/>    
+    <position height="-1" width="-1" x="512" y="424"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -74,25 +74,25 @@
     </display>  
   </class>  
   <realization id="9">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <realization id="10">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <realization id="11">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
   <generalization id="12">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <dependency id="13">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
   <dependency id="14">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
