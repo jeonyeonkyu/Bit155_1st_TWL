@@ -1,6 +1,7 @@
 package Factory_Method.Ex2;
 
 public class PizzaFactory extends Factory {
+	@Override
 	public Pizza createPizza(String name) {
 		switch (name) {
 		case "Tomato":

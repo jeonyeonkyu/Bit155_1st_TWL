@@ -9,8 +9,8 @@ public class ManualOperationCar extends Car{
 	}
 	
 	//Hook 메소드 재정의
-	void runSomething() {
-		System.out.println("ManualOperationCar : 뻑뻑하게 브레이크~!!");
+	void stop() {
+		System.out.println("뻑뻑하게 브레이크~!!");
 	}
 
 }
