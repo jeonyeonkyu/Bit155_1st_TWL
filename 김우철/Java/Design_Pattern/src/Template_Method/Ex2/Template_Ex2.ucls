@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="Template_Method.Ex2.ManualOperationCar" project="Design_Pattern" 
     file="/Design_Pattern/src/Template_Method/Ex2/ManualOperationCar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="408" y="351"/>    
+    <position height="-1" width="-1" x="402" y="351"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
