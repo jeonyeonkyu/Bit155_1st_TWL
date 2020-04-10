@@ -1,0 +1,18 @@
+import kr.or.bit.Ppt5_2;
+
+public class PPT_5 {
+
+	public static void main(String[] args) {
+		Ppt5_2 p = new Ppt5_2();
+		
+		p.showA();
+		
+	
+		
+		
+		
+		
+
+	}
+
+}

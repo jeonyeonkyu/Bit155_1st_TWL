@@ -1,0 +1,89 @@
+자주쓰이는 div태그는 js에서 미리 정의해줘라
+
+변할것 같은 변수는 
+전역변수로 선언해라
+
+함수나 변수의 위치는 중요
+
+cloneNode로 기존 태그를 그대로 복사 가능(HTML 태그 전체를 복사 가능)
+인자에 true를 넣으면 내부까지 다 복사
+
+ <div class="card-hidden">
+        <div class="card">
+            <div class="card-cost"></div>
+            <div class="card-att"></div>
+            <div class="card-hp"></div>
+        </div>
+    </div>
+
+
+상대덱data.forEach(function(data) {
+      var 카드 = document.querySelector('.card-hidden .card').cloneNode(true);
+      카드.querySelector('card-cost').textContent = data.cost;
+      카드.querySelector('card-att').textContent = data.att;
+      카드.querySelector('card-hp').textContent = data.hp;
+      상대덱.appendChild()
+  });
+=> card-hidden과 card 태그를 복사
+
+남의 코드를 분석할려면 항상 첫 진입점(첫 함수)를 찾아야 한다.
+
+
+화면이랑 데이터랑 연결시키는 작업은
+바닐라 js로는 대개 귀찮음
+그래서 리액트나 뷰같은걸 쓰면 좋음
+
+  턴 = !턴;
+  : true -> false, false -> true
+
+
+
+<div id="my" class="turn">
+<div id="rival">
+    document.getElementById('rival').classList.toggle('turn');
+  document.getElementById('my').classList.toggle('turn');
+  => toggle을 이용해 class="turn" 생성을 와리가리 해준다.
+
+
+  실무에서는 지금과 같은 방식으로 바닐라JS를 보통 짜지않음
+  (-> 비동기 너무 빡셈)
+
+  리액티브 JS를 이용하면 비동기 쉽게처리가능
+  
+
+     카드.parentNode.querySelectorAll('.card-selected').forEach(function(card) {
+          card.classList.remove('card-selected');
+        })
+        카드.classList.add('card-selected');
+        => 모든 카드의 selected를 지운뒤 선택한 카드만 selected
+
+
+        구현보다 리펙토링이 더 중요하고 어려움
+반복 제거, 논리적으로 제거해도 구현에 문제없는지
+(코드 줄이는것이 핵심)
+
+함수로 쪼개면 좋다
+함수를 다 접고 초기세팅을 보며 절차적으로 함수를 본다.
+
+함수명을 잘 표현해라(실무에서는 영어)
+
+남의코드를 파악할줄 알면 그 언어는 마스터
+
+
+함수 내부에서 무슨일이 일어나는지 신경 안쓰고 결과만 보는것 = 블랙박스
+
+
+진입점에서 코드분석 하기
+이부분
+(
+   상대덱생성(5);
+  내덱생성(5);
+  내영웅생성();
+  상대영웅생성();
+  화면다시그리기(true); // 상대화면
+  화면다시그리기(false); // 내화면
+)
+
+함수를 많이 쪼개노는것이 좋음
+
+

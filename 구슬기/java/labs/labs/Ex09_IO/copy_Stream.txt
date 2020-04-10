@@ -1,0 +1,63 @@
+iimmppoorrtt jjaavvaa..iioo..BByytteeAArrrraayyIInnppuuttSSttrreeaamm;;
+iimmppoorrtt jjaavvaa..iioo..BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm;;
+iimmppoorrtt jjaavvaa..iioo..IIOOEExxcceeppttiioonn;;
+iimmppoorrtt jjaavvaa..uuttiill..AArrrraayyss;;
+
+//**
+  II//OO
+  추추상상클클래래스스
+  IInnppuuttSSttrreeaamm((입입력력통통로로)),, OOuuttppuuttSSttrreeaamm((출출력력통통로로))  bbyyttee 값값을을 읽읽고고 쓸쓸수수 있있는는 추추상상클클래래스스들들이이다다..
+  두두개개의의 클클래래스스를를 상상속속((재재정정의의))하하는는 클클래래스스를를 통통해해 입입출출력력 작작업업을을 할할수수 있있다다..
+  
+  대대상상에에 따따라라서서
+  11..MMeemmoorryy ::       BByytteeAArrrraayyIInnppuuttSSttrreeaamm  // BByytteeAArrrraayyOOuuttppuuttssttrreeaamm     메메모모리리에에 값값을을 쓰쓰거거나나 읽읽을을때때 사사용용되되는는통통로로
+  22..FFiillee((중중요요))::     FFiilleeIInnppuuttSSttrreeaamm      // FFiilleeOOuuttppuutt  
+  33..
+  
+  
+  
+  
+ **//
+ppuubblliicc ccllaassss EExx0011__SSttrreeaamm {{
+
+	ppuubblliicc ssttaattiicc vvooiidd mmaaiinn((SSttrriinngg[[]] aarrggss)) tthhrroowwss IIOOEExxcceeppttiioonn {{
+		////bbyyttee ((--112288~~112277)) 정정수수가가 저저장장가가능능한한 타타입입
+		bbyyttee[[]] iinnSSrrcc == {{00,,11,,22,,33,,44,,55,,66,,77,,88,,99}};;
+		bbyyttee[[]] oouuttSSrrcc == nnuullll;; ////현현재재는는 메메모모리리를를 가가지지고고 있있지지 않않아아요요..
+		////자자원원 ((리리소소스스))를를  쓰쓰려려고고한한다다..  그그래래서서 빨빨대대 인인풋풋 아아웃웃풋풋중중에에 인인풋풋빨빨대대를를 iinnSSrrcc에에 꽂꽂았았다다.. 
+		////rreeaadd 함함수수는는 한한개개의의 값값씩씩 읽읽어어들들인인다다
+		////읽읽어어들들인인 값값을을 oouuttSSrrcc 에에 쓸쓸것것이이다다..
+		
+		
+		////내내가가 데데이이터터를를 rreeaadd,, wwrriittee 하하는는 대대상상을을 MMeemmoorryy   
+		BByytteeAArrrraayyIInnppuuttSSttrreeaamm iinnppuutt == nnuullll;;
+		BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm oouuttppuutt == nnuullll;;
+		
+		iinnppuutt == nneeww BByytteeAArrrraayyIInnppuuttSSttrreeaamm((iinnSSrrcc));;   ////rreeaadd ////iinnSSrrcc 에에다다가가 인인풋풋빨빨대대를를 꽂꽂았았다다..  배배열열자자원원에에 빨빨대대를를 꽂꽂은은것것..
+		////생생성성자자를를 통통해해서서 iinnSSrrcc 배배열열의의 갓갓ㅂㅂ을을 rreeaadd 할할 준준비비가가 된된거거
+		oouuttppuutt == nneeww BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm(());; ////wwrriittee 
+		
+		SSyysstteemm..oouutt..pprriinnttllnn((""oouuttSSrrcc bbeeffoorree :: ""++AArrrraayyss..ttooSSttrriinngg((oouuttSSrrcc))));; ////oouuttSSrrcc bbeeffoorree :: nnuullll
+		
+		////공공식식같같은은 로로직직(( 암암기기))
+		iinntt ddaattaa == 00;;
+		wwhhiillee((((ddaattaa == iinnppuutt..rreeaadd(())))!!==--11)) {{  ////쭉쭉 읽읽어어들들인인값값을을 ddaattaa에에 넣넣고고 그그값값이이 --11이이 아아니니라라면면 //// 더더이이상상 rreeaadd 할할 ddaattaa가가 없없다다면면 --11 ////빨빨대대안안을을 읽읽기기시시작작하하는는것것..
+			SSyysstteemm..oouutt..pprriinnttllnn((""ddaattaaqqaa :: ""++ ddaattaa));;
+			////SSyysstteemm..oouutt..pprriinnttllnn((""iinnppuutt..rreeaadd(()) :: ""++iinnppuutt..rreeaadd(()) ));;
+			////rreeaadd(()) 함함수수는는 내내부부적적으으로로 nneexxtt(()) 기기능능을을 포포함함하하고고 있있다다.. 그그래래서서 읽읽고고 그그 다다음음값값으으로로 이이동동해해버버림림.. wwhhiillee을을 돌돌때때마마다다 11,,33,,55,, 이이런런식식으으로로 읽읽게게됨됨..
+			oouuttppuutt..wwrriittee((ddaattaa));; 
+			////자자기기자자신신에에게게 ddaattaa 변변수수의의 값값을을 rreeaadd 해해서서 wwrriittee 해해야야겠겠다다..
+			////wwrriittee 대대상상이이 oouuttppuutt이이다다..      ddaattaa 를를 쭉쭉읽읽어어서서 oouuttppuutt에에 쓴쓴다다.. 
+			////((BByytteeAArrrraayyOOuuttppuuttSSttrreeaamm))자자신신의의 통통로로에에 rreeaadd 가가지지고고 있있는는다다..********************
+		}}
+		
+		
+		
+		oouuttSSrrcc == oouuttppuutt..ttooBByytteeAArrrraayy(());;
+		////ttooBByytteeAArrrraayy(()) >>>> 자자기기가가 가가지지고고 있있는는 값값을을 배배열열로로 만만들들어어서서 그그 주주소소값값을을 oouuttSSrrcc에에게게 할할당당 한한것것..
+		SSyysstteemm..oouutt..pprriinnttllnn((""oouuttssrrcc :: ""++ AArrrraayyss..ttooSSttrriinngg((oouuttSSrrcc))));;   ////oouuttssrrcc :: [[00,, 11,, 22,, 33,, 44,, 55,, 66,, 77,, 88,, 99]]
+		////첫첫수수업업이이라라서서 한한거거지지 어어차차피피 배배열열도도 메메모모리리니니까까 메메모모리리 읽읽어어서서 메메모모리리쓰쓰는는 작작업업은은 하하지지 않않는는다다..
+
+	}}
+
+}}

@@ -1,0 +1,72 @@
+컴포넌트를 잘게잘게 나눠서 써야함
+(tictactoc -> table -> tr -> td)
+
+구조가 복잡하긴 함, 허나 바뀌는부분을 다시그리기위해 전체를 다시그리는것을
+방지하기 위해 잘게잘게 나눠쓴것
+(바뀌는 부분만 바뀌자!!)
+
+그런데 또 4개도 복잡한데 여러개있으면 어으~
+=> root에서 가장 최하위 vue에게 다이렉트로 전달하는 방법(리액트는 없음)
+=> 자식에서 부모도 됨
+
+   methods:{
+            onClickTd(){
+                this.$root.$data
+            },
+        }
+
+>>   this.$root.$data.turn = this.$root.$data.turn === 'O' ? 'X' : 'O';
+
+제일 엄청 대박 중요함!!!★★★★★(가장 많이 하는 실수)
+vue가 데이터랑 화면을 일치시킨다했는데 화면에는 반영이 안되고 데이터만 바뀜
+        methods: { 
+            onChangeData(){
+                this.tableData[0][1] = 'O';
+            }
+        },
+    >>이렇게 한다해도 화면이 바뀌지 않음
+    >>this.turn = 'X'; :이런식으로 기본적인 값은 반영이 됨
+    >>this.tableData.push('a'); :배열의 메소드를 이용해서 하는것도 바뀜
+    >>뷰에서 객체 or 배열의 내부의 값을 인덱스로 바꿀려고 하면 화면에 반영이 안됨
+    >>뷰의 구조적인 한겸(JS의 한계)
+    
+해결방법 2가지
+1.
+import Vue from 'vue';
+...
+     onChangeData(){
+                Vue.set(this.tableData[1], 0, 'X');
+                //바꾸고 싶은값, 키, 데이터
+            }
+
+2.
+Vue를 import 하지 않고
+this.$set(this.tableData[1], 0, 'X');
+해도됨
+
+키포인트
+this.$root.$data
+this.$parent.$data
+this.set(~)
+
+this.$parent.$data
+this.$parent.$parent.$data
+this.$parent.$parent.$data
+>>아버지, 할아버지, 증조할아버지.. 가독성이 안좋음
+>>Vuex(중앙데이터통제실)를 써서 간편화가능
+>>아버지나 할아버지에서가 아니라 Vuex에서 데이터를 가져다 쓰는 개념
+
+리액트에서는 이러한 개념을 리덕스를 사용(리액트에서는 '$'를 지원해주지 않기 대문에 리덕스는 필수로 사용)
+
+
+크롬 extensions에서 다운받은 vue를 확인하는 툴에서 차트모양 - component render(stop 누르고 하기) 데이터 렌더링이 전체가아니라 부분만 잘되는지 체크할것
+
+리액트에서 비해서 뷰는 최적화기능이 까다롭지않음
+
+
+
+
+
+
+
+
