@@ -1,0 +1,94 @@
+*****4-1 
+html문서는 기본적으로 위->아래 / 왼 -> 오
+인데 position을 이용해서 기본적인 순서를 바꿀 수 있음
+
+input도 width와 height가 기본 css로 정해져있었음
+-> 수정
+
+input은 기본적으로 인라인 블록
+
+제로초도 외우고있지 않음
+>> 개발자도구로 다 보면서 하고있음
+
+block format context(퍼블리셔도 잘 모름)
+쌓임 맥락(stacking context)
+>>두개 헷갈림
+
+
+#header-search h1에 
+  position: relative;
+    top: -6px;
+    이거를 줘서 로고를 검색바의 가운데에 위치하게 만들어줌
+
+position이나 float z-index만 하면 나머지는 그냥 따라하기
+
+
+
+*****4-2
+w3schools.com -> 생각보다 부정확
+MDN - 그나마 정확
+>>둘다 공식문서는 아님
+
+1.컨테이닝 블록의 모든것
+https://developer.mozilla.org/ko/docs/Web/CSS/All_About_The_Containing_Block
+
+모든 포지션은 static 이 디폴트(위->아래 / 왼->오)
+
+relative
+: 항상 비교대상이 있어야함
+static인 경우 현재위치를 기반으로 움직임
+
+absolute
+:화면을 기준으로 움직임(html까지 올라감)
+:내가 absolute인 경우 relative인 부모를 계속 찾아다님
+찾으면 그 relative가 들어간 부모의 크기에 맞게 들어감
+
+
+*****4-3
+fixed
+:스크롤을 내려도 그 위치에 계속 있음
+:컨테이닝 블록이 부모가아니라 body임 그래서 어느위치에 놓아도
+위치는 고정
+
+mdn문서를 보고 자주하다보면 잘 외워짐
+
+html이랑 body에 기본적인css가 있음
+
+
+*****4-4
+flex가 좋긴한데 IE에서 안먹힘;;
+float같은 경우 이해하기 어려움
+
+ul에도 기본 css가 있고
+li도 한줄을 전체차지해서 없에야됨
+(inline-block로 한줄에 다 들어가게..)
+
+
+이미지를 넣을대는 이미지를 설명할 태그를 꼭 넣어줘야함
+
+
+nav li:first-child span:first-child {
+
+}
+>> 첫번째 li에서 첫번째 span
+
+네이버에서 개발자도구를 통해 이미지스프라이트의 위치와 
+주소를 가져오면서 함
+
+공통적인것은 공통요소로 빼라
+
+
+만약 순서가 바뀌면 nth-child는 유지보수하기 개빡셈
+
+실무에서는 nth-child보다
+class이름을 하나씩 주는게 낳을 수 있음
+
+
+*****4-5
+여기서는 box-sizing을 풀어줘야함 or 마진으로 적용
+
+css 우선순위
+기본적으로 뒤에 나오는 css가 우선순위가 높습니다. 
+!important > inline style attribute > id > class, 다른 attribute, 수도클래스(:first-child같은 것) > tag element, 수도엘레먼트(::before같은 것) 순으로 우선순위가 높습니다.
+우선순위가 같다면 개수가 많은 css가 우선순위가 높습니다.
+3줄 암기!!

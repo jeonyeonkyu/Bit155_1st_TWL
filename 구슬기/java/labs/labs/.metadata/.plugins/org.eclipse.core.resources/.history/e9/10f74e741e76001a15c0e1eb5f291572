@@ -1,0 +1,74 @@
+*****3-1
+박스모델과 float position 배움
+-> 여기까지만 하면 왠만한 것들 다 할 수 있음
+
+
+.blind{
+    position:absolute;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+display:none말고 이속성을 이용하자(네이버에서 가져옴)
+
+id는 고유성!! (딱 한번만 html에서 쓸 수 있다)
+class는 같은클래스 이름을 여러번 사용할 수 있을때
+
+이미지 스프라이트
+: 별도의 이미지로 구분하는것이 아닌 하나의 이미지에 사용할 것을 다떄려박아서
+x,y좌표만 변경해서 사용
+: 이걸 사용하면 서버에 이미지를 한방에 요청할 수 있음(각각 존재하면 그 개수만큼 서버에 요청)
+
+*****3-2
+글자를 지우기위해 text-indent사용(네이버가?!)
+
+★★★
+css를 고치고 매번 새로고침하지말고 개발자도구를 이용해라
+
+box모델
+
+*****3-3
+검색바의 가로세로 높이는 border를 포함한 길이
+
+ box-sizing: content-box; : box-sizing의 기본
+ >>border / padding / content 다따로함
+>>    box-sizing: border-box;로 바꾸면 3개다 포함됨
+>>with를 border기준으로 바꾼것
+>> 이걸 안쓰면 숫자를 다 계산하면서 해야함
+
+왠만하면 모든 태그에 border-box를 적용해주는게 좋음
+>>
+*{
+    box-sizing: border-box;
+}
+
+브라우저마다 기본 css가 다름
+>>다 없에주는게 좋음(css reset)
+>> 기본 브라우저 css파일이 따로 있음
+
+#header-search fieldset input{
+    border:none;
+}
+>>input태그의 border선을 지워줌
+
+그래도 input클릭시 파랑색 테투디가 남아있음(outline)
+outline: none; 하면됨
+
+css는 이해한 뒤 암기!!
+
+네이버 로고와 검색창의 높이가 다른 이유는 서로 height값이 달라서임
+네이버 로고와 검색창을 맞추기 위해선 vertical-align 사용
+h1과 fieldset에     vertical-align: middle; 주기
+
+
+*****3-4
+버튼에도 기본 css가 적용되어 있으니 없에준다.
+
+★★★
+인라인과 인라인블록 블록 차이 꼭 알아두기
+
+
+

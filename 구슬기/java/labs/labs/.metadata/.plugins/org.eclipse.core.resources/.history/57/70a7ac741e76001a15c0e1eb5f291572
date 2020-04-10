@@ -1,0 +1,51 @@
+vue 스타일 가이드 보기
+1. 컴포넌트 이름은 항상 두단어
+2. 컴포넌트 데이터는 반드시 함수
+3. props는 항상 타입을 정의해야한다.
+4. v-for에 key를 붙여야 한다
+등등
+
+규칙 B까지는 지키는게 좋음
+
+만드는것보다 vue의 문법에 집중해라!!
+(오늘은 반복문, 컴포넌트 여러개, props(★),  watch 배움)
+
+중복되는 부분은 컴포넌트로 만들어주는것이 좋음
+
+LottoGenerator 에서 
+<lotto-ball v-for="ball in winBalls" :key="ball.key"></lotto-ball>
+이 태그를 통해 lottoBall.vue를 사용하고 있음
+그럼 LottoGenerator가 부모가 되고, lottoBall이 자식이됨
+부모 -> 자식으로 데이터를 넘겨줄 수 있음
+
+ex)
+ <lotto-ball v-for="ball in winBalls" :key="ball.key" number="5"></lotto-ball>
+ 이상태면 number 5를 전달
+즉, props는 부모컴포넌트가 자식컴포넌트에게 데이터를 전달
+
+LottoGenerator(숫자를 뽑는 역할)
+LottoBall(데이터를 표시하는 역할)
+
+올바른 방법은 데이터를 바꾸는 부모의 메소드(함수)를 자식에게 props로 전달하는것
+
+축약형
+props: ['number'],
+
+ export default {
+        components: {
+            'lotto-ball':LottoBall, 
+        },
+        이거를
+           components: {
+            LottoBall,  //실무에서 많이 사용하는 방법
+        },
+        이렇게 줄이기 가능
+        왜냐? 파스칼 케이스랑 케밥케이스가 호환이 가능하기 때문
+
+
+어떤 값이 바뀌었는지 안바뀌었는지 감시하는것이 watch
+bonus가 null이 되었을떄 showballs 실행이라든지
+redo가 false가 되었을떄 showballs 실행이라든지 등
+
+watch는 최후의 수단으로 쓰셈(부작용 심함)
+

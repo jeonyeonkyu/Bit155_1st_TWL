@@ -1,0 +1,17 @@
+
+	public class Main{
+
+		public static void main(String args[]){
+			
+		Password pass = new Password();
+		
+
+			pass.makepass();
+			pass.checkConfirmpass();
+			
+		
+		
+		}
+	}
+	
+		
