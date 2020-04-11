@@ -1,4 +1,4 @@
-package kr.or.bit;
+package Ppt5;
 
 import java.util.Arrays;
 

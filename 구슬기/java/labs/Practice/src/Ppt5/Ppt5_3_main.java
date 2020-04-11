@@ -1,4 +1,4 @@
-import kr.or.bit.Ppt5_3;
+package Ppt5;
 
 public class Ppt5_3_main {
 
