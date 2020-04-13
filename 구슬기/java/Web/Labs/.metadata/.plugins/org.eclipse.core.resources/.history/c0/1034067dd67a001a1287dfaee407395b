@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type = "text/css">
+		ul{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background-color : pink;
+		
+		}
+		li{
+			float: left;  /* li 들이 다 왼쪽으로떠서 붙는다.     이게 반응형.. 떠있기 때문에 밀면 밀려 내려간다. */
+		
+		}
+		
+		li a {    /* 이렇게 한칸을 띄어쓰면 li 태그 안쪽(하위,자손)에 있는 a 라는 태그를 잡는거다 */
+			display: block;
+			color : dodgerblue;
+			text-align : center;
+			padding: 15px;
+		}
+	
+	</style>
+</head>
+<body>
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+</body>
+</html>

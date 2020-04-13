@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개발자 필수 태그..(암기하세요)</title>
+</head>
+<body>
+	<!-- 회원가입, 게시판 글쓰기, 읽기, 수정하기, 삭제하기 이런화면에서 봤던 디자인들...  -->
+	<h3>로그인 처리</h3>
+	<form action="Ex14_login.jsp" method="post">
+		<input type="text" name ="userid"><br>
+		<input type="text" name ="userpwd"><br>
+		<!--  <input type="submit" value="로그인"> -->
+		<input type="image" src="images/button.png" width="60" height="30">      <!-- 이미지 로 버튼을 대체할 수 있다.  -->
+		<input type="reset"  value="취소">
+	</form>
+	<!-- 
+	    form 태그는 전송을 담당하는 태그(서버(네이버, 다음)>> 웹서버 >> Tomcat
+	    (운송수단, 전송수단)
+	    
+	    ex) 네이버 접속 >> 회원가입 >> 회원가입페이지 >> 정보입력 >> 가입하기 버튼누르면? >> 네이버서버로 전송.       이작업자체가 중간에 form 태그가 있는 거다. 
+	    >> 입력한 데이터(네트워크) 이동 >> form(태그안쪽에 태워서) >> 목적지(서버로 간다) >> 서버(데이터 받기) >> JSP(servlet) 이 처리한다.
+	    >> DB 연결 >> Insert >> 완료 >> 클라이언트에서 응답(response) 
+	    
+	    form (전송수단) 
+	    2가지 방법 : 배(method="get"), 비행기(method="post")
+	    
+	    [get 방식]  으로 가면 웹사이트 주소 창에 전체 parameter 노출되어서 넘어간다.    그럼에도 불구하고 링크를 통해서 서버에 정보를 전송할때 써야 한다. 
+	    http://localhost:8090/WebClient/Ex14_login.jsp?userid=ksks723&userpwd=1004      
+	    ** 어쩔수 없이 여행시 배를 타야되는 경우( link 를 통해서 서버에 정보를 전송할때) 
+	    ** <a href = "board.jsp?id=100&......" > 게시판 읽기 <a>  
+	       <a href = "boardDetail.jsp?boardno=100">글 상세보기</a>
+	    
+	    
+	    [post 방식] 으로 가면 http 프로토콜 사용해서 header 안에 내용(정보) 숨겨서 전송한다. 
+	    http://localhost:8090/WebClient/Ex14_login.jsp
+	    
+	    
+	    form (action="목적지 주소") >> 목적지 주소(login.do , login.jsp, login.action)
+	    
+	    form 기장(선장) >> submit , reset   둘이 단짝... 
+	    서버로 전송(출발) >> form 태그 안에서
+	    1. input type = "submit" 전송
+	    2. input type = "image" (내부적으로 전송 기능 포함)
+	    3. input type = "button" >> javascript >> 이벤트라는게 있다..>> document.form.submit()  전송..
+	    
+	    
+	    
+	
+	 -->
+</body>
+</html>

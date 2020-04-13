@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id ="wrap" style="width:600px; margin:auto;">header
+		<div id="header" style= "height:50px;background: orange">
+		</div>
+			<div id="main" style="margin-top:10px;">
+				<div id="left_main" style="height:300px; width:100px; background:gray;margin-right:10px;float:left;">
+				</div>
+				<div id="right_main" style="height:300px;width:490px;background: dodgerblue;float:left;">
+				</div>
+			</div>
+			<div style ="clear:both;"></div>
+				<div id="footer" style="height:50px;margin-top:10px;background: pink;">
+				</div>
+	</div>
+
+</body>
+</html>
