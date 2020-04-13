@@ -1,0 +1,114 @@
+/* CSS Reset */
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 100%;
+}
+
+body {
+  background-color: #ddd;
+}
+
+/* Common */
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.cover {
+  color: white;
+  background-color: antiquewhite;
+  background-size: cover;
+  background-position: center;
+  background-image: url(images/background.png);
+  height: 50vh;
+  font-size: 10vw;
+  position: relative;
+}
+
+.cover h1 {
+  background-color: orangered;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 0.4em 0.15em;
+  /* 상 좌우 하 */
+  border-radius: 5px;
+  line-height: 1;
+  position: absolute;
+}
+
+.wrapper {
+  width: 980px;
+  margin: 50px auto;
+}
+
+.section {
+  background-color: white;
+  margin: 50px 0;
+  padding: 20px;
+  color: #999;
+  text-align: right;
+  position: relative;
+}
+
+.section-contents {
+  display: inline-block;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 40px;
+  border-bottom: 10px solid;
+  display: inline-block;
+}
+
+.section.strawberry h2 {
+  color: orangered;
+  border-color: forestgreen;
+}
+
+.section.orange h2 {
+  color: orange;
+  border-color: antiquewhite;
+}
+
+.section.kiwi h2 {
+  color: forestgreen;
+  border-color: #c78c8c;
+}
+
+.section p {
+  float: left;
+  width: 250px;
+  margin-right: 20px;
+  line-height: 1.6;
+}
+
+.section p:last-child {
+  margin-right: 0;
+}
+
+.section-cover {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin: 0 -160px;
+  transform: translateY(-50%);
+}
+
+.section:nth-child(even) {
+  text-align: left;
+}
+
+.section:nth-child(even) .section-cover {
+  left: auto;
+  right: 0;
+}
