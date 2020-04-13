@@ -1,0 +1,10 @@
+.wow {
+  background-color: orange;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.wow.right {
+  margin-left: auto;
+}

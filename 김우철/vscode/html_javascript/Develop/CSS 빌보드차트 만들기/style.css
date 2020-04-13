@@ -1,0 +1,137 @@
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+ol,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  background-color: #333;
+  color: #666;
+}
+.wrapper {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  color: deeppink;
+  font-size: 80px;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  padding: 50px 0;
+  position: relative;
+}
+
+.title:after {
+  content: " ";
+  background-color: pink;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 70px;
+  border-radius: 10px;
+  bottom: 70px;
+  opacity: 0.2;
+  height: 30px;
+}
+
+.chart {
+  background-color: #aaa;
+  overflow: hidden;
+  counter-reset: rank;
+}
+
+.chart-item {
+  background-color: white;
+  margin: 60px;
+  height: 80px;
+  position: relative;
+  counter-increment: rank;
+}
+
+.album {
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+
+.album:before {
+  content: counter(rank);
+  font-size: 50px;
+  padding: 6px;
+  float: left;
+  width: lem;
+  text-align: right;
+  margin-right: 0.25em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.album:hover {
+  margin: -30px;
+  background-color: white;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.album-cover {
+  float: right;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.album-disc {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  animation-name: spin;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition: right 0.5s;
+}
+
+.album:hover .album-disc {
+  right: 80px;
+  transition-delay: 1s;
+}
+
+.album-contents {
+  overflow: hidden;
+  padding: 15px;
+}
+
+.album-description {
+  margin-top: 10px;
+  opacity: 0;
+
+  transition: opacity 0.5s;
+}
+
+.album:hover .album-description {
+  transition-delay: 0.5s;
+  opacity: 1;
+}
+
+.album:hover:before {
+  color: deeppink;
+}
