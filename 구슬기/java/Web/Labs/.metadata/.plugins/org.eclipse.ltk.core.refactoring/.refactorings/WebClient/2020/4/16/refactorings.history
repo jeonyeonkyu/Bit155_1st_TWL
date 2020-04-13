@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WebClient/WebContent/Ex18_.html&apos; to &apos;Ex18_Quiz.html&apos;" description="Rename resource &apos;Ex18_.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/Ex18_.html" name="Ex18_Quiz.html" stamp="1586763794737" updateReferences="true"/>
+</session>

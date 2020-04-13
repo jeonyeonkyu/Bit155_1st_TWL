@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+1. HTML describes the structure of a Web page
+<br>
+2. Browsers do not display the HTML tags, but use them to render the content of the page
+<br>
+3. 웹 브라우저 해석기(parser 내장) : html,htm,css,javascript 해석(render)해서 그 결과 출력해주는 역할을 함
+<br>
+<h3>제목</h3>
+<p>문단태그</p>
+
+</body>
+</html>

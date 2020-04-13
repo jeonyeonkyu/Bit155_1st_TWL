@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#wrap {
+	background-color: tomato;
+	padding: 10px;
+	text-align: left;
+	width: 100%;
+	margin: 100%;
+	
+}
+
+#header {
+	height: 20%;
+	background: orange;
+	text-align: left;
+}
+
+#main {
+	margin-top: 0px;
+}
+
+#left_main {
+	height: 300px;
+	width: 20%;
+	background: gold;
+	margin-right: 0px;
+	float: left;
+}
+
+#right_main {
+	height: 300px;
+	width: 80%;
+	background: dodgerblue;
+	float: left;
+}
+
+#footer {
+	height: 200%;
+	margin-top: 0px;
+	background: pink;
+}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">header</div>
+		<div id="main">
+			<div id="left_main">left</div>
+			<div id="right_main">content</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="footer">footer</div>
+	</div>
+
+</body>
+</html>
