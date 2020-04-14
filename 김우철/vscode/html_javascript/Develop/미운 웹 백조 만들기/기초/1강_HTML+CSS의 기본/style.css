@@ -1,0 +1,36 @@
+body {
+  background-color: orange;
+  background-image: url(images/orange-bg.jpg);
+}
+
+div {
+  background-color: white;
+  width: 400px;
+  padding: 30px 50px;
+
+  border-top: 50px solid orange;
+  border-bottom: 50px solid orange;
+  border-radius: 50px;
+  margin: 50px auto;
+  /*      상하  좌우 */
+  /* margin: 30px auto 50px; */
+  /*   상  좌우  하 */
+  /* margin: 20px 30px 40px 50px; */
+  /* 상    우   하     좌 */
+}
+
+h1 {
+  color: orange;
+  background-color: antiquewhite;
+  border-bottom: 5px solid orange;
+  width: 105px;
+  margin: 30px auto;
+}
+
+ul {
+  background-color: antiquewhite;
+  width: 100px;
+  margin: 30px auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

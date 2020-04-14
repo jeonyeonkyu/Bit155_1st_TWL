@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Css 가상 클래스 선택자</title>
+	
+	<style>
+	/*
+		가상클래스 선택자 (<a:link)
+		<a hrdf="" > 네이버 방문</a>
+		link,visited,hove,active 의미만 존재
+	*/
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none; /*  밑줄   */
+}
+
+a:visited {		
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgb(49, 232, 77);
+  background-color: transparent;
+  text-decoration: underline;
+}  /* 클릭, 클릭 후 , 등등을 색깔로 구분 가능 */
+</style>
+	
+</head>
+
+<body>
+	 <a href="http://www.president.go.kr"> 방문하기 </a>
+	 
+</body>
+</html>

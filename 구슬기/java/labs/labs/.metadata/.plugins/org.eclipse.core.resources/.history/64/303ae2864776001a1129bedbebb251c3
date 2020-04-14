@@ -1,9 +1,0 @@
-package kr.or.bit;
-
-public abstract class Type {
-}
-public class TypeA extends Type{
-    public TypeA(){
-        System.out.println("Type A »ý¼º");
-    }
-}

@@ -1,0 +1,202 @@
+/* Reset */
+body,
+h1,
+p,
+h2,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  background-color: #999;
+  color: #333;
+}
+
+.card {
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-cover {
+  background-image: url(images/profile.png);
+  background-position: center;
+  color: white;
+  float: left;
+  width: 300px;
+  height: 500px;
+}
+
+.card-main {
+}
+
+.title {
+  background-color: #eee;
+  padding: 20px 0;
+}
+
+.title-icon {
+  float: left;
+  border-radius: 50%;
+  border: 8px solid white;
+  background-color: white;
+  margin-left: -58px;
+  box-shadow: -5px -5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.title h1 {
+  overflow: hidden;
+  padding: 0 20px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.contents {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #999;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.skill {
+  overflow: hidden;
+}
+
+.skill-icon {
+  clear: left;
+}
+
+.skill-score {
+}
+
+.skill-icon,
+.skill-score {
+  float: left;
+}
+
+.skill-icon {
+  background-image: url(images/icon-sprite.png);
+  width: 30px;
+  height: 30px;
+  text-indent: 9999px;
+  overflow: hidden;
+  background-size: auto 30px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.skill-icon_html5 {
+  background-position: left top;
+}
+
+.skill-icon_css3 {
+  background-position: center top;
+}
+
+.skill-icon_javascript {
+  background-position: right top;
+}
+
+.contact {
+}
+
+.contact-anchor {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  overflow: hidden;
+  background-image: url(images/contact-sprite.png);
+  background-size: auto 30px;
+  opacity: 0.4;
+}
+
+.contact-anchor_facebook {
+  background-position: left top;
+}
+
+.contact-anchor_github {
+  background-position: center top;
+}
+
+.contact-anchor_youtube {
+  background-position: right top;
+}
+
+.contact-anchor:hover {
+  opacity: 1;
+}
+
+.star:before,
+.star {
+  background-size: auto 60px;
+  background-image: url(images/star-sprite.png);
+  width: 150px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.star:before {
+  content: " ";
+  display: block;
+  background-position: left bottom;
+  width: 0;
+}
+
+.star_1:before {
+  width: 20%;
+}
+.star_2:before {
+  width: 40%;
+}
+.star_3:before {
+  width: 60%;
+}
+.star_4:before {
+  width: 80%;
+}
+.star_5:before {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  /* body {
+    background-color: white;
+  } */
+  .card {
+    position: static;
+    transform: none;
+    width: auto;
+  }
+  .card-cover {
+    float: none;
+    width: auto;
+    height: 300px;
+  }
+  .title {
+    text-align: center;
+  }
+  .title-icon {
+    float: none;
+    margin: -78px 0 0 0;
+  }
+  .section {
+    margin-bottom: 40px;
+  }
+}
