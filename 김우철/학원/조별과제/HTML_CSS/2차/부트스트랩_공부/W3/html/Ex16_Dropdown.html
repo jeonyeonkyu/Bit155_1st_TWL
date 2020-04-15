@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Dropdowns</h2>
+        <p>The .dropdown class is used to indicate a dropdown menu.</p>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu">
+                <h5 class="dropdown-header">Dropdown header</h5>
+                <!-- 드롭다운 헤더 추가 -->
+                <a href="#" class="dropdown-item">Link 1</a>
+                <a href="#" class="dropdown-item active">Link 2</a>
+                <a href="#" class="dropdown-item disabled">Link 3</a>
+                <!-- 드롭 다운 메뉴 내의 링크를 얇은 가로 테두리로 구분하는 데 사용 -->
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Another link</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h2>Dropdowns</h2>
+        <p>The .dropdown class is used to indicate a dropdown menu.</p>
+        <div class="dropdown dropright">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu ">
+                <h5 class="dropdown-header">Dropdown header</h5>
+                <!-- 드롭다운 헤더 추가 -->
+                <a href="#" class="dropdown-item">Link 1</a>
+                <a href="#" class="dropdown-item active">Link 2</a>
+                <a href="#" class="dropdown-item disabled">Link 3</a>
+                <!-- 드롭 다운 메뉴 내의 링크를 얇은 가로 테두리로 구분하는 데 사용 -->
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Another link</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Dropdowns</h2>
+        <p>The .dropdown class is used to indicate a dropdown menu.</p>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Wide dropdown button to demonstrate this example
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <h5 class="dropdown-header">Dropdown header</h5>
+                <!-- 드롭다운 헤더 추가 -->
+                <a href="#" class="dropdown-item">Link 1</a>
+                <a href="#" class="dropdown-item active">Link 2</a>
+                <a href="#" class="dropdown-item disabled">Link 3</a>
+                <!-- 드롭 다운 메뉴 내의 링크를 얇은 가로 테두리로 구분하는 데 사용 -->
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Another link</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Dropdowns</h2>
+        <p>The .dropdown-item-text class is used to add plain text to a dropdown, or used on links for default link
+            styling.</p>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Link 1</a>
+                <a href="#" class="dropdown-item">Link 2</a>
+                <a href="#" class="dropdown-item-text">Text Link</a>
+                <span class="dropdown-item-text">Just Text</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Nesting Button Groups</h2>
+        <p>Nest button groups to create dropdown menus:</p>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary">Apple</button>
+            <button type="button" class="btn btn-primary">Samsung</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Sony</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Tablet</a>
+                    <a href="#" class="dropdown-item">Smartphone</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Dropdown split Buttons</h2>
+        <div class="btn-group">
+            <!-- btn-group-vertical 세로 정렬 -->
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                data-toggle="dropdown"></button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Link 1</a>
+                <a href="#" class="dropdown-item">Link 2</a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container">
+        <h2>Simple Collapsible</h2>
+        <p>Click on the button to toggle between showing and hiding content.</p>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple
+            collapsible</button>
+        <div id="demo" class="collapse show">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <!-- 
+            :data-parent 속성을 사용하여 접을 수있는 항목 중 하나가 표시 될 때 
+            지정된 부모 아래의 모든 접을 수있는 요소가 닫히도록하십시오.
+            >>한개 씩 밖에 못봄,
+         -->
+        <h2>Accordion Example</h2>
+        <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements
+            under the specified parent will be closed when one of the collapsible item is shown.</p>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                        Collapsible Group Item #1
+                    </a>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <a href="#collapseOne" data-toggle="collapse" class="card-link">
+                        Collapsible Group Item #1
+                    </a>
+                </div>
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

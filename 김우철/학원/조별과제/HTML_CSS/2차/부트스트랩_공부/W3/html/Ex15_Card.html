@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Basic Card</h2>
+        <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body">Basic card</div>
+            <div class="card-footer">Footer</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Cards with Contextual Classes</h2>
+        <div class="card">
+            <div class="card-body">Basic card</div>
+        </div>
+        <br>
+        <div class="card bg-primary text-white">
+            <div class="card-body ">Basic card</div>
+        </div>
+        <br>
+        <div class="card bg-warning text-white">
+            <div class="card-body">Basic card</div>
+        </div>
+    </div>
+    <br>
+    
+    <hr>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="" class="card-link">Card link</a>
+                <a href="" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="container">
+        <h2>Card Image</h2>
+        <p>Image at the top (card-img-top):</p>
+        <div class="card" style="width:400px">
+            <img class="card-img-top" alt="Card image" style="width:100%" src="../image/img_avatar1.png">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <p>Image at the bottom (card-img-bottom):</p>
+        <div class="card" style="width:400px">
+            <div class="card-body">
+                <h4 class="card-title">Jane Doe</h4>
+                <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
+                <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+            </div>
+            <img class="card-img-bottom" alt="Card image" style="width:100%" src="../image/img_avatar6.png">
+        </div>
+        <!--  
+    .stretched-link클래스를 카드 내부의 링크에 추가하면 
+    전체 카드를 클릭하고 호버링 할 수 있습니다 (카드는 링크로 작동).
+-->
+        <br>
+        <hr>
+        <h2>Card Image Overlay</h2>
+        <p>Turn an image into a card background and use .card-img-overlay to overlay the card's text:</p>
+        <div class="card img-fluid" style="width:500px">
+            <img class="card-img-top" src="../image/img_avatar1.png" alt="Card image" style="width:100%">
+            <div class="card-img-overlay">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text some example text. Some example text some example text. Some
+                    example text some example text. Some example text some example text.</p>
+                <a href="#" class="btn btn-primary"></a>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

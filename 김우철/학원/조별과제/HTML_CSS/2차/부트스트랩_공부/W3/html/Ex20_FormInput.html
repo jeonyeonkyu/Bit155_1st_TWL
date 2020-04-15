@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <h2>Form control: input</h2>
+            <p>The form below contains two input elements; one of type text and one of type password:</p>
+            <div class="form-group">
+                <label for="user">Name:</label>
+                <input type="text" class="form-control" id="user">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <br>
+    <div class="container">
+        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <br>
+
+    <div class="container">
+        <h2>Form control: checkbox</h2>
+        <form action="">
+            <div class="form-check">
+                <label for="check1" class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something"
+                        checked>Option 1
+                </label>
+            </div>
+            <div class="form-check">
+                <label for="check1" class="form-check-label">
+                    <input type="checkbox" class="form-check-input" disabled>Option 1
+                </label>
+            </div>
+        </form>
+
+        <form action="">
+            <div class="form-check-inline">
+                <label for="check1" class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something"
+                        checked>Option 1
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label for="check1" class="form-check-label">
+                    <input type="checkbox" class="form-check-input" disabled>Option 1
+                </label>
+            </div>
+        </form>
+    </div>
+    <br><br>
+
+    <div class="container">
+        <form action="">
+            <div class="form-group">
+                <label for="sell">Select list (select one)</label>
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+                <br>
+                <label for="sel2">Multiple select list</label>
+                <select multiple class="form-control" id="sel2" name="sellist2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <br><br>
+    <div class="container">
+        <h2>Form Control Sizing</h2>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-sm">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-lg">
+        </div>
+    </div>
+    <br><br>
+    <div class="container">
+        <h2>Form Control Range and File</h2>
+        <form action="">
+            <div class="form-group">
+                <input type="range" class="form-control-range" name="range">
+            </div>
+            <div class="form-group">
+                <input type="file" class="form-control-file border" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
