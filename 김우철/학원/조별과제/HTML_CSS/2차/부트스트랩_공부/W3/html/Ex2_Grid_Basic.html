@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<!--
+    최대 12개의 열 허용
+    .col- (초소형 기기-화면 너비가 576px 미만)
+    .col-sm- (작은 기기-화면 너비가 576px 이상)
+    .col-md- (중간 기기-화면 너비가 768px 이상)
+    .col-lg- (대형 기기-화면 너비가 992px 이상)
+    .col-xl- (대형 장치-화면 너비가 1200px 이상)
+  -->
+
+<body>
+    <!-- 3개의 동일한 열 -->
+    <div class="container-fluid">
+        <h1>Three equal width columns</h1>
+        <p>Note: Try to add a new div with class="col" inside the row class - this will create three equal-width
+            columns.</p>
+        <div class="row">
+            <div class="col" style="background-color:lavender;">.col</div>
+            <div class="col" style="background-color:orange;">.col</div>
+            <div class="col" style="background-color:lavender;">.col</div>
+        </div>
+    </div>
+    <hr>
+    <!-- 너비가 576px 미만일시  열이 쌓임 
+        col-*-^
+        * : sm,md,lg,xl
+        ^ : 너비
+    -->
+    <div class="container-fluid">
+        <h1>Responsive Columns</h1>
+        <p>Resize the browser window to see the effect.</p>
+        <p>The columns will automatically stack on top of each other when the screen is less than 576px wide.</p>
+        <div class="row">
+          <div class="col-sm-3" style="background-color:lavender;">.col-sm-3</div>
+          <div class="col-sm-3" style="background-color:lavenderblush;">.col-sm-3</div>
+          <div class="col-sm-3" style="background-color:lavender;">.col-sm-3</div>
+          <div class="col-sm-3" style="background-color:lavenderblush;">.col-sm-3</div>
+        </div>
+      </div>
+      <hr>
+      <div class="container-fluid">
+        <h1>Two Unequal Responsive Columns</h1>
+        <p>Resize the browser window to see the effect.</p>
+        <p>The columns will automatically stack on top of each other when the screen is less than 576px wide.</p>
+        <div class="row">
+          <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
+          <div class="col-sm-8" style="background-color:lavenderblush;">.col-sm-8</div>
+        </div>
+      </div>
+          
+
+</body>
+
+</html>
