@@ -221,3 +221,4 @@
 0:0:0:0:0:0:0:1 - - [13/Apr/2020:17:26:36 +0900] "GET /WebClient/Ex18_Quiz.html HTTP/1.1" 200 873
 0:0:0:0:0:0:0:1 - - [13/Apr/2020:17:27:56 +0900] "GET /WebClient/Ex18_Quiz.html HTTP/1.1" 200 872
 0:0:0:0:0:0:0:1 - - [13/Apr/2020:17:29:10 +0900] "GET /WebClient/Ex18_Quiz.html HTTP/1.1" 200 871
+0:0:0:0:0:0:0:1 - - [13/Apr/2020:19:24:37 +0900] "GET /WebClient/Ex18_Quiz.html HTTP/1.1" 304 -

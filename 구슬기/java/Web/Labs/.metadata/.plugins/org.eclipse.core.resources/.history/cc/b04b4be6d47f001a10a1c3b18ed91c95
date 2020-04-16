@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function send(){
+			//기본
+			var inputuserid = document.loginform.txtuserid;
+			console.log(inputuserid);
+			console.log(inputuserid.value);
+			//활용
+			var userpwd=document.getElementById("txtpwd");
+			console.log(inputuserid);
+			console.log(inputuserid.value);
+			//검증 로직
+			if(inputuserid.value== "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <=10)){
+				alert("다시입력해");
+				document.loginform.txtuserid.focus();
+				inputuserid.select();
+			}else{
+				alert("검증완료");
+				document.loginform.action="Ex08_login.jsp";
+				document.loginform.submit();
+				
+			}
+		}
+	
+	</script>
+</head>
+<body>
+	<form action="" method="" name="loginform">
+	   ID:<input type= "text" name ="txtuserid"><br>
+	   PWD: <input type= "password" name ="txtpwd" id="txtpwd"><br>
+	   <input type="button" value ="전송" onclick ="send()">
+	   </form>
+
+</body>
+</html>

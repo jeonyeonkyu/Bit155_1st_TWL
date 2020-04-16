@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function callConfirm(){
+			if(window.confirm("작업내용")){
+				alert('삭제합니다.');
+			}else{
+				alert('취소합니다.');
+			}
+		}
+		function showPopup() {
+			window.open("Ex06_popup.html","내맘대로","width=200,height=200");
+		}
+		function myFunc() {
+			var mywindow = window.open("Ex06_popup.html","Msgwindow","width=500,height=200");
+			mywindow.document.write("<p>this is Msgwindow</p>");
+		}
+		function goUrlTime(url) {
+			window.setTimeout("location.href='"+ url + "'",3000); //3초 뒤에 주소로 이동합니다.
+		}
+		function myFun(a,b,c) {
+			return a+b+c;
+		}
+		changeColor= function () {
+			window.documnet.bgColor="honeydew";
+			window.document.fgColor="brown";
+		}
+	
+	
+	
+	</script>
+</head>
+<body>
+	<<h3>내장함수 , 사용자 정의 함수 사용하기</h3>
+	<button onclick="callConfirm()">클릭 사건 발생(함수호출)</button>
+	<br>
+	<button onclick="showPopup()">팝업창</button>
+	<br>
+	<button onclick="myFunc()">팝업을 객체 형태로</button>
+	<br>
+	<button onclick="goUrlTime('http://www.daum.net')">주소이동</button> <!--  다음 주소를 인자로 넘김 -->
+	<br>
+	<button onclick="changeColor()">익명함수</button>
+	<br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

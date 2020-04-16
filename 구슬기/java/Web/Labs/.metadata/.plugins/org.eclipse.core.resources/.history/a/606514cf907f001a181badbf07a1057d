@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="">클릭하세요</button>
+ 	<p id= "demo">demo 라는 id 는 p 태그를 구분하는 식별자</p>
+</body>
+</html>

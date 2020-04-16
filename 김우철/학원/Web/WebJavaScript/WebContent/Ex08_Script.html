@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript">
+        //유효성 검증
+        //1.Client 서버 전송 >> 서버검증 > 검증 여부(true, false) : ID검사
+        //2.Client 에서 검증 >> 입력유무, 숫자, 문자 검증, 주민번호 검증 >> 검증 >> 서버전송
+        //최대한 Client 처리할 수 있는 부분은 처리하자 ... (서버 전송수(네트워크 트래픽)를 줄이자)
+
+        //2번은 javascript 해결
+        function send() {
+            //javascript가 요소의 정보를 가지고 있어야 한다
+            //var ele = document.forms[0].elemetns[0].value
+
+            //form name 속성....
+            var inputuserid = document.loginform.txtuserid;
+            console.log(inputuserid);
+            console.log(inputuserid.value);
+
+            //활용(DOM script) 사용(이걸 쓰자)
+            var userpwd = document.getElementById("txtpwd");
+            console.log(userpwd);
+            console.log(userpwd.value);
+
+            //검증 로직(내가 알아서 처리)
+            if(inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)) {
+                alert("다시 입력해");
+                document.loginform.txtuserid.focus();
+                inputuserid.select(); //블럭잡아줌
+                // inputuserid.value = ""; 값 지워줌 
+            }else{
+                alert('검증 완료');
+                //여기서 서버 전송
+            }
+
+            document.loginform.action = "Ex08_login.jsp";
+            document.loginform.submit(); //form >> 내장 >> submit()함수를 내장
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form action="#" method="" name="loginform">
+        ID:<input type="text" name="txtuserid"><br>
+        PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
+        <input type="button" value="전송" onclick="send()">
+        <!-- 
+            type="submit"
+            type="image"
+            type="button" onclick = "함수...."
+            
+         -->
+
+
+    </form>
+</body>
+
+</html>

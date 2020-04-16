@@ -1,0 +1,77 @@
+background-color: #f1f1f1;
+width: 100px;
+margin: 10px;
+text-align: center;
+line-height: 75px;
+font-size: 30px;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* 완벽한 가운데 */
+        .flex-container {
+            display: flex;
+            align-items: stretch;
+            background-color: #f1f1f1;
+        }
+
+        .flex-container>div {
+            background-color: DodgerBlue;
+            color: white;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- order속성은 flex 항목의 순서를 지정 -->
+    <div class="flex-container">
+        <div style="order: 3">1</div>
+        <div style="order: 2">2</div>
+        <div style="order: 4">3</div>
+        <div style="order: 1">4</div>
+    </div>
+    <br>
+    <hr>
+    <div class="flex-container">
+        <!-- 기본값 0 -->
+        <div style="flex-grow:1">1</div>
+        <div style="flex-grow:1">2</div>
+        <div style="flex-grow:8">3</div>
+    </div>
+    <br>
+    <hr>
+    <div class="flex-container">
+        <!-- 기본값 1 -->
+        <div>1</div>
+        <div>2</div>
+        <div style="flex-shrink: 0;">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+    </div>
+    <br>
+    <hr>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div style="flex-basis: 200px">3</div> <!--  초기 길이를 200 픽셀 -->
+        <div>4</div>
+    </div>
+
+
+</body>
+
+</html>
