@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Grid Example</h1>
+        <div class="container">
+            <!-- 크기가 줄어들면 1열로 쌓임 -->
+            <div class="row">
+                <div class="col-sm-6 bg-success">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.<br>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </div>
+                <div class="col-sm-6 bg-warning">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container-fluid">
+        <!-- 
+           지정된 수의 col 요소 에서만 숫자를 제거 하고 
+            클래스 만 사용해도 Grid 구현 가능. 부트 스트랩은 열의 수를 인식하고 
+            각 열의 너비는 동일.
+         -->
+        <h1>Auto Layout Columns</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm bg-success">1 of 2</div>
+                <div class="col-sm bg-warning">2 of 2</div>
+            </div>
+        </div>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm bg-success">1 of 4</div>
+                <div class="col-sm bg-warning">1 of 4</div>
+                <div class="col-sm bg-success">1 of 4</div>
+                <div class="col-sm bg-warning">1 of 4</div>
+            </div>
+        </div> 
+    </div>
+    <hr><br>
+
+
+</body>
+
+</html>
