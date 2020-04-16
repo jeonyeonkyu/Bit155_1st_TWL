@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
 D:\bit155\Web\Labs\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\889149064.index
 \WebClient\src
+D:\bit155\Web\Labs\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2389963910.index
+\WebClient_JavaScript\src
