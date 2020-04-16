@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 화면 크기에 따라 4 개, 2 개 또는 
+        전체 너비 이미지로 변하는 반응 형 이미지 갤러리 -->
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box; 
+            /* 박스의 크기를 테두리의 기준으로 정함 */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .header {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .row {
+            display: flex;
+            /* 한줄 */
+            flex-wrap: wrap;
+            /* 크기에 따른 줄바꿈 */
+            padding: 0 4px;
+        }
+
+        /* Create four equal columns that sits next to each other */
+        .column {
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        @media(max-width:800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media(max-width:600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Responsive Image Grid</h1>
+        <p>Resize the browser window to see the responsive effect.</p>
+    </div>
+
+    <!-- Photo Grid -->
+    <div class="row">
+        <div class="column">
+            <img src="../images/wedding.jpg" style="width:100%">
+            <img src="../images/rocks.jpg" style="width:100%">
+            <img src="../images/falls2.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+            <img src="../images/nature.jpg" style="width:100%">
+            <img src="../images/mist.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+        </div>
+
+        <div class="column">
+            <img src="../images/wedding.jpg" style="width:100%">
+            <img src="../images/rocks.jpg" style="width:100%">
+            <img src="../images/falls2.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+            <img src="../images/nature.jpg" style="width:100%">
+            <img src="../images/mist.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+        </div>
+
+        <div class="column">
+            <img src="../images/wedding.jpg" style="width:100%">
+            <img src="../images/rocks.jpg" style="width:100%">
+            <img src="../images/falls2.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+            <img src="../images/nature.jpg" style="width:100%">
+            <img src="../images/mist.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+        </div>
+
+        <div class="column">
+            <img src="../images/wedding.jpg" style="width:100%">
+            <img src="../images/rocks.jpg" style="width:100%">
+            <img src="../images/falls2.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+            <img src="../images/nature.jpg" style="width:100%">
+            <img src="../images/mist.jpg" style="width:100%">
+            <img src="../images/paris.jpg" style="width:100%">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h2>Flex</h2>
+        <p>To create a flexbox container and transform direct children into flex items, use the d-flex class:</p>
+        <div class="d-flex p-3 bg-secondary text-white">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <!-- 인라인 flexbox -->
+        <h2>Inline Flex</h2>
+        <div class="d-inline-flex p-3 bg-secondary text-white">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <!-- .flex-row플렉스 항목을 가로로 나란히 표시 -->
+        <h2>Horizontal Direction</h2>
+        <div class="d-flex flex-row bg-secondary">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div><br>
+        <div class="d-flex flex-row-reverse bg-secondary">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>수직 정렬</h2>
+        <div class="d-flex flex-column">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div><br>
+        <div class="d-flex flex-column-reverse">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Justify content</h2>
+        <div class="d-flex justify-content-start bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-primary">Flex item 1</div>
+        </div>
+        <div class="d-flex justify-content-end bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-primary">Flex item 1</div>
+        </div>
+        <div class="d-flex justify-content-center bg-secondary mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-primary">Flex item 1</div>
+        </div>
+        <div class="d-flex justify-content-between bg-secondary mb-3">
+            <!-- between은 앞뒤공간 제외, 요소들 사이만 균등하게 분배 -->
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-primary">Flex item 1</div>
+        </div>
+        <div class="d-flex justify-content-around bg-secondary mb-3">
+            <!-- around는 앞뒤도 공간 둠 -->
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-primary">Flex item 1</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Fill / Equal Widths</h2>
+        <div class="d-flex mb-3">
+            <div class="p-2 flex-fill bg-info">Flex item 1</div>
+            <div class="p-2 flex-fill bg-warning">Flex item 2</div>
+            <div class="p-2 flex-fill bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Grow</h2>
+        <div class="d-flex mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 flex-grow-1 bg-primary">Flex item 3</div>
+            <!-- .flex-shrink-1플렉스 항목에 필요한 경우 축소 할 수 있습니다. -->
+        </div>
+        <div class="d-flex mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 flex-shrink-1 bg-warning">Flex item 2</div>
+            <div class="p-2  bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Auto Margins</h2>
+        <div class="d-flex mb-3 bg-secondary">
+            <!-- mr-auto(오른쪽으로 밀기) -->
+            <div class="p-2 mr-auto bg-info">Flex item 1</div>
+            <div class="bg-warning">Flex item 2</div>
+            <div class="bg-primary">Flex item 3</div>
+        </div>
+        <div class="d-flex mb-3 bg-secondary">
+            <!-- ml-auto(왼쪽으로 밀기) -->
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 ml-auto bg-primary">Flex item 3</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Wrap</h2>
+        <!-- flex-wrap을 하지 않으면 쭈욱 한줄 -->
+        <p><code>.flex-wrap:</code></p>
+        <div class="d-flex flex-wrap bg-light">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+            <div class="p-2 border">Flex item 4</div>
+            <div class="p-2 border">Flex item 5</div>
+            <div class="p-2 border">Flex item 6</div>
+            <div class="p-2 border">Flex item 7</div>
+            <div class="p-2 border">Flex item 8</div>
+            <div class="p-2 border">Flex item 9</div>
+            <div class="p-2 border">Flex item 10</div>
+        </div>
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Align Content</h2>
+        <p>.align-content-start (default):</p>
+        <!-- 수집 된 플렉스 아이템과 .align-content-* 클래스 의 수직 정렬을 제어합니다  -->
+        <div class="d-flex flex-wrap align-content-start bg-light" style="height:300px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+            <div class="p-2 border">Flex item 4</div>
+            <div class="p-2 border">Flex item 5</div>
+            <div class="p-2 border">Flex item 6</div>
+            <div class="p-2 border">Flex item 7</div>
+            <div class="p-2 border">Flex item 8</div>
+            <div class="p-2 border">Flex item 9</div>
+            <div class="p-2 border">Flex item 10</div>
+        </div><br>
+        <p>.align-content-end:</p>
+        <div class="d-flex flex-wrap align-content-end bg-light" style="height:300px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+            <div class="p-2 border">Flex item 4</div>
+            <div class="p-2 border">Flex item 5</div>
+            <div class="p-2 border">Flex item 6</div>
+            <div class="p-2 border">Flex item 7</div>
+            <div class="p-2 border">Flex item 8</div>
+            <div class="p-2 border">Flex item 9</div>
+            <div class="p-2 border">Flex item 10</div>
+        </div>
+        <!-- align-content-center, around, strecth.. -->
+    </div>
+    <hr><br>
+    <div class="container mt-3">
+        <h2>Align Items</h2>
+        <div class="d-flex align-items-start bg-light" style="height:150px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+        </div>
+        <br>
+        <hr>
+        <div class="d-flex align-items-end bg-light" style="height:150px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+        </div>
+        <br>
+        <hr>
+        <div class="d-flex align-items-center bg-light" style="height:150px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+        </div>
+        <br>
+        <hr>
+        <div class="d-flex align-items-baseline bg-light" style="height:150px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+        </div>
+        <br>
+        <hr>
+        <div class="d-flex align-items-stretch bg-light" style="height:150px">
+            <div class="p-2 border">Flex item 1</div>
+            <div class="p-2 border">Flex item 2</div>
+            <div class="p-2 border">Flex item 3</div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

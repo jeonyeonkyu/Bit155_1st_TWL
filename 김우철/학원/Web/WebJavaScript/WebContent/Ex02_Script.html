@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //javascript 해석 : 웹 브라우저 (해석기 + 다양한 객체를 제공)
+        //웹 브라우저 내장 객체(window)
+        //window 객체 생략...
+        window.document.write("방가방가<br>");
+        document.write("window 객체 생략 가능<br>");
+
+        console.log(10 + 10);
+        console.log("디버깅, 결과확인, 오류메시지 확인");
+
+        document.write("<b>hello world</b>");
+        document.write('<table border="1"');
+        document.write('<tr></tr>');
+
+        var num; //미리 타입을 정의 X
+        //int num;
+        //float num;
+        //String num;
+        console.log(num);
+        num = 100; //이때 타입이 설정(값을 가지는 순간)
+        console.log(num);
+        console.log(typeof (num));
+
+        // var ele = window.document.forms[0].elements[0]
+        // Cannot read property 'elements' of undefined
+        //js는 라인단위(순차적)으로 해석하기 때문에 body마지막에 선언하는 것이 좋다.
+        //form이 만들어 지기 전에 read 할려고 시도해서 에러
+
+        //순서에 상관없이 처리 ...(함수를 만들고 호출)
+        function data() {
+            var ele = window.document.forms[0].elements[0];
+            console.log(ele); //ele 가지고 있는 것은... 
+            console.log(ele.value);
+            console.log(ele.value.length);
+
+            //form 태그가 자신의 이름 >> name"
+
+            var ele2 = window.document.myform.userid;
+            console.log("ele2 : " + ele2);
+            console.log("ele2 value : " + ele2.value);
+
+            var value = window.document.myform.userid.value;
+            console.log("타입 : " + typeof (value));
+
+            if (value.length < 5) {
+                alert("다시 입력해");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <br><br>
+    <form action="#" method="get" name="myform">
+        <input type="text" name="userid" value="hong"><br>
+        <input type="password" name="pwd" value="1004"><br>
+        <input type="submit" value="전송">
+    </form>
+    <input type="button" value="클릭해봐" onclick="data()">
+
+
+    <!-- <script>
+         var ele = window.document.forms[0].elements[0];
+         console.log(ele);
+      </script> -->
+</body>
+
+</html>

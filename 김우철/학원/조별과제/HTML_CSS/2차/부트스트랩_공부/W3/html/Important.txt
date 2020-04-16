@@ -13,3 +13,5 @@ Ex18.Navigation Bar.html
 Ex19.Form.html
 Ex20.FormInput.html
 Ex24.Modal.html
+Ex29.Utility.html
+Ex30.Flex.html
