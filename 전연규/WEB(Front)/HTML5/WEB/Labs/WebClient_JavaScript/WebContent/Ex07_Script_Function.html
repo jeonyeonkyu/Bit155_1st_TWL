@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+var myTime = window.setInterval(function(){
+	//javascript 다양한 객체 제공 받아요
+	var d = new Date();
+	var t = d.toLocaleTimeString();
+	document.getElementById("time").innerHTML = t;
+},1000);
+
+// window.setInterval(function(){},1000);
+//function(){} 익명함수
+//1초마다 익명함수를 호출해라
+function myTimeStop(){
+	window.clearInterval(myTime);
+}
+
+</script>
+</head>
+<body>
+	<p id = "time"></p>
+	<button onclick= "myTimeStop()">Stop Time</button>
+	
+</body>
+</html>

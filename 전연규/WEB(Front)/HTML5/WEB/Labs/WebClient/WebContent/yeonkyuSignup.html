@@ -1,0 +1,101 @@
+
+
+<!doctype html>
+<html lang="ko">
+    <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge" />
+
+<title>1조</title>
+ <link href="https://img2.tmon.kr/resources/shared/p/css/shared.css?v2=202003311646"
+            rel="stylesheet" type="text/css"/>
+<style>
+    
+   .logo{
+       background-color: lavender;
+       padding-top : 62px;
+   }
+   input[type=button]{
+			width: 100px;
+            height: 30px;
+			background-color: rgba(47, 247, 147, 0.507);
+            max-width: 50px;
+		}
+</style>
+
+</head>
+    <body>
+    <script src="/static/js/form_tools.js" type="text/javascript"></script>
+    <div class="join_wrap">
+        <div class="join_header">
+            
+            <h1 class="logo">1조
+                <div class = "namename">
+                    <input type="button" value = "정아" />
+                    <input type="button" value = "슬기" />
+                    <input type="button" value = "우철" />
+                    <input type="button" value = "연규" />
+                    <input type="button" value = "민봉" />
+        
+                </div>
+            </h1>
+        </div>
+      
+        
+        <div class="join_contain join_form">
+
+
+<h2 class="join_title">
+    회원정보 입력
+    </h2>
+<dl class="form_wrap">
+    <dt>아이디</dt>
+    <dd>
+        <div class="input"><input id="userId" data-bind="id" type="text" placeholder="아이디를 입력해 주세요" value=""></div>
+        <p class="msg">영문/숫자 4자 이상을 입력해 주세요.</p>
+    </dd>
+    <dt>비밀번호</dt>
+    <dd>
+        <div class="input"><input id="userPw" data-bind="password" type="password" placeholder="비밀번호를 입력해 주세요" maxlength="20" ></div>
+        <p class="msg">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.</p>
+    </dd>
+    <dt>비밀번호 재확인</dt>
+    <dd>
+        <div class="input"><input id="userPwConfirm" data-bind="passwordVerify" type="password" placeholder="비밀번호를 다시한번 입력해 주세요" maxlength="20" ></div>
+        <p class="msg"></p>
+    </dd>
+    <dt>이름</dt>
+    <dd>
+        <div class="input"><input id="userName" data-bind="name" type="text" placeholder="이름을 입력해주세요" value=""></div>
+        <p class="msg"></p>
+    </dd>
+    </dd>
+    <dt>성별<span class="no_required">(선택)</span></dt>
+    <dd class="two_selector">
+        <label class="selector"><input type="radio" name="gender" value="M"><span>남자</span></label>
+        <label class="selector"><input type="radio" name="gender" value="F"><span>여자</span></label>
+    </dd>
+    <dt>이메일</dt>
+    <dd>
+        <div class="input"><input id="userEmail" data-bind="email" type="text" placeholder="이메일을 입력해주세요" value=""></div>
+        <p class="msg">이메일을 입력해주세요.</p>
+        <button class="btn_send_mail" style="display: none">인증메일 전송하기</button>
+        <div class="auth_mail_box" style="display: none">
+            <div class="input">
+                <input id="certCode" type="text" class="number" maxlength="6" oninput="maxLengthCheck(this)" placeholder="인증번호">
+            </div>
+            <button class="btn_mail_auth" >확인</button>
+        </div>
+        <p class="msg dont"></p>
+    </dd>
+</dl>
+<div class="btns_area">
+    <button class="btn_type1" >가입 완료하기</button>
+</div>
+
+<form name="complete"  action="/user/welcome" method="post" target="_self">
+    <input type="hidden" name="completeUrl" value="" />
+    <input type="hidden" name="returnUrl" value="" />
+</form>
+    </body>
+</html>
