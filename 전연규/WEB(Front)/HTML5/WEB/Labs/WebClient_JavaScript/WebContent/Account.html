@@ -13,10 +13,10 @@
          연봉      : 총액 * 12 + 기본급
          천단위 콤마 처리 : 자율 (표현식 , 로직)
          10,000,000원 
-         
  
  -->
     <script>
+        var name1 = "";
         var val1 = "";
         var licenseindex = "";
         var childindex = "";
@@ -24,22 +24,29 @@
         var longtermindex = "";
 
         function resultSal(frm) {
-            resultForm.resultName.value = frm.name.value; //성명
 
-            
+            if (!frm.name.value == "") {
+                name1 = frm.name.value;
+            } else {
+                name1 = "잘못 입력하셨습니다";
+            }
+            resultForm.resultName.value = name1; //성명
+
+
             if (!frm.basicPay.value == "") {
                 val1 = parseInt(frm.basicPay.value);
+                va11 = Math.round(val1, 0);
             } else {
                 val1 = 0;
             }
-            resultForm.resultBasicPay.value = Math.round(val1,0) + "원"; //기본급
+            resultForm.resultBasicPay.value = val1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //기본급
 
             if (!frm.license.value == "") {
                 licenseindex = parseInt(frm.license.value);
             } else {
                 licenseindex = 0;
             }
-            resultForm.resultLicense.value = licenseindex + "원"; //자격증 수당
+            resultForm.resultLicense.value = licenseindex.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //자격증 수당
 
 
             if (!frm.child.value == "") {
@@ -47,7 +54,7 @@
             } else {
                 childindex = 0;
             }
-            resultForm.resultChild.value = parseInt(childindex) + "원"; //자녀수당
+            resultForm.resultChild.value = childindex.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //자녀수당
 
 
             if (frm.merit.checked) {
@@ -62,15 +69,15 @@
                 longtermindex = 0;
             }
 
-            resultForm.resultEtc.value = (parseInt(meritindex) + parseInt(longtermindex)) + "원"; //기타수당
+            resultForm.resultEtc.value = (parseInt(meritindex) + parseInt(longtermindex)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //기타수당
 
-            resultForm.resultTotalPay.value = ((parseInt(val1)) + (parseInt(licenseindex)) + (parseInt(childindex)) + (parseInt(meritindex)) + (parseInt(longtermindex))) + "원";
+            resultForm.resultTotalPay.value = ((parseInt(val1)) + (parseInt(licenseindex)) + (parseInt(childindex)) + (parseInt(meritindex)) + (parseInt(longtermindex))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //총액
 
-            resultForm.resultTax.value = (Math.round((val1*0.22),1)) + "원";
+            resultForm.resultTax.value = (Math.round((val1 * 0.22), 1)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //세금
 
-            resultForm.resultPay.value =  (parseInt(resultForm.resultTotalPay.value)-parseInt(resultForm.resultTax.value)) + "원";
+            resultForm.resultPay.value = ((((parseInt(val1)) + (parseInt(licenseindex)) + (parseInt(childindex)) + (parseInt(meritindex)) + (parseInt(longtermindex)))) - (Math.round((val1 * 0.22), 1))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //실 수령액
 
-            resultForm.resultYearlyPay.value = ((parseInt(resultForm.resultTotalPay.value)*12)+val1) + "원";
+            resultForm.resultYearlyPay.value = ((((parseInt(val1)) + (parseInt(licenseindex)) + (parseInt(childindex)) + (parseInt(meritindex)) + (parseInt(longtermindex))) * 12) + val1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원"; //연봉
         }
 
     </script>
