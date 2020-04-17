@@ -15,3 +15,5 @@ Ex20.FormInput.html
 Ex24.Modal.html
 Ex29.Utility.html
 Ex30.Flex.html
+Ex32.Filter.html
+Grid
