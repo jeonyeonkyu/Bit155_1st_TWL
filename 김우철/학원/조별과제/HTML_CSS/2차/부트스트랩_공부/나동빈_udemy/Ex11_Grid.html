@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- sm, md는 반응형 웹의 크기를 지정 -->
+            <div class="col-sm" style="background-color:red;">1111</div>
+            <div class="col-sm" style="background-color:yellow;">2222</div>
+            <div class="col-sm" style="background-color:green;">3333</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <!-- 너비가 100%인 태그를 이용해 두 개 이상의 행을 가질 수 있음 -->
+        <div class="row">
+            <div class="col" style="background-color:red;">빨강</div>
+            <div class="col" style="background-color:green;">초록</div>
+            <div class="w-100"></div>
+            <div class="col" style="background-color: blue;">파랑</div>
+            <div class="col" style="background-color: gray;">회색</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <!-- 특정한 비율만큼 하나의 열이 차지 -->
+        <div class="row">
+            <div class="col" style="background-color:red">1</div>
+            <div class="col-3" style="background-color:green">2</div>
+            <div class="col" style="background-color:blue">3</div>
+        </div>
+        <div class="row">
+            <div class="col" style="background-color:blue">1</div>
+            <div class="col-6" style="background-color:green">2</div>
+            <div class="col" style="background-color:red">3</div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <!-- 비율을 조절해 자유자재의 레이아웃 개발 가능 -->
+        <div class="row">
+            <div class="col-sm-8" style="background-color:red;">col-sm-8</div>
+            <div class="col-sm-4" style="background-color:red;">col-sm-4</div>
+        </div>
+        <div class="row">
+            <div class="col-sm" style="background-color:blue;">col-sm</div>
+            <div class="col-sm" style="background-color:green;">col-sm</div>
+            <div class="col-sm" style="background-color:red;">col-sm</div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

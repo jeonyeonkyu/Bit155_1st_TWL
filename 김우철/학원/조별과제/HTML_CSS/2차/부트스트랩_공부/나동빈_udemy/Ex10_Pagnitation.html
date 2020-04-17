@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<!-- 페이지네이션은 게시물을 넘길 수 있는 페이지를 제공하고자 할 때 사용 -->
+
+<body>
+
+    <ul class="pagination justify-content-center">
+        <!-- disabled : 뒤로 갈 페이지가 존재하지 않는 경우 -->
+        <li class="page-item disabled">
+            <span class="page-link">이전</span>
+        </li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item" active>
+            <span class="page-link">
+                2
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        <li class="page-item"><a href="#" class="page-link">3</a></li>
+        <li class="page-item">
+            <a href="#" class="page-link">디음</a>
+        </li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>

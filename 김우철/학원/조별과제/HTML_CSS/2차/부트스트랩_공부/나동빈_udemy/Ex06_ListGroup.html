@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<!-- 리스트 그룹은 나열된 형태의 목록을 표현하고자 할 때 사용 -->
+
+<body>
+    <div class="container">
+        <div class="list-group">
+            <a href="" class="list-group-item list-group-item-action active">
+                파스타 맛집
+                <span class="badge badge-primary badge-pill">14</span>
+            </a>
+            <a href="" class="list-group-item list-group-item-action ">
+                대게 맛집
+                <span class="badge badge-success badge-pill">35</span>
+            </a>
+            <a href="" class="list-group-item list-group-item-action">
+                일본식 라멘 맛집
+                <span class="badge badge-danger badge-pill">21</span>
+            </a>
+            <a href="" class="list-group-item list-group-item-action">
+                김치찌개 맛집
+                <span class="badge badge-warning badge-pill">55</span>
+            </a>
+        </div>
+    </div>
+    <hr><br>
+
+    <!-- 리스트 그룹을 이용한 블로그 형식 -->
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-java">Java</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-cpp">c++</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-python">python</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-html">html</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <!-- https://www.codingfactory.net/11453 : tab 예제 -->
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="list-java">
+                    Java Programming
+                </div>
+                <div class="tab-pane fade" id="list-cpp">
+                    C++ Programming
+                </div>
+                <div class="tab-pane fade" id="list-python">
+                    Python
+                </div>
+                <div class="tab-pane fade" id="list-html">
+                    HTML
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
