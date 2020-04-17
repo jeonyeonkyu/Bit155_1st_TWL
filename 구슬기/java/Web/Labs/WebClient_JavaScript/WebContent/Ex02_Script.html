@@ -44,6 +44,7 @@
 	    function data(){
 	    	var ele = window.document.forms[0].elements;   //form 0번째 안에 있는 요소들 (elements) 중에서 0번째 정보를 읽겟다. 그걸 변수에 담겠다.
 	    	console.log(ele);
+			console.log(ele.value);
 	    }
 	    //순서에 대한 수업 ******************************************
 	    
@@ -59,7 +60,7 @@
 </body>
 
 <script type="text/javascript">
-var ele = window.document.forms[0].elements[0];
+var ele = window.document.forms[0].elements[0];  //forms 는 form 의 갯수, elements는 forms 안의 태그갯수 
 console.log(ele); //ele 가지고 있는 것은 : <input type="text" name="userid" value="hong">
 console.log(ele.value);
 console.log(ele.value.length);       //갯수를 세는함수도 쓸수있다. 
