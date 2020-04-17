@@ -153,7 +153,6 @@ function wrapper() {
 }
 wrapper();
 
-
 var name = "zero";
 function log() {
   console.log(name); -> wrapper에 있는 변수name이 최근에 실행됬으므로 nero가 찍힘
