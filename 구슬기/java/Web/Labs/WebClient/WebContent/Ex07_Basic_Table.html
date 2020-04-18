@@ -1,129 +1,229 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>테이블 표 만들기</title>
-	<style type="text/css">
-		table {border-collapse : collapse;}
-		td{border: 1px solid red;}
-	table#t01 tr:nth-child(even) {   /*짝수 */
- 	 background-color: dodgerblue;
-	}
-	table#t01 tr:nth-child(odd) {    /*홀수 */
- 	background-color:tomato;
-	}
-	table#t01 th {
-  	background-color: black;
-  	color: white;
-	}
-	
-	
-	</style>
+  <meta charset="UTF-8">
+  <title>테이블 표 만들기</title>
+  <style type="text/css">
+    table {
+      border-collapse: collapse;
+    }
+
+    /*깔끔한 선*/
+
+    td {
+      border: 1px solid red;
+      font-family: 함초롬돋움체;
+    }
+
+
+    table#t01 tr:nth-child(even) {
+      /*짝수 */
+      background-color: dodgerblue;
+    }
+
+    table#t01 tr:nth-child(odd) {
+      /*홀수 */
+      background-color: tomato;
+    }
+
+    table#t01 th {
+      background-color: black;
+      color: white;
+      font-family: cursive;
+    }
+
+    table.myself td {
+      text-align: center;
+      height: 50px;
+      width: 100px;
+      border: rgb(74, 158, 228) 2px solid;
+    }
+
+    table.myself tr:nth-child(odd) {
+      background-color: rgb(252, 189, 53);
+
+    }
+  </style>
 </head>
+
 <body>
 
-          <h3>일반테이블</h3>
-          <table>
-          		<tr>
-          		       <td>가</td><td>나</td> <td>다</td>
-                </tr>         
-          		<tr>
-          		       <td>라</td><td>마</td> <td>바</td>
-                </tr>         
-          		<tr>
-          		       <td>사</td><td>아</td> <td>자</td>
-                </tr>         
-          </table>
-          <hr>
-          <hr>
-           <h3>일반테이블2</h3>
-          <table style="height: 200; width: 500">
-          		<tr>
-          		       <td>가</td><td>나</td> <td>다</td>
-                </tr>         
-          		<tr>
-          		       <td>라</td><td>마</td> <td>바</td>
-                </tr>         
-          		<tr>
-          		       <td>사</td><td>아</td> <td>자</td>
-                </tr>         
-          </table>
-           <hr>
-          <hr>
-           <h3>일반테이블3(병합)</h3>
-          <table style="height: 200; width: 500">
-          		<tr>
-          		       <td colspan ="2">가나</td> <td>다</td>
-                </tr>         
-          		<tr>
-          		       <td>라</td><td>마</td> <td>바</td>
-                </tr>         
-          		<tr>
-          		       <td conspan ="3">사아자</td>
-                </tr>         
-          </table>
-           <hr>
-          <hr>
-          <h3>일반테이블4(병합)</h3>
-          <table>
-          		<tr>
-          		       <td rowspan = "2">가라</td><td colspan ="2" rowspan = "2">나다마바</td>
-                </tr>         
-          		<tr>
-          		      
-                </tr>         
-          		<tr>
-          		       <td>사</td><td>아</td> <td>자</td>
-                </tr>         
-          </table>
-          <hr>
-          <hr>
-          <table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table>
-<br>
+  <h3>일반테이블</h3>
+  <table>
+    <tr>
+      <td>가</td>
+      <td>나</td>
+      <td>다</td>
+    </tr>
+    <tr>
+      <td>라</td>
+      <td>마</td>
+      <td>바</td>
+    </tr>
+    <tr>
+      <td>사</td>
+      <td>아</td>
+      <td>자</td>
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <h3>일반테이블2</h3>
+  <table style="height: 200px; width: 500px">
+    <tr>
+      <td>가</td>
+      <td>나</td>
+      <td>다</td>
+    </tr>
+    <tr>
+      <td>라</td>
+      <td>마</td>
+      <td>바</td>
+    </tr>
+    <tr>
+      <td>사</td>
+      <td>아</td>
+      <td>자</td>
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <h3>일반테이블3(병합)</h3>
+  <table style="height: 200px; width: 500px">
+    <tr>
+      <td colspan="2">가나</td>
+      <td>다</td>
+    </tr>
+    <tr>
+      <td>라</td>
+      <td>마</td>
+      <td>바</td>
+    </tr>
+    <tr>
+      <td colspan="3">사아자</td>
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <h3>일반테이블4(병합)</h3>
+  <table>
+    <tr>
+      <td rowspan="2">가라</td>
+      <td colspan="2" rowspan="2">나다마바</td>
+    </tr>
+    <tr>
 
-<table id="t01">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table>
+    </tr>
+    <tr>
+      <td>사</td>
+      <td>아</td>
+      <td>자</td>
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <table>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+  </table>
+  <br>
+
+  <table id="t01">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <h3>나홀로연습테이블</h3>
+  <table class="myself">
+    <th>
+      <td>나</td>
+      <td>홀</td>
+      <td>로</td>
+      <td>연</td>
+      <td>습</td>
+      <td>해</td>
+    </th>
+    <tr>
+      <td>가</td>
+    </tr>
+    <tr>
+      <td rowspan="2">나<br>다</td>
+      <td>나</td>
+    </tr>
+    <tr>
+
+      <td>다</td>
+      <td rowspan="3" >다<br>라<br>마</td>
+    </tr>
+    <tr>
+      <td>라</td>
+      <td>라</td>
+
+      <td>라</td>
+    </tr>
+    <tr>
+      <td colspan="5">마</td> 
+      
+    </tr>
+    <tr>
+      <td>마</td>
+      <td>마</td>
+      <td>마</td>
+      <td>마</td>
+      <td rowspan="2">마</td>
+      
+    </tr>
+    <tr>
+      <td>마</td>
+      <td>마</td>
+      <td>마</td>
+      <td>마</td>
+      
+      
+    </tr>
+  </table>
+  <hr>
+  <hr>
+  <br><br><br>
 
 </body>
+
 </html>
