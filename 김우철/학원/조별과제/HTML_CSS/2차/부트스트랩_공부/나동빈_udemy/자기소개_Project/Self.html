@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<div lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./Self.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script> <!-- 아이콘 -->
+        <title>Document</title>
+
+        <style>
+            body {
+                margin: 0;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            .self-row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .self-side {
+                flex: 50%;
+                background-color: yellow;
+            }
+
+            .self-main {
+                flex: 50%;
+                background-color: skyblue;
+            }
+
+            .number>li {
+                padding-bottom: 16px;
+            }
+
+            #f_button>button {
+                margin-right: 10px;
+            }
+
+            /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width:700px) {
+                #stack {
+                    flex-direction: column;
+                }
+            }
+
+            @media screen and (max-width:600px) {
+                #stack2 {
+                    flex-direction: column;
+                }
+            }
+        </style>
+
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+        <div class="container-fluid" style="padding:0">
+
+            <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">김우철</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#alt"
+                    aria-controls="alt" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="alt">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- ml-auto 오른쪽 정렬 -->
+                        <li class="nav-item">
+                            <a href="#section1" class="nav-link">메인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#section2" class="nav-link">경력</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#section3" class="nav-link">포트폴리오</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#section4" class="nav-link">연락처</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav> <!-- 메뉴바 end -->
+
+            <div id="section1" class="picture" style="margin:0; padding-top:55px; background-color: rosybrown;">
+                <!-- https://www.w3schools.com/icons/icons_reference.asp : 부트스트랩 아이콘 -->
+                <img src="img_avatar1.png" class="rounded-circle mx-auto d-block mb-3 pt-3" width="300px" alt="프로필 사진">
+                <div class="text-center">
+                    <h2 class="font-weight-bolder" style="font-size:24px; color:cornflowerblue">김우철</h2>
+                    <p class="text-center" id="kwc2" style="margin-bottom:0">
+                        <i class="fas fa-address-card pr-2">
+                            <span class="font-weight-light">프로그래머</span>
+                        </i>
+                        <i class="fas fa-carrot pr-2">
+                            <span class="font-weight-light">교육자</span>
+                        </i>
+                        <i class="fab fa-cc-paypal">
+                            <span class="font-weight-light">작가</span>
+                        </i>
+                    </p>
+                </div>
+            </div> <!-- 사진 end -->
+
+            <div id="section2" class="pt-3 pb-3" style="background-color: yellow; margin:0;">
+                <div class="container d-flex align-items-center"
+                    style="width:600px; height:360px;background-color: crimson;">
+                    <div class="row row-cols-1" id="kwc">
+                        <div class="col d-flex flex-column">
+                            <h2>수상 경력</h2>
+                            <ul>
+                                <li>2017 대한민국 인재상</li>
+                                <li>2017 연합 소프트웨어 경진대회 최우수상(2017.11)</li>
+                                <li>2017 전국 창의문제 해결능력 경진대회 대상(2017.09)</li>
+                                <li>2017 MIDAS Challenge 최우수상(2017.05)</li>
+                            </ul>
+                            </p>
+
+                        </div>
+                        <div class="col d-flex flex-column">
+                            <h2>활동 경력</h2>
+                            <ul>
+                                <li>위키북스 프로그래밍 교재 집필진(2017.02 ~ 현재)</li>
+                                <li>SW교육 선도학교 지원연구단 연구진(2017.06 ~ 현재)</li>
+                                <li>IT 교육 유튜브 채널 & 블로그 운영(2015.09 ~ 현재)</li>
+                                <li>LG 서브원 외주 소프트웨어 개발자(2016.12 ~ 2017.02)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- 수상,활동 경력 end -->
+
+            <div id="section3" class="d-flex flex-wrap justify-content-center"
+                style="margin:0; padding-top:30px; background-color:purple;">
+                <div class="container text-center">
+                    <h3>포트폴리오</h3>
+                </div>
+                <div class="row row-cols-2 mb-4 ">
+                    <div class="col d-flex justify-content-end mb-4">
+                        <div class="card" style="width:400px;">
+                            <img src="img_avatar1.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="card-title">Dynamic Beat</h6>
+                                <p class="card-text" style="font-size: 12px;">Dynamic Beat는 자바(Java)로 개발한 2D 리듬게임입니다.
+                                    2D 게임을 개발했을 뿐 아니라 게임을 만드는 전 과정을
+                                    유튜브 강의로 촬영하여 무료로 배포하는 과정을 통해 많은 것은
+                                    배운 프로젝트입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card mb-4" style="width:400px;">
+                            <img src="img_avatar1.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="card-title">다락리타임 어플리케이션</h6>
+                                <p class="card-text" style="font-size: 12px;">한국교원대학교 학생들을 위해 개발한 무료 수강신청 도우미
+                                    안드로이드 앱입니다. 회원가입, 로그인, 강의 신청,
+                                    강의 시간표 보기, 강의 분석, 경쟁률 분석 등의 기능을 포함한
+                                    학생 자율 어플리케이션입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <div class="card" style="width:400px">
+                            <img src="img_avatar1.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="card-title">MIDAS-Cook</h6>
+                                <p class="card-text" style="font-size: 12px;">
+                                    웹 솔루션 공모작 수상작입니다. 학교 내 식단 알림, 이메일 전송,
+                                    공지사항, 자유게시판, 통계 다이어그램 등의 기능을 포함한 신개념 학생
+                                    식단 관리 웹 솔루션입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card" style="width:400px;">
+                            <img src="img_avatar1.png" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <h6 class="card-title">다락리타임 웹 사이트</h6>
+                                <p class="card-text" style="font-size: 12px;">웹 솔루션 공모전 수상작입니다.
+                                    학교 내 식단 입력, 이메일 전송, 공지사항, 자유게시판, 통계 다이어그램 등의 기능을
+                                    포함한 신개념 학생 식단 관리 웹 솔루션입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- 포트폴리오 end -->
+
+            <div id="section4" class="self-row" id="stack">
+                <div class="self-side pt-4">
+                    <h2 style="color:cyan; padding-bottom:16px; padding-left:10px;">연락처</h2>
+                    <div class="container" style="font-size: 18px;">
+                        <ul class="number">
+                            <li><i class="fas fa-address-card pr-2"></i>JSP 기반 웹 사이트 개발 문의</li>
+                            <li><i class="fas fa-address-card pr-2"></i>프로그래밍/정보보안 강의 문의</li>
+                            <li><i class="fas fa-address-card pr-2"></i>안드로이드 어플리케이션 개발 문의</li>
+                            <li><i class="fas fa-address-card pr-2"></i>IT 교육 유튜브 채널 & 블로그 마케팅 관련 문의</li>
+                            <li><i class="fas fa-address-card pr-2"></i>프로그래밍 교재 저술 활동 관련 문의</li>
+                            <li><i class="fas fa-address-card pr-2"></i>이메일 : jikimee64@gmail.com</li>
+                        </ul>
+                    </div>
+                </div> <!-- self-side(연락처) end -->
+
+                <div class="self-main pt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">간편문의</h4>
+                            <form action="">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="이름">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="이메일">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="연락처">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="내용을 입력해주세요.">
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-success" type="button">전송하기</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- self-main(간편문의) end -->
+            </div>
+
+            <div class="footer">
+                <div class="d-flex justify-content-around bg-secondary mb-3" id="stack2">
+                    <div class="p-2 bg-info text-center">
+                        <h4>위치</h4>
+                        <p>
+                            한국교원대학교<br>
+                            충청북도 청주시 흥덕구
+                        </p>
+                    </div>
+                    <div class="p-2 bg-warning text-center">
+                        <h4>소셜 미디어</h4>
+                        <div class="d-flex justify-content-around" id="f_button">
+                            <button type="button" class="btn btn-primary">페이스북</button>
+                            <button type="button" class="btn btn-success">유튜브</button>
+                            <button type="button" class="btn btn-secondary">블로그</button>
+                        </div>
+                        <span>Copyright 나동빈 2018</span>
+                    </div>
+                    <div class="p-2 bg-primary text-center">
+                        <h4>나동빈</h4>
+                        <p>소통하는 개발자가 되겠습니다.</p>
+                    </div>
+                </div>
+            </div> <!-- footer end -->
+
+        </div> <!-- 가장 바깥의 레이아웃(container-fluid)-->
+    </body>
+
+</div>
