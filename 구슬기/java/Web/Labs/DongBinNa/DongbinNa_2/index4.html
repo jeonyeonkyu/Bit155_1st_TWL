@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>효율적인 이벤트 처리 방식</title>
+    <script type="text/javascript" src="./js/example4.js"></script>
+</head>
+<body>
+    <button id="button1">버튼 1</button>
+    <button id="button2">버튼 2</button>
+    
+    <script>
+        //공통적인 이벤트는 하나의 함수로 묶을 수 있다.
+        var button1 = document.getElementById('button1');
+        var button2 = document.getElementById('button2');
+        button1.addEventListener('click',buttonClickEvent);
+        button2.addEventListener('click',buttonClickEvent);
+    </script>
+    
+</body>
+</html>
