@@ -1,0 +1,69 @@
+h1, p{
+    margin: 0;
+}
+body{
+    background-color: lightgray;
+}
+div.box{
+    background-color: white;
+    width: 500px;
+    margin:50px 10px;  
+    text-align: center;
+    display: inline-block;
+}
+.poke{
+    margin-top: -150px;
+}
+div.box-contents{
+    padding: 20px;
+}
+
+div.box-contents h1{
+    margin-bottom: 20px;
+    background-color: whie; 
+    display: inline-block;
+
+    }
+div.box-contents p{
+    text-align: left;
+}
+div.box-footer{
+    background-color: blanchedalmond;
+    padding: 20px;
+
+}
+
+
+
+
+.box h1{
+    color: white;
+}
+
+
+.box.red h1{
+    color: orangered;
+    border-top: orangered;
+    border-bottom: thick groove orangered;
+}
+.box.green h1 {
+    color: green;
+    border-top: green;
+    border-bottom: thick groove green;
+
+}
+
+
+.box.blue h1 {
+    color: skyblue;
+    border-top: skyblue;
+    border-bottom: thick groove skyblue;
+
+}
+
+
+
+
+
+
+
