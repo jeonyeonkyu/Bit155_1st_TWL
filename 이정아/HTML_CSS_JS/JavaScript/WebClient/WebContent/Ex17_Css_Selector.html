@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS 선택자 다루기</title>
+<style type = "text/css">
+/*
+	참고주소 : https://www.w3schools.com/cssref/css_selectors.asp
+	
+	1. 기본 선택자(기존에 존재하는 태그 : p, div, h1, font)
+	 	ex) p {color :red}
+	 	
+	2. 다중 선택자(group)
+	 	p, h1, h2, h3 {color: blue} 여러개의 태그에 color를 공통으로 넣겠다.
+	
+	3. 사용자 정의(CSS) ->범용적이고 일반적인 스타일을 구성 할 때 사용한다.(여러개의 클래스에 사용 가능)
+	 .mystyle{color :red} -> 적용은 <p class ="mystyle"></p>
+	 						 		<p class ="mystyle"></p>
+	 #idstyle{color : yellow} ->식별자 역할을 함(page당 1개)
+	 						  적용은 id = <div id = "idstyle"></div>
+	4. 결합
+		p{color :black}
+		p.one{border :1px} ->p태그인데, class가 one인 것에 border를 1px적용
+		p.two{border :5px}
+							적용은 <p></p> -> 이 상태라면 color black만 적용
+								   <p class = "one"></p> color black + border 1px 이 적용
+								   <p class = "two"></p> color black + border 5px 적용						  						 		
+	5. 자손선택자, 후손
+		div p{color : green; font-family: "궁서체" "명조체" "광수체"; } ->div태그의 p 태그에게 적용하라. 컬러는 green, font는 궁서체가 없으면 명조체, 없으면 광수체
+																		->자손선택자는 하위 태그 모두 다 적용
+			ex) <div>
+						<p>A</p>
+						<p>
+							B
+							<p>C</p>
+						</p>
+				</div>	
+				
+	6. 자식선택자 - 직접적으로 연관된 것에만 적용
+		.parent >p {border: 1px double blue; padding :10px; font-size: 15px}
+	
+	7. 속성선택자(Attribute > color,font,size)
+	input[type=text]{color:red}
+	input[type=button{font-size:10px}
+	
+	8. + "인접한 형제" selector (div + p{}) div태그의 형제들 중에서 가장 가까운데에 있는 p태그 (같은 선상에 있는?)
+	   ~ 일반 형제 selector (div ~p {}) 같은 선상 (같은 급) 중 아래의 p태그들에 스타일이 걸림 본인 중심으로 아래
+	
+	9. 가상 선택자(hover 의미적으로만 존재)
+		a:hover{}
+		a.my:hover{}
+		<a class= "my"></a>
+							  
+*/
+
+	p{color : pink}
+	div p{color:green; font-family: "궁서체" "명조체" "광수체";} /*div태그의 자"손" p에 모두 적용*/
+	.parent >p {border: 1px double blue; padding :10px; font-size: 15px} /*div태그의 자"식" 요소에만 적용*/
+	
+	input[type=text]{
+	width: 150px;
+	background-color: yellow;
+	}
+	input[type=button]{
+	width: 100px;
+	background-color: blue;
+	}
+	
+	
+</style>
+
+</head>
+<body>
+	<p>나는 스타일이 적용될까</p>
+	<div>div 태그</div>
+	<h3>하위("자손" = 아래에 있는 모든 것 != 자식) 선택자</h3>
+	<div>
+		<p>선택자</p>
+		<p>선택자2
+		<p> p태그 안에 p태그가 </p>
+		</p>
+		<div>
+			<p>선택자4</p>
+		</div>
+	</div>
+	<h3>자식 선택자</h3>
+	<div class="parent">
+	<p>나는 문단 태그입니다</p>
+	<div>
+	<p>나는 p 태그 입니다</p></div>
+	<p>나는 문단 태그 입니다!</p>
+	</div>
+	<hr>
+	<input type="text" value = "css 적용여부" />
+	<br>
+	<input type="password" value = "css 적용여부" />
+	<br>
+	<input type="button" value = "css 적용여부" />
+	<br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	1. HTML describes the structure of a Web page -HTML은 웹 페이지의 구조를 뜻한다.
+	<br> 2. Browsers do not display the HTML tags, but use them to
+	render the content of the page -웹브라우저가 tag들을 해석해서 해석한 결과를 보여준다.
+	<br> 3. 웹 브라우저를 해석한다(parser를 내장) : html, htm, css, javascript
+	해석(render)을 해서 그 결과를 출력한다.
+	<br>
+	<h3>제목</h3>
+	<p>문단태그</p>
+	<h1>This is heading 1</h1>
+	<h2>This is heading 1</h2>
+	<h3>This is heading 1</h3>
+	<h4>This is heading 1</h4>
+	<h5>This is heading 1</h5>
+	<h6>This is heading 1</h6>
+	-[h6]까지만 표현이 가능하다. 제목은 보통 h3을 많이 쓴다.
+
+	<p>This is a paragraph.</p>
+	<p>This is another paragraph.</p>
+
+	<a href="https://www.w3schools.com"> this is a link</a> --하이퍼링크(앵커태그)
+	<br>
+	<img src="images/서명.png" alt="w3schools.com그림" width="1500"
+		height="500">
+	<br> alt는 이미지가 없을 경우에 나오는 대체글자
+	<br> ◆un order list - 순서를 정의하지S 않는 목록. 번호가 없다는 뜻
+	<ul>
+		<li>coffee</li>
+		<li>tea</li>
+		<li>milk</li>
+	</ul>
+	<br> ◆order list - 순서가 있는 목록
+	<ol>
+		<li>coffee</li>
+		<li>tea</li>
+		<li>milk</li>
+	</ol>
+
+	<br>
+	<!-- HTML 주석(주석처리라서 해석되지 않음, 화면에 출력되지 않음) -->
+
+	<p>
+		안녕<br> 방가<br> 방가
+	</p>
+
+	<p title="나는 풍선 도움말">마우스 오버하면 나오는 툴팁(도움말) = attribute라고 한다. " "안에
+		넣어주는 값이 나온다.</p>
+	<p align="center">텍스트 가운데 정렬
+	<p align="right">텍스트 오른쪽 정렬</p>
+	<font style="color: purple; font-family: fantasy;">■CSS 적용하기■</font>
+	-style는 css이다.
+	<br>
+	<font color="red" face="궁서체" size="20px">■속성 사용하기■</font> -속성 적용하기 위의
+	style을 더 많이 사용한다.
+	<br>
+	<!-- 안쪽 더블쿼테이션이면, 바깥쪽은 싱글쿼테이션으로 -->
+	<!-- 안쪽 싱글쿼테이션이면, 바깥쪽은 더블쿼테이션으로 HTML에서는 ', " 을 둘 다 문자열에 사용한다.-->
+	<p title="나는 '홍길동' 입니다.">POINT</p>
+	<p title='나는 "홍길동" 입니다.'>POINT</p>
+	<hr>
+</body>
+</html>
+
