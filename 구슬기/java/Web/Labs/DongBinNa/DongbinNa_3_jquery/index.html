@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 의 문법</title>
+    
+    <script src="http://code.jquery.com/jquery-3.5.0.js" 
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous">
+    </script>
+
+</head>
+<body>
+    <button class="button">버튼</button>
+    <button id="test">숨겨질 버튼</button>
+
+    <script type="text/javascript">
+       $(document).ready(function(){   //버튼이 눌러졌을때 이벤트를 처리해주는데 test 라는 id 값을가진 요소를 숨기기
+            $(".button").click(function(){
+                $("#test").hide();
+            });
+       });
+    </script>  
+</body>
+</html>
