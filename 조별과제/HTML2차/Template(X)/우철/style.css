@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,200i,400,400i,600,600i&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam:ital,wght@0,400;1,800&display=swap');
+
+body{
+    font-family: 'Be Vietnam', sans-serif;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
