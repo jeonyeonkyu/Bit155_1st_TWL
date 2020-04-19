@@ -39,3 +39,79 @@
         </div>  -->
 
         슬라이드
+
+
+
+        section2
+
+  <div id="section2" class="container-fluid" style="padding-top:50px;padding-bottom:50px">
+            <div style="text-align: center; margin-bottom:15px;">
+                <h2 style="color:#434E5E">EXPERIENCE</h2>
+            </div>
+            <div class="container" id="kwc2">
+                <div class="row row-cols-3" id="card-list">
+                    <div class="col-4">
+                        <div class="card shadow mb-5" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%;" src="./images/2018IT.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2018 월드 IT쇼</h4>
+                                <p class="card-text">Some example text some example text. Jme example text some example
+                                    text. John Doe is an architectohn Doe is an architect
+                                    and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card shadow mb-5" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%; " src="./images/2018논문.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2018 논문경진대회</h4>
+                                <p class="card-text">Some example text some example text. John Doe is an architect and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card shadow mb-5" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%" src="./images/2018e브레인.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2018 교내 공모전</h4>
+                                <p class="card-text">Some example text some example text. John Doe is an architect and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="list-card4" class="card shadow" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%" src="./images/2019캡스톤.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2019 캡스톤</h4>
+                                <p class="card-text">Some example text some example text. John Doe is an architect and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div id="list-card5" class="card shadow" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%" src="./images/2019논문.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2019 논문경진대회</h4>
+                                <p class="card-text">Some example text some example text. John Doe is an architect and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card shadow" style="width:300px">
+                            <img class="card-img-top" alt="Card image" style="width:100%" src="./images/bit1차.jpg">
+                            <div class="card-body">
+                                <h4 class="card-title">2020 비트1차 프로젝트</h4>
+                                <p class="card-text">Some example text some example text. John Doe is an architect and
+                                    engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
