@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var menode;
+            menode = document.getElementById("me"); //<div id="me">C</div>
+            menode.style.backgroundColor ="yellow"; 
+
+            var parentnode = menode.parentNode; //body
+            parentnode.style.backgroundColor="skyblue";
+
+            var grandnode;
+            grandnode = parentnode.parentNode; //html (root)
+            grandnode.style.backgroundColor = "green";
+
+            var my = document.getElementById("mychild");
+            console.log(my); // <ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>  
+
+            console.log(my.firstChild.nodeName); //태그이름 LI 
+            console.log(my.firstChild.innerText); //AA
+            //innerHTML, innerText >> value 속성이 없는애들
+            //주로 , div, p, li  ... 얘네들 
+            // <div>aaaaa</div>
+            // <input type="text" value=""> 
+            // innerHTML, innerText  태그를 가져오냐, 텍스트만 가져오냐의 차이
+            console.log(my.firstChild.nextSibling.innerText); //BB
+            console.log(my.childNodes);  // Nodelist(3)[li,li,li] 
+            console.log(my.childNodes.length); //3
+
+            /* 개선된 for문 사용해서 출력
+            for(let index in my.childNodes){
+                let text = my.childNodes[index].innerText;
+                console.log("index : "+ index +" / text :"+ text);
+            }
+            */
+
+           //기본 for문 사용해서 출력
+            for(let i=0;i<my.childNodes.length; i++){
+                let text = my.childNodes[i].innerText;
+                console.log(text);
+            }
+
+        }
+    </script>
+</head>
+<body>
+ <div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+ <ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>  
+</body>
+</html>

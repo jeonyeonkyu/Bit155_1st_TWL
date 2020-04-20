@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Nanum+Gothic&display=swap');
+h1,h2,h3,h4, .navbar-brand{
+    font-family: 'Carrois Gothic SC';
+    color: #0D47A1;
+}
+body{
+    font-family: 'Nanum Gothic';
+    background-color: #BBDEFB;
+
+}
+.navbar{
+    border-bottom: #1E88E5 3px solid;
+}
