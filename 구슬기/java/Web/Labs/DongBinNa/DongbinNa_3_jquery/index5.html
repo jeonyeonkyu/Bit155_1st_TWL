@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 이용해서 데이터 쓰기</title>
+    <script src="http://code.jquery.com/jquery-3.5.0.js" 
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <button id="text">text</button>
+    <button id="html">html</button>
+    <button id="val">val</button>
+    <p></p>
+    <input type="text" value="">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#text").click(function(){
+                $("p").text("안녕하세요");//매개변수가 비어있으면, 읽어오기. 
+                                          //매개변수가 있으면 ,써주는 역할
+            });
+            $("#html").click(function(){
+                $("p").html("<b>안녕하세요</b>");
+            });
+            $("#val").click(function(){
+                $("input").val("안녕하세요");
+            });
+        });
+    </script>
+</body>
+</html>

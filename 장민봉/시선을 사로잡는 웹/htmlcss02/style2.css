@@ -1,0 +1,75 @@
+
+ h1,h2,p,ul{
+    margin: 0;
+    padding: 0;
+} 
+
+body{
+    background-image: url(images2/qorudghkaus.png);
+    background-color: lightsteelblue;
+    background-attachment: fixed;
+    background-position: center;
+    
+
+}
+
+div.wrapper{
+    /* width: 900px; */
+    /* 가운데 정렬 */
+    /* margin-right: auto;
+    margin-left: auto; */
+      
+      margin: 0 auto;
+}
+div.header{    
+    text-align: center;
+    background-image: url("images2/pokelo.png");
+    height: 400px;
+    margin: 100;
+    background-repeat: no-repeat;
+
+    
+    
+}
+img.profile{
+    margin-top: 50px;
+}
+div.header h1{
+    color: black;
+}
+div.header p{
+    color: white;
+    background-color:black;
+    margin: 0 auto;
+    width: 500px;
+    padding: 8px;
+    
+}
+
+div.contents{
+
+}
+div.section{
+    background-color: white;
+    margin: 20px;
+    padding:5px;
+}
+div.section h2{
+    color: rgb(113, 110, 255);
+    /* border-bottom: 2px solid rgb(171, 171, 255) ; */
+
+}
+div.section li{
+    list-style: none;
+    padding: 5px;
+    border-left: 5px solid lightgray;
+    padding-left: 5px 10px;
+}
+
+div.footer{
+    background-color: black;
+    padding: 20px 0;
+    letter-spacing: 5px;
+    color: purple;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+@import url(https://fonts.googleapis.com/earlyaccess/kopubbatang.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+h1,h2,h3,h4, .navbar-brand{
+    font-family: 'Noto Sans KR';
+    color:#FF9800;
+}
+
+body{
+    font-family: 'Noto Sans KR';
+    color: BLACK;
+    background-color: #FFFF8D;
+}
+
+.navbar{
+    border-bottom:#F9A825 5px solid;
+}

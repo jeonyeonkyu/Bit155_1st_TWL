@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>POPUP</title>
+	<script type="text/javascript">
+		function  zipSearch(obj){
+			console.log(obj); //input태그의 value값이 출력되어야 함
+			//실제 출력되는 값은 200-300 서울시 강남구 역삼동 이 값인데
+			//우편번호, 주소를 분리해서 부모창에 전달하고 싶으면
+			var zip = obj.substring(0,7);
+			var addr = obj.substring(8);
+			console.log(zip + "/" + addr);
+
+			//주소를 찾는 창(자식 창 : Ex12_popup) 을 띄운 부모 창이 Ex12_Script_Zipcode이므로
+			//자식 창에서 부모 창으로 접근하기
+			//부모 객체를 통칭해서 접근하는 방법이 있다. (opener).. window.opener >> Ex12_Script_Zipcode
+			window.opener.mainform.zipcode.value = zip; //부모가 가진 창의 각 주소로 접근해서 변수에 담고있는 정보를 넘겨주기
+			window.opener.mainform.addr.value=addr;
+			window.close(); //self.close() 현재 창 닫기
+
+		}
+	</script>
+	
+</head>
+<body>
+	<h3>DB연결 검색 화면주소 출력(선택)</h3>
+	<form action="" name="zipform">
+		<input type="button" value="200-300 서울시 강남구 역삼동" name="btn" onclick="zipSearch(this.value)"><br> <!--this.value는 자기 자신의 value값을 지칭 = 현재 input값의 value-->
+		<input type="button" value="200-400 경기도 성남시 삼평동" name="btn" onclick="zipSearch(this.value)"><br>
+		<input type="button" value="300-500 제주시 서귀포동"    name="btn" onclick="zipSearch(this.value)"><br>	
+	</form>
+</body>
+</html>
