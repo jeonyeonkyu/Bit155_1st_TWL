@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>sssss</title>
+
+    <style>
+        .democlass {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<!-- 어렵다 -->
+
+<body>
+    <div id="div">
+        <h1 class="democlass">Hello World_1</h1>
+        <h1 class="democlass">Hello World_2</h1>
+        <h1 class="democlass">Hello World_3</h1>
+    </div>
+    <p id="demo">
+        Click the Button
+    </p>
+    <button onclick="">Try it</button>
+
+    <script>
+        // document.getElementsByTagName("h1")[0].removeAttribute("class");
+
+        var arr = document.getElementsByTagName("h1");
+        /* for (let index in arr) {
+             // console.log("arr : " + arr[index]);
+             // arr[index].removeAttribute("class");
+             // document.body.removeChild(arr[index]); h1은 div의 자식이기 때문에 안됨
+             // document.getElementById('div').removeChild(arr[index]);
+             if (arr.length > 0) {
+                 console.log(index + " / " + arr.length + " / " + (arr.length-1));
+                 document.getElementById('div').removeChild(arr[index]); //에러
+                 // document.getElementById('div').removeChild(arr[0]);
+                 // document.getElementById('div').removeChild(arr[arr.length-1]); //정상
+             } else {
+             }
+         } */
+
+        /*
+       for (var i = 0; i < arr.length; i++) {
+           console.log("arr.length :" + arr.length + " - " + "i : " + i);
+           console.log(arr[i]);
+           console.log("***********************************");
+           document.getElementById("div").removeChild(arr[i]);
+           //[h1][h2][h3]
+           //[0] [1] [2]
+           //[h2][h3]
+           //[0] [2]
+       } 에러 */
+
+        /* var len = arr.length;
+	  	for(var i= 0 ; i < len ; i++){
+	  		console.log("len :" + len);
+	  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+	  		console.log(arr[arr.length -1]); 
+	  		console.log("arr.length -1 : " + (arr.length -1));
+	  		console.log("***********************************");
+	  		document.getElementById("div").removeChild(arr[arr.length -1]);
+               //arr.length -1 >> 2,1,0
+          } //정상 뒤에서부터 삭제 */
+
+        //심플한 방법1
+        // var len = arr.length;
+        // for (let i = 0; i < len; i++) {
+        //     arr[arr.length - 1].remove(); //자기자신 삭제
+        // }
+
+        //심플한 방법2
+        // for (let i = arr.length - 1; i >= 0; i--) {
+        //     console.log(arr.length - 1);
+        //     document.getElementById("div").removeChild(arr[i]);
+        // }
+
+
+
+
+    </script>
+</body>
+
+</html>
