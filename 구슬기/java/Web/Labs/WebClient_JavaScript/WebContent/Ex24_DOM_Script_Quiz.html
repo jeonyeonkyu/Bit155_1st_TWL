@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Quiz</title>
+<script type="text/javascript">
+	window.onload= function(){
+		document.getElementById("b1").onclick=function(){
+			//동적으로 생성되는 테이블
+			var intRow= parseInt(document.getElementById("txtrow").value);
+			var intColumn = parseInt(document.getElementById("txtcolumn").value);
+			//테이블 생성 코드 작성
+
+				var gg = document.createElement("div");
+				gg.setAttribute("id","table");
+				document.body.appendChild(gg);
+				
+				var tag = "<table border='1'>";
+				var b1 = parseInt(intRow);
+				var b2 = parseInt(intColumn);
+				for (j = 1; j <= b1; j++) {
+					tag += "<tr>";
+					for (i = 1; i <= b2; i++) {
+					tag += "<td>"+j+"행"+i+"열"+"</td>";
+					}
+					tag += "</tr>";
+				}
+				tag += "</table>";
+				table.innerHTML = tag;
+			
+		}
+
+		document.getElementById("b2").onclick=function(){
+			//테이블 제거 코드 작성
+			var list=document.getElementById("div");
+			for(var index in list){
+			list.removeChild(list.childNodes[index-1]);
+			}
+		}
+
+	}
+</script>
+</head>
+<body>
+	<div id="div">
+			행의수 : <input type="text" id="txtrow" name="txtrow" value="2"><br>
+			열의수 : <input type="text" id="txtcolumn" name="txtcolumn" value="2"><br>
+			<input type="button" id="b1"  value="동적테이블 생성" >
+			<input type="button" id="b2"  value="동적테이블 제거" >
+	</div>
+</body>
+</html>
