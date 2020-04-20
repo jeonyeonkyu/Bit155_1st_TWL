@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>sssss</title>
+</head>
+<script>
+    // https://www.w3schools.com/js/js_htmldom_document.asp
+    function myFunc() {
+        var list = document.getElementById("mylist");
+        list.removeChild(list.childNodes[0]);
+    }
+
+    function myFunc2() {
+        var textnode = document.createTextNode("Water");
+        var item = document.getElementById("mylist").childNodes[0];
+        item.replaceChild(textnode, item.childNodes[0]);
+    }
+
+</script>
+
+<body>
+    <ul id="mylist">
+        <li>coffee</li>
+        <li>tea</li>
+        <li>milk</li>
+    </ul>
+
+    <button onclick="myFunc()">Try it</button>
+    <button onclick="myFunc2()">Try it</button>
+</body>
+
+</html>

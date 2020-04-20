@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var menode;
+            menode = document.getElementById("me"); //<div id="me">C</div>
+            menode.style.backgroundColor ="yellow";
+
+           var parentnode = menode.parentNode  //div 태그의 부모는 body
+           parentnode.style.backgroundColor = "skyblue";
+           var grandnode;
+           grandnode = parentnode.parentNode; //body의 부모는 html
+           grandnode.style.backgroundColor="green";
+
+           var my = document.getElementById("mychild");
+           console.log(my);//<ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+           console.log(my.firstChild.nodeName); //태그이름 LI
+           console.log(my.firstChild.innerText); //innerHTML, innerText >> value 속성이 없는녀석들
+           //div,p,li... value가 없다 <div>aaaaa</div> 이런애들은 innerText를 뽑아낼수 잇다
+           //<input type="text" value=""> 
+           console.log(my.firstChild.nextSibling.innerText); //nextSibling은 다음것
+           console.log(my.childNodes); //똑같은 녀석들이 반복되면 Array를 리턴할것이다 Array
+           console.log(my.childNodes.length);
+           /*
+           for(let index in my.childNodes){
+               let text = my.childNodes[index].innerText;
+               console.log("index : " +index + " / " + "Text : " + text);
+           }
+           */
+           for(let i = 0; i<my.childNodes.length; i++){
+               var text = my.childNodes[i].innerText;
+               console.log(text);
+           }
+        }
+
+    </script>
+
+</head>
+<body>
+    <div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+    <ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+h1,h3,h2,ul,li{
+    margin: 0;
+}
+p{
+    font-size: 20px;
+}
+html{
+    background-color: white;
+}
+div.wrapper{
+    width: 800px;
+    height: 1000px;
+    margin: 0 auto;
+}
+body{
+    
+}
+div.header{
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+    margin-top: 100px;
+    font-family: cursive;
+    font-size: larger;
+    border: 5pt groove navy;
+}
+
+div.contents.section{
+
+}
+
+
+div.contents{
+    padding: 30px;    
+    background-color: white;
+
+}
+div.footer{
+    text-align: center;
+    background-color: yellow;
+    
+}
+.profile{
+    width: 100px;
+    height: 100px;
+}
+.section ul{
+    
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+.ul1{
+    padding: 50px;
+    text
+}
+
+.licom{
+    background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

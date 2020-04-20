@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<!-- 모르겠다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>2222</title>
+    <style type="text/css">
+        table {
+            width: 100%
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        td {
+            background-color: gold;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("b1").onclick = function () {
+                //동적으로 생성되는 테이블
+                var intRow = parseInt(document.getElementById("txtrow").value);
+                var intColumn = parseInt(document.getElementById("txtcolumn").value);
+
+                var eletable = document.createElement("table");
+                eletable.setAttribute("id", "Tab");
+                //<table id="Tab"></table>
+
+
+                //thead 부분생성
+                var thead = document.createElement("thead");
+                var tr = document.createElement("tr");
+                thead.appendChild(tr);
+                for (var z = 0; z < intColumn; z++) {
+                    var th = document.createElement("th");
+                    th.textContent = "제목" + (z + 1);
+                    tr.appendChild(th);
+                }
+                eletable.appendChild(thead);
+                document.getElementById("div").appendChild(eletable);
+
+                var tbody = document.createElement("tbody");
+                eletable.appendChild(tbody);
+                for (var i = 0; i < intRow; i++) {
+                    var elerow = document.createElement("tr");
+                    for (var j = 0; j < intColumn; j++) {
+                        var td = document.createElement("td");
+                        td.textContent = (i + 1) + "행" + (j + 1) + "열";
+                        elerow.appendChild(td);
+                    }
+                    tbody.appendChild(elerow);
+                }
+                //body 
+                document.getElementById("div").appendChild(eletable);
+
+            }
+            document.getElementById("b2").onclick = function () {
+                var tables = document.getElementsByTagName("table");
+                console.log(tables);
+                console.log(tables.length);
+                console.log(tables[tables.length - 1]);
+                if (tables.length > 0) {
+                    document.getElementById("div").removeChild(tables[tables.length - 1]);
+                } else {
+                    alert("모두 삭제 되었습니다");
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+        행의수 : <input type="text" id="txtrow" name="txtrow" value="2"><br>
+        열의수 : <input type="text" id="txtcolumn" name="txtcolumn" value="2"><br>
+        <input type="button" id="b1" value="동적테이블 생성">
+        <input type="button" id="b2" value="동적테이블 제거">
+    </div>
+</body>
+
+</html>

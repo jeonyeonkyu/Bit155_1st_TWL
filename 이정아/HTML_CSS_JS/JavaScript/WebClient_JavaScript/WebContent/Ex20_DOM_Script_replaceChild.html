@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li></ul>
+
+    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunc()">Try it</button>
+
+    <script type="text/javascript">
+    //https://www.w3schools.com/jsref/met_node_replacechild.asp
+    function myFunction(){
+        var list = document.getElementById("mylist"); //위의 ul태그 전체를 가져온다.
+        list.removeChild(list.childNodes[0]) //list가 가지고 있는 자식요소(li)들 중 0번째 요소를 지우겠다
+    } //그리고 0번째 node가 지워지면, 그 자리를 1번째 node가 이어받는다.
+
+
+    function myFunc(){
+        var textnode = document.createTextNode("Water"); //text 가 water인 것을 일단 생성해두고
+        var item=document.getElementById("mylist").childNodes[0]; //mylist의 0번째 노드를 가지고와서 item에 넣어준 뒤
+        item.replaceChild(textnode, item.childNodes[0]); //그 item으로 들어가서 replaceChild하겠다. (newnode, oldnode)
+    }
+    </script>
+</body>
+</html>
