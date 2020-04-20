@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Box Float LayOut</title>
+</head>
+<body>
+	<!-- float 개념 이해하기 -->
+	<div style="width: 100px; height: 100px; background-color: yellow"></div>
+	<div style="width: 100px; height: 100px; background-color: blue"></div>
+	<div style="width: 100px; height: 100px; background-color: pink"></div>
+	<hr>
+	<div
+		style="width: 100px; height: 100px; background-color: yellow; float: left"></div>
+	<!-- 레이어 개념이라서 float을 하면 그 줄이 위로 떠서 그 다음 div가 위로 올라와서 겹쳐짐 -->
+	<div style="width: 120px; height: 100px; background-color: blue"></div>
+	<div style="width: 100px; height: 100px; background-color: pink"></div>
+	<hr>
+	<div
+		style="width: 100px; height: 100px; background-color: yellow; float: left"></div>
+	<div
+		style="width: 100px; height: 100px; background-color: blue; float: left"></div>
+	<!--  float하고 그 아래것도 float을 연속으로 하면 둥둥 떠서 위의 것 오른쪽으로 붙는다. 그리고 왼쪽 -->
+	<div style="width: 220px; height: 100px; background-color: pink"></div>
+	<hr>
+	<div
+		style="width: 100px; height: 100px; background-color: yellow; float: left"></div>
+	<div
+		style="width: 100px; height: 100px; background-color: blue; float: left"></div>
+	<div
+		style="width: 100px; height: 100px; background-color: pink; float: left"></div>
+	<!-- 다 떠있는 상태에서 왼쪽으로 나란히 붙어있게 됨 -->
+	<hr>
+
+	<div
+		style="width: 100px; height: 100px; background-color: yellow; float: left"></div>
+	<div
+		style="width: 100px; height: 100px; background-color: blue; float: left"></div>
+	<div
+		style="width: 100px; height: 100px; background-color: pink; clear: both;"></div>
+	<!-- clear: both;를 하면 위의 2줄 float의 영향을 왼쪽 오른쪽 둘 다(both) 받지 않겠다고 하는 것 -->
+</body>
+</html>

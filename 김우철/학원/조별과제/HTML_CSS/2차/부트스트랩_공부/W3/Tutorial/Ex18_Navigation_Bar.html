@@ -78,7 +78,16 @@
     <br>
 
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a href="#" class="navbar-brand">Navbar</a>
+        <!-- 
+            특히 작은 화면에서는 탐색 링크를 숨기고 클릭 할 때 표시되는 단추로 
+            대체하려고합니다.
+            접을 수있는 탐색 모음을 만들려면 버튼이있는 버튼을 사용하십시오 . 
+            그런 다음 div 요소 안에있는 탐색 모음 내용 (링크 등)을로 묶은 다음 
+            " thetarget " 버튼 과 일치하는 id를 붙 입니다.class="navbar-toggler", 
+            data-toggle="collapse" and data-target="#thetarget"
+            class="collapse navbar-collapse"data-target
+         -->
+        <a href="#" class="navbar-brand">Navbar(collapse)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -127,7 +136,8 @@
     <!-- form-inline : 입력과 버튼을 나란히 그룹화 -->
     <div class="navbar navbar-expand-sm bg-dark navbar-dark">
         <form action="/action_page.php" class="form-inline">
-            <input type="text" class="form-control mr-sm-2" placeholder="Search"></form>
+            <input type="text" class="form-control mr-sm-2" placeholder="Search">
+        </form>
         <button class="btn btn-success" type="submit">Search</button>
     </div>
     <br>

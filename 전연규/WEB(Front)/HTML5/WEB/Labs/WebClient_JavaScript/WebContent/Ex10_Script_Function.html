@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript 함수(문자열, 숫자)</title>
+    <script>
+        var str = "10+20+30";
+        document.write(str + "<br>");
+        //1. eval()
+        //문자형 수식을 계산 >> "10+20+30" >>  10+20+30 >> 계산 >> 60
+        //ex) "10+20A+30" >> Error
+        document.write("eval(str) = " + eval(str) + "<br>");
+
+        //2. isNaN >> Nat a Number >> 너 숫자 아니니? (true) >> 숫자가 아님 >> false(숫자)
+        document.write(isNaN("12345") + "<br>");  //false == 숫자이다
+        document.write(isNaN("12345A") + "<br>"); //true == 숫자 아니다
+        document.write(isNaN("대한민국") + "<br>"); // true 숫자아니다
+        document.write(isNaN(12345) + "<br>"); //false == 숫자이다
+        //내부적으로 문자열 안에있는 값이 숫자만 있으면 숫자로 해석함
+
+
+        //https://www.w3schools.com/jsref/jsref_obj_string.asp
+        //문자열 함수 참조
+
+        //https://www.w3schools.com/jsref/jsref_obj_number.asp
+        //숫자함수 참조
+
+    
+        let i = "100";
+        let j = "200";
+        document.write("결합 : " + (i + j)); //+가 산술도하고 결합도함
+        document.write("<br>숫자 변환: " + (Number(i) + Number(j)));
+
+        //Method
+        //Number(), parseFloat(), parseInt() 많이 사용
+        //https://www.w3schools.com/js/js_number_methods.asp
+
+        /*★ 필수
+         Event   Description
+          onchange   An HTML element has been changed
+          onclick   The user clicks an HTML element
+          onmouseover   The user moves the mouse over an HTML element
+          onmouseout   The user moves the mouse away from an HTML element
+           onkeydown   The user pushes a keyboard key
+          onload   The browser has finished loading the page 
+          finished loading the page >> body 있는 모든 요소를 메모리에 올리고 난 후에..  
+                                    >> 자동 사건 발생 >> onload 사건/... 
+                                    >> 모든 요소는 메모리에 계층트리(DOM)형태로 있다는 보장 ...
+
+        onblur() >> 포커스가 요소를 떠날때
+        onfocus() >> 포커스가 요소에 들어올때
+
+          */
+          
+          function focusFuc(){
+              document.getElementById("myinput").style.background = "yellow";
+          }
+          function blurFunc(){
+              document.getElementById("myinput").style.background = "white";
+            
+          }
+          function selectTag(){
+              let val =  document.myform.sel.value;
+                alert(val);
+          }
+          
+
+          //Point (this)
+          function changeColor(obj){
+              console.log(obj);
+              obj.style.backgroundColor = "gold";
+          }
+          // <input type="text" onmouseover="changeColor(this)"> 
+          //this 자기자신 >> <input type="text" 전체의미
+
+          function changeColor2(obj){
+              console.log(obj);
+              obj.style.backgroundColor = "white";
+         // <input type="text" onmouseover="changeColor(this)"> 
+          //this 자기자신 >> <input type="text" 전체의미
+          }
+        
+
+        //   var data = document.myform.money.value;  //money가 아직 할당되지 않았기 때문에 에러발생
+        //   document.write(isNaN(data) + "<br>"); 
+        //해결방법
+        function load(){
+           var data = document.myform.money.value;
+          console.log(isNaN(data));
+        }
+
+    </script>
+
+</head>
+<body onload="load()">  
+<!-- 프레임워크들이 보통 onload속성을 사용한다 -->
+    <form action="#" name = "myform">
+        <input type="text"  name = "myinput" id = "myinput" onfocus="focusFuc()" onblur="blurFunc()"><br>
+            <select name="sel" onchange="selectTag()">
+                <option value="A">AA</option>
+                <option value="B">BB</option>
+                <option value="C">CC</option>
+                <option value="D">DD</option>
+            </select>
+             <hr>
+                <input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)"> 
+            <br>
+                <input type="text" onkeypress="alert('키보드 눌렀군')">
+            <br>
+            <input type="text" value="1000" name = "money">
+
+    </form>
+    <script>
+        //순서 OK
+        // var data = document.myform.money.value;
+          //document.write(isNaN(data) + "<br>");
+
+    </script>
+</body>
+</html>

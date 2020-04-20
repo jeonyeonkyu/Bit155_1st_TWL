@@ -49,14 +49,15 @@
     <form action="#" method="" name="loginform">
         ID:<input type="text" name="txtuserid"><br>
         PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
+        <!-- ★name은 서버로 전송할때 쓰는 변수명, id는 css,js에서 쓰는 변수명 
+        input tag에 name 속성을 주지 않으면 server에서 받을 수 없다
+        편하게 둘다 쓰기-->
         <input type="button" value="전송" onclick="send()">
         <!-- 
             type="submit"
             type="image"
             type="button" onclick = "함수...."
-            
          -->
-
 
     </form>
 </body>

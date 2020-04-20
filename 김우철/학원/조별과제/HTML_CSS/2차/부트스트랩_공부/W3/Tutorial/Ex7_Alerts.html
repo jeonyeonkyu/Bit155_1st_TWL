@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-
-<!-- JS부분 제외 -->
 
 <body>
 
@@ -53,7 +54,27 @@
         </div>
     </div>
     <hr>
+    <!-- 
+        경고 메시지를 닫으려면 .alert-dismissible 경고 컨테이너에 클래스를 
+        추가하십시오 . 그런 다음 링크 또는 버튼 요소를 추가 class="close"하고 
+        data-dismiss="alert"를 추가합니다 (이를 클릭하면 경고 상자가 사라짐).
 
+        도움말 : & times; (×)는 문자 "x"가 아닌 닫기 버튼에 대해 선호되는 아이콘인
+         HTML 엔티티입니다. 
+         모든 HTML 엔터티 목록
+         https://www.w3schools.com/charsets/ref_html_entities_4.asp
+     -->
+    <div class="container">
+        <h2>Alerts</h2>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times</button>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </div>
+        <div class="alert alert-primary alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times</button>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </div>
+    </div>
 
 </body>
 

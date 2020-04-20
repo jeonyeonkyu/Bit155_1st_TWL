@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 에서 html 데이터 추가 하기  </title>
+    <script src="http://code.jquery.com/jquery-3.5.0.js" 
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous">
+    </script>
+    <!--
+        append(): 특정한 요소 안에서 끝부분에 내용을 삽입
+        prepend(): 특정한 요소 안에서 앞부분에 내용을 삽입
+        after():   특정한 요소 이후에 내용을 삽입
+        before():  특정한 요소 이전에 내용을 삽입
+    -->
+</head>
+<body>
+   <button id="button1">prepend button</button>
+   <button id="button2">before button</button>
+   <button id="button3">append button</button>
+   <button id="button4">after button</button>
+   <ol>
+   </ol>
+   <script type="text/javascript">
+        $(document).ready(function(){
+            $("#button1").click(function(){
+                $("ol").prepend("<li>prepend원소</li>");
+                //버튼을 누를 때마다 ol태그 안쪽-앞에 원소가 추가된다.
+            });
+
+            $("#button2").click(function(){
+                $("ol").before("<h1>before리스트</h1>");
+                //ol태그 앞쪽에 리스트가 생긴다.
+            });
+
+            $("#button3").click(function(){
+                $("ol").append("<li>append원소</li>");
+                //버튼을 누를 때마다 ol태그 안쪽-뒤에 원소가 추가된다.
+            });
+
+            $("#button4").click(function(){
+                $("ol").after("<h1>after리스트</h1>");
+                //ol태그 뒷쪽에 리스트가 생긴다.
+            });
+        });
+</script>
+
+</body>
+</html>

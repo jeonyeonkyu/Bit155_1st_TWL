@@ -42,9 +42,16 @@
 </script>
 </head>
 <body>
+	<!-- 
+		서버에 찍으면 값이 안나와 ~
+		<input tag에 name 속성을 주지 않으면 server에서 받을 수 없다
+		<input tag에 id >> javascript, css front 작업가능
+		
+		name = "txtpwd" id="txtpwd" 둘다.. 쓰면 에러는 안나옴
+	 -->
 	<form action="" method="" name="loginform">
 		ID:<input type = "text" name ="txtuserid"><br>
-		PWD:<input type = "password" name ="txtpwd" id = "txtpwd"><br>
+		PWD:<input type = "password" name ="txtpwd" id = "txtpwd"><br> 
 		<input type="button" value="전송 " onclick="send()">
 		<!-- 
 			type="submit"

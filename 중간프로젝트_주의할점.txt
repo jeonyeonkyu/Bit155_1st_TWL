@@ -1,0 +1,19 @@
+※ 6월 7일 마감
+중간 프로젝트 2주
+
+1.
+PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
+<!-- ★name은 서버로 전송할때 쓰는 변수명, id는 css,js에서 쓰는 변수명 ,
+   input tag에 name 속성을 주지 않으면 server에서 받을 수 없다
+   편하게 둘다 쓰기-->
+
+2.DB 안될 시 commit 해보기
+
+3.
+
+프로젝트 반영사항
+1.비동기 처리
+
+2.질보단 양 -> 경험쌓기 좋음 
+Ex)팀원 별로 게시판 1개씩 만들기 등
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        .alert{
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alert alert-primary m-3" role="alert">
+        이것은 Primary 알림창입니다.
+    </div>
+
+    <!-- 알림창에 추가적인 내용을 담고자 할 때 -->
+    <div class="alert alert-success m-2" role="alert">
+        <h4 class="alert-heading">성공하셨습니다</h4>
+        <p>다음 스테이지로 넘어갈까요?</p>
+        <hr>
+        <p class="mb-0">정말 대단하십니다!</p>
+    </div>
+
+    <!-- 닫을 수 있는 형태의 알림창 -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>손실 발생!</strong>1,000원의 손해가 발생
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times</span>
+        </button>
+    </div>
+
+    <!-- 특정한 이벤트가 발생했을 때 나오는 알림창(style, script 추가) -->
+    <button id="btnShow" class="btn btn-primary btn-lg">Check</button>
+    <div class="container">
+        <div id="alert" class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Mission Complete!
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#btnShow").click(function(){
+                $('.alert').show();
+            });
+        });
+    </script>
+</body>
+
+
+</html>

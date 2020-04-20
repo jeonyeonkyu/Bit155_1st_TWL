@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 이벤트</title>
+    <script src="http://code.jquery.com/jquery-3.5.0.js" 
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <button class="button">버튼</button>
+    <button class="button2">버튼2</button>
+    <input class="input" type="text">
+    
+    <script type="text/javascript">
+        
+        $(document).ready(function(){ //클릭
+            $(".button").click(function(){
+                $("body").css("background-color","#cccccc");
+            });
+        });
+
+        $(document).ready(function(){//갖다대기만해도
+            $(".button2").mouseenter(function(){
+                $("body").css("background-color","green");
+            });
+        });
+
+        $(document).ready(function(){//대고있던게 떨어지면
+            $(".button2").mouseleave(function(){
+                $("body").css("background-color","white");
+            });
+        });
+
+        $(document).ready(function(){//입력할때마다
+            $(".input").keypress(function(){
+                alert('입력했습니다.');
+            });
+        });
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.floating-box {
+	width: 150px;
+	height: 80px;
+	margin: 10px;
+	border: 3px dotted red;
+	float: left;
+}
+
+.after-box {
+	border: 3px solid pink;
+	background-color: gold;
+	clear: both; /* clear를 하면 floating에 영향을 안받음 */
+}
+</style>
+</head>
+<body>
+	<div class="floating-box">1</div>
+	<!-- margin을 줄여도 div의 디폴트값이 있기 때문에 줄어들지 않음 -->
+	<div class="floating-box">2</div>
+	<div class="floating-box">3</div>
+	<div class="floating-box">4</div>
+	<div class="floating-box">5</div>
+	<div class="after-box">Another Box</div>
+</body>
+</html>
