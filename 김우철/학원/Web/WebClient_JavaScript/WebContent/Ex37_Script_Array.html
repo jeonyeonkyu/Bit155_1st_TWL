@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>eventTest.html</title>
+<script type="text/javascript">
+	window.onload = function() {
+        /*
+            javaScript : Array (정적 + Collection)
+
+        */
+        var array = ['포도', '사과'];
+        document.write(array.toString() + "<br>");
+        document.write(array + "<br> toString() default<br>");
+
+        for(let i = 0; i < array.length; i++){
+            document.write(array[i] + "<br>");
+        }
+
+        //동적기능 
+        //출력 : array[0] >> 포도, array[1] >> 사과
+        //방은 2개
+
+        array[2] = "바나나"; //동적으로 데이터 추가 가능
+        document.write(array.toString() + "<br>" + array.length + "<br>");
+
+        array[10] = "애플망고";
+        document.write(array.toString() + "<br>" + array.length + "<br>");
+        document.write(array[9] + "_array[9]<br>"); //undefine
+        array[9] = "배";
+        document.write("초기화: " + array[9] + "_array[9]<br>"); //배
+
+        var array2 = ["one", "two", "three"];
+        document.write(array2.length + "<br>"); //3
+
+        array2.length = 2; //강제로 ...(절대 이러면 안됨!! / 교육용)
+        document.write(array2.toString() + "<br>" + array2.length + "<br>");
+
+        array2.length = 4;
+        document.write(array2.toString() + "<br>" + array2.length + "<br>");
+        document.write(array2[2] + "<br>"); //undefined
+
+        //POINT(javascript : Array >> Stack >> LIFO)
+        array2.push("Four");
+        document.write("push : " + array2.toString() + "<br>" + array2.length + "<br>");
+        document.write(array2.pop() + "<br>");
+        document.write(array2.pop() + "<br>");
+        document.write(array2.pop() + "<br>");
+        document.write(array2.pop() + "<br>");
+        document.write(array2.pop() + "<br>");
+        /*
+        Four
+        undefined
+        undefined
+        tow
+        one
+        */
+
+        //javascript 배열 선언 이렇게 하셈!!
+        var list = [];
+        list.push("A");
+        list.push("B");
+        list.push("C");
+
+        document.write("<br>" + list.pop());
+        document.write("<br>" + list.pop());
+        document.write("<br>" + list.pop());
+
+	}//onload function
+</script>
+</head>
+<body>
+
+</body>
+</html>
