@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    function displayDate(){
+        document.getElementById("demo").innerHTML = new Date();
+    }
+
+    document.getElementById("mybtn").onclick=displayDate; //displayDate()는 함수를 호출하는것이므로 괄호를 삭제해야 함
+    //위에거랑 같음 그러나 이렇게 하면 에러가 나므로(실행순서때문에) body태그 안의 script구문 안으로 이동시키던가
+    /*window.onload = function(){
+        document.getElementById("mybtn").onclick=displayDate();
+    } 로 해줘야 에러가 안남.
+    */
+
+    //window.onload = function(){}
+    //function call(){}
+    //window.onload = call();
+    </script>
+</head>
+<body>
+    <button id="mybtn">눌러보세요</button>
+    <br>
+    <button id="mybtn2" onclick="displayDate()">눌러보세요2</button>
+    <br>
+    <p id="demo"></p>
+</body>
+</html>

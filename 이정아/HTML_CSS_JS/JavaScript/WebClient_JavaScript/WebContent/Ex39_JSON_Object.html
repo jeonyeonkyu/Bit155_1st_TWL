@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    //1. 배열 > [] > var arr = []; push(), pop()
+    //2. JSON 객체 만드는 법 > {} > var obj = {}; obj.속성명 을 통해 읽거나 넣기 가능
+
+    //배열과 객체를 혼합 (대부분의 공공데이터는 이런식으로 되어있음)
+        //객체배열
+    var students = [];
+        students.push({ //방 하나당 셋트 하나
+            이름: '이정아',
+            국어: 80,
+            영어 : 90,
+        });
+        students.push({ //방 하나당 셋트 하나
+            이름: '김정아',
+            국어: 60,
+            영어 : 70,
+        });
+        students.push({ //방 하나당 셋트 하나
+            이름: '박정아',
+            국어: 50,
+            영어 : 20,
+        });
+        //[{},{},{}] 배열 안에 객체가 3개 들어가있음
+        //기존에 만들어진 객체에다가 함수를 추가 할 수 있음
+
+        for(let index in students){
+            students[index].getSum = function(){
+                return this.국어 + this.영어;} //for문이 돌면서 getSum함수가 추가되면서 국어와 영어 값을 더한 값이 출력
+                students[index].getAvg = function(){
+                return this.getSum()/2;} //내부에서 만들어진 함수를 내부에서 다시 호출 가능
+            } 
+            console.log(students);
+
+            for(let index in students){
+                console.log(students[index].이름);
+                console.log(students[index].getSum());
+                console.log(students[index].getAvg());
+            }
+
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

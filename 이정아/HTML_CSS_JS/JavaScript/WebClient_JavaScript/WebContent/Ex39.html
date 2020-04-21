@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    //1. 배열 [] var arr = []; push(), pop()
+    //2. 객체 {} var lib = {}; lib.속성명으로 읽거나 넣기 가능
+    
+    var students = []; //방 하나당 셋트 하나
+    students.push({
+        이름 : '이정아',
+        나이 : 20,
+        국어 : 20,
+        영어 : 30,
+    });
+    students.push({
+        이름 : '이정아',
+        나이 : 25,
+        국어 : 50,
+        영어 : 80,
+    });
+    //즉 [{},{}] 로 들어가있는 상태
+    //기존에 만들어진 객체에 함수를 추가 할 수도 있음.
+
+    for(let index in students){
+        students[index].getSum = function(){ //students[index]만큼 돌면서 getSum이라는 function을 추가
+            return this.국어 + this.영어;}
+            students[index].getAvg = function(){
+                return this.getSum()/2;}
+            }
+        console.log(students);
+        //student의 각 객체가 getSum함수와 getAvg함수를 가지고 있는 것을 확인 할 수 있다.
+        
+        for(let index in students){
+                console.log(students[index].이름);
+                console.log(students[index].getSum()); //총 합 확인 가능
+                console.log(students[index].getAvg()); //평균값 확인 가능
+            }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
