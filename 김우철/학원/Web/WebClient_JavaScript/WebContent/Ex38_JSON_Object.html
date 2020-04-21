@@ -92,7 +92,88 @@
       
             */
 
-        var product = {};
+            var product = { 제품명: "사과", 년도: "2020", 원산지: "대구" };
+            console.log(product);
+            document.write(product.제품명 + "<br>");
+            document.write(product.년도 + "<br>");
+            document.write(product.원산지 + "<br>");
+            document.write(product.toString() + "<br>");
+
+            var person = {
+                name: "홍길동",
+                addr: '서울시 강남구 역삼동',
+                eat: function (food) {
+                    document.write(this.name + "/ " + this.addr + "/ " + food + "냠냠"); //this는 person을 가리킴
+                }
+            };
+
+            document.write("<hr>");
+            person.eat("apple");
+
+            //1. 속성 제거
+            // var product = {제품명:"사과", 년도:"2020", 원산지:"대구"};
+            delete (product.년도); //이건 잘 안씀
+            console.log(product);
+
+            //javaScript Array 개선된 for
+            //for (let index in Array){ arr[index] }
+
+            //JSON 객체도 개선된 for문 사용 제어 ()
+            //JSON {키:값, 키:값, .... }
+            for (let key in product) {
+                console.log("key :" + key);
+                console.log(product[key]); //key 던지면 value 얻는다.
+            }
+
+            //person >> eat 함수
+            for (let key in person) {
+                console.log("key : " + key + " = " + person[key]);
+            }
+
+            //JSON 객체(XML)
+            //외부API(우편번호, 서울시 화장실 정보, 날씨정보, 대법원 판례, 등등...) ex)다음, 네이버
+            //KEY POINT 제공받는 JSON 가공해서 원하는 정보만 추출해서 사용(중간 프로젝트 강제사항) 최소 3개 이상
+
+            var Member = {}; //빈 객체
+            Member.name = "hong"; // {name:"hong"} 같은 ...
+            console.log(Member);
+            console.log(Member.name);
+
+            Member.age = 100;
+            console.log(Member);
+            console.log(Member.age);
+
+            //기능함수
+            Member.print = function () {
+                document.write("<br>" + this.name + " / " + this.age + "<br>");
+            }
+            //객체이름.함수명
+            Member.print(); // hong / 100
+
+            //객체가 객체를 가질 수 있다.★★★, 거의 다 이런구조임
+            var Grade = {
+                "list": {
+                    "hong": 10,
+                    "kim": 20,
+                    "park": 30
+                },
+                "show": function () {
+                    for (let key in this.list) {
+                        document.write(key + " : " + this.list[key] + "<br>");
+                    }
+                }
+            }
+            Grade.show();
+
+            document.write("<br>");
+            var listobj = Grade.list;
+            document.write(listobj.kim + "<br>");
+            for (let key in listobj) {
+                document.write(key + "," + listobj[key] + "<br>");
+            }
+
+
+
 
         }//onload function
     </script>

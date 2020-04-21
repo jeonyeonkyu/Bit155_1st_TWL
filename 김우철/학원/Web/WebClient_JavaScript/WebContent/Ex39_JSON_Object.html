@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<!-- ★★★JSON 가장 중요제발 중요 쌉 중요★★★ -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //1. 배열 > []      > var arr = []; push(), pop()
+            //2, JSON객체 > {}  > var obj = {}; obj.속성명
+
+            //배열과 객체를 혼합(대부분의 공공데이터)
+
+            var students = [];
+            students.push({이름:'홍길동', 국어:80, 영어:60});
+            students.push({이름:'세종대왕', 국어:10, 영어:85});
+            students.push({이름:'이순신', 국어:99, 영어:90});
+            
+            //[{},{},{}]
+            //기존에 만들어진 객체에 함수 추가
+            for(let index in students){
+                students[index].getSum = function() {
+                    return this.국어 + this.영어;
+                }
+                students[index].getAvg = function() {
+                    return this.getSum() / 2;
+                }
+            }
+
+            console.log(students);
+
+            for(let index in students){
+                console.log(students[index].이름);
+                console.log(students[index].getSum());
+                console.log(students[index].getAvg());
+
+            }
+
+
+        }//onload function
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
