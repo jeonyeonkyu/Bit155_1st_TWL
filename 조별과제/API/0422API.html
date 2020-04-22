@@ -1,22 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+	<!-- 
+	유치원
+ -->
 
-<script type="text/javascript">
-	window.onload = function() {
-		console.log(data.response.body.items[0].fcltyKnd);
-	}
-</script>
+	<script type="text/javascript">
+		window.onload = function () {
+
+			var headers = [];
+			var youcione = []; //유치원 (24개)
+			var ele_school = []; //초등학교 (33개)
+			var spe_school = []; //특수학교 (3개)
+			var care_center = []; //어린이집 (45개) 
+			//총 105게
+
+			for (let index in data.response.body.items) {
+
+				
+				console.log("인덱스 : " + index);
+				// if (data.response.body.items[index].fcltyKnd == "유치원") {
+				// 	youcione.push(data.response.body.items[index])
+				// }
+				// if (data.response.body.items[index].fcltyKnd == "초등학교") {
+				// 	ele_school.push(data.response.body.items[index])
+				// }
+				// if (data.response.body.items[index].fcltyKnd == "특수학교") {
+				// 	spe_school.push(data.response.body.items[index])
+				// }
+				// if (data.response.body.items[index].fcltyKnd == "어린이집") {
+				// 	care_center.push(data.response.body.items[index])
+				// }
+			}
+
+			// for(let i in youcione){
+			// 	var bodyItem = document.getElementById("bodyItem");
+
+			// }
+
+		}
+	</script>
 </head>
+
 <body>
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr class="text-center" id="tableHead">
+				<th>시설종류</th>
+				<th>대상시설명</th>
+				<th>소재지도로명주소</th>
+				<th>관리기관명</th>
+				<th>관할경찰서명</th>
+				<th>CCTV설치여부</th>
+				<th>CCTV설치대수</th>
+				<th>제공기관명</th>
+			</tr>
+		</thead>
+		<tbody id="bodyItem">
+			<!-- <tr>
+				<th>fcltyKnd</th>
+				<th>trgetFcltyNm</th>
+				<th>rdnmadr</th>
+				<th>institutionNm</th>
+				<th>cmptncPolcsttnNm</th>
+				<th>cctvYn</th>
+				<th>cctvNumber</th>
+				<th>insttNm</th>
+			</tr>
+			<tr>
+				<th>fcltyKnd</th>
+				<th>trgetFcltyNm</th>
+				<th>rdnmadr</th>
+				<th>institutionNm</th>
+				<th>cmptncPolcsttnNm</th>
+				<th>cctvYn</th>
+				<th>cctvNumber</th>
+				<th>insttNm</th>
+			</tr> -->
+		</tbody>
+	</table>
 
 	<script src="child.js"></script>
 </body>
