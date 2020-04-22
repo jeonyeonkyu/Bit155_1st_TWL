@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>이벤트객체는 자동 생성된다</title>
+	<script type="text/javascript">
+	/*
+		 try{
+			0/0 >> 자동으로 예외 객체가 생성되고... catch 전달
+		 }catch(Exception e){
+
+		 }
+
+		 javascript >> 사건이 발생하면 (click, mouseover) >> 자동으로 Event 객체 자동생성!!!!
+		 >> 이 객체 안에는 다양한 정보가들어있음 (누가 사건을 일으켰고, 사건의 주체는 뭐고...등등)
+	*/
+		window.onload =function(){
+			var btn = document.getElementById("mybtn");
+			btn.onclick = function(e){ 
+				//이벤트가 발생되면 이벤트의 정보를 담고 있는 객체 생성
+				//클릭이라는 사건이 발생하면 e 라는 변수가 자동생성된 Event 객체를 받는다. 
+				//https://cafe.naver.com/opensourceweb/794  이벤트 객체를 통해서 얻을수 있는 정보들 
+				
+				console.log(e.type);  //click    
+				console.log(e.target); //<span>눌러봐</span>
+				console.log(e.currentTarget); //<button id="mybtn"><span>눌러봐</span></button>
+				console.log(e.x); //좌표값
+				confirm.log(e.y); //좌표값
+				
+			}
+			
+			var btn2 = document.getElementById("mybtn2"); 
+			var handler = function(event){  //var 는 함수의 주소를 가질 수 있다 
+				switch(event.type) //event.type()
+				//event 의 타입에 따라 다른 케이스로 간다. 
+				{ 
+				  case "click": //코드 
+				  		alert("클릭");
+						break; 
+				  case "mouseover": //코드 
+				  		event.target.style.backgroundColor = "red"; 
+				  		break; 
+				  case "mouseout": //코드 
+				  		event.target.style.backgroundColor = ""; 
+				  		break; 
+				  } 
+				  console.log(event.type); 
+				};
+
+/*
+				btn2.onclick = func();  원래는 이런식으로 이벤트 한개 에 함수 한개를 매치시켰는데
+				event를 매개변수로 가진 함수로 한번에 1 : n 의 관계를 맺게 할 수 있다 
+
+				btn2.onclick = handler; 
+				1. 클릭 이라는 이벤트가 발생하면 handler가 가진 함수의 주소로 간다.
+				2. 이벤트 발생시 이벤트 객체(event) 자동생성
+				3. 그 객체(event)의 타입을 확인
+				4. switch문으로 타입 매치 후 실행시킨다. 
+
+
+*/				
+				
+		  	btn2.onclick = handler; 
+		  	btn2.onmouseover = handler; 
+		  	btn2.onmouseout = handler;
+			
+		  	/*
+		  	btn2.onclick = func();   이렇게 할필요없이 하나의 함수를 통해서 이벤트의 속성을 활용하면 코드를 제어 할수 있따. 
+		  	btn2.onmouseover = func2(); 
+		  	btn2.onmouseout = func3();
+			  */
+		}
+		
+		
+		
+
+	</script>
+</head>
+<body>
+	<button id="mybtn"><span>눌러봐</span></button>
+	<br>
+	<button id="mybtn2">눌러봐2</button>
+</body>
+</html>
