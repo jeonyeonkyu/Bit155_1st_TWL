@@ -1,0 +1,79 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="ml-3 mr-3">
+ 
+  <img src="https://www.worldvision.or.kr/images/icon/png/wv-06-protection03-childProtection.png" width="100px" style="float: left;">
+  
+  <img src="https://cdn.pixabay.com/photo/2018/10/08/08/56/graphic-3732290__340.png" width="100px" style="float: right;">
+  <h2 class="text-center" style="font-size: 50px;">어린이 보호구역</h2>
+ 
+  <p>어린이 보호구역 위치 정보를 담은 API입니다. </p>  
+  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr class="text-center">
+            <th>시설종류</th>
+            <th>대상시설명</th>
+            <th>소재지도로명주소</th>
+            <th>관리기관명</th>
+            <th>관할경찰서명</th>
+            <th>CCTV설치여부</th>
+            <th>CCTV설치대수</th>
+            <th>제공기관명</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        <tr>
+            <th>fcltyKnd</th>
+            <th>trgetFcltyNm</th>
+            <th>rdnmadr</th>
+            <th>institutionNm</th>
+            <th>cmptncPolcsttnNm</th>
+            <th>cctvYn</th>
+            <th>cctvNumber</th>
+            <th>insttNm</th>
+        </tr>
+        <tr>
+            <th>123123</th>
+            <th>16757</th>
+            <th>345345</th>
+            <th>4564564</th>
+            <th>78678</th>
+            <th>134634</th>
+            <th>87586</th>
+            <th>536546</th>
+        </tr>
+    </tbody>
+  </table>
+  
+
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script src="child.js"></script>
+</body>
+</html>
