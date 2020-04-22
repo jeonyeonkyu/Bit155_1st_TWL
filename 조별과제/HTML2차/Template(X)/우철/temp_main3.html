@@ -113,6 +113,15 @@
             font-size: 19px;
             /* padding: 16px 32px; */
         }
+
+        td {
+            text-align: center;
+
+        }
+
+        th {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -127,6 +136,7 @@
                 </div>
             </div>
         </a>
+
         <div class="navbar-collapse">
             <ul class="navbar-nav nav-item">
                 <li class="nav-item mx-auto">
@@ -153,35 +163,73 @@
 
             </ul>
         </div>
-    </nav>
+    </nav> <!-- nav -->
 
-
-    
-                <!-- The Modal -->
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-sm modal-dialog-centered">
-                        <!-- <div class="modal-dialog modal-dialog-scrollable">
-                                :본문 내용 많을시 모덜 내부에서만 스크롤 가능 -->
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Modal Heading</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                Modal body..
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal modal-dialog-centered">
+            <!-- <div class="modal-dialog modal-dialog-scrollable">
+        :본문 내용 많을시 모덜 내부에서만 스크롤 가능 -->
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title"><img class="mr-2" src="./images/crown.svg">우리 조의 랭킹
+                        <img class="ml-2" src="./images/crown.svg"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <!-- Modal body -->
+
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th colspan="2">이름</th>
+                                <th>조장기준 총애 순위</th>
+                                <th>영타 순위</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>김우철</td>
+                                <td></td>
+                                <td><img src="./images/crown.svg" alt=""></td>
+                                <td>1</td>
+
+                            </tr>
+                            <tr>
+                                <td>이정아</td>
+                                <td></td>
+                                <td>1</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>구슬기</td>
+                                <td></td>
+                                <td>1</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>전연규</td>
+                                <td></td>
+                                <td>1</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>장민봉</td>
+                                <td></td>
+                                <td>1</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Modal end -->
+
 
     <div class="container p-0">
         <section class="resume-section p-3 p-lg-5" style="margin-left:225px; margin-top:-48px;margin-right:-48px">
@@ -225,9 +273,9 @@
         <div style="margin-left:270px;">
             <hr>
         </div>
-    </div>
+    </div> <!-- 슬라이드 -->
 
-    <section class="section3 mb-3" style="">
+    <section class="section3 mb-3">
         <div class="row" style="width:80%; margin-left:400px;">
             <div class="card-deck">
                 <div class="col">
@@ -293,6 +341,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card-body">
                             <h4 class="card-title">구슬기</h4>
                             <p class="card-text">
@@ -317,6 +366,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card-body">
                             <h4 class="card-title">이정아</h4>
                             <p class="card-text">
@@ -341,6 +391,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card-body">
                             <h4 class="card-title">장민봉</h4>
                             <p class="card-text">
@@ -350,48 +401,9 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- <div class="col">
-                    <div class="card mx-auto" style="width:250px; height:500px;">
-                        <div class="wrapper">
-                            <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/연규카드.jpg">
-                            <div class="middle">
-                                <div class="text">
-                                    <p class="ptag">정아 : 조장님 처음에 별로였는데 지금도 별로네요. 수고하세요.<br>
-                                        슬기 : 괴한이세sssdasadsdadsass요?<br>
-                                        민봉 : 누구세요?<br>
-                                        연규 : 우철아 담피 ㄱ?<br>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">전연규</h4>
-                                <p class="card-text">
-                                    역할 : 주식투자러<br>
-                                    포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
-                                    <br>
-                                    포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card mx-auto" style="width:250px; height:500px;">
-                        <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/슬기카드.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">구슬기</h4>
-                            <p class="card-text">
-                                역할 : 서기<br>
-                                포부 : 나는 글씨를 이쁘게 쓰는 서기!!
-                            </p>
-                            <!-- 모달 추가? -->
             </div>
         </div>
-    </section> <!-- section3(experience) end -->
-
-
+    </section> <!-- 각자 자기소개 -->
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -408,7 +420,7 @@
 </body>
 
 <script> $('.carousel').carousel({
-        interval: 5000 //기본 5초 
+        interval: 5000 //슬라이드 기본 5초 
     }) 
 </script>
 
