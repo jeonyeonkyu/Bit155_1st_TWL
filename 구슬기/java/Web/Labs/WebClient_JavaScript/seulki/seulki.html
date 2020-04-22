@@ -15,6 +15,8 @@
     <div id="home"/><!-- navbar 에서 #career 와 section 의 아이디값이 일치해서 이동함-->
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: rgb(83, 137, 209);">
         <div class="container">
+            <a href="https://www.daum.net">
+                <img src="./img/egg.svg" style="width: 45px; height: 45px;" class="my-3"></a>
             <a href="index.html" class="navbar-brand">KU SEUL KI</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -44,19 +46,21 @@
     <section class="container mt-5">
         <div class="text-center">                   <!-- mb-3 아래쪽  mt-3 위쪽 여백-->
             <img src="./img/슬기.png" class="img-fluid mb-3 mt-5 rounded-pill">
-            <h2>구슬기
-                <h5>유난히 내성적이었던..</h5>
-            </h2>
-            <img src="./img/cloud-rain.svg" class="img-fluid mr-1">날씨
-            <img src="./img/heart.svg" class="img-fluid mr-1">좋아함
-            <img src="./img/music.svg" class="img-fluid mr-1" id="career" >음악
+            <h3 style="font-family:Carrois Gothic SC">구슬기
+                <!-- <h5>유난히 내성적이었던..</h5> -->
+            </h3>
+            <img src="./img/heartt.svg" class="img-fluid mr-1" style="width: 50px; height: 50px;"> 유난히 내성적이었던...
+            <br>
+            <img src="./img/arrow.svg" class="img-fluid mr-1" style="width: 50px; height: 50px;"> 오설록 제주 동백꽃 티 
+            <!-- <br>
+            <img src="./img/arrow.svg" class="img-fluid mr-1" id="career" style="width: 50px; height: 50px;" >  -->
         </div>
 
     </section>
     <section  class="bg-white text-dark mt-5 mb-3 pt-5 pb-4">
         <div class="text-center">
             <div class="container text-left mb-5" style="max-width: 600px;">
-                <h4>  연주 경력 </h4>
+                <h4 style="font-family:Carrois Gothic SC">  연주 경력 </h4>
                 <ul>
                     <li>CUVRES Ensemble 호른 협연 가천대학교 예음관 예음홀</li>
                     <li>Mu : 人 Clarinet Ensemble 성남아트센터 앙상블시어터</li>
@@ -68,7 +72,7 @@
         </div>
         <div class="text-center">
             <div class="container text-left mb-5" style="max-width: 600px;">
-                <h4>  개발자로서의 능력 </h4>
+                <h4 style="font-family:Carrois Gothic SC">  개발자로서의 능력 </h4>
                 <div class="container my-4">
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%"
@@ -195,7 +199,7 @@
                     <div class="col-7">
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="list-java">
-                                <img class="d-block w-100" src="./img/나.jpg" alt="첫 번째 이미지">
+                                <img class="d-block w-100" src="./img/나4.jpg" alt="첫 번째 이미지">
                                 
                             </div>
                             <div class="tab-pane fade" id="list-cpp">
@@ -228,9 +232,9 @@
     <section id="contact" class="bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 mb-4">
                     <!--반반씩 하나의 행 차지하도록해줌-->
-                    <h2 class="mt-5 ">주절주절</h2>
+                    <h4 class="mt-5 " style="font-family:Carrois Gothic SC">주절주절</h4>
                     <div class="d-flex flex-row">
                         <div class="p-3 align-self-start"></div>
                         <img src="./img/happy.svg" style="width: 50px; height: 50px;">
@@ -261,23 +265,18 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card text-center card-form mt-4 mb-4">
-                        <div class="card-body">
-                            <h2>간편 문의</h2>
+                    <div class="card text-center card-form mt-5 mb-4">
+                        <div class="card-body center">
+                            <h4>추천 링크</h4>
                             <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="이름">
+                                <div class="footer-col col-md-4 mb-2 "  style="
+                                margin-left: 160px;
+                            ">
+                                    <h3 style="color: black;">Click</h3>
+                                    <a href="https://youtu.be/wbT9DeULzU4" class="btn btn-primary m-2 ">피아노곡</a>  
+                                    <a href="https://youtu.be/kxqn8FAVbpU?list=RDkxqn8FAVbpU" class="btn btn-danger m-2">팝송</a>
+                                    <a href="https://youtu.be/pT9mCa_5C4A?list=RDpT9mCa_5C4A" class="btn btn-success m-2">마림바곡</a>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email"" class="form-control form-control-lg" placeholder="이메일">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="연락처">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control form-control-lg" placeholder="내용을 입력하세요."></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-outline-primary">전송하기</button>
                             </form>
                         </div>
                     </div>
@@ -288,22 +287,6 @@
     <footer class="text-center text-white" style="background-color: rgb(83, 137, 209);">
         <div class="footer-above">
             <div class="container pt-4">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3 style="color:white;">어디 사나요</h3>
-                        <p>구리시<br>구리시구리시에있어</p>
-                    </div>
-                    <div class="footer-col col-md-4 mb-2">
-                        <h3 style="color:white;">소셜 미디어</h3>
-                        <a href="#" class="btn btn-light m-2">페이스북</a>
-                        <a href="#" class="btn btn-light m-2">유튜브</a>
-                        <a href="#" class="btn btn-light m-2">블로그</a>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3 style="color:white;">구슬기</h3>
-                        <p>발전하는<br>내일을향해</p>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="footer-below pb-4">
