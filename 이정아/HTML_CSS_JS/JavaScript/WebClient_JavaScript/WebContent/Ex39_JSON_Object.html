@@ -28,8 +28,9 @@
             영어 : 20,
         });
         //[{},{},{}] 배열 안에 객체가 3개 들어가있음
-        //기존에 만들어진 객체에다가 함수를 추가 할 수 있음
 
+        //기존에 만들어진 객체에다가 함수를 추가 할 수 있음
+        
         for(let index in students){
             students[index].getSum = function(){
                 return this.국어 + this.영어;} //for문이 돌면서 getSum함수가 추가되면서 국어와 영어 값을 더한 값이 출력
