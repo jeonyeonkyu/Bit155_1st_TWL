@@ -92,8 +92,16 @@
         }
 
         .wrapper:hover #image {
-            opacity: 0.3;
+            filter: brightness(18%);
+            /* opacity: 0.3; */
+            /* color:black; */
+            /* background-color:black; */
+            transform: scale(1.2);
         }
+
+        /* .wrapper:hover .ptag{
+            width:250px;
+        } */
 
         .wrapper:hover .middle {
             opacity: 1;
@@ -101,8 +109,8 @@
 
         .text {
             /* background-color: #4CAF50; */
-            color: black;
-            font-size: 16px;
+            color: white;
+            font-size: 19px;
             /* padding: 16px 32px; */
         }
     </style>
@@ -122,10 +130,10 @@
         <div class="navbar-collapse">
             <ul class="navbar-nav nav-item">
                 <li class="nav-item mx-auto">
-                    <a class="nav-link js-scroll-trigger mb-2" href="#about">KIM WOOCHEOL</a>
+                    <a class="nav-link js-scroll-trigger mb-2" href="/우철/index.html">KIM WOOCHEOL</a>
                 </li>
                 <li class="nav-item mx-auto">
-                    <a class="nav-link js-scroll-trigger mb-2" href="#experience">LEE JUNGAH</a>
+                    <a class="nav-link js-scroll-trigger mb-2" href="/정아/introduce/index.html">LEE JUNGAH</a>
                 </li>
                 <li class="nav-item mx-auto">
                     <a class="nav-link js-scroll-trigger mb-2" href="#education">KU SEULKI</a>
@@ -138,13 +146,22 @@
                     <a class="nav-link js-scroll-trigger mb-2" href="#interests">JANG MINBONG</a>
                 </li>
                 <li class="nav-item mx-auto">
-                    <a class="nav-link js-scroll-trigger mb-2" data-toggle="modal" data-target="#myModal" href="#interests">RANK</a>
+                    <a class="nav-link js-scroll-trigger mb-2" data-toggle="modal" data-target="#myModal"
+                        href="#interests">RANK</a>
                 </li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+
+    
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal modal-dialog-centered">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
                         <!-- <div class="modal-dialog modal-dialog-scrollable">
-                    :본문 내용 많을시 모덜 내부에서만 스크롤 가능 -->
+                                :본문 내용 많을시 모덜 내부에서만 스크롤 가능 -->
                         <div class="modal-content">
 
                             <!-- Modal Header -->
@@ -165,9 +182,6 @@
                         </div>
                     </div>
                 </div>
-            </ul>
-        </div>
-    </nav>
 
     <div class="container p-0">
         <section class="resume-section p-3 p-lg-5" style="margin-left:225px; margin-top:-48px;margin-right:-48px">
@@ -208,23 +222,25 @@
                 </a>
             </div>
         </section>
-        <hr>
+        <div style="margin-left:270px;">
+            <hr>
+        </div>
     </div>
 
     <section class="section3 mb-3" style="">
-        <div class="row" style="width:80%; margin-left:325px;">
+        <div class="row" style="width:80%; margin-left:400px;">
             <div class="card-deck">
                 <div class="col">
-                    <div class="card mx-auto" style="width:250px; height:500px;">
+                    <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
                                 src="../main_images/우철카드.JPG">
                             <div class="middle">
                                 <div class="text">
-                                    <p>정아 : 조장님 처음에 별로였는데 지금도 별로네요. 수고하세요.<br>
-                                        슬기 : 괴한이세요?<br>
-                                        민봉 : 누구세요?<br>
-                                        연규 : 우철아 담피 ㄱ?<br>
+                                    <p class="ptag">정아 : 산소같은 우철..<br>
+                                        슬기 : 우철이 웃는거 너무 웃겨~~<br>
+                                        민봉 : 많이 알려줘서 고마워!!<br>
+                                        연규 : 우철아 이좀 그만닦아 이에서 피나겠다!!<br>
                                     </p>
                                 </div>
                             </div>
@@ -233,30 +249,136 @@
                             <h4 class="card-title">김우철</h4>
                             <p class="card-text">
                                 역할 : 조장<br>
-                                포부 : 쓰러질때까지 열심히!!
-                                26.8조 화이팅!!
+                                포부 : 후회하며 살아온 인생. 이번에는 후회하지 말자
                             </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mx-auto" style="width:250px; height:400px;">
+                        <div class="wrapper">
+                            <img class="card-img-top" id="image" alt="Card image" style="width:100%"
+                                src="../main_images/연규카드.JPG">
+                            <div class="middle">
+                                <div class="text">
+                                    <p class="ptag">정아 : 연규야 연규야 연규야..<br>
+                                        슬기 : 연규 눈이 이뻐^.^<br>
+                                        민봉 : 의외의 실력!!<br>
+                                        우철 : 주식 대박나길 바래!!<br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">전연규</h4>
+                            <p class="card-text">
+                                역할 : 요리사<br>
+                                포부 : 크게 잃어본 사람이 벌때 잘번다
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mx-auto" style="width:250px; height:400px;">
+                        <div class="wrapper">
+                            <img class="card-img-top" id="image" alt="Card image" style="width:100%"
+                                src="../main_images/슬기카드.JPG">
+                            <div class="middle">
+                                <div class="text">
+                                    <p class="ptag">정아 : 슬기로운 슬기야~<br>
+                                        연규 : 누나는 다 이뻐!!<br>
+                                        민봉 : 웃음소리가 호탕하다!!<br>
+                                        우철 : 마들렌 맛있었어ㅎㅎ<br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">구슬기</h4>
+                            <p class="card-text">
+                                역할 : 서기<br>
+                                포부 :
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mx-auto" style="width:250px; height:400px;">
+                        <div class="wrapper">
+                            <img class="card-img-top" id="image" alt="Card image" style="width:100%"
+                                src="../main_images/정아카드.JPG">
+                            <div class="middle">
+                                <div class="text">
+                                    <p class="ptag">우철 : 지식으로 저좀 혼내주세요..<br>
+                                        연규 : 우철이좀 지식으로 때려줘!!<br>
+                                        슬기 : 언니 내가 잘할께 때리지마..<br>
+                                        민봉 : 불러줘서 고마워..<br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">이정아</h4>
+                            <p class="card-text">
+                                역할 : 부조장<br>
+                                포부 :
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mx-auto" style="width:250px; height:400px;">
+                        <div class="wrapper">
+                            <img class="card-img-top" id="image" alt="Card image" style="width:100%"
+                                src="../main_images/민봉카드.JPG">
+                            <div class="middle">
+                                <div class="text">
+                                    <p class="ptag">슬기 : 의외의 귀염성<br>
+                                        정아 : 의외의 귀염성22<br>
+                                        연규 : 모두 민봉이한테 민봉아 라고 해주세요.<br>
+                                        우철 : 형이 많이 생각하는거 알지? <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">장민봉</h4>
+                            <p class="card-text">
+                                역할 : 총무<br>
+                                포부 : 2차 프로젝트에서 제 몫 다하기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="col">
+                    <div class="card mx-auto" style="width:250px; height:500px;">
+                        <div class="wrapper">
+                            <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/연규카드.jpg">
+                            <div class="middle">
+                                <div class="text">
+                                    <p class="ptag">정아 : 조장님 처음에 별로였는데 지금도 별로네요. 수고하세요.<br>
+                                        슬기 : 괴한이세sssdasadsdadsass요?<br>
+                                        민봉 : 누구세요?<br>
+                                        연규 : 우철아 담피 ㄱ?<br>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">전연규</h4>
+                                <p class="card-text">
+                                    역할 : 주식투자러<br>
+                                    포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
+                                    <br>
+                                    포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card mx-auto" style="width:250px; height:500px;">
-                        <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/연규카드.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">전연규</h4>
-                            <p class="card-text">
-                                역할 : 주식투자러<br>
-                                포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
-                                <br>
-                                포부 : 눈감고도 코딩할 수 있도록 열심히 하겠습니다.
-                            </p>
-                            <!-- <a href="#" class="btn btn-primary">하고싶은 말</a> -->
-                            <!-- 모달 추가? -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                     <div class="card mx-auto" style="width:250px; height:500px;">
                         <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/슬기카드.jpg">
                         <div class="card-body">
                             <h4 class="card-title">구슬기</h4>
@@ -265,38 +387,8 @@
                                 포부 : 나는 글씨를 이쁘게 쓰는 서기!!
                             </p>
                             <!-- 모달 추가? -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                     <div class="card mx-auto" style="width:250px; height:500px;">
-                        <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/연규카드.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">이정아</h4>
-                            <p class="card-text">
-                                역할 : 부조장<br>
-                                포부 : 내이름은 부조장!! 26.8조가 제일 좋아!!
-                            </p>
-                            <!-- 모달 추가? -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                     <div class="card mx-auto" style="width:250px; height:500px;">
-                        <img class="card-img-top" alt="Card image" style="width:100%" src="../main_images/연규카드.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">장민봉</h4>
-                            <p class="card-text">
-                                역할 : 동물애호가<br>
-                                포부 : 동물들의 편의를 지켜주는 사이트를 만들겠드아아!!
-                            </p>
-                            <!-- 모달 추가? -->
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-
     </section> <!-- section3(experience) end -->
 
 
