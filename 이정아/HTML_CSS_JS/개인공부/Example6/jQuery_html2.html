@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">button</button>
+    <p>안녕하세요</p>
+    <script type="text/javascript">
+    $(document).ready(function () {
+       $("#button").click(function() { 
+           $("p").attr("style", "font-weight:bold;"); //attr 함수를 이용해서 p태그의 내용을 parameter안의 데이터 대로 쓰기
+       });
+    });
+    </script>
+</body>
+</html>

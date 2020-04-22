@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Form</title>
+</head>
+
+<body>
+
+    <div class="container m-4">
+        <form action="">
+            <div class="form-group">
+                <label>이메일 주소</label>
+                <input type="email" class="form-control" placeholder="이메일을 입력하세요.">
+                <!-- placeholder는 사용자가 아무것도 입력하지 않았을때 입력값을 받게끔유도하기위해서 사용 -->
+                <small class="form-text text-muted">사용자의 개인정보는 안전하게 보관됩니다</small>
+                <!-- small 작은크기의 글씨를 적을수 있다 -->
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호</label>
+                <input type="password" class="form-control" placeholder="비밀번호를 입력하세요.">
+            </div>
+
+            <!-- -----옵션 넣기 ↓↓↓↓↓ -->
+            <hr>
+            <div class="form-group">
+                <select class="form-control">
+                    <option>남성</option>
+                    <option>여성</option>
+                </select>
+            </div>
+
+            <!-- 파일 업로드 양식 넣기 -->
+            <hr>
+            <div class="form-group">
+                <label class="custom-file">
+                    <input type="file" class="custom-file-input">
+                    <span class="custom-file-label">Choose file</span>
+            </div>
+            <!-- 성 과 이름 입력받기 (그리드적용)-->
+            <hr>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="성">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="이름">
+                </div>
+            </div>
+
+            <!-- 좀더 복잡한 그리드적용 -->
+            <hr>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>상세주소</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>시/군/구</label>
+                    <select class="form-control">
+                      <option selected>서울특별시</option>
+                      <option>군포시</option>
+                      <option>안양시</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>도</label>
+                    <select class="form-control">
+                        <option selected>서울</option>
+                        <option>경기도</option>
+                        <option>충청북도</option>
+                      </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">제출(Submit)</button>
+        </form>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li></ul>
+        
+    <p>Click the button</p>
+
+    <button onclick="myFuc()">Try it</button>
+    <button onclick="myFun2()">Try it</button>
+   <script>
+       function myFuc(){
+           var list = document.getElementById("mylist");
+          list.removeChild(list.childNodes[0]); 
+       }
+       function myFun2(){
+           var textnode = document.createTextNode("Water");
+           var item = document.getElementById("mylist").childNodes[0];
+           item.replaceChild(textnode,item.childNodes[0]);
+       }
+//https://www.w3schools.com/js/js_htmldom_document.asp
+   </script> 
+</body>
+</html>

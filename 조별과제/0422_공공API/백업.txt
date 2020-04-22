@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		window.onload = function () {
+
+			var headers = ["시설종류", "대상시설명", "소재지도로명주소", "관리기관명",
+				"관할경찰서명", "CCTV설치여부", "CCTV설치대수", "제공기관명"];
+
+			var Gangseo = [];
+			var Gangnam = [];
+			var Yeongdeungpo = [];
+			var Dongdaemun = [];
+			var Seodaemun = [];
+
+			var Gwangjin = [];
+			var Gwanak = [];
+			var Eunpyeong = [];
+			var Seocho = [];
+			var Jongno = [];
+
+			//각각 10개 씩
+
+			for (let index in data.response.body.items) {
+				if ((data.response.body.items[index].insttNm).includes("강서구")) {
+					Gangseo.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("강남구")) {
+					Gangnam.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("영등포구")) {
+					Yeongdeungpo.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("동대문구")) {
+					Dongdaemun.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("서대문구")) {
+					Seodaemun.push(data.response.body.items[index]);
+				}
+
+				else if ((data.response.body.items[index].insttNm).includes("광진구")) {
+					Gwangjin.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("관악구")) {
+					Gwanak.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("은평구")) {
+					Eunpyeong.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("서초구")) {
+					Seocho.push(data.response.body.items[index]);
+				}
+				else if ((data.response.body.items[index].insttNm).includes("종로구")) {
+					Jongno.push(data.response.body.items[index]);
+				}
+			} //데이터 각각의 배열에 삽입
+
+			var temp = {
+				"local": [
+					Gangseo,
+					Gangnam,
+					Yeongdeungpo,
+					Dongdaemun,
+					Seodaemun,
+					Gwangjin,
+					Gwanak,
+					Eunpyeong,
+					Seocho,
+					Jongno
+				]
+			}
+
+			// var name = ["Gangseo", "Gangnam"];
+
+			// var aa = "Gangseo";
+			// var bb = "Gangnam";
+			// var bb = temp.local[0];
+			console.log(temp.local[0]);
+
+			for (let i in headers) {
+				var tableHead = document.getElementById("tableHead");
+				var head = document.createElement("th");
+				head.textContent = headers[i];
+				tableHead.appendChild(head)
+			} //헤더 삽입
+
+			var bodyItem = document.getElementById("bodyItem");
+			var number = 0;
+
+			while (number < 10) {
+				for (var s = 0; s < temp.local.length; s++) {
+					var tr = document.createElement("tr");
+					var td = document.createElement("td");
+					td.innerHTML = temp.local[number][s].fcltyKnd;
+					tr.appendChild(td);
+					var td2 = document.createElement("td");
+					td2.innerHTML = temp.local[number][s].trgetFcltyNm;
+					tr.appendChild(td2);
+					var td3 = document.createElement("td");
+					td3.textContent = temp.local[number][s].rdnmadr;
+					tr.appendChild(td3)
+					var td4 = document.createElement("td");
+					td4.textContent = temp.local[number][s].institutionNm;
+					tr.appendChild(td4)
+					var td5 = document.createElement("td");
+					td5.textContent = temp.local[number][s].cmptncPolcsttnNm;
+					tr.appendChild(td5)
+					var td6 = document.createElement("td");
+					td6.textContent = temp.local[number][s].cctvYn;
+					tr.appendChild(td6);
+					var td7 = document.createElement("td");
+					td7.textContent = temp.local[number][s].cctvNumber;
+					tr.appendChild(td7)
+					var td8 = document.createElement("td");
+					td8.textContent = temp.local[number][s].insttNm;
+					tr.appendChild(td8)
+					bodyItem.appendChild(tr);
+				}
+				number += 1;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div class="display-4">
+		어린이 보호구역
+	</div>
+
+	<table class="table text-center">
+		<thead class="thead-dark">
+			<tr class="text-center" id="tableHead">
+
+			</tr>
+		</thead>
+		<tbody id="bodyItem">
+
+		</tbody>
+	</table>
+
+	<script src="child.js"></script>
+</body>
+
+
+</html>

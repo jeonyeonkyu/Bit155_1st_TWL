@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM함수</title>
+    <script type="text/javascript">
+    
+    window.onload=function(){
+        var pele = document.createElement("p"); //<p></p>
+        var hele = document.createElement("hr");
+        var h3ele = document.createElement("h3");
+        var textnode = document.createTextNode("hello world");
+        var divele = document.createElement("div"); //<div></div>
+        var textnode2 = document.createTextNode("Hi Hi Hi");
+
+           //<hr title="수평선"> ->속성값 주기
+        hele.setAttribute("title","수평선");
+        
+            //<h3>Hello world</h3> ->합치기
+        h3ele.appendChild(textnode);
+
+            //<div>Hi Hi Hi</div>
+        divele.appendChild(textnode2);
+
+
+            //<body><p><div>HI HI HI</div></p></body>
+        document.body.appendChild(pele).appendChild(divele);
+
+        //body태그의 자식요소로 hr태그 추가
+        //<body><p><div>HI HI HI</div></p><hr title="수평선></body>
+        document.body.appendChild(hele);
+
+        document.body.appendChile(h3ele);
+
+    }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
