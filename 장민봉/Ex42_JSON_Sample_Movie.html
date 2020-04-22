@@ -21,18 +21,139 @@
 	//데이터를 원하는 형태로 가공해서 출력하세요(부트스트랩 사용)
 	//
 		// console.log(data);
-		console.log(data.boxOfficeResult.dailyBoxOfficeList.movieNm);
-        //개봉일자 배열에 담기
-        var dailyArray = data.boxOfficeResult.dailyBoxOfficeList;
-        for(var index in dailyArray){
-            var obj = dailyArray[index];
-            var obj2 = obj.openDt
-            console.log(obj2);
-        }
-	 </script>
+		// console.log(data.boxOfficeResult.dailyBoxOfficeList.movieNm);
+        // //개봉일자 배열에 담기
+        // var openDtArray = data.boxOfficeResult.dailyBoxOfficeList;
+        // for(var index in openDtArray){
+        //     var obj = openDtArray[index];
+        //     var obj1 = obj.openDt
+        //     console.log(obj1);
+        // }
+		// //영하이름 배열
+		// var movieNmArray = data.boxOfficeResult.dailyBoxOfficeList;
+        // for(var index in movieNmArray){
+        //     var obj = movieNmArray[index];
+        //     var obj2 = obj.movieNm
+        //     console.log(obj2);
+
+        // }	
+
+		// //순위 배열
+		// 	var movieNmArray = data.boxOfficeResult.dailyBoxOfficeList;
+       	// 	 for(var index in movieNmArray){
+        //     var obj = movieNmArray[index];
+        //     var obj3 = obj.movieNm
+        //     console.log(obj3);
+        // }	
+		// //신작 배열
+	
+		// var rankNewArray = data.boxOfficeResult.dailyBoxOfficeList;
+		// 	for(var index in rankNewArray){
+		// 		var obj = rankNewArray[index];
+		// 		var obj4 = obj.rankOldAndNew
+		// 		console.log(obj4);
+		// 	}
+		// function movieNm(){
+		// 	document.write(obj2);
+		// }
+
+		window.onload = function(){
+			getMovie();
+
+			document.getElementById("sel").onchange=function(){
+
+				var control = document.getElementById("sel");
+				changeTable(control.options[control.selectIndex].value);
+			}
+
+			var tableName = '"testTable"';
+			function changeTable(location){
+				if(document.getElementById(tableName)!=null){
+					document.getElementById(tableName).remove();
+				}
+
+				var dailyBoxOfficeList = data.boxOfficeResult[1].dailyBoxOfficeList;
+				var target = [];
+				for(var index in dailyBoxOfficeList){
+					if(dailyBoxOfficeList[index].movieNm == location)
+					target.push(dailyBoxOfficeList[index]);
+				}
+				var headers = ["개봉일자", "순위", "신작"];
+				var table = document.createElement("table");
+				table.setAttribute("id", tableName);
+				table.setAttribute("class", "table table-hover");
+				for(var i =0; i<target.length;i++){
+					
+					var tr = document.createElement("tr");
+					var innerEle = "";
+					var text="";
+					if(i===0){
+						tr.setAttribute("class", "table-primary");
+						innerEle = "th";
+						for(var j = 0; j<headers.length;j++){
+							var td = document.createElement(innerEle);
+							td.innerHTML = headers[j];
+							tr.appendChild(td);
+						}
+						table.appendChild(tr);
+						document.body.appendChild(table);
+						tr=document.createElement("tr");
+					}
+					innerEle = "td";
+
+					var td1 = document.createElement(innerEle);
+					td1.innerHTML = target[i].openDt;
+					tr.appendChild(td1);
+
+					var td2 = document.createElement(innerEle);
+					td2.innerHTML = target[i].rank;
+					tr.append(td2);
+
+					var td3 = document.createElement(innerEle);
+					td3.innerHTML = target[i].rankOldAndNew;
+					tr.appendChild(td3);
+					
+					table.appendChild(tr);			
+				}
+				document.body.appendChild(table);
+			}
+
+		}
+
+		function getMovie(){
+			var dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
+			var movieInfos = [];
+
+			for(var index in dailyBoxOfficeList){
+				var movieInfo = dailyBoxOfficeList[index].movieNm;
+				if(movieInfos.indexOf(movieInfo)<0){	
+					if(movieInfos.length==0){
+						var option = document.createElement("option");
+						option.innerHTML = "영화 선택해주세요";
+						option.setAttribute("value", "선택 해주세요");
+						document.getElementById("sel").appendChild(option);
+						}
+
+					var option = document.createElement("option");
+
+					option.innerHTML = movieInfo;
+
+					option.setAttribute("value", movieInfo);
+
+					document.getElementById("sel").appendChild(option);
+
+					movieInfos.push(movieInfo);
+			    }
+			}
+		}
+
+
+		 </script>
 </head>
 <body>
-    <h2>개봉일자</h2>
+	<select class="form-control" name="sel" id="sel">
+		
+	</select>
 
 </body>
 </html>
