@@ -65,20 +65,6 @@
 				}
 			} //데이터 각각의 배열에 삽입
 
-			var temp = {
-				"local": [
-					Gangseo,
-					Gangnam,
-					Yeongdeungpo,
-					Dongdaemun,
-					Seodaemun,
-					Gwangjin,
-					Gwanak,
-					Eunpyeong,
-					Seocho,
-					Jongno
-				]
-			}
 
 			for (let i in headers) {
 				var tableHead = document.getElementById("tableHead");
@@ -87,47 +73,42 @@
 				tableHead.appendChild(head)
 			} //헤더 삽입
 
-			var myTable = document.getElementById("myTable");
-			var number = 0;
 
-			while (number < 10) {
-				for (var s = 0; s < temp.local.length; s++) {
-					var tr = document.createElement("tr");
-					var td = document.createElement("td");
-					td.innerHTML = temp.local[number][s].fcltyKnd;
-					tr.appendChild(td);
+			console.log(Gangseo[0]);
 
-					var td2 = document.createElement("td");
-					td2.innerHTML = temp.local[number][s].trgetFcltyNm;
-					tr.appendChild(td2);
+			// for (let z in Gangseo) {
+			var bodyItem = document.getElementById("myTable");
 
-					var td3 = document.createElement("td");
-					td3.textContent = temp.local[number][s].rdnmadr;
-					tr.appendChild(td3)
+			console.log(Gangseo[0].fcltyKnd)
+			console.log(Gangseo[0].trgetFcltyNm)
+			for (var s = 0; s < Gangseo.length; s++) {
+				var tr = document.createElement("tr");
 
-					var td4 = document.createElement("td");
-					td4.textContent = temp.local[number][s].institutionNm;
-					tr.appendChild(td4)
-
-					var td5 = document.createElement("td");
-					td5.textContent = temp.local[number][s].cmptncPolcsttnNm;
-					tr.appendChild(td5)
-
-					var td6 = document.createElement("td");
-					td6.textContent = temp.local[number][s].cctvYn;
-					tr.appendChild(td6);
-
-					var td7 = document.createElement("td");
-					td7.textContent = temp.local[number][s].cctvNumber;
-					tr.appendChild(td7);
-
-					var td8 = document.createElement("td");
-					td8.textContent = temp.local[number][s].insttNm;
-					tr.appendChild(td8);
-
-					myTable.appendChild(tr);
-				}
-				number += 1;
+				var td = document.createElement("td");
+				td.innerHTML = Gangseo[s].fcltyKnd;
+				tr.appendChild(td);
+				var td2 = document.createElement("td");
+				td2.innerHTML = Gangseo[s].trgetFcltyNm;
+				tr.appendChild(td2);
+				var td3 = document.createElement("td");
+				td3.textContent = Gangseo[s].rdnmadr;
+				tr.appendChild(td3)
+				var td4 = document.createElement("td");
+				td4.textContent = Gangseo[s].institutionNm;
+				tr.appendChild(td4)
+				var td5 = document.createElement("td");
+				td5.textContent = Gangseo[s].cmptncPolcsttnNm;
+				tr.appendChild(td5)
+				var td6 = document.createElement("td");
+				td6.textContent = Gangseo[s].cctvYn;
+				tr.appendChild(td6);
+				var td7 = document.createElement("td");
+				td7.textContent = Gangseo[s].cctvNumber;
+				tr.appendChild(td7)
+				var td8 = document.createElement("td");
+				td8.textContent = Gangseo[s].insttNm;
+				tr.appendChild(td8)
+				bodyItem.appendChild(tr);
 			}
 		}
 	</script>
