@@ -2,6 +2,7 @@
 <!-- [Google Map API] 주소 입력시 좌표 반환 받고 맵 마커 찍기.-->
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             margin: 0;
             padding: 0
         }
+
         #search-panel {
             position: absolute;
             top: 10px;
@@ -27,8 +29,9 @@
             padding: left: 10px
         }
     </style>
-    <title></title>
+    <title>index5.html</title>
 </head>
+
 <body>
     <div id="search-panel">
         <input id="address" type="text" value="대구광역시 북구 침산로 158" />
@@ -37,12 +40,12 @@
 
     <div id="google-map">
     </div>
- 
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Map API -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&callback=initMap">
-    </script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&callback=initMap">
+        </script>
     <script>
         /**
          * Google Map API 주소의 callback 파라미터와 동일한 이름의 함수이다.
@@ -50,7 +53,7 @@
          */
         function initMap() {
             console.log('Map is initialized.');
- 
+
             /**
              * 맵을 설정한다.
              * 1번째 파라미터 : 구글 맵을 표시할 위치. 여기서는 #google-map
@@ -78,36 +81,37 @@
             console.log(marker.position.lat());
             console.log(marker.position.lng());
 
-            marker.addListener('click', toggleBounce);
-            marker.addListener('mouseover', placeMarker); //marker를 누르고움직일때 marker의 좌표값...
+            // marker.addListener('click', toggleBounce);
+            // marker.addListener('mouseover', placeMarker); 
+            //marker를 누르고움직일때 marker의 좌표값...
 
-            function placeMarker(){
-                
-                console.log("ㅇㅇ11");
-            }
+            // function placeMarker() {
 
-            function toggleBounce() {
-                console.log("ㅇㅇ");
-                    if (marker.getAnimation() !== null) {
-                        marker.setAnimation(null);
-                    } else {
-                        marker.setAnimation(google.maps.Animation.BOUNCE);
-                    }
-                }	 
+            //     console.log("ㅇㅇ11");
+            // }
+
+            // function toggleBounce() {
+            //     console.log("ㅇㅇ");
+            //     if (marker.getAnimation() !== null) {
+            //         marker.setAnimation(null);
+            //     } else {
+            //         marker.setAnimation(google.maps.Animation.BOUNCE);
+            //     }
+            // }
 
             /**
              * Google Geocoding. Google Map API에 포함되어 있다.
              */
             var geocoder = new google.maps.Geocoder();
- 
+
             // submit 버튼 클릭 이벤트 실행
-            document.getElementById('submit').addEventListener('click', function() {
+            document.getElementById('submit').addEventListener('click', function () {
                 console.log('submit 버튼 클릭 이벤트 실행');
- 
+
                 // 여기서 실행
                 geocodeAddress(geocoder, map);
             });
- 
+
             /**
              * geocodeAddress
              * 
@@ -115,10 +119,10 @@
              */
             function geocodeAddress(geocoder, resultMap) {
                 console.log('geocodeAddress 함수 실행');
- 
+
                 // 주소 설정
                 var address = document.getElementById('address').value;
- 
+
                 /**
                  * 입력받은 주소로 좌표에 맵 마커를 찍는다.
                  * 1번째 파라미터 : 주소 등 여러가지. 
@@ -128,10 +132,10 @@
                  *      ㄴ result : 결과값
                  *      ㄴ status : 상태. OK가 나오면 정상.
                  */
-                geocoder.geocode({'address': address}, function(result, status) {
+                geocoder.geocode({ 'address': address }, function (result, status) {
                     console.log(result);
                     console.log(status);
- 
+
                     if (status === 'OK') {
                         // 맵의 중심 좌표를 설정한다.
                         resultMap.setCenter(result[0].geometry.location);
@@ -142,7 +146,7 @@
                             map: resultMap,
                             position: result[0].geometry.location
                         });
- 
+
                         // 위도
                         console.log('위도(latitude) : ' + marker.position.lat());
                         // 경도
@@ -155,4 +159,5 @@
         } //initMap() end
     </script>
 </body>
+
 </html>
