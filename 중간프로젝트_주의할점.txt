@@ -17,3 +17,5 @@ PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
 2.질보단 양 -> 경험쌓기 좋음 
 Ex)팀원 별로 게시판 1개씩 만들기 등
 
+※
+MVC2 패턴으로 중간프로젝트 하기
