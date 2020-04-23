@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+
+	// 1. request 객체( 클라이언트 입력값)
+	// [단일값] : 넘어올때 value 가 한개인 애들
+	// input type > text, password, radio ,textarea , select( 단일)
+	// [복수값] : 넘어올 때 복수
+	// input type > checkbox (name이 같을때) , select ( mutiple)
+	
+	String uid = request.getParameter("userid"); //<input 태그의 name 값임
+	String pwd = request.getParameter("pwd");
+	String[] hobby = request.getParameterValues("hobby");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
