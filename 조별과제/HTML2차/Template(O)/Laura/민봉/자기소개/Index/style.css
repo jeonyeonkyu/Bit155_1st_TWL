@@ -1,0 +1,115 @@
+
+h1,h3,h2,ul,li{
+    margin: 0;
+}
+p{
+    font-size: 20px;
+}
+html{
+    background-color: white;
+}
+div.wrapper{
+    width: 1200px;
+    height: 1000px;
+    margin: 0 auto;
+}
+body{
+    
+}
+div.top{
+    background-color: rgb(198, 198, 255);
+}
+div.header{
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+    margin-top: 10px;
+    font-family: cursive;
+    font-size: larger;
+    border: 5pt groove navy;
+}
+.info{
+    /* padding: 50px; */
+}
+
+
+
+div.contents{
+    /* padding: 30px;     */
+    background-color: white;
+
+}
+div.footer{
+    text-align: center;
+    background-color: darkslategray;
+    
+}
+.profile{
+    width: 100px;
+    height: 100px;
+}
+.section ul{
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+.ul1{
+    list-style-type: none;
+    /* padding: 50px; */
+}
+.h2{
+    margin: 0 ;
+    padding-left:40px;
+    width: 250px;
+    height: 275px;
+
+
+}
+.lol{
+    width: 450px;
+    height: 280px;
+}
+.oasis{
+    width: 400px;
+    height: 280px;
+}
+.section2{
+    margin-top: 50px;
+}
+.html{
+    width: 70px;
+    height: 50px;
+    /* padding: 20px 0; */
+}
+.css{
+    width: 70px;
+    height: 50px;
+    /* padding: 20px 0; */
+}
+.js{
+    width: 70px;
+    height: 50px;
+    /* padding: 20px 0; */
+}
+.footer{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
