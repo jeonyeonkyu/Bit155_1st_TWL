@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="n in numbers">
+                {{n}}
+            </li>            
+        </ul>
+        <ul>
+                <li v-for="p in people" v-if="p.age < 30">
+                    {{p.name}} , {{p.age}}
+                </li>            
+        </ul>
+    </div>
+   
+    <table>
+        <tr>
+                <td>이름</td>
+                <td>나이</td>
+        </tr>
+         <tr  v-for="p in people" v-if="p.age < 30">
+                <td> {{p.name}}</td>
+        </tr>
+          
+    </table>
+   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  var firstApp =  new Vue({
+        el:'#app' ,
+        data:{
+          numbers : [1,2,3,4,5,6,7],
+          people : [
+              {
+                  name:'이순신',
+                  age:30
+              },
+              {
+                  name:'김유신',
+                  age:10
+              },
+              {
+                  name:'아무개',
+                  age:50
+              }
+          ]
+        }
+    });
+</script>
+</html>

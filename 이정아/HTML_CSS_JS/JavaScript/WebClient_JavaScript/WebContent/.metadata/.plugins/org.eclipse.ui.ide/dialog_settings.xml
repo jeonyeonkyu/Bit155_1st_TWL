@@ -19,6 +19,7 @@
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
+			<item value="org.eclipse.ui.workingSets"/>
 		</list>
 	</section>
 </section>

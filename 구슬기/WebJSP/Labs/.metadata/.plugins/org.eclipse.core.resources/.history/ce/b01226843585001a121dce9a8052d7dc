@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+    /*
+    
+    	웹 환경 
+    	
+    	
+    	Client (웹 브라우저로 보면됨)      ->       Server (요청 정보를 read ...처리)
+    	                      (request:요청)
+    	
+    	
+    	
+    */
+    
+    
+    
+    
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
