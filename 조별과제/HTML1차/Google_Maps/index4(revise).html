@@ -110,15 +110,19 @@
 <script>
     var input_lat = document.getElementById("lat");
     var input_lng = document.getElementById("lng");
+    var map;
+    var marker;
 
     function initMap() {
         var origin = { lat: 37.503176, lng: 127.024883 };
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             zoom: 18,
             center: origin
         });
         var clickHandler = new ClickEventHandler(map, origin);
+
     }
+
 
     var ClickEventHandler = function (map, origin) {
         this.origin = origin;
@@ -132,10 +136,44 @@
         input_lng.value = event.latLng.lng();
         console.log('lat : ' + event.latLng.lat());
         console.log('lng : ' + event.latLng.lng());
-    };
+        placeMarker(map, event.latLng);
+    }
+
+    function placeMarker(map, location) {
+        marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            icon: {
+                url: "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/wireless.svg",
+                scaledSize: new google.maps.Size(50, 50)
+            },
+            draggable: true,
+            animation: google.maps.Animation.DROP
+
+        });
+        marker.addListener('click', toggleBounce);
+        marker.addListener('blur', toggleBounce);
+    }
+
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+    function temp() {
+
+    }
+
+
+
+
 </script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&libraries=places&callback=initMap"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&libraries=places&callback=initMap&sensor=true"
     async defer></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
