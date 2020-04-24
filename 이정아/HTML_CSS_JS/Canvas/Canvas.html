@@ -1,107 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title></title>
+    <style>
+      canvas {
+        border: 1px solid blue;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>그림판</title>
-    <style type="text/css">
-        canvas {
-            border: 1px solid black
-        }
+      .jb_table {
+        display: table;
+      }
 
-        ;
+      .row {
+        border-radius: 10px;
+        display: table-row;
+      }
+
+      .cell {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      textarea {
+        background-color: #fcf3cf;
+      }
     </style>
-    <script type="text/javascript">
-        window.onload = function () {
-            var canvas = document.getElementById("canvas");
-            draw(canvas);
+    <script language="JavaScript">
+      // Date: 2019.04.24
 
+      var textareaList = ["history"];
+
+      function clearText(idOfTextArea) {
+        document.getElementById(idOfTextArea).value = "";
+      }
+
+      function SaveAsTxt() {
+        var fileName = document.getElementById("title").value;
+        if (fileName.length == 0) {
+          fileName = "image";
+        }
+        fileName += ".txt";
+
+        var preData = 'version: V0.617a1\n';
+        var postData =  preData + document.getElementById("history").value;
+
+        var link = document.createElement("a");
+        link.setAttribute("download", fileName);
+        link.setAttribute(
+          "href",
+          "data:" +
+            "application/[txt]" +
+            ";charset=utf-8," +
+            encodeURIComponent(postData)
+        );
+        link.click();
+      }
+
+      function SaveAsJson() {
+        console.log("SaveAsJson");
+        var fileName = document.getElementById("title").value;
+        if (fileName.length == 0) {
+          fileName = "imsge";
         }
 
-        function draw(canvas) {
-            var ctx = canvas.getContext("2d");
-            ctx.moveTo(30, 100);
-            ctx.lineTo(80, 100);
-            ctx.stroke();
+        fileName += ".json";
+
+        var preData = {'version':'V0.617a1'};
+        textareaList.forEach(function(e) {
+          preData[e] = document.getElementById(e).value;
+        });
+
+        var jsonData = JSON.stringify(preData);
+
+        var link = document.createElement("a");
+        var file = new Blob([jsonData], { type: "text/plain" });
+        link.href = URL.createObjectURL(file);
+        link.download = fileName;
+        link.click();
+      }
+
+      function isJsonFile(filename) {
+        var ridx = filename.lastIndexOf(".");
+        var extension = filename.substring(ridx + 1);
+
+        console.log(extension);
+
+        if (extension.length != 4 || extension.toLowerCase() != "json") {
+          return false;
+        }
+        return true;
+      }
+
+      function isTextFile(filename) {
+        var ridx = filename.lastIndexOf(".");
+        var extension = filename.substring(ridx + 1);
+
+        console.log(extension);
+
+        if (extension.length != 3 || extension.toLowerCase() != "txt") {
+          return false;
+        }
+        return true;
+      }
+
+
+      function loadFile() {
+        var loadFile = document.getElementById("load_filename");
+        var file = loadFile.files[0];
+          
+        if (!file) {
+          return;
         }
 
+        var fileName = document.getElementById("load_filename").value;
+        var ridx = fileName.lastIndexOf("\\");
 
-        var pos = { //기준점
-            drawable: false,
-            x: -1,
-            y: -1
+        fileName = fileName.substring(ridx + 1);
+
+        if (isJsonFile(fileName)) {
+          LoadJson(file, fileName);
+        } else if(isTextFile(fileName)) {
+          LoadText(file, fileName);
+        } 
+      }
+
+      function LoadJson(file, fileName) {
+        document.getElementById("title").value = fileName;
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var contents = e.target.result;
+          displayLoadJsonData(contents);
         };
+        reader.readAsText(file);
+      }
 
-        var canvas, ctx;
+      function displayLoadJsonData(contents) {
+        var noteData = JSON.parse(contents);
 
-        window.onload = function () {
-            canvas = document.getElementById("canvas"); //canvas 이용
-            ctx = canvas.getContext("2d"); //2d그림으로 그리겠다.
+        var version = noteData['version'];
+        console.log(version);
+        document.getElementById('history').value = noteData['history'];
+        reDrawCanvas();
+      }
 
-            canvas.addEventListener("mousedown", listener); //mousedown 이벤트가 발생하면 listener 함수 실행
-            canvas.addEventListener("mousemove", listener);
-            canvas.addEventListener("mouseup", listener);
-            canvas.addEventListener("mouseout", listener);
-        }
+      function LoadText(file, fileName) {
+        document.getElementById("title").value = fileName;
 
-        function listener(event) {
-            switch (event.type) {
-                case "mousedown":
-                    initDraw(event); //클릭했을 때 버튼을 누르면 mousedown 이벤트가 발생하고, moveTo()를 이용해서 해당 좌표로 pos 이동
-                    break;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var contents = e.target.result;
+          displayLoadTextData(contents);
+        };
+        reader.readAsText(file);
+      }
 
-                case "mousemove":
-                    if (pos.drawable)
-                        draw(event); //down 상태에서 이동을 하면 move이벤트가 발생, lineTo()를 이용해서 라인을 그리기
-                    break;
-
-                case "mouseout":
-                case "mouseup":
-                    finishDraw(); //마우스가 캔버스에서 벗어나면 out이벤트를, 마우스에서 손가락을 떼면 up이벤트 발생하여 그리기 중지
-                    break;
-            }
-        }
-
-        function initDraw(event) { //시작점
-            ctx.beginPath();
-            pos.drawable = true;
-            var coors = getPosition(event);
-            pos.x = coors.x;
-            pod.y = coors.y;
-            ctx.moveTo(pos.x, pos.y);
-
-
-        }
-
-        function draw(event) { //그리기
-            var coors = getPosition(event);
-            ctx.lineTo(coors.x, coors.y);
-            pos.x = coors.x;
-            pos.y = coors.y;
-            ctx.stroke();
-        }
-
-        function finishDraw(event) {
-            pos.drawable = false;
-            pos.x = -1;
-            pos.y = -1;
-        }
-
-        function getPosition(event) {
-            var X = event.pageX - canvas.offsetLeft;
-            var Y = event.pageY - canvas.offsetTop;
-            return { x: X, y: Y };
-        }
-
+      function displayLoadTextData(contents) {
+        var noteData = contents.split('\n');
+        var history = "";
+         
+        noteData.forEach(function (e){
+          if (e[0] != 'v') {
+            history += e + "\n";
+          }
+        }); 
+        document.getElementById('history').value = history;
+        reDrawCanvas();
+      }
 
     </script>
-</head>
+  </head>
 
-<body>
-    <div>
-        <canvas id="canvas" width="500" height="500"></canvas>
+  <body>
+    <div class="jb_table">
+      <div class="row">
+        <span class="cell" width="82">
+          <div>
+            <div class="jb_table">
+              <div class="row">
+                <span class="cell">
+                  <img src="img/red.png" onclick="selectColor('red')" />
+                  <img src="img/orange.png" onclick="selectColor('orange')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/yellow.png" onclick="selectColor('yellow')" />
+                  <img src="img/green.png" onclick="selectColor('green')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/blue.png" onclick="selectColor('blue')" />
+                  <img src="img/lightblue.png" onclick="selectColor('lightblue')" />
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/lightgreen.png" onclick="selectColor('lightgreen')"/>
+                  <img src="img/brown.png" onclick="selectColor('brown')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/purple.png" onclick="selectColor('purple')" />
+                  <img src="img/pink.png" onclick="selectColor('pink')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/gray.png" onclick="selectColor('gray')" />
+                  <img src="img/lightgray.png" onclick="selectColor('lightgray')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/black.png" onclick="selectColor('black')"/>
+                  <img src="img/white.png" onclick="selectColor('white')"/>
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/pencil.png"  onclick="selectTool('pencil')" />
+                  <img src="img/line.png"  onclick="selectTool('line')" />
+                </span>
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/circle.png" onclick="selectTool('circle')"/>
+                  <!-- <img src="img/filledcircle.png" onclick="selectTool('filledcircle')"/> -->
+                </span>
+              </div>
+              <div class="row">
+                <!-- <span class="cell">
+                  <img src="img/ellipse.png" onclick="selectTool('ellipse')"/> -->
+                   <!-- <img src="img/filledellipse.png" onclick="selectTool('filledellipse')"/> -->
+                <!-- </span> -->
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/square.png" onclick="selectTool('square')"/>
+                  <!-- <img src="img/filledsquare.png" onclick="selectTool('filledsquare')"/> -->
+                </span>
+              </div>
+              <div class="row">
+                <!-- <span class="cell">
+                  <img src="img/rect.png" onclick="selectTool('rect')" />
+                  <img src="img/filledrect.png" onclick="selectTool('filledrect')" />
+                </span> -->
+              </div>
+              <div class="row">
+                <span class="cell">
+                  <img src="img/triangle.png" onclick="selectTool('tri')" />
+                  <!-- <img src="img/filledtriangle.png" onclick="selectTool('filledtri')" /> -->
+                </span>
+              </div>
+            </div>
+          </div>
+        </span>
+        <span class="cell">
+          <div>
+            <canvas id="canvas" width="720" height="720" style = "margin-left: 10px;"></canvas>
+          </div>
+        </span>
+      </div>
     </div>
-</body>
-
+    <script src="canvas.js"></script>
+    <script src="drawengine.js"></script>
+  </body>
 </html>
