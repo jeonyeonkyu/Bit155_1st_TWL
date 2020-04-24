@@ -1,270 +1,117 @@
 <html>
-  <head>
-    <title></title>
-    <style>
-      canvas {
-        border: 1px solid blue;
-      }
 
-      .jb_table {
-        display: table;
-      }
+<head>
+  <title></title>
+  <style>
+    canvas {
+      border: 1px solid blue;
+    }
 
-      .row {
-        border-radius: 10px;
-        display: table-row;
-      }
+    .jb_table {
+      display: table;
+    }
 
-      .cell {
-        display: table-cell;
-        vertical-align: top;
-      }
+    .row {
+      border-radius: 10px;
+      display: table-row;
+    }
 
-      textarea {
-        background-color: #fcf3cf;
-      }
-    </style>
-    <script language="JavaScript">
-      // Date: 2019.04.24
+    .cell {
+      display: table-cell;
+      vertical-align: top;
+    }
 
-      var textareaList = ["history"];
+    textarea {
+      background-color: #fcf3cf;
+    }
 
-      function clearText(idOfTextArea) {
-        document.getElementById(idOfTextArea).value = "";
-      }
+    .controls__range {
+      margin-bottom: 30px;
+      margin-left: 400px;
+      margin-top: 20px;
 
-      function SaveAsTxt() {
-        var fileName = document.getElementById("title").value;
-        if (fileName.length == 0) {
-          fileName = "image";
-        }
-        fileName += ".txt";
+    }
+  </style>
+</head>
 
-        var preData = 'version: V0.617a1\n';
-        var postData =  preData + document.getElementById("history").value;
-
-        var link = document.createElement("a");
-        link.setAttribute("download", fileName);
-        link.setAttribute(
-          "href",
-          "data:" +
-            "application/[txt]" +
-            ";charset=utf-8," +
-            encodeURIComponent(postData)
-        );
-        link.click();
-      }
-
-      function SaveAsJson() {
-        console.log("SaveAsJson");
-        var fileName = document.getElementById("title").value;
-        if (fileName.length == 0) {
-          fileName = "imsge";
-        }
-
-        fileName += ".json";
-
-        var preData = {'version':'V0.617a1'};
-        textareaList.forEach(function(e) {
-          preData[e] = document.getElementById(e).value;
-        });
-
-        var jsonData = JSON.stringify(preData);
-
-        var link = document.createElement("a");
-        var file = new Blob([jsonData], { type: "text/plain" });
-        link.href = URL.createObjectURL(file);
-        link.download = fileName;
-        link.click();
-      }
-
-      function isJsonFile(filename) {
-        var ridx = filename.lastIndexOf(".");
-        var extension = filename.substring(ridx + 1);
-
-        console.log(extension);
-
-        if (extension.length != 4 || extension.toLowerCase() != "json") {
-          return false;
-        }
-        return true;
-      }
-
-      function isTextFile(filename) {
-        var ridx = filename.lastIndexOf(".");
-        var extension = filename.substring(ridx + 1);
-
-        console.log(extension);
-
-        if (extension.length != 3 || extension.toLowerCase() != "txt") {
-          return false;
-        }
-        return true;
-      }
-
-
-      function loadFile() {
-        var loadFile = document.getElementById("load_filename");
-        var file = loadFile.files[0];
-          
-        if (!file) {
-          return;
-        }
-
-        var fileName = document.getElementById("load_filename").value;
-        var ridx = fileName.lastIndexOf("\\");
-
-        fileName = fileName.substring(ridx + 1);
-
-        if (isJsonFile(fileName)) {
-          LoadJson(file, fileName);
-        } else if(isTextFile(fileName)) {
-          LoadText(file, fileName);
-        } 
-      }
-
-      function LoadJson(file, fileName) {
-        document.getElementById("title").value = fileName;
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          var contents = e.target.result;
-          displayLoadJsonData(contents);
-        };
-        reader.readAsText(file);
-      }
-
-      function displayLoadJsonData(contents) {
-        var noteData = JSON.parse(contents);
-
-        var version = noteData['version'];
-        console.log(version);
-        document.getElementById('history').value = noteData['history'];
-        reDrawCanvas();
-      }
-
-      function LoadText(file, fileName) {
-        document.getElementById("title").value = fileName;
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          var contents = e.target.result;
-          displayLoadTextData(contents);
-        };
-        reader.readAsText(file);
-      }
-
-      function displayLoadTextData(contents) {
-        var noteData = contents.split('\n');
-        var history = "";
-         
-        noteData.forEach(function (e){
-          if (e[0] != 'v') {
-            history += e + "\n";
-          }
-        }); 
-        document.getElementById('history').value = history;
-        reDrawCanvas();
-      }
-
-    </script>
-  </head>
-
-  <body>
-    <div class="jb_table">
-      <div class="row">
-        <span class="cell" width="82">
-          <div>
-            <div class="jb_table">
-              <div class="row">
-                <span class="cell">
-                  <img src="img/red.png" onclick="selectColor('red')" />
-                  <img src="img/orange.png" onclick="selectColor('orange')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/yellow.png" onclick="selectColor('yellow')" />
-                  <img src="img/green.png" onclick="selectColor('green')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/blue.png" onclick="selectColor('blue')" />
-                  <img src="img/lightblue.png" onclick="selectColor('lightblue')" />
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/lightgreen.png" onclick="selectColor('lightgreen')"/>
-                  <img src="img/brown.png" onclick="selectColor('brown')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/purple.png" onclick="selectColor('purple')" />
-                  <img src="img/pink.png" onclick="selectColor('pink')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/gray.png" onclick="selectColor('gray')" />
-                  <img src="img/lightgray.png" onclick="selectColor('lightgray')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/black.png" onclick="selectColor('black')"/>
-                  <img src="img/white.png" onclick="selectColor('white')"/>
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/pencil.png"  onclick="selectTool('pencil')" />
-                  <img src="img/line.png"  onclick="selectTool('line')" />
-                </span>
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/circle.png" onclick="selectTool('circle')"/>
-                  <!-- <img src="img/filledcircle.png" onclick="selectTool('filledcircle')"/> -->
-                </span>
-              </div>
-              <div class="row">
-                <!-- <span class="cell">
-                  <img src="img/ellipse.png" onclick="selectTool('ellipse')"/> -->
-                   <!-- <img src="img/filledellipse.png" onclick="selectTool('filledellipse')"/> -->
-                <!-- </span> -->
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/square.png" onclick="selectTool('square')"/>
-                  <!-- <img src="img/filledsquare.png" onclick="selectTool('filledsquare')"/> -->
-                </span>
-              </div>
-              <div class="row">
-                <!-- <span class="cell">
-                  <img src="img/rect.png" onclick="selectTool('rect')" />
-                  <img src="img/filledrect.png" onclick="selectTool('filledrect')" />
-                </span> -->
-              </div>
-              <div class="row">
-                <span class="cell">
-                  <img src="img/triangle.png" onclick="selectTool('tri')" />
-                  <!-- <img src="img/filledtriangle.png" onclick="selectTool('filledtri')" /> -->
-                </span>
-              </div>
+<body>
+  <div class="jb_table">
+    <div class="row">
+      <span class="cell" width="82">
+        <div>
+          <div class="jb_table">
+            <div class="row">
+              <span class="cell">
+                <img src="img/red.png" onclick="selectColor('red')" />
+                <img src="img/orange.png" onclick="selectColor('orange')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/yellow.png" onclick="selectColor('yellow')" />
+                <img src="img/green.png" onclick="selectColor('green')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/blue.png" onclick="selectColor('blue')" />
+                <img src="img/lightblue.png" onclick="selectColor('lightblue')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/lightgreen.png" onclick="selectColor('lightgreen')" />
+                <img src="img/brown.png" onclick="selectColor('brown')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/purple.png" onclick="selectColor('purple')" />
+                <img src="img/pink.png" onclick="selectColor('pink')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/gray.png" onclick="selectColor('gray')" />
+                <img src="img/lightgray.png" onclick="selectColor('lightgray')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/black.png" onclick="selectColor('black')" />
+                <img src="img/white.png" onclick="selectColor('white')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/pencil.png" onclick="selectTool('pencil')" />
+                <img src="img/line.png" onclick="selectTool('line')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/circle.png" onclick="selectTool('circle')" />
+              </span>
+            </div>
+            <div class="row">
+              <span class="cell">
+                <img src="img/square.png" onclick="selectTool('square')" />
+              </span>
             </div>
           </div>
-        </span>
-        <span class="cell">
-          <div>
-            <canvas id="canvas" width="720" height="720" style = "margin-left: 10px;"></canvas>
-          </div>
-        </span>
-      </div>
+        </div>
+      </span>
+      <span class="cell">
+        <div>
+          <canvas id="canvas" width="720" height="720" style="margin-left: 10px;"></canvas>
+        </div>
+      </span>
     </div>
-    <script src="canvas.js"></script>
-    <script src="drawengine.js"></script>
-  </body>
+  </div>
+  <div class="controls__range">
+    <input type="range" id="jsRange" min="0.1" max="5" value="2.5" step="0.1">
+  </div>
+  <script src="Canvas.js"></script>
+</body>
+
 </html>
