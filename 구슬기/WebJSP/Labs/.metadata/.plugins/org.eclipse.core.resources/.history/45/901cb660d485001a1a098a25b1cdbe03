@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    	/*
+    		web.xml  (환경설정 파일은 서버가 시작되면 가장 먼저 loading된다)       이거 전체 다 받아야함
+    		<welcome-file>index.html</welcome-file>
+    		웹사이트 기본 페이지 설정 : http://192.168.0.12:8090/WebJSP/ >> index.html
+    
+    
+    		WAS 는 (웹서버는 : 여러개의 웹 어플리케이션을 서비스 할 수 있다)
+    		>> http://192.168.0.12:8090/WebJSP/index.html >>webAPP
+    		>> http://192.168.0.12:8090/Web/index.html    >>webAPP
+    		    
+    		   	/WebJSP >> 웹 프로젝트 이름 , 가상 디렉토리 , 웹 프로젝트  
+    		       실경로 : D:\bit155\WebJSP\Labs\WebJSP
+    		       가상경로(웹) : http://192.168.0.12:8090/WebJSP/  
+    		    
+    		    \WebJSP 서비스하는 파일들의 기본 경로(default) >> WebContent (Context root)
+    		    >> http://192.168.0.12:8090/WebJSP/  >> WebContent 안에 있는 파일을 서비스
+    		    
+    		    **우리가 만드는(서비스) 하는 소스파일은 (html , htm , css , js , json , jsp)
+    		    **WebContent 폴더 안에 있어야 서비스가 된다
+    		    
+    		    
+    		**WebContent >> a.jsp , b.jsp , c.jsp 3개의 페이지가 공유할 수 있는 자원 ?
+    		
+    		str 의 스콥이 페이지 안에서 생성되고 소멸되기때문에 문제되지 않음 
+    		a.jsp >> <% String str ="A"
+    		b.jsp >> <% String str ="A"
+    		c.jsp >> <% String str ="A"
+    		어떤 자원은 3개의 jsp 페이지 에서 모두 사용하고 싶은데..???
+    		** 웹 APP 은 설정파일을 가진다. (web.xml << 웹사이트 전체에대한 설정을 여기다가 집어넣을수 있다 )
+    		** web.xml 웹 환경 설정 파일 >> 서버 시작 >> 가장먼저 해석&실행된다
+    		** WebContent 가 아닌 WEB-INF 안에 있다     WEB-INF/web.xml
+    		    ex) registerok.jsp >> register.html 요청해서 받는 페이지..
+				ex) http://192.168.0.12:8090/WebJSP/registerok.jsp (500 for null...)
+				
+				위와 같은 문제에 대응하기 위해서 만들어진 폴더가 WEB-INF (보안폴더)
+				client 가 아래 주소에 접근하려고 하면 (404 오류남)
+				DB 정보나 , pw 등 들어있어서보안 
+				http://192.168.0.12:8090/WebJSP/WEB-INF/web.xml 
+				
+				**현업에서는 WEB-INF 에 다 넣어놓고, 회원가입 페이지들만 WebContent 안에 있다. 
+				  실제 프로젝트에서는
+				 1.  client 가 직접 요청하는 파일  : main , login , register >> WebContent
+				 2.  Client 요청 해서는 안되는 파일들 : 
+					 
+				회원가입일 경우 :	 WEB-INF >> views >> member > registerok.jsp
+				 게시판의 경우  :  WEB-INF >> views >> board > writeok.jsp 
+				 
+				 views 폴더는 개발자들끼리의 관습적인 이름 약속이다. 
+				 
+				
+				 
+				 application 객체 
+				 
+				 현재 page 
+				 int sum =0 ; 현재 페이지 유효.
+				 
+				 web.xml 에다가 사이트 전체에서 공유할 수 있는 자원생성...
+				 email
+				 FilePath
+				 application 객체 환경설정 (web.xml)정보를 read 할수 있따.
+				 
+
+    	*/
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Application 객체</title>
+</head>
+ 
+<body>
+	<%
+		    String param = application.getInitParameter("email");  //new 하지 않아도 제공받는 객체 application
+		    out.print("<h3>"+param+"</h3>");
+		    
+		    String param2 = application.getInitParameter("FilePath");  
+		    out.print("<h3>"+param2+"</h3>");
+	%>
+
+
+</body>
+</html>

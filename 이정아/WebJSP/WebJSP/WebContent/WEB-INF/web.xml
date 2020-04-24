@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>WebJSP</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file> <!-- 디폴트 페이지 -->
+  </welcome-file-list>
+  <context-param>
+  <description>기본적인 설명... 개발자 마음대로 쓰는 공간</description>
+  <param-name>email</param-name> <!-- 전역자원으로 지정한 것 (모든 jsp, java 페이지에서 사용 가능) -->
+  <param-value>webmaster@bit.or.kr</param-value>
+  </context-param>
+  
+  <context-param>
+  	<description>파일 저장 경로</description> <!-- 파일 경로를 전역자원으로 지정 -->
+  	<param-name>FilePath</param-name>
+  	<param-value>C:\\Web\\Download</param-value>
+  </context-param>
+  
+</web-app>

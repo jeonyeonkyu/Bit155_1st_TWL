@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	String uid = request.getParameter("userid");
+    String uName = request.getParameter("userPass");
+   
+    
+%>
 </head>
 <body>
 
