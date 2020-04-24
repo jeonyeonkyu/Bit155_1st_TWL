@@ -27,7 +27,7 @@
 
     .controls__range {
       margin-bottom: 30px;
-      margin-left: 400px;
+      margin-left: 350px;
       margin-top: 20px;
 
     }
@@ -84,26 +84,27 @@
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/pencil.png" onclick="selectTool('pencil')" />
-                <img src="img/line.png" onclick="selectTool('line')" />
+                <img src="img/pencil.svg" onclick="selectTool('pencil')" />
+                <img src="img/line2.png" onclick="selectTool('line')" style = "margin-bottom: 4px; margin-left: 2px;;"/>
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/circle.png" onclick="selectTool('circle')" />
+                <img src="img/circle.svg" onclick="selectTool('circle')" />
+                <img src="img/square.svg" onclick="selectTool('square')" />
               </span>
             </div>
+            
             <div class="row">
               <span class="cell">
-                <img src="img/square.png" onclick="selectTool('square')" />
+                <img src="img/지우개.svg" onClick="initPage()" style = "margin-left: 45px;"/>
               </span>
             </div>
           </div>
         </div>
       </span>
-      <span class="cell">
         <div>
-          <canvas id="canvas" width="720" height="720" style="margin-left: 10px;"></canvas>
+          <canvas id="canvas" width="600" height="600" style="margin-left: 10px;"></canvas>
         </div>
       </span>
     </div>
