@@ -2,12 +2,12 @@ var cvs;
 var canvas;
 var bufCanvas;
 var bufCtx;
+
 var paintMode = [
   "point",
   "line",
   "circle",
   "square",
-  "rect"
 ];
 
 var toolTable = {
@@ -15,7 +15,6 @@ var toolTable = {
   line: 1,
   circle: 2,
   square: 3,
-  rect: 4,
 };
 
 var pointShape = {
@@ -31,7 +30,6 @@ var paintMouseDownAction = {
   line: lineMouseDown,
   circle: circleMouseDown,
   square: squareMouseDown,
-  rect: rectMouseDown,
 };
 
 var paintMouseUpAction = {
@@ -39,7 +37,6 @@ var paintMouseUpAction = {
   line: lineMouseUp,
   circle: circleMouseUp,
   square: squareMouseUp,
-  rect: rectMouseUp,
 };
 
 var paintMouseMoveAction = {
@@ -47,12 +44,11 @@ var paintMouseMoveAction = {
   line: lineMouseMove,
   circle: circleMouseMove,
   square: squareMouseMove,
-  rect: rectMouseMove,
 };
 
 var pos = {
   isDraw: false,
-  color: "red",
+  color: "black",
   colorIdx: 0,
   drawMode: 0,
   filled: false,
@@ -120,7 +116,6 @@ function drawCommand() {
             isFilled;
           break;
         case "square":
-        case "rect":
           newCommand +=
             this.X1.X +
             " " +
@@ -496,53 +491,20 @@ function rectMouseUp(event) {
   }
 }
 
-function clearCanvas() {
+function clearCanvas() { //전체 지우기
   cvs.clearRect(0, 0, canvas.width, canvas.height);
   bufCtx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function initPage() {
-
+function initPage() { //전체 지우기
   clearCanvas();
   initHistory();
-}
-
-
-function initHistory() {
-  commandHistory = [];
-  redoHistory = [];
-
-  document.getElementById("history").value = "";
-
-  var newColor = drawCommand();
-  newColor.mode = "color";
-  newColor.color = "red";
-  commandHistory.push(newColor.toCommand());
-  addHistory(newColor.toCommand());
 }
 
 function handleRangeChange(event) {
   const size = event.target.value;
   cvs.lineWidth = size;
 }
-
-function handleModeClick() {
-  if (filling === true) {
-    filling = false;
-    mode.innerText = "Fill";
-  } else {
-    filling = true;
-    mode.innerText = "Paint";
-  }
-}
-
-function handleCanvasClick() {
-  if (filling) {
-    cvs.fillRect(0, 0, canvas.width, canvas.height);
-  }
-}
-
-
 
 function onLoadPage() {
   canvas = document.getElementById("canvas");
@@ -552,7 +514,8 @@ function onLoadPage() {
   bufCanvas.width = canvas.width;
   bufCanvas.height = canvas.height;
   bufCtx = bufCanvas.getContext("2d");
-  range = document.getElementById("jsRange");
+  const range = document.getElementById("jsRange");
+  cvs.lineWidth = 2.5;
 
   canvas.addEventListener("mousedown", mouseListener);
   canvas.addEventListener("mousemove", mouseListener);
