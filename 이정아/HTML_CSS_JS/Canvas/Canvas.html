@@ -5,50 +5,137 @@
   <title></title>
   <style>
     .canvas {
-     border: 1px solid pink;
-
+     border: 2px solid #FA58AC;
      background-color: white;
      border-radius: 15px;
      box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
+     position: relative;
+     left:10px;
+    }
 
     body{
      padding: 50px;
      font-family: 'Gothic A1';
-}
+    }
+
+    body .top{
+     font-size: large;
+     display: inline;
+     position: relative;
+     left: 308px;
+     bottom:5px;
+    }
+
+
+    #jsSave{
+     text-align: center;
+    }
+
+    .controls__btns button {
+    all: unset;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px 0px;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #FA58AC;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: 'Gothic A1';
+    position: relative;
+    left:8px;
+    bottom:10px;
+    }
+
+    .controls__btns button:active {
+      transform: scale(0.98);
+    }
+
+    .controls__btns button:hover{
+      opacity: 0.5;
+    }
+
     .jb_table {
       display: table;
+      margin-bottom: 2px;
+      border: 2px solid #FA58AC;
+      border-radius: 5px;
+      width: 90px;
+      height:500px;
     }
 
     .row {
       border-radius: 10px;
       display: table-row;
+     
     }
 
     .cell {
       display: table-cell;
       vertical-align: top;
+      position:relative;
+      left:3px;
+      top:2px;
     }
 
     textarea {
       background-color: #fcf3cf;
     }
 
-    .controls__range {
-      margin-bottom: 30px;
-      margin-left: 330px;
+    .slidecontainer {
+      margin-bottom: 0px;
+      margin-left: 250px;
       margin-top: 20px;
+      height: 25px;
+     }
+
+    .slider{
+      -webkit-appearance: none;
+      width: 300px;
+      height: 15px;
+      border-radius: 5px;
+      background: #FBEFFB;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition:.2s;
+      transition: opacity.2s;
+     }
+
+    .slider:hover{
+       opacity: 1;
     }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #F781F3;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #F781F3;
+      cursor: pointer;
+    } 
+
   </style>
 </head>
 
 <body>
-  <div class="controls__range">
-    <input type="range" id="jsRange" min="0.1" max="5" value="2.5" step="0.1">
+  <img src="/img/palette.svg" style="position: relative; left:310px"><div class ="top"> 26.8조의 그림판</div>
+  <div class="slidecontainer">
+    <input type="range" id="jsRange" min="0.1" max="5" value="2.5" step="0.1" class="slider">
   </div>
-  <div class="jb_table">
+  <div class="controls__btns">
+    <button id="Save">SAVE</button>
+  </div>
     <div class="row">
-      <span class="cell" width="82">
+      <span class="cell">
         <div>
           <div class="jb_table">
             <div class="row">
@@ -115,11 +202,10 @@
         </div>
       </span>
         <div>
-          <canvas id="canvas" class="canvas" width="600" height="600" style="margin-left: 10px;"></canvas>
+          <canvas id="canvas" class="canvas" width="600" height="500" style="margin-left: 10px;"></canvas>
         </div>
       </span>
     </div>
-  </div>
   <script src="Canvas.js"></script>
 </body>
 

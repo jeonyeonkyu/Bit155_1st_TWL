@@ -506,6 +506,14 @@ function handleRangeChange(event) {
   cvs.lineWidth = size;
 }
 
+function handleSaveClick() { //저장
+  const image = canvas.toDataURL();
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = "savepng";
+  link.click();
+}
+
 function onLoadPage() {
   canvas = document.getElementById("canvas");
   cvs = canvas.getContext("2d");
@@ -516,12 +524,14 @@ function onLoadPage() {
   bufCtx = bufCanvas.getContext("2d");
   const range = document.getElementById("jsRange");
   cvs.lineWidth = 2.5;
+  const saveBtn = document.getElementById("Save");
 
   canvas.addEventListener("mousedown", mouseListener);
   canvas.addEventListener("mousemove", mouseListener);
   canvas.addEventListener("mouseout", mouseListener);
   canvas.addEventListener("mouseup", mouseListener);
   range.addEventListener("input", handleRangeChange);
+  saveBtn.addEventListener("click", handleSaveClick);
 
   initPage();
 }
