@@ -275,6 +275,7 @@ function lineMouseUp(event) {
   var currentPos = getMousePosition(event);
   bufCtx.beginPath();
   bufCtx.strokeStyle = pos.color;
+  bufCtx.lineWidth = pos.lineWidth;
   bufCtx.moveTo(pos.X, pos.Y);
   bufCtx.lineTo(currentPos.X, currentPos.Y);
   bufCtx.closePath();
@@ -307,7 +308,8 @@ function circleMouseMove(event) {
 
   cvs.clearRect(0, 0, canvas.width, canvas.height);
   cvs.drawImage(bufCanvas, 0, 0);
-  cvs.strokeStyle = "black";
+  cvs.strokeStyle = pos.color;
+
 
   var circle = {
     X: Math.round((pos.X + currentPos.X) / 2),
@@ -379,7 +381,7 @@ function squareMouseMove(event) {
 
   cvs.clearRect(0, 0, canvas.width, canvas.height);
   cvs.drawImage(bufCanvas, 0, 0);
-  cvs.strokeStyle = "black";
+  cvs.strokeStyle = pos.color;
 
   var box = {
     W: currentPos.Y - pos.Y,
