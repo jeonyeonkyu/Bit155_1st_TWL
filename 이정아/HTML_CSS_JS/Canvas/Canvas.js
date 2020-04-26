@@ -52,6 +52,7 @@ var pos = {
   colorIdx: 0,
   drawMode: 0,
   filled: false,
+  lineWidth: 2.5,
   mouseDownAction: paintMouseDownAction[paintMode[0]],
   mouseUpAction: paintMouseUpAction[paintMode[0]],
   mouseMoveAction: paintMouseMoveAction[paintMode[0]],
@@ -208,6 +209,7 @@ function pointMouseDown(event) {
   cvs.stroke();
   pos.X = startPos.X;
   pos.Y = startPos.Y;
+  
 
   var newPoint = drawCommand();
   newPoint.mode = "pencil_begin";
@@ -296,6 +298,7 @@ function circleMouseDown(event) {
   var startPos = getMousePosition(event);
   pos.X = startPos.X;
   pos.Y = startPos.Y;
+  
 }
 
 function circleMouseMove(event) {
@@ -329,6 +332,7 @@ function circleMouseUp(event) {
     var currentPos = getMousePosition(event);
     bufCtx.beginPath();
     bufCtx.strokeStyle = pos.color;
+    bufCtx.lineWidth = pos.lineWidth;
     var circle = {
       X: Math.round((pos.X + currentPos.X) / 2),
       Y: Math.round((pos.Y + currentPos.Y) / 2),
@@ -398,12 +402,14 @@ function squareMouseUp(event) {
     var currentPos = getMousePosition(event);
     bufCtx.beginPath();
     bufCtx.strokeStyle = pos.color;
+    bufCtx.lineWidth = pos.lineWidth;
     var box = {
       W: currentPos.Y - pos.Y,
       H: currentPos.Y - pos.Y
     };
     if (pos.filled) {
       bufCtx.fillStyle = pos.color;
+      bufCtx.lineWidth = pos.lineWidth;
       bufCtx.fillRect(pos.X, pos.Y, box.W, box.H);
     } else {
       bufCtx.strokeRect(pos.X, pos.Y, box.W, box.H);
@@ -504,6 +510,8 @@ function initPage() { //전체 지우기
 function handleRangeChange(event) { //두께조절
   const size = event.target.value;
   cvs.lineWidth = size;
+  pos.lineWidth = size;
+
 }
 
 function handleSaveClick() { //저장
@@ -535,13 +543,12 @@ function handleCanvasClick() { //전체 칠하기
 function onLoadPage() {
   canvas = document.getElementById("canvas");
   cvs = canvas.getContext("2d");
-
   bufCanvas = document.createElement("canvas");
   bufCanvas.width = canvas.width;
   bufCanvas.height = canvas.height;
   bufCtx = bufCanvas.getContext("2d");
   const range = document.getElementById("jsRange");
-  cvs.lineWidth = 2.5;
+  const lineWidth = 2.5;
   const saveBtn = document.getElementById("Save");
 
  
