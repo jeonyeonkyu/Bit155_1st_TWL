@@ -275,7 +275,7 @@ function lineMouseUp(event) {
   var currentPos = getMousePosition(event);
   bufCtx.beginPath();
   bufCtx.strokeStyle = pos.color;
-  bufCtx.lineWidth = pos.lineWidth;
+  
   bufCtx.moveTo(pos.X, pos.Y);
   bufCtx.lineTo(currentPos.X, currentPos.Y);
   bufCtx.closePath();
