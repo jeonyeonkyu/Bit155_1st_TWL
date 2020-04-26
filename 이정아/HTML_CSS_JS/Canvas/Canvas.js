@@ -498,10 +498,10 @@ function clearCanvas() { //전체 지우기
 
 function initPage() { //전체 지우기
   clearCanvas();
-  initHistory();
 }
 
-function handleRangeChange(event) {
+
+function handleRangeChange(event) { //두께조절
   const size = event.target.value;
   cvs.lineWidth = size;
 }
@@ -512,6 +512,15 @@ function handleSaveClick() { //저장
   link.href = image;
   link.download = "savepng";
   link.click();
+}
+
+
+
+function handleCanvasClick() { //전체 칠... 근데 이렇게하면 다른 툴들을 쓸 수 없게 됩니다,,,
+
+    cvs.fillStyle = pos.color;
+    cvs.fillRect(0, 0, canvas.width, canvas.height);
+   
 }
 
 function onLoadPage() {
@@ -525,13 +534,14 @@ function onLoadPage() {
   const range = document.getElementById("jsRange");
   cvs.lineWidth = 2.5;
   const saveBtn = document.getElementById("Save");
-
+ 
   canvas.addEventListener("mousedown", mouseListener);
   canvas.addEventListener("mousemove", mouseListener);
   canvas.addEventListener("mouseout", mouseListener);
   canvas.addEventListener("mouseup", mouseListener);
   range.addEventListener("input", handleRangeChange);
   saveBtn.addEventListener("click", handleSaveClick);
+  canvas.addEventListener("click", handleCanvasClick);
 
   initPage();
 }

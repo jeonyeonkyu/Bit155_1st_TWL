@@ -127,11 +127,12 @@
 </head>
 
 <body>
-  <img src="/img/palette.svg" style="position: relative; left:310px"><div class ="top"> 26.8조의 그림판</div>
+  <img src="./img/palette.svg" style="position: relative; left:310px"><div class ="top"> 26.8조의 그림판</div>
   <div class="slidecontainer">
     <input type="range" id="jsRange" min="0.1" max="5" value="2.5" step="0.1" class="slider">
   </div>
   <div class="controls__btns">
+    <button id="jsMode">Fill</button>
     <button id="Save">SAVE</button>
   </div>
     <div class="row">
@@ -140,62 +141,63 @@
           <div class="jb_table">
             <div class="row">
               <span class="cell">
-                <img src="img/red.png" onclick="selectColor('red')" />
-                <img src="img/orange.png" onclick="selectColor('orange')" />
+                <img src="./img/red.png" onclick="selectColor('red')" />
+                <img src="./img/orange.png" onclick="selectColor('orange')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/yellow.png" onclick="selectColor('yellow')" />
-                <img src="img/green.png" onclick="selectColor('green')" />
+                <img src="./img/yellow.png" onclick="selectColor('yellow')" />
+                <img src="./img/green.png" onclick="selectColor('green')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/blue.png" onclick="selectColor('blue')" />
-                <img src="img/lightblue.png" onclick="selectColor('lightblue')" />
+                <img src="./img/blue.png" onclick="selectColor('blue')" />
+                <img src="./img/lightblue.png" onclick="selectColor('lightblue')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/lightgreen.png" onclick="selectColor('lightgreen')" />
-                <img src="img/brown.png" onclick="selectColor('brown')" />
+                <img src="./img/lightgreen.png" onclick="selectColor('lightgreen')" />
+                <img src="./img/brown.png" onclick="selectColor('brown')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/purple.png" onclick="selectColor('purple')" />
-                <img src="img/pink.png" onclick="selectColor('pink')" />
+                <img src="./img/purple.png" onclick="selectColor('purple')" />
+                <img src="./img/pink.png" onclick="selectColor('pink')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/gray.png" onclick="selectColor('gray')" />
-                <img src="img/lightgray.png" onclick="selectColor('lightgray')" />
+                <img src="./img/gray.png" onclick="selectColor('gray')" />
+                <img src="./img/lightgray.png" onclick="selectColor('lightgray')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/black.png" onclick="selectColor('black')" />
-                <img src="img/white.png" onclick="selectColor('white')" />
+                <img src="./img/black.png" onclick="selectColor('black')" />
+                <img src="./img/white.png" onclick="selectColor('white')" />
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/pencil.svg" onclick="selectTool('pencil')" />
-                <img src="img/line2.png" onclick="selectTool('line')" style = "margin-bottom: 4px; margin-left: 2px;;"/>
+                <img src="./img/pencil.svg" onclick="selectTool('pencil')" />
+                <img src="./img/line2.png" onclick="selectTool('line')" style = "margin-bottom: 4px; margin-left: 2px;"/>
               </span>
             </div>
             <div class="row">
               <span class="cell">
-                <img src="img/circle.svg" onclick="selectTool('circle')" />
-                <img src="img/square.svg" onclick="selectTool('square')" />
+                <img src="./img/circle.svg" onclick="selectTool('circle')" />
+                <img src="./img/square.svg" onclick="selectTool('square')" />
               </span>
             </div>
             
             <div class="row">
               <span class="cell">
-                <img src="img/지우개.svg" onClick="initPage()" style = "margin-left: 45px;"/>
+                <img src="./img/paint.svg" onClick="selectColor()" style="margin-bottom: 3px;"/>
+                <img src="./img/지우개.svg" onClick="initPage()"  style="margin-left: 2px;"/>
               </span>
             </div>
           </div>
