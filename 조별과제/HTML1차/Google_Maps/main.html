@@ -75,24 +75,27 @@
         }
 
         .map-control {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-        font-family: 'Roboto','sans-serif';
-        margin: 10px;
-        /* Hide the control initially, to prevent it from appearing
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+            font-family: 'Roboto', 'sans-serif';
+            margin: 10px;
+            /* Hide the control initially, to prevent it from appearing
            before the map loads. */
-        display: none;
-      }
-      /* Display the control once it is inside the map. */
-      #map .map-control { display: block; }
+            display: none;
+        }
 
-      .selector-control {
-        font-size: 14px;
-        line-height: 30px;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
+        /* Display the control once it is inside the map. */
+        #map .map-control {
+            display: block;
+        }
+
+        .selector-control {
+            font-size: 14px;
+            line-height: 30px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
     </style>
 </head>
 
@@ -116,7 +119,7 @@
                 <!-- ml-auto 오른쪽 정렬 -->
                 <li class="nav-item pr-3">
                     <button class="btn btn-dark mb-2" data-toggle="modal" data-target="#myModal"
-                    href="#interests">사용법</button>
+                        href="#interests">사용법</button>
                 </li>
                 <li class="nav-item pr-3">
                     <input onclick="showMarkers();" type=button value="Show All Markers" class="btn btn-success mb-2">
@@ -135,7 +138,7 @@
                     <input onclick="location_back();" id="burgerButton" type=button value="새로고침"
                         class="btn btn-primary mb-2">
                 </li>
-               
+
             </ul>
             <!-- <form action="" class="form-inline">
                     <input type="text" class="form-control mr-sm-2" placeholder="Search">
@@ -159,10 +162,12 @@
                 <div class="modal-body">
                     <p>
                         <b>마우스 왼쪽 클릭</b> : 마커 생성<br>
-                        <b>마커 클릭</b> : 말풍선 생성<br>
+                        <b>마커 클릭</b> : 말풍선 생성 and 위도,경도 출력<br>
                         <b>직선거리 계산(위치 값 입력)</b><br>
                         ex)출발 : 0, 도착 : 1<br>
                         ex)출발 : 맘스터치, 도착 : 버거킹<br>
+                        ex)출발 : 현재위치, 도착 : 버거킹 or 1<b>(입력순서 주의)</b><br>
+                        ex)출발 : 0, 도착 : 버거킹<b>(입력순서 주의)</b><br>
                         <b>지도 검색</b> : 도로명 주소 입력
                     </p>
                 </div>
@@ -241,7 +246,7 @@
                 </li>
             </ul>
         </div>
-       
+
         <!-- <div id="" class="text-center mt-3">
             <input onclick="showMarkers();" type=button value="Show All Markers" class="btn btn-success mb-2">
             <input onclick="clearMarkers();" type=button value="Hide Markers" class="btn btn-secondary mb-2">
@@ -253,7 +258,7 @@
         </div> -->
 
     </nav> <!-- nav -->
-   
+
     <div id="map" style="margin-top:65px; margin-left:272px;"></div>
 
 </body>
@@ -307,8 +312,9 @@
                     map: map
                 });
                 infowindow3 = new google.maps.InfoWindow({
-                    content: '위치 : ' + locations[i].place + '<br>위도: ' + locations[i].lat +
-                        '<br>경도: ' + locations[i].lng
+                    content: '위치 : ' + locations[i].place
+                    // '<br>위도: ' + locations[i].lat +
+                    //     '<br>경도: ' + locations[i].lng
                 });
                 infowindow3.open(map, marker2);
                 burgerInfo.push(marker2);
@@ -334,10 +340,9 @@
         }
 
     }
-    var ss = [];
     function initMap() {
         window.navigator.geolocation.getCurrentPosition(current_position);
-        
+
         // var origin = { lat: 37.503176, lng: 127.024883 };
         // map = new google.maps.Map(document.getElementById('map'), {
         //     zoom: 15,
@@ -359,7 +364,7 @@
 
     var current_marker;
     var geocoder;
-    function current_position(position) { 
+    function current_position(position) {
 
         geocoder = new google.maps.Geocoder();
 
@@ -373,7 +378,7 @@
             mapTypeControl: false,
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         });
-      
+
         var clickHandler = new ClickEventHandler(map, origin);
 
         //var map_options = {
@@ -390,18 +395,24 @@
         });
 
         var infowindow = new google.maps.InfoWindow({
-            content: '현재위치' + '<br>위도 : ' + current_marker.position.lat() + '<br>경도 : ' + current_marker.position.lng()
+            content: '현재위치'
+            // + '<br>위도 : ' + current_marker.position.lat() + '<br>경도 : ' + current_marker.position.lng()
         });
         infowindow.open(map, current_marker);
-        ss[0] = current_marker.position.lat();
-        console.log("ss : " + current_marker.position.lat())
-        ss[1] = current_marker.position.lng();
+        location_index.value = "현재위치"
+        input_lat.value =  current_marker.position.lat();
+        input_lng.value =  current_marker.position.lng();
+
+     
 
         current_marker.addListener('click', function () {
             var infowindow = new google.maps.InfoWindow({
-                content: '현재위치' + '<br>위도 : ' + current_marker.position.lat() + '<br>경도 : ' + current_marker.position.lng()
+                content: '현재위치'
             });
             infowindow.open(map, current_marker);
+            location_index.value = "현재위치"
+        input_lat.value =  current_marker.position.lat();
+        input_lng.value =  current_marker.position.lng();
         }); //정보창 다시 뜸
     }
 
@@ -414,7 +425,7 @@
 
     ClickEventHandler.prototype.handleClick = function (event) {
         placeMarker(map, event.latLng);
-       
+
         // console.log('You clicked on: ' + event.latLng);
         location_index.value = markerArray.array[index].index;
         input_lat.value = event.latLng.lat();
@@ -445,8 +456,9 @@
         // console.log(markerArray.array[1]);
 
         var infowindow = new google.maps.InfoWindow({
-            content: '위치 : ' + index + '<br>위도: ' + location.lat() +
-                '<br>경도: ' + location.lng()
+            content: '위치 : ' + index
+            //  '<br>위도: ' + location.lat() +
+            //     '<br>경도: ' + location.lng()
         });
         infowindow.open(map, marker);
         // marker.addListener('click', toggleBounce);
@@ -459,21 +471,23 @@
             // }
 
             var infowindow = new google.maps.InfoWindow({
-                content: '위치 : ' + marker.index + '<br>위도: ' + location.lat() +
-                    '<br>경도: ' + location.lng()
+                content: '위치 : ' + marker.index 
+                // + '<br>위도: ' + location.lat() +
+                //     '<br>경도: ' + location.lng()
             });
             infowindow.open(map, marker);
+            location_index.value = marker.index 
+        input_lat.value =  location.lat() 
+        input_lng.value =  location.lng()
         }); //정보창 다시 뜸
         // marker.addListener('blur', toggleBounce);
-     
+
         // marker.addListener('dblclick', function () { //마우스 더블클릭시 삭제하기
         //     markerInfo[marker.index].setMap(null);
         // })
 
-       
+
     } //placeMarker()_end
-      
-  
 
 
     // function toggleBounce() {
@@ -494,7 +508,51 @@
     var dis_end = [] //순서= 위도, 경도
     document.getElementById("dis_cal").onclick = function () { // button click
 
-        if (start_index.value.length > 2) { //햄버거집 입력
+        if (start_index.value === '현재위치') { //출발 : 현재위치 기준
+            dis_flag.start_flag = true;
+            dis_start[0] = current_marker.position.lat()
+            dis_start[1] = current_marker.position.lng()
+
+            if (end_index.value.length < 2) {
+                for (var j = 0; j < markerArray.array.length; j++) { //현재위치 -> 인덱스
+                    if (markerArray.array[j].index == end_index.value) {
+                        dis_flag.end_flag = true;
+                        dis_end[0] = markerArray.array[j].lat;
+                        dis_end[1] = markerArray.array[j].lng;
+                        console.log(dis_flag.end_flag);
+                        break;
+                    }
+                }
+            } else {
+
+                for (var i = 0; i < locations.length; i++) { //현재위치 -> 햄버거집
+                    if (locations[i].place == end_index.value) {
+                        dis_flag.end_flag = true;
+                        dis_end[0] = locations[i].lat;
+                        dis_end[1] = locations[i].lng;
+                        break;
+                    }
+                }
+            }
+            if (dis_flag.start_flag == true && dis_flag.end_flag == true) {
+                var flightPlanCoordinates = [
+                    { lat: dis_start[0], lng: dis_start[1] },
+                    { lat: dis_end[0], lng: dis_end[1] }
+                ];
+
+                var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+                polylineInfo.push(flightPath);
+                flightPath.setMap(map);
+                distance.value = calcDistance(dis_start[0], dis_start[1], dis_end[0], dis_end[1])
+            }
+
+        } else if (start_index.value.length > 2 && end_index.value.length) { //햄버거집끼리만..
 
             for (var i = 0; i < locations.length; i++) {
                 if (locations[i].place == start_index.value) {
@@ -514,11 +572,49 @@
                 }
             }
 
+
             if (dis_burgerFlag.start_Flag == true && dis_burgerFlag.end_Flag == true) {
                 distance.value = calcDistance(dis_burgerStart[0], dis_burgerStart[1], dis_burgerEnd[0], dis_burgerEnd[1])
             }
-        } else { //수동 마커 위치 입력(숫자)
+        } else if (start_index.value.length < 2 && end_index.value.length > 2) { //수동마커 - 햄버거집
+            for (var i = 0; i < markerArray.array.length; i++) {
+                if (markerArray.array[i].index == start_index.value) {
+                    dis_flag.start_flag = true;
+                    dis_start[0] = markerArray.array[i].lat;
+                    dis_start[1] = markerArray.array[i].lng;
+                    break;
+                }
+            }
 
+            for (var i = 0; i < locations.length; i++) {
+                if (locations[i].place == end_index.value) {
+                    dis_burgerFlag.end_Flag = true;
+                    dis_burgerEnd[0] = locations[i].lat;
+                    dis_burgerEnd[1] = locations[i].lng;
+                    break;
+                }
+            }
+
+            if (dis_flag.start_flag == true && dis_burgerFlag.end_Flag) {
+                var flightPlanCoordinates = [
+                    { lat: dis_start[0], lng: dis_start[1] },
+                    { lat: dis_burgerEnd[0], lng: dis_burgerEnd[1] }
+                ];
+
+                var flightPath = new google.maps.Polyline({
+                    path: flightPlanCoordinates,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+                polylineInfo.push(flightPath);
+                flightPath.setMap(map);
+                distance.value = calcDistance(dis_start[0], dis_start[1], dis_burgerEnd[0], dis_burgerEnd[1])
+            }
+
+        }
+        else { //수동 마커끼리만..
             if (markerArray.array.length > 1) { //등록된 마커가 최소 2개이상일시
                 for (var i = 0; i < markerArray.array.length; i++) {
                     if (markerArray.array[i].index == start_index.value) {
@@ -647,7 +743,7 @@
 
 
     // submit 버튼 클릭 이벤트 실행
-    document.getElementById('submit').addEventListener('click', function () {
+    document.getElementById('submit').addEventListener('click', function () { //지도 검색(주소)
         console.log('submit 버튼 클릭 이벤트 실행');
 
         // 여기서 실행
@@ -672,11 +768,33 @@
                     icon: image2,
                     position: result[0].geometry.location
                 });
-
+                var infowindow = new google.maps.InfoWindow({
+                    content: "You Search!!"
+                    // '위도: ' + marker.position.lat() +
+                    //     '<br>경도: ' + marker.position.lng()
+                });
+                infowindow.open(map, marker);
+                location_index.value = "You Search!!"
+        input_lat.value = marker.position.lat() 
+        input_lng.value = marker.position.lng()
                 // 위도
                 console.log('위도(latitude) : ' + marker.position.lat());
                 // 경도
                 console.log('경도(longitude) : ' + marker.position.lng());
+
+                marker.addListener('click', function () {
+
+            var infowindow = new google.maps.InfoWindow({
+                content: "You Search!!"
+                // + '<br>위도: ' + location.lat() +
+                //     '<br>경도: ' + location.lng()
+            });
+            infowindow.open(map, marker);
+            location_index.value = "You Search!!"
+        input_lat.value = marker.position.lat() 
+        input_lng.value = marker.position.lng()
+        }); //정보창 다시 뜸
+
             } else {
                 alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
             }
