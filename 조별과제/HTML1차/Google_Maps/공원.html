@@ -114,42 +114,33 @@
     var marker;
     var marker2, i;
 
+    var locations = [
+        ['명동', 37.563576, 126.983431],
+        ['가로수길', 37.520300, 127.023008],
+        ['광화문', 37.575268, 126.976896],
+        ['남산', 37.550925, 126.990945],
+        ['이태원', 37.540223, 126.994005]
+    ];
+
     function initMap() {
         var origin = { lat: 37.503176, lng: 127.024883 };
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 18,
+            zoom: 12,
             center: origin
         });
         var clickHandler = new ClickEventHandler(map, origin);
-        window.navigator.geolocation.getCurrentPosition(current_position);
-        // console.log("여긴오냐");
 
-      
-    // for (i = 0; i < locations.length; i++) {
-    //     marker2 = new google.maps.Marker({
-    //         id: i,
-    //         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-    //         map: map
-    //     });
-    // }
+        for (i = 0; i < locations.length; i++) {
+            marker2 = new google.maps.Marker({
+                id: i,
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+        }
 
     }
 
     function current_position(position) {
-        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-        var map_options = {
-            center: latlng, zoom: 18,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
-            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-        }
-
-        var marker = new google.maps.Marker({ position: latlng, map: map, title: "You are here!" });
-        var infowindow = new google.maps.InfoWindow({
-            content: '현재위치'
-        });
-        infowindow.open(map, marker);
 
     }
 
@@ -162,49 +153,8 @@
     };
 
     ClickEventHandler.prototype.handleClick = function (event) {
-        console.log('You clicked on: ' + event.latLng);
-        input_lat.value = event.latLng.lat();
-        input_lng.value = event.latLng.lng();
-        console.log('lat : ' + event.latLng.lat());
-        console.log('lng : ' + event.latLng.lng());
-        placeMarker(map, event.latLng);
+      
     }
-
-    function placeMarker(map, location) {
-        marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            icon: {
-                url: "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/wireless.svg",
-                scaledSize: new google.maps.Size(50, 50)
-            },
-            draggable: true,
-            animation: google.maps.Animation.DROP
-        });
-        marker.addListener('click', toggleBounce);
-        marker.addListener('blur', toggleBounce);
-    }
-
-
-    function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-    }
-
-
-    var locations = [
-        ['명동', 37.563576, 126.983431],
-        ['가로수길', 37.520300, 127.023008],
-        ['광화문', 37.575268, 126.976896],
-        ['남산', 37.550925, 126.990945],
-        ['이태원', 37.540223, 126.994005]
-    ];
-
-   
-
 
 
 
