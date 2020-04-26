@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>index4(revise).html</title>
+    <title>main</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -83,7 +83,7 @@
         <a class="d-flex justify-content-center navbar-brand js-scroll-trigger" href="#page-top"
             style="margin-right:0;">
             <!-- <span class="d-lg-none"></span> -->
-            <h3 class="mt-3">Google Maps</h3>
+            <h3 class="mt-3">Google Maps </h3>
         </a>
 
         <div class="navbar-collapse mt-3">
@@ -132,11 +132,12 @@
             <input onclick="showMarkers();" type=button value="Show All Markers" class="btn btn-success mb-2">
             <input onclick="clearMarkers();" type=button value="Hide Markers" class="btn btn-secondary mb-2">
             <input onclick="deleteMarkers();" type=button value="Delete Markers" class="btn btn-danger mb-2">
+            <input onclick="burgerMarkers();" type=button value="강남 햄버거집" class="btn btn-primary mb-2">
         </div>
 
     </nav> <!-- nav -->
 
-    <div id="map"></div>
+    <div id="map" style="margin-left:272px;"></div>
 </body>
 
 <script>
@@ -156,17 +157,61 @@
     }
     var markerInfo = []; //마크 정보
     var polylineInfo = []; //선 정보
+    var burgerInfo = []; //햄버거 정보
     var index = 0;
 
+    var locations = [
+        { place: '맘스터치', lat: 37.501625, lng: 127.026849 },
+        { place: '버거킹', lat: 37.498872, lng: 127.027609 },
+        { place: '맥도날드', lat: 37.498620, lng: 127.028750 }
+    ];
+
+    var image = './image/hamburger.svg';
+    function burgerMarkers() {
+        for (i = 0; i < locations.length; i++) {
+            var marker2 = new google.maps.Marker({
+                id: i,
+                icon:image,
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                map: map
+            });
+            var infowindow3 = new google.maps.InfoWindow({
+                content: '위치 : ' + locations[i].place + '<br>위도: ' + locations[i].lat +
+                    '<br>경도: ' + locations[i].lng
+            });
+            infowindow3.open(map, marker2);
+
+            burgerInfo.push(marker2);
+
+        }
+        var burgerPath = new google.maps.Polyline({
+            path: locations,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+
+        burgerPath.setMap(map);
+    }
 
     function initMap() {
         var origin = { lat: 37.503176, lng: 127.024883 };
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 18,
+            zoom: 12,
             center: origin
         });
         var clickHandler = new ClickEventHandler(map, origin);
         window.navigator.geolocation.getCurrentPosition(current_position);
+
+
+        // for (i = 0; i < locations.length; i++) {
+        //     marker2 = new google.maps.Marker({
+        //         id: i,
+        //         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        //         map: map
+        //     });
+        // }
     }
 
     function current_position(position) {
@@ -263,7 +308,7 @@
         marker.addListener('dblclick', function () { //마우스 더블클릭시 삭제하기
             markerInfo[marker.index].setMap(null);
         })
-    }
+    } //placeMarker()_end
 
 
     // function toggleBounce() {
@@ -273,7 +318,6 @@
     //         marker.setAnimation(google.maps.Animation.BOUNCE);
     //     }
     // }
-
 
 
     var dis_flag = { "start_flag": false, "end_flag": false };
@@ -333,7 +377,7 @@
     }
 
 
-    function calcDistance(lat1, lon1, lat2, lon2) {
+    function calcDistance(lat1, lon1, lat2, lon2) { //직선 거리 계산 공식
         var EARTH_R, Rad, radLat1, radLat2, radDist;
         var distance, ret;
 
