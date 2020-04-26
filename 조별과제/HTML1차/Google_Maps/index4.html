@@ -68,11 +68,13 @@
 
       // Listen for clicks on the map.
       this.map.addListener('click', this.handleClick.bind(this));
+     
     };
 
     ClickEventHandler.prototype.handleClick = function(event) {
       console.log('You clicked on: ' + event.latLng);
       // If the event has a placeId, use it.
+     
       if (event.placeId) {
         console.log('You clicked on place:' + event.placeId);
 

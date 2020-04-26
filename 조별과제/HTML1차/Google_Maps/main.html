@@ -10,7 +10,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <style>
         /* Always set the map height explicitly to define the size of the div
            * element that contains the map. */
@@ -74,10 +73,107 @@
             flex-direction: column;
             width: 100%;
         }
+
+        .map-control {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        font-family: 'Roboto','sans-serif';
+        margin: 10px;
+        /* Hide the control initially, to prevent it from appearing
+           before the map loads. */
+        display: none;
+      }
+      /* Display the control once it is inside the map. */
+      #map .map-control { display: block; }
+
+      .selector-control {
+        font-size: 14px;
+        line-height: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     </style>
 </head>
 
 <body>
+    <nav id="navbar-example" class="navbar fixed-top navbar-expand-md bg-light navbar-light ">
+        <ul class="mr-auto mb-0 pl-3 navbar-brand" style="margin-left:270px;">
+            <li class="nav-item d-flex">
+                <div href="https://www.facebook.com/woocheol.kim.353" target="_blank" class="d-flex align-items-center">
+                    <img src="./image/thumbs.svg" alt="A magnifying glass with one eye" class="card-icon mr-3">
+                    <h3 style="margin-bottom:0">26.8조</h3>
+                </div>
+            </li>
+        </ul>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#alt" aria-controls="alt"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="alt">
+            <ul class="navbar-nav ml-auto" id="menu">
+                <!-- ml-auto 오른쪽 정렬 -->
+                <li class="nav-item pr-3">
+                    <button class="btn btn-dark mb-2" data-toggle="modal" data-target="#myModal"
+                    href="#interests">사용법</button>
+                </li>
+                <li class="nav-item pr-3">
+                    <input onclick="showMarkers();" type=button value="Show All Markers" class="btn btn-success mb-2">
+                </li>
+                <li class="nav-item pr-3">
+                    <input onclick="clearMarkers();" type=button value="Hide Markers" class="btn btn-secondary mb-2">
+                </li>
+                <li class="nav-item pr-3">
+                    <input onclick="deleteMarkers();" type=button value="Delete Markers" class="btn btn-danger mb-2">
+                </li>
+                <li class="nav-item pr-3">
+                    <input onclick="burgerMarkers();" id="burgerButton" type=button value="강남 햄버거집 show"
+                        class="btn btn-primary mb-2">
+                </li>
+                <li class="nav-item">
+                    <input onclick="location_back();" id="burgerButton" type=button value="새로고침"
+                        class="btn btn-primary mb-2">
+                </li>
+               
+            </ul>
+            <!-- <form action="" class="form-inline">
+                    <input type="text" class="form-control mr-sm-2" placeholder="Search">
+                </form>
+                <button class="btn btn-success" type="submit">Search</button> -->
+        </div>
+    </nav> <!-- 메뉴바 end -->
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal modal-dialog-centered">
+            <!-- <div class="modal-dialog modal-dialog-scrollable">
+        :본문 내용 많을시 모덜 내부에서만 스크롤 가능 -->
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>설명</span>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>
+                        <b>마우스 왼쪽 클릭</b> : 마커 생성<br>
+                        <b>마커 클릭</b> : 말풍선 생성<br>
+                        <b>직선거리 계산(위치 값 입력)</b><br>
+                        ex)출발 : 0, 도착 : 1<br>
+                        ex)출발 : 맘스터치, 도착 : 버거킹<br>
+                        <b>지도 검색</b> : 도로명 주소 입력
+                    </p>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Modal end -->
+
     <nav class="navbar navbar-dark fixed-top" id="sideNav" style="background-color: #3b5998;">
 
         <a class="d-flex justify-content-center navbar-brand js-scroll-trigger" href="#page-top"
@@ -123,31 +219,53 @@
                     <div class="text-center">
                         <button id="dis_cal" class="btn btn-primary" type="submit" style="width:70px;">계산</button>
                     </div>
+
+
                 </li>
 
+                <li class="nav-item mx-auto mt-3">
+                    <a class="d-flex justify-content-center navbar-brand js-scroll-trigger" href="#page-top"
+                        style="margin-right:0;">
+                        <h5 class="mt-3">지도 검색</h5>
+                    </a>
+                    <div class="d-flex">
+                        <a class="nav-link js-scroll-trigger mb-2 mr-3" href="#">주소</a>
+                        <input type="text" id="address" class="form-control" style="width:180px;" value=""
+                            placeholder="">
+                        <!-- <button id="submit" type="button" value="Geocode"></button> -->
+                    </div>
+                    <div class="text-center">
+                        <button id="submit" class="btn btn-primary" value="Geocode" type="button"
+                            style="width:70px;">검색</button>
+                    </div>
+                </li>
             </ul>
         </div>
-
-        <div id="" class="text-center mt-3">
+       
+        <!-- <div id="" class="text-center mt-3">
             <input onclick="showMarkers();" type=button value="Show All Markers" class="btn btn-success mb-2">
             <input onclick="clearMarkers();" type=button value="Hide Markers" class="btn btn-secondary mb-2">
             <input onclick="deleteMarkers();" type=button value="Delete Markers" class="btn btn-danger mb-2">
-            <input onclick="burgerMarkers();" type=button value="강남 햄버거집" class="btn btn-primary mb-2">
-        </div>
+            <input onclick="burgerMarkers();" id="burgerButton" type=button value="강남 햄버거집 show"
+                class="btn btn-primary mb-2">
+            <input onclick="location_back();" id="burgerButton" type=button value="현재위치로 돌아가기"
+                class="btn btn-primary mb-2">
+        </div> -->
 
     </nav> <!-- nav -->
+   
+    <div id="map" style="margin-top:65px; margin-left:272px;"></div>
 
-    <div id="map" style="margin-left:272px;"></div>
 </body>
 
 <script>
-
+    var location_index = document.getElementById("location_index");
     var input_lat = document.getElementById("lat");
     var input_lng = document.getElementById("lng");
     var start_index = document.getElementById("start_index");
     var end_index = document.getElementById("end_index");
-    var location_index = document.getElementById("location_index");
     var distance = document.getElementById("distance");
+    var burgerButton = document.getElementById("burgerButton");
 
     var map; //지도 정보
     var markerArray = { //위치 선택시 들어갈 JSON
@@ -163,47 +281,72 @@
     var locations = [
         { place: '맘스터치', lat: 37.501625, lng: 127.026849 },
         { place: '버거킹', lat: 37.498872, lng: 127.027609 },
-        { place: '맥도날드', lat: 37.498620, lng: 127.028750 }
+        { place: '맥도날드', lat: 37.498620, lng: 127.028750 },
+        { place: '맘스터치', lat: 37.501625, lng: 127.026849 } //처음과 마지막 장소의 선긋기 용
     ];
 
     var image = './image/hamburger.svg';
-    function burgerMarkers() {
-        for (i = 0; i < locations.length; i++) {
-            var marker2 = new google.maps.Marker({
-                id: i,
-                icon:image,
-                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-                map: map
-            });
-            var infowindow3 = new google.maps.InfoWindow({
-                content: '위치 : ' + locations[i].place + '<br>위도: ' + locations[i].lat +
-                    '<br>경도: ' + locations[i].lng
-            });
-            infowindow3.open(map, marker2);
+    var burgerFlag = false;
+    var burgerPath;
+    var marker2;
+    var infowindow3;
 
-            burgerInfo.push(marker2);
 
-        }
-        var burgerPath = new google.maps.Polyline({
-            path: locations,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        });
-
-        burgerPath.setMap(map);
+    function location_back() {
+        window.navigator.geolocation.getCurrentPosition(current_position);
     }
 
-    function initMap() {
-        var origin = { lat: 37.503176, lng: 127.024883 };
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: origin
-        });
-        var clickHandler = new ClickEventHandler(map, origin);
-        window.navigator.geolocation.getCurrentPosition(current_position);
+    function burgerMarkers() {
+        if (!burgerFlag) {
+            burgerButton.value = "강남 햄버거집 hide"
+            for (i = 0; i < locations.length; i++) {
+                marker2 = new google.maps.Marker({
+                    id: i,
+                    icon: image,
+                    position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                    map: map
+                });
+                infowindow3 = new google.maps.InfoWindow({
+                    content: '위치 : ' + locations[i].place + '<br>위도: ' + locations[i].lat +
+                        '<br>경도: ' + locations[i].lng
+                });
+                infowindow3.open(map, marker2);
+                burgerInfo.push(marker2);
+            }
+            burgerPath = new google.maps.Polyline({
+                path: locations,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+            burgerPath.setMap(map);
+            burgerFlag = true;
+        } else {
+            burgerButton.value = "강남 햄버거집 show"
+            burgerPath.setMap(null);
+            for (i = 0; i < locations.length; i++) {
+                burgerInfo[i].setMap(null);
+            }
+            infowindow3.setMap(null);
+            burgerInfo = [];
+            burgerFlag = false;
+        }
 
+    }
+    var ss = [];
+    function initMap() {
+        window.navigator.geolocation.getCurrentPosition(current_position);
+        
+        // var origin = { lat: 37.503176, lng: 127.024883 };
+        // map = new google.maps.Map(document.getElementById('map'), {
+        //     zoom: 15,
+        //     center: origin,
+        //     mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //     mapTypeControl: false,
+        //     navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        // });
+        // var clickHandler = new ClickEventHandler(map, origin);
 
         // for (i = 0; i < locations.length; i++) {
         //     marker2 = new google.maps.Marker({
@@ -214,33 +357,52 @@
         // }
     }
 
-    function current_position(position) {
+    var current_marker;
+    var geocoder;
+    function current_position(position) { 
+
+        geocoder = new google.maps.Geocoder();
+
         var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        var map_options = {
-            center: latlng, zoom: 18,
+        var origin = { lat: position.coords.latitude, lng: position.coords.longitude };
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: origin,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-        }
+        });
+      
+        var clickHandler = new ClickEventHandler(map, origin);
 
-        var marker = new google.maps.Marker({
+        //var map_options = {
+        // center: latlng, zoom: 15,
+        // mapTypeId: google.maps.MapTypeId.ROADMAP,
+        // mapTypeControl: false,
+        // navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        //}
+
+        current_marker = new google.maps.Marker({
             position: latlng,
             map: map,
             title: "You are here!"
         });
+
         var infowindow = new google.maps.InfoWindow({
-            content: '현재위치' + '<br>위도 : ' + marker.position.lat() + '<br>경도 : ' + marker.position.lng()
+            content: '현재위치' + '<br>위도 : ' + current_marker.position.lat() + '<br>경도 : ' + current_marker.position.lng()
         });
-        infowindow.open(map, marker);
+        infowindow.open(map, current_marker);
+        ss[0] = current_marker.position.lat();
+        console.log("ss : " + current_marker.position.lat())
+        ss[1] = current_marker.position.lng();
 
-        marker.addListener('click', function () {
+        current_marker.addListener('click', function () {
             var infowindow = new google.maps.InfoWindow({
-                content: '현재위치' + '<br>위도 : ' + marker.position.lat() + '<br>경도 : ' + marker.position.lng()
+                content: '현재위치' + '<br>위도 : ' + current_marker.position.lat() + '<br>경도 : ' + current_marker.position.lng()
             });
-            infowindow.open(map, marker);
+            infowindow.open(map, current_marker);
         }); //정보창 다시 뜸
-
     }
 
 
@@ -252,6 +414,7 @@
 
     ClickEventHandler.prototype.handleClick = function (event) {
         placeMarker(map, event.latLng);
+       
         // console.log('You clicked on: ' + event.latLng);
         location_index.value = markerArray.array[index].index;
         input_lat.value = event.latLng.lat();
@@ -260,8 +423,6 @@
         // console.log('lng : ' + event.latLng.lng());
         index += 1;
     }
-
-
 
     function placeMarker(map, location) {
         var marker = new google.maps.Marker({
@@ -272,7 +433,7 @@
                 url: "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/wireless.svg",
                 scaledSize: new google.maps.Size(50, 50)
             },
-            draggable: true,
+            // draggable: true,
             animation: google.maps.Animation.DROP
         });
 
@@ -304,11 +465,15 @@
             infowindow.open(map, marker);
         }); //정보창 다시 뜸
         // marker.addListener('blur', toggleBounce);
+     
+        // marker.addListener('dblclick', function () { //마우스 더블클릭시 삭제하기
+        //     markerInfo[marker.index].setMap(null);
+        // })
 
-        marker.addListener('dblclick', function () { //마우스 더블클릭시 삭제하기
-            markerInfo[marker.index].setMap(null);
-        })
+       
     } //placeMarker()_end
+      
+  
 
 
     // function toggleBounce() {
@@ -320,60 +485,80 @@
     // }
 
 
+    var dis_burgerFlag = { "start_Flag": false, "end_Flag": false };
+    var dis_burgerStart = [] //순서= 위도, 경도
+    var dis_burgerEnd = [] //순서= 위도, 경도
+
     var dis_flag = { "start_flag": false, "end_flag": false };
-    var dis_start = [] //순서 위도, 경도
-    var dis_end = [] //순서 위도, 경도
+    var dis_start = [] //순서= 위도, 경도
+    var dis_end = [] //순서= 위도, 경도
     document.getElementById("dis_cal").onclick = function () { // button click
-        console.log(start_index.value);
-        console.log(end_index.value);
 
-        // var start_lat;
-        // var end_lat;
-        // var start_lng;
-        // var end_lng;
+        if (start_index.value.length > 2) { //햄버거집 입력
 
-        if (markerArray.array.length > 1) {
-            for (var i = 0; i < markerArray.array.length; i++) {
-                if (markerArray.array[i].index == start_index.value) {
-                    dis_flag.start_flag = true;
-                    dis_start[0] = markerArray.array[i].lat;
-                    dis_start[1] = markerArray.array[i].lng;
+            for (var i = 0; i < locations.length; i++) {
+                if (locations[i].place == start_index.value) {
+                    dis_burgerFlag.start_Flag = true;
+                    dis_burgerStart[0] = locations[i].lat;
+                    dis_burgerStart[1] = locations[i].lng;
                     break;
                 }
             }
 
-            for (var j = 0; j < markerArray.array.length; j++) {
-                if (markerArray.array[j].index == end_index.value) {
-                    dis_flag.end_flag = true;
-                    dis_end[0] = markerArray.array[j].lat;
-                    dis_end[1] = markerArray.array[j].lng;
+            for (var i = 0; i < locations.length; i++) {
+                if (locations[i].place == end_index.value) {
+                    dis_burgerFlag.end_Flag = true;
+                    dis_burgerEnd[0] = locations[i].lat;
+                    dis_burgerEnd[1] = locations[i].lng;
                     break;
                 }
             }
 
-            if (dis_flag.start_flag == true && dis_flag.end_flag == true) {
+            if (dis_burgerFlag.start_Flag == true && dis_burgerFlag.end_Flag == true) {
+                distance.value = calcDistance(dis_burgerStart[0], dis_burgerStart[1], dis_burgerEnd[0], dis_burgerEnd[1])
+            }
+        } else { //수동 마커 위치 입력(숫자)
 
-                var flightPlanCoordinates = [
-                    { lat: dis_start[0], lng: dis_start[1] },
-                    { lat: dis_end[0], lng: dis_end[1] }
-                ];
+            if (markerArray.array.length > 1) { //등록된 마커가 최소 2개이상일시
+                for (var i = 0; i < markerArray.array.length; i++) {
+                    if (markerArray.array[i].index == start_index.value) {
+                        dis_flag.start_flag = true;
+                        dis_start[0] = markerArray.array[i].lat;
+                        dis_start[1] = markerArray.array[i].lng;
+                        break;
+                    }
+                }
 
-                var flightPath = new google.maps.Polyline({
-                    path: flightPlanCoordinates,
-                    geodesic: true,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2
-                });
-                polylineInfo.push(flightPath);
+                for (var j = 0; j < markerArray.array.length; j++) {
+                    if (markerArray.array[j].index == end_index.value) {
+                        dis_flag.end_flag = true;
+                        dis_end[0] = markerArray.array[j].lat;
+                        dis_end[1] = markerArray.array[j].lng;
+                        break;
+                    }
+                }
 
-                flightPath.setMap(map);
+                if (dis_flag.start_flag == true && dis_flag.end_flag == true) {
 
+                    var flightPlanCoordinates = [
+                        { lat: dis_start[0], lng: dis_start[1] },
+                        { lat: dis_end[0], lng: dis_end[1] }
+                    ];
+
+                    var flightPath = new google.maps.Polyline({
+                        path: flightPlanCoordinates,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+                    polylineInfo.push(flightPath);
+                    flightPath.setMap(map);
+                    distance.value = calcDistance(dis_start[0], dis_start[1], dis_end[0], dis_end[1])
+                }
             }
         }
 
-        console.log()
-        distance.value = calcDistance(dis_start[0], dis_start[1], dis_end[0], dis_end[1])
     }
 
 
@@ -391,13 +576,29 @@
         distance = distance + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radDist);
         ret = EARTH_R * Math.acos(distance);
 
-        var rtn = Math.round(Math.round(ret) / 1000);
+        // var rtn = Math.round(Math.round(ret) / 1000);
 
-        if (rtn <= 0) {
-            rtn = Math.round(ret) + " m";
-        } else {
-            rtn = rtn + " km";
-        }
+        // if (rtn <= 0) {
+        //     console.log("rtn: " + rtn);
+        //     console.log("ret : " + ret);
+        //     rtn = Math.round(ret) + " m";
+        // } else {
+        //     console.log("rtn: " + rtn);
+        //     console.log("ret : " + ret);
+        //     rtn = rtn + " km";
+        // }
+
+        var rtn = Math.round(ret) + " m";
+
+
+        //  if (rtn <= 0) {
+        //     rtn = Math.round(ret) + " m";
+        // } else {
+        //     rtn =  rtn + "." + (Math.round(ret)) + " km";
+        // }
+
+        // rtn =  Math.round(ret)+ " m";
+
         return rtn;
     }
 
@@ -439,12 +640,51 @@
         location_index.value = null;
         input_lat.value = null;
         input_lng.value = null;
+        start_index.value = null;
+        end_index.value = null;
+        distance.value = null;
     }
 
 
+    // submit 버튼 클릭 이벤트 실행
+    document.getElementById('submit').addEventListener('click', function () {
+        console.log('submit 버튼 클릭 이벤트 실행');
 
+        // 여기서 실행
+        geocodeAddress(geocoder, map);
+    });
+
+    var image2 = './image/home.svg';
+    function geocodeAddress(geocoder, resultMap) {
+        console.log('geocodeAddress 함수 실행');
+
+        var address = document.getElementById('address').value;
+
+        geocoder.geocode({ 'address': address }, function (result, status) {
+            console.log(result);
+            console.log(status);
+
+            if (status === 'OK') {
+                resultMap.setCenter(result[0].geometry.location);
+                resultMap.setZoom(18);
+                var marker = new google.maps.Marker({
+                    map: resultMap,
+                    icon: image2,
+                    position: result[0].geometry.location
+                });
+
+                // 위도
+                console.log('위도(latitude) : ' + marker.position.lat());
+                // 경도
+                console.log('경도(longitude) : ' + marker.position.lng());
+            } else {
+                alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
+            }
+        });
+    }
 
 </script>
+
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&libraries=places&callback=initMap&sensor=true"
     async defer></script>

@@ -1,0 +1,103 @@
+<!-- 이 예제는 POI (관심 지점)에서 클릭 이벤트 리스너를 사용하는 방법을 보여줍니다. 
+    POI 아이콘에서 click 이벤트를 수신 한 다음 길 찾기 서비스 .route 요청과 함께 이벤트 데이터의 placeId를 사용하여 
+    클릭 한 장소에 대한 경로를 계산하고 표시합니다. 또한 placeId를 사용하여 장소에 대한 자세한 정보를 얻습니다. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>msssain</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="main_mode.js"></script>
+    <style>
+        #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .map-control {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+        font-family: 'Roboto','sans-serif';
+        margin: 10px;
+        /* Hide the control initially, to prevent it from appearing
+           before the map loads. */
+        display: none;
+      }
+      /* Display the control once it is inside the map. */
+      #map .map-control { display: block; }
+
+      .selector-control {
+        font-size: 14px;
+        line-height: 30px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="style-selector-control" class="map-control">
+        <select id="style-selector" class="selector-control">
+            <option value="default">Default</option>
+            <option value="silver">Silver</option>
+            <option value="night" selected="selected">Night mode</option>
+            <option value="retro">Retro</option>
+            <option value="hiding">Hide features</option>
+        </select>
+    </div>
+    <div id="map"></div>
+
+
+
+<script>
+
+    var map; //지도 정보
+
+    function initMap() {
+        var origin = { lat: 37.503176, lng: 127.024883 };
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: origin,
+            mapTypeControl: false,
+        });
+        
+       // Add a style-selector control to the map.
+       var styleControl = document.getElementById('style-selector-control');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(styleControl);
+
+        // Set the map's style to the initial value of the selector.
+        var styleSelector = document.getElementById('style-selector');
+        map.setOptions({styles: styles[styleSelector.value]});
+
+        // Apply new JSON when the user selects a different style.
+        styleSelector.addEventListener('change', function() {
+          map.setOptions({styles: styles[styleSelector.value]});
+        });
+
+    }
+
+</script>
+
+<script src="main_mode.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&libraries=places&callback=initMap&sensor=true"
+    async defer></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+</html>
