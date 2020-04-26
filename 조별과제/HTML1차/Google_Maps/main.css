@@ -1,0 +1,87 @@
+ /* Always set the map height explicitly to define the size of the div
+           * element that contains the map. */
+           #map {
+            height: 100%;
+            margin-top:65px; 
+            margin-left:272px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+
+        #sideNav {
+            /* text-align: center; */
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 17rem;
+            height: 100vh;
+        }
+
+        #sideNav .navbar-nav .nav-item .nav-link {
+            font-weight: 800;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+        }
+
+        #sideNav .navbar-brand .img-profile {
+            max-width: 4rem;
+            max-height: 4rem;
+            border: 0.5rem solid rgba(255, 255, 255, 0.2);
+            margin-left: 10px;
+        }
+
+        #sideNav .navbar-collapse {
+            display: flex;
+            align-items: flex-start;
+            flex-grow: 0;
+            width: 100%;
+            margin-bottom: auto;
+        }
+
+        #sideNav .navbar-collapse .navbar-nav {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .map-control {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+            font-family: 'Roboto', 'sans-serif';
+            margin: 10px;
+            /* Hide the control initially, to prevent it from appearing
+           before the map loads. */
+            display: none;
+        }
+
+        /* Display the control once it is inside the map. */
+        #map .map-control {
+            display: block;
+        }
+
+        .selector-control {
+            font-size: 14px;
+            line-height: 30px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }

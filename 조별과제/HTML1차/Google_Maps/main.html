@@ -1,6 +1,3 @@
-<!-- 이 예제는 POI (관심 지점)에서 클릭 이벤트 리스너를 사용하는 방법을 보여줍니다. 
-    POI 아이콘에서 click 이벤트를 수신 한 다음 길 찾기 서비스 .route 요청과 함께 이벤트 데이터의 placeId를 사용하여 
-    클릭 한 장소에 대한 경로를 계산하고 표시합니다. 또한 placeId를 사용하여 장소에 대한 자세한 정보를 얻습니다. -->
 <!DOCTYPE html>
 <html>
 
@@ -10,93 +7,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-           * element that contains the map. */
-        #map {
-            height: 100%;
-        }
-
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .title {
-            font-weight: bold;
-        }
-
-        #infowindow-content {
-            display: none;
-        }
-
-        #map #infowindow-content {
-            display: inline;
-        }
-
-
-        #sideNav {
-            /* text-align: center; */
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: block;
-            width: 17rem;
-            height: 100vh;
-        }
-
-        #sideNav .navbar-nav .nav-item .nav-link {
-            font-weight: 800;
-            letter-spacing: 0.05rem;
-            text-transform: uppercase;
-        }
-
-        #sideNav .navbar-brand .img-profile {
-            max-width: 4rem;
-            max-height: 4rem;
-            border: 0.5rem solid rgba(255, 255, 255, 0.2);
-            margin-left: 10px;
-        }
-
-        #sideNav .navbar-collapse {
-            display: flex;
-            align-items: flex-start;
-            flex-grow: 0;
-            width: 100%;
-            margin-bottom: auto;
-        }
-
-        #sideNav .navbar-collapse .navbar-nav {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .map-control {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-            font-family: 'Roboto', 'sans-serif';
-            margin: 10px;
-            /* Hide the control initially, to prevent it from appearing
-           before the map loads. */
-            display: none;
-        }
-
-        /* Display the control once it is inside the map. */
-        #map .map-control {
-            display: block;
-        }
-
-        .selector-control {
-            font-size: 14px;
-            line-height: 30px;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./main.css">
 </head>
 
 <body>
@@ -116,7 +27,6 @@
         </button>
         <div class="collapse navbar-collapse" id="alt">
             <ul class="navbar-nav ml-auto" id="menu">
-                <!-- ml-auto 오른쪽 정렬 -->
                 <li class="nav-item pr-3">
                     <button class="btn btn-dark mb-2" data-toggle="modal" data-target="#myModal"
                         href="#interests">사용법</button>
@@ -140,12 +50,8 @@
                 </li>
 
             </ul>
-            <!-- <form action="" class="form-inline">
-                    <input type="text" class="form-control mr-sm-2" placeholder="Search">
-                </form>
-                <button class="btn btn-success" type="submit">Search</button> -->
         </div>
-    </nav> <!-- 메뉴바 end -->
+    </nav> <!-- Top 메뉴바 end -->
 
 
     <div class="modal fade" id="myModal">
@@ -180,7 +86,6 @@
     </div> <!-- Modal end -->
 
     <nav class="navbar navbar-dark fixed-top" id="sideNav" style="background-color: #3b5998;">
-
         <a class="d-flex justify-content-center navbar-brand js-scroll-trigger" href="#page-top"
             style="margin-right:0;">
             <!-- <span class="d-lg-none"></span> -->
@@ -224,10 +129,7 @@
                     <div class="text-center">
                         <button id="dis_cal" class="btn btn-primary" type="submit" style="width:70px;">계산</button>
                     </div>
-
-
                 </li>
-
                 <li class="nav-item mx-auto mt-3">
                     <a class="d-flex justify-content-center navbar-brand js-scroll-trigger" href="#page-top"
                         style="margin-right:0;">
@@ -257,9 +159,9 @@
                 class="btn btn-primary mb-2">
         </div> -->
 
-    </nav> <!-- nav -->
+    </nav> <!-- left 메뉴바 end -->
 
-    <div id="map" style="margin-top:65px; margin-left:272px;"></div>
+    <div id="map"></div>
 
 </body>
 
@@ -281,6 +183,7 @@
     var markerInfo = []; //마크 정보
     var polylineInfo = []; //선 정보
     var burgerInfo = []; //햄버거 정보
+    var search = [];
     var index = 0;
 
     var locations = [
@@ -375,7 +278,7 @@
             zoom: 15,
             center: origin,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
+            mapTypeControl: true,
             navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
         });
 
@@ -400,10 +303,10 @@
         });
         infowindow.open(map, current_marker);
         location_index.value = "현재위치"
-        input_lat.value =  current_marker.position.lat();
-        input_lng.value =  current_marker.position.lng();
+        input_lat.value = current_marker.position.lat();
+        input_lng.value = current_marker.position.lng();
 
-     
+
 
         current_marker.addListener('click', function () {
             var infowindow = new google.maps.InfoWindow({
@@ -411,11 +314,10 @@
             });
             infowindow.open(map, current_marker);
             location_index.value = "현재위치"
-        input_lat.value =  current_marker.position.lat();
-        input_lng.value =  current_marker.position.lng();
+            input_lat.value = current_marker.position.lat();
+            input_lng.value = current_marker.position.lng();
         }); //정보창 다시 뜸
     }
-
 
     var ClickEventHandler = function (map, origin) {
         this.origin = origin;
@@ -471,21 +373,20 @@
             // }
 
             var infowindow = new google.maps.InfoWindow({
-                content: '위치 : ' + marker.index 
+                content: '위치 : ' + marker.index
                 // + '<br>위도: ' + location.lat() +
                 //     '<br>경도: ' + location.lng()
             });
             infowindow.open(map, marker);
-            location_index.value = marker.index 
-        input_lat.value =  location.lat() 
-        input_lng.value =  location.lng()
+            location_index.value = marker.index
+            input_lat.value = location.lat()
+            input_lng.value = location.lng()
         }); //정보창 다시 뜸
         // marker.addListener('blur', toggleBounce);
 
         // marker.addListener('dblclick', function () { //마우스 더블클릭시 삭제하기
         //     markerInfo[marker.index].setMap(null);
         // })
-
 
     } //placeMarker()_end
 
@@ -713,10 +614,18 @@
         }
     }
 
+    // Sets the map on all markers in the array.
+    function setMapOnAllSer(map) {
+        for (var i = 0; i < search.length; i++) {
+            search[i].setMap(map);
+        }
+    }
+
     // Removes the markers from the map, but keeps them in the array.
     function clearMarkers() {
         setMapOnAll(null)
         setMapOnAllPol(null)
+        setMapOnAllSer(null)
 
     }
 
@@ -724,6 +633,7 @@
     function showMarkers() {
         setMapOnAll(map)
         setMapOnAllPol(map)
+        setMapOnAllSer(map)
     }
 
     // Deletes all markers in the array by removing references to them.
@@ -731,6 +641,7 @@
         clearMarkers();
         markerInfo = [];
         polylineInfo = [];
+        search = [];
         index = 0;
         markerArray.array = [];
         location_index.value = null;
@@ -757,8 +668,6 @@
         var address = document.getElementById('address').value;
 
         geocoder.geocode({ 'address': address }, function (result, status) {
-            console.log(result);
-            console.log(status);
 
             if (status === 'OK') {
                 resultMap.setCenter(result[0].geometry.location);
@@ -770,30 +679,24 @@
                 });
                 var infowindow = new google.maps.InfoWindow({
                     content: "You Search!!"
-                    // '위도: ' + marker.position.lat() +
-                    //     '<br>경도: ' + marker.position.lng()
                 });
                 infowindow.open(map, marker);
                 location_index.value = "You Search!!"
-        input_lat.value = marker.position.lat() 
-        input_lng.value = marker.position.lng()
-                // 위도
-                console.log('위도(latitude) : ' + marker.position.lat());
-                // 경도
-                console.log('경도(longitude) : ' + marker.position.lng());
+                input_lat.value = marker.position.lat() //위도
+                input_lng.value = marker.position.lng() //경도
+                search.push(marker);
 
                 marker.addListener('click', function () {
-
-            var infowindow = new google.maps.InfoWindow({
-                content: "You Search!!"
-                // + '<br>위도: ' + location.lat() +
-                //     '<br>경도: ' + location.lng()
-            });
-            infowindow.open(map, marker);
-            location_index.value = "You Search!!"
-        input_lat.value = marker.position.lat() 
-        input_lng.value = marker.position.lng()
-        }); //정보창 다시 뜸
+                    var infowindow = new google.maps.InfoWindow({
+                        content: "You Search!!"
+                        // + '<br>위도: ' + location.lat() +
+                        //     '<br>경도: ' + location.lng()
+                    });
+                    infowindow.open(map, marker);
+                    location_index.value = "You Search!!"
+                    input_lat.value = marker.position.lat()
+                    input_lng.value = marker.position.lng()
+                }); //정보창 다시 뜸
 
             } else {
                 alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
@@ -804,7 +707,7 @@
 </script>
 
 <script
-    src="https://maps.googleapis.com/maps/api/js?key=KEY&sensor=true"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB967GKjoFZHapwWuYLDfvp3JQssSZzvkE&libraries=places&callback=initMap&sensor=true"
     async defer></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
