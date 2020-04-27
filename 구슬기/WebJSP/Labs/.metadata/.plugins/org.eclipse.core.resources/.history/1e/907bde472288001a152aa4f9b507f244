@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+    	/*
+    	요청에 대한 흐름 제어
+    	
+    	include
+    	forward
+    	
+    	공통점 : request 객체를 공유한다
+    	차이점 : include 제어권을 가지고 있다. (내가 너 실행함 그담에 다시 나한테 와야함) 
+    	      forward  제어권을 넘겨준다.  (POINT : 요청 주소는 동일한데 다른 page 의 내용을 서비스 )
+    	*/
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>forward ..스프링까지 이어지는 개념</title>
+</head>
+<body>
+
+</body>
+</html>

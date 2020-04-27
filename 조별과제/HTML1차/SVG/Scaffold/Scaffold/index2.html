@@ -26,6 +26,7 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/svgHover.css" rel="stylesheet">
@@ -34,6 +35,7 @@
   <link href="assets/css/clsLayer.css" rel="stylesheet">
   <link href="assets/css/box.css" rel="stylesheet">
   <link href="assets/css/block1.css" rel="stylesheet">
+  <link href="assets/css/circle.css" rel="stylesheet">
 
 
 
@@ -1508,18 +1510,15 @@
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox"
-                  title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
+            <div class="circle_svg" >
+              <!-- Click when the circle is inside the open inner arc -->
+          <script src="https://d3js.org/d3.v5.min.js"></script>
+          <div>
+          <div id="gameBox" style="width: 233px; height: 233px;">
+              <div id="points">0</div>
+              <svg id="spinSvg"></svg>
+          </div>
+          </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
@@ -1569,6 +1568,8 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/xray.js"></script>
   <script src="assets/js/bloon.js"></script>
+  <script src="assets/js/circle.js"></script>
+  
 
 
   <!-- 스크롤을 당겼을때 확인 할 수있는 크기 비교-->

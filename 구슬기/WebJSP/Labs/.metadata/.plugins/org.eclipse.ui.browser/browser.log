@@ -1,0 +1,14 @@
+
+4월 27, 2020 11:30:33.35 NEW SESSION
+4월 27, 2020 11:30:33.35 [15540:10256:0427/113033.349:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 11:30:39.79 [15540:10256:0427/113039.793:ERROR:device_event_log_impl.cc(162)] [11:30:39.793] Bluetooth: bluetooth_adapter_winrt.cc:1055 Getting Default Adapter failed.
+4월 27, 2020 12:00:06.78 [9824:4148:0427/120006.787:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 12:00:13.19 [9824:4148:0427/120013.196:ERROR:device_event_log_impl.cc(162)] [12:00:13.196] Bluetooth: bluetooth_adapter_winrt.cc:1055 Getting Default Adapter failed.
+4월 27, 2020 13:02:49.23 [12528:9728:0427/130249.237:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 13:03:00.64 [12528:9728:0427/130300.641:ERROR:device_event_log_impl.cc(162)] [13:03:00.640] Bluetooth: bluetooth_adapter_winrt.cc:1055 Getting Default Adapter failed.
+4월 27, 2020 13:55:55.01 [12528:9776:0427/135555.013:ERROR:socket_stream.cc(218)] Closing stream with result -2
+4월 27, 2020 13:55:56.52 [12528:9776:0427/135556.527:ERROR:socket_stream.cc(218)] Closing stream with result -2
+4월 27, 2020 14:04:21.21 [12528:9776:0427/140417.412:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -106
+4월 27, 2020 14:36:04.84 [3484:14788:0427/143604.844:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:36:14.25 [3484:14788:0427/143614.250:ERROR:device_event_log_impl.cc(162)] [14:36:14.250] Bluetooth: bluetooth_adapter_winrt.cc:1055 Getting Default Adapter failed.
+4월 27, 2020 15:24:45.25 [3484:10020:0427/152445.252:ERROR:database.cc(1584)] Passwords sqlite error 2067, errno 0: UNIQUE constraint failed: logins.origin_url, logins.username_element, logins.username_value, logins.password_element, logins.signon_realm, sql: INSERT INTO logins (origin_url, action_url, username_element, username_value, password_element, password_value, submit_element, signon_realm, preferred, date_created, blacklisted_by_user, scheme, password_type, times_used, form_data, date_synced, display_name, icon_url, federation_url, skip_zero_click, generation_upload_status, possible_username_pairs, id, date_last_used) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)

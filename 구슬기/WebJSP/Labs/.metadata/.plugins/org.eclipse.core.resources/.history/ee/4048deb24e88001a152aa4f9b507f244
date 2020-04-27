@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+<%
+	//한글처리
+	request.setCharacterEncoding("UTF-8");
+
+	//데이터 받기
+	String uid = request.getParameter("uid");
+	String pwd = request.getParameter("pwd");
+	
+	//확인하기 이거 확인하고 되면 다음 로직 들어가세여
+	out.print(uid +"/"+pwd);
+	
+	//로직(비즈니스) 업무처리   (처음하는 사람들은 코드부터 짜지말고 뭐할지먼저 생각하세요, 플로우차트를 그리던지)
+	//DB 연결 >select > 회원테이블 > id, pwd 존재  
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

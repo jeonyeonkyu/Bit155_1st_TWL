@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TODAY POINT</title>
+</head>
+<body>
+
+<!-- 
+	TODAY POINT
+	서버 자원( WAS : memory 사용하기)
+	
+	-Application 객체 (전역자원) >> 접속하는 모든 사용자가 다룰 수 있는 자원
+	-Session객체  >> 접속하는 브라우져 마다(SessionID 마다) 고유하게 부여되는 객체  (고유한 자원)
+					(접속한  사용자마다 고유하게 부여되는 자원)
+	
+	사이트 접속(전체 접속자 수 : 100000명) 
+	application.setAttribute("count",0);    count 변수는 application객체 안에 들어있음  전역자원임
+	사이트에 접속하는 모든 session는 count 라는 변수에 접근이 가능하다. 
+	길동이도, 유신이도, 아무개도 들어와서 +1 씩 사용자 수 증가 시킬수 있음
+	
+	
+	[session]
+	session.setAttribute("ID","kglim") //ID 변수는  session 객체안에 생성 
+	접속한 모든 사용자 마다 고유하게 부여되는 객체..그 안에 생성된다. 
+	
+	
+	
+ -->
+ 
+ 
+ <%
+ 	
+ %>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

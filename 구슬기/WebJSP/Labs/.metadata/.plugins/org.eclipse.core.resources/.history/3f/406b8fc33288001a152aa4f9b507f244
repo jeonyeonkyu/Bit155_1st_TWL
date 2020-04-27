@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>file 브라우저를 닫아도 영속적으로 클라이언트에 남아있음</title>
+</head>
+<body>
+<!-- 
+	1. 메모리 쿠키 ( 브라우저 쿠키) 라고도 함  : client 강제로 삭제하지 않는 한 브라우저 닫기 전까지 유효.
+	
+ -->
+
+</body>
+</html>

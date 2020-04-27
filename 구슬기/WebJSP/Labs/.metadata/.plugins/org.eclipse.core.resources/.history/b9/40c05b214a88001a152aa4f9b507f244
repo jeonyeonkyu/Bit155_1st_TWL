@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 
+	TODAY POINT
+	서버 자원( WAS : memory 사용하기)
+	
+	-Application 객체 (전역자원) >> 접속하는 모든 사용자가 다룰 수 있는 자원
+	-Session객체  >> 접속하는 브라우져 마다(SessionID 마다) 고유하게 부여되는 객체 
+ -->
+
+</body>
+</html>

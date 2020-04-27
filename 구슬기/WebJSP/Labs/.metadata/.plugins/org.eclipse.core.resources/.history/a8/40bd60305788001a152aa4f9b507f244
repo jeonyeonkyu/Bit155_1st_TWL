@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Object Scope</title>
+</head>
+<body>
+
+<!-- 
+	Tomcat 제공(WAS) 기본적인 내장 객체
+	1. request (요청: 클라이언트 정보)
+	2. response(응답 : 특정페이지 이동, 정보출력, 쿠키 쓰기)
+	3. application(전역객체  : web.xml 자원 read, 전역자원)
+	4. session(접속한 사용자(브라우져) 고유하게 부여되는 개체, 고유한 변수)
+	5. out (out.print())
+	
+	
+	session 객체
+	[내부에 session 변수 생성]
+	scope : a.jsp (session.setAt... "member" 변수 생성)
+			b.jsp (session.getAt... "member" read 가능)
+			
+			
+	session 변수는 (현재  WebContent(웹프로젝트) 폴더안에 있는 모든 페이지에서 사용 가능하다)
+	Life-cycle : 1. session 변수는  session 객체와  동일하다 ( sessionID 소멸)		
+	
+	
+	
+ -->
+</body>
+</html>

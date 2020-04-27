@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Session 웹에서 필수적인 부분</title>
+</head>
+<body>
+
+<!-- 
+
+	session객체 : 브라우져(접속한 사용자) 마다 서버에서 부여하는 고유한 객체 
+	
+	session 값 : 웹 서버가 접속한 클라이언트(브라우져)에게 부여하는 고유한 ID 값(식별값)
+	
+	A사용자 : 웹 서버에 접속 : session 객체 생성 >> 고유한 ID 값을 부여 
+	B사용자 :
+	
+ -->
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쿠키</title>
+</head>
+<body>
+<!-- 
+	정보(데이터) > where 저장	
+	정보? 아이디 패스웓, 이메일 확인유무, 팝업창 오늘 본다 안본다등등
+	이 정보가 어디 저장되는게 맞을까?
+	 
+	
+	클라이언트 (개인 로컬 PC 브라우저)    :    서버(웹 서버 또는 DB 서버)
+	
+	정보(데이터, 자료)  >> 어디에 저장(보관)
+	고민 : 보안  요소 (정보의 중요성) 
+	
+ -->
+
+</body>
+</html>
