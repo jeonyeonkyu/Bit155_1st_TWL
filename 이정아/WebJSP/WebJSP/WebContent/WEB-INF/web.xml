@@ -16,4 +16,41 @@
   	<param-value>C:\\Web\\Download</param-value>
   </context-param>
   
+  <!-- 
+  	Web APP 전체 페이지에 적용 될 수 있는 Error 처리
+  	기준
+  	1. 상태코드 (500에러 -> 서버 개발자 실수, 404에러 -> 요청페이지가 없는 것, 403에러 -> 접근권한에러)
+  	   상태코드가 정상일때는 (200~299 까지)
+  	   
+  	2. 예외 객체에 따라서 예외처리를 세분화 : NullPoint, IndexOutofBounds,,,, 이렇게하면 너무 디테일해서 할 수 없음.
+  		
+  	에러처리는 TEST 후 최종 배포 할 때에 설정한다. 개발단계에서는 예외 화면을 처리해야하기때문. (에러 안난 것처럼 보이므로)
+  	
+   -->
+   
+  <!--  <error-page>
+   	<error-code>404</error-code>
+   	<location>/error/error404.jsp</location>
+   </error-page>
+   
+   <error-page>
+   	<error-code>500</error-code>
+   	<location>/error/error500.jsp</location>
+   </error-page> -->
+  
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
