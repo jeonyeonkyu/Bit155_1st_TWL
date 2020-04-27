@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<h3>request 객체 (include) 된 페이지에서는 []공유]/h3>
+	<!-- 원래는 페이지 하나에 request 객체 하나 -->
+
+</body>
+</html>

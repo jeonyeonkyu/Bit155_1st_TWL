@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    request.setCharacterEncoding("UTF-8");
+    String type=request.getParameter("type");
+    String userid = request.getParameter("userid");
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	type:<%=type %><br>
+	userid:<%=userid %><br>
+	<jsp:include page="Ex14_param.jsp">
+		<!--  그리고 다른기능...값을 넘길수있다 -->
+		<jsp:include value="baseball" name="hobby"/>
+		<jsp:include value="1004" name="pwd"/>
+	</jsp:include>
+		
+	
+	include 된 페이지에서 request 객체를 공유 할 수 있다.
+
+</body>
+</html>

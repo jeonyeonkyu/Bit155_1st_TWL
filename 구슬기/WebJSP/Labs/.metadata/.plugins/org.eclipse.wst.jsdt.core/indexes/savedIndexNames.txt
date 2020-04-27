@@ -1,0 +1,12 @@
+INDEX VERSION 1.4+D:\bit155\WebJSP\Labs\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+907998579.index
+2074778405.index
+2066556470.index
+1967066587.index
+799011890.index
+3173310454.index
+1512349354.index
+1684597203.index
+467016637.index
+907998579.index
+1224789706.index

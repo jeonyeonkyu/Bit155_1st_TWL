@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    	/*
+    		web.xml  (환경설정 파일은 서버가 시작되면 가장 먼저 loading된다)
+    		<welcome-file>index.html</welcome-file>
+    		웹사이트 기본 페이지 설정 : http://192.168.0.12:8090/WebJSP/ >> index.html
+    	
+    	*/
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Application 객체</title>
+</head>
+
+<body>
+	<%
+		       //new 하지 않아도 제공받는 객체 application
+	%>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <style>
+       .dropdown ul {
+           display: none;
+           list-style: none;
+           margin: 0;
+           border: 1px solid black;
+           padding: 10px;
+           width: 200px;
+       }
+
+       .dropdow.on ul{ 
+           display: block;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <img :id="'thum_${id}'" :src="image" /> -->
+        <div v-bind:style="[style, fontStyle]">
+            테이트용 DIV
+        </div>
+        <div :class="dropdown">
+            테이스용 DIV2
+        </div>
+        <br />
+        <div :class="[dropdown, toggle]"> <!-- class=dropdown on -->
+            <ul>
+                <li><a href="#">메뉴1</a></li>
+                <li><a href="#">메뉴2</a></li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+   let app = new Vue({
+        el:'#app',
+        data(){
+            return {
+               id:1,
+               image:'https://picsum.photos/210/118/?image=1' ,
+               style: {
+                   background: 'red',
+                   //'font-size':'50px',
+                   //fontFamily:'굴림체'
+               },
+               fontStyle:{
+                   fontSize:'100px',
+                   fontFamily: '궁서체'
+               },
+               dropdown:{
+                   dropdown:true  //dropdown:false
+               },
+               toggle:{
+                   on:false  // true (<div class="dropdown"></div>)
+               }
+
+            };
+        }
+    });
+</script>
+</html>

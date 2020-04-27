@@ -1,0 +1,52 @@
+import java.util.List;
+
+import DAO.DeptDao;
+import DTO.Dept;
+
+public class Program {
+
+	public static void main(String[] args) {
+		/*
+		//여기서 화면과 로직을 다 제어한다.
+		DeptDao dao = new DeptDao();
+		Dept dept = new Dept();
+		dept.setDeptno(10);
+		dept.setDname("IT");
+	    dept.setLoc("seoul");
+	     
+		int row = dao.insertDept(dept);
+		*/
+		//1. 전체조회 출력
+		
+		DeptDao dao = new DeptDao();
+		System.out.println("[전체조회]********");
+		List<Dept> deptlist = dao.getDeptAllList();
+		
+		if(deptlist != null) {
+			DeptPrint(deptlist);
+		}
+		
+		//2. 부분조회 출력
+		System.out.println("[부분조회]********");
+		
+		Dept part = dao.getDeptListByDeptno(10);
+		if(part != null) {
+			DeptPrint(part);
+		}
+	
+		
+		
+
+	}
+	
+	public static void DeptPrint(Dept dept) {
+		System.out.println(dept.toString());
+	}
+	
+    public static void DeptPrint(List<Dept> list) {
+		for(Dept dept : list) {
+			System.out.println(dept.toString());
+		}
+	}
+
+}

@@ -1,0 +1,125 @@
+
+<!-- 이 예제는 POI (관심 지점)에서 클릭 이벤트 리스너를 사용하는 방법을 보여줍니다. 
+    POI 아이콘에서 click 이벤트를 수신 한 다음 길 찾기 서비스 .route 요청과 함께 이벤트 데이터의 placeId를 사용하여 
+    클릭 한 장소에 대한 경로를 계산하고 표시합니다. 또한 placeId를 사용하여 장소에 대한 자세한 정보를 얻습니다. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>index4.html</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .title {
+        font-weight: bold;
+      }
+      #infowindow-content {
+        display: none;
+      }
+      #map #infowindow-content {
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="infowindow-content">
+      <img id="place-icon" src="" height="16" width="16">
+      <span id="place-name"  class="title"></span><br>
+      Place ID <span id="place-id"></span><br>
+      <span id="place-address"></span>
+    </div>
+
+  </body>
+    
+  <script>
+    function initMap() {
+      var origin = {lat: 37.503176, lng: 127.024883};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 18,
+        center: origin
+      });
+      var clickHandler = new ClickEventHandler(map, origin);
+    }
+
+    /**
+     * @constructor
+     */
+    var ClickEventHandler = function(map, origin) {
+      this.origin = origin;
+      this.map = map;
+      this.directionsService = new google.maps.DirectionsService;
+      this.directionsDisplay = new google.maps.DirectionsRenderer;
+      this.directionsDisplay.setMap(map);
+      this.placesService = new google.maps.places.PlacesService(map);
+      this.infowindow = new google.maps.InfoWindow;
+      this.infowindowContent = document.getElementById('infowindow-content');
+      this.infowindow.setContent(this.infowindowContent);
+
+      // Listen for clicks on the map.
+      this.map.addListener('click', this.handleClick.bind(this));
+     
+    };
+
+    ClickEventHandler.prototype.handleClick = function(event) {
+      console.log('You clicked on: ' + event.latLng);
+      // If the event has a placeId, use it.
+     
+      if (event.placeId) {
+        console.log('You clicked on place:' + event.placeId);
+
+        // Calling e.stop() on the event prevents the default info window from
+        // showing.
+        // If you call stop here when there is no placeId you will prevent some
+        // other map click event handlers from receiving the event.
+        event.stop();
+        this.calculateAndDisplayRoute(event.placeId);
+        this.getPlaceInformation(event.placeId);
+      }
+    };
+
+    ClickEventHandler.prototype.calculateAndDisplayRoute = function(placeId) {
+      var me = this;
+      this.directionsService.route({
+        origin: this.origin,
+        destination: {placeId: placeId},
+        travelMode: 'WALKING'
+      }, function(response, status) {
+        if (status === 'OK') {
+          me.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+    };
+
+    ClickEventHandler.prototype.getPlaceInformation = function(placeId) {
+      var me = this;
+      this.placesService.getDetails({placeId: placeId}, function(place, status) {
+        if (status === 'OK') {
+          me.infowindow.close();
+          me.infowindow.setPosition(place.geometry.location);
+          me.infowindowContent.children['place-icon'].src = place.icon;
+          me.infowindowContent.children['place-name'].textContent = place.name;
+          me.infowindowContent.children['place-id'].textContent = place.place_id;
+          me.infowindowContent.children['place-address'].textContent =
+              place.formatted_address;
+          me.infowindow.open(me.map);
+        }
+      });
+    };
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=KEY"
+      async defer></script>
+</html>
+

@@ -1,0 +1,159 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>googlemap v3 </title>
+    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?
+    attr=H79ZrCKlwpEXYMLeujuMrsPccN_HG32uiIo5YFdhbM_IxesZ0DYKU9ma0hhouA4RvIWZcawbo1a_AcfFKOSRzA" charset="UTF-8"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+/*
+	작성자 : kay  ( http://www.uhoon.co.kr ) 공유 시 지우지 남겨주세유..
+	작성일 : 2014.07.17
+	내용 : 구글맵 v3 - 마커 + 말풍선 + GPS 연동+ 원그리기 + 동적 마커 생성( Ajax )
+*/
+var markers = [];
+var map;
+var geocoder;
+var infowindow = null;
+
+var latitude = 0;
+var longitude = 0;
+
+function initialize() {
+	geocoder = new google.maps.Geocoder();
+
+	// GPS 인식 가능 여부(현재 위치)
+	if (navigator.geolocation) {
+
+		navigator.geolocation.getCurrentPosition(function (pos) {
+
+			// 현재 위경도 값(GPS) 변수에 넣기.
+			var latitude = pos.coords.latitude;
+			var longitude = pos.coords.longitude;
+
+			var mapOptions = {
+				zoom: 11,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				center: new google.maps.LatLng(latitude,longitude)
+			};
+
+			map = new google.maps.Map(document.getElementById('map'),mapOptions);
+            
+            var myIcon = new google.maps.MarkerImage("/image/marker.svg", null, null, null, new google.maps.Size(12,20));
+
+			// 현재 위치 마커 생성
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(latitude,longitude),
+				map: map,
+                icon : image,
+				draggable: false,
+				icon: "http://maps.google.com/mapfiles/ms/micons/man.png"
+			});
+			markers.push(marker);
+
+			// 현재 위치 기준 원 그리기
+			var populationOptions = {
+				strokeColor: '#000000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#808080',
+				fillOpacity: 0.5,
+				map: map,
+				center: new google.maps.LatLng(latitude,longitude) ,
+				radius: 10000
+			};
+			cityCircle = new google.maps.Circle(populationOptions);
+
+			viewMarker();
+
+		}, function (error) {
+			switch (error.code) {
+			case 1:
+				$("#errormsg").html("User denied the request for Geolocation.");
+				break;
+			case 2:
+				$("#errormsg").html("Location information is unavailable.");
+				break;
+			case 3:
+				$("#errormsg").html("The request to get user location timed out.");
+				break;
+			case 0:
+				$("#errormsg").html("An unknown error occurred.");
+				break;
+			}
+		});
+	} else {
+		alert("Geolocation is not supported by this browser.");
+	}
+}
+
+// 드롭 마커 보기
+function viewMarker() {
+
+	$.ajax({
+		type: "GET",
+		url: "/test/3300/3300.js",
+		 //data: { latitude : latitude , longitude : longitude },		// 추후 값을 넘겨서 지정 범위내 값만 가져오기 위해 사용(?)
+		 beforeSend: function() {
+			fnRemoveMarker();	// 조회 전 기존 마커 제거
+		 },
+		success: function (json) {
+			var markerList = $.parseJSON(json);
+			var listLen = markerList.length;
+			for(var i=0; i<listLen; i++){
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(markerList[i].lat,markerList[i].lng),
+					map: map,
+					draggable: false,
+					icon: markerList[i].icon,
+					animation: google.maps.Animation.DROP,
+					html: markerList[i].cont
+				});
+				markers.push(marker);
+
+				var infowindow = new google.maps.InfoWindow()
+
+				google.maps.event.addListener(marker, "click", function () {
+					infowindow.setContent(this.html);
+					infowindow.open(map, this);
+				});
+			}
+		}
+	});
+}
+
+// 마커 제거 함수
+function fnRemoveMarker()
+{
+	for (var i = 1; i < markers.length; i++) {
+		markers[i].setMap(null);
+	}
+}
+
+$( window ).load(function() {
+	initialize();
+});
+
+//-->
+</SCRIPT>
+<body>
+<div style="padding:20px;text-align:center;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:700px;height:200px"
+     data-ad-client="ca-pub-4169082997566429"
+     data-ad-slot="8358681426"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div id="map" style="width:760px;height:400px;margin-top:20px;"></div>
+<input type="button" value="마커 삭제" onclick="Javascript:fnRemoveMarker();" />
+<input type="button" value="마커 읽어오기" onclick="Javascript:viewMarker();" />
+</body>
+</html>
