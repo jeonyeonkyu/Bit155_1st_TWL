@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<!-- 
+    v-if vs v-show
+v-if는 if 컨디션이 false면 아예 렌더링 X
+v-if는 토글되면서 렌더링을 계속 해줘야되기때문에 비용 높음
+
+v-show는 렌더링을 하되 스타일에서 display:none을 줌
+v-show는 초기렌더링을 할때 무조건 보여줘야하기 때문에 초기 렌더링 비용이 높음
+
+결론. 자주 바꿔야 할때는 v-show 이용 아니면 v-if
+
+ -->
+
+<body>
+    <div id="app">
+        <!-- <template v-if="number === 1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template> -->
+        <!-- <div v-if="show">Yes</div> -->
+        <!-- false가 되면 div태그가 사라짐 -->
+        <!-- <div v-else-if="number === 2">HI</div>
+        <div v-else>No</div> -->
+        <div v-show="show">Yes</div>
+        <button @click="toggle">Toggle</button>
+
+        <!-- <button @click="increaseNumber()">Increase</button> {{number}} -->
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // show: true
+                number: 1,
+                show: false
+            },
+            methods: {
+                // toggleShow() {
+                // this.show = !this.show;
+                // }
+                increaseNumber() {
+                    this.number++;
+                },
+                toggle() {
+                    this.show = !this.show
+                }
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
