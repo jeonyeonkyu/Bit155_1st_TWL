@@ -1,6 +1,0 @@
-/*!
- * @author 강태진
- * @email odyseek@vi-nyl.com
- * @description 멜론 프레임웍
- */
-(function(d,b,c,e){var a=b.Class,g=d(window),f=d(document)})(jQuery,MELON.WEBSVC,MELON.PBPGN);/* melonweb_song.js */
