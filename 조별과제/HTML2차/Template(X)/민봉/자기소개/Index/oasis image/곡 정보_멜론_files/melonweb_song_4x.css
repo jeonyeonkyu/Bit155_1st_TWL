@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+/*
+	Title : Melon Web 4.x UI Common Template
+	Create Date : 2017.07
+	Author : mTechCrew
+	Category : Song(곡 정보)
+*/
+
+/* 곡정보 */
+.section_info {padding-top: 5px; margin-bottom: 35px;}
+.section_info .wrap_info {border: 1px solid #e5e5e5; *zoom: 1;}
+.section_info .wrap_info:after {content: ''; display: block; clear: both;}
+.section_info .thumb {position: relative; float: left; width: 282px; height: 282px; z-index: 9;}
+.section_info .thumb img {vertical-align: top;}
+.section_info .thumb .play {position: absolute; top: 50%; left: 50%; margin: -37px 0 0 -28px;}
+.section_info .entry {position: relative; min-height: 204px; padding: 30px 40px 26px 312px; margin-left: -1px;}
+.section_info .entry {*padding-left: 30px;}
+/* MELON-2891 : 20171019 */
+.section_info .info .song_name {width: 556px; line-height: 1.3em; margin-bottom: 8px; color: #2f2f2f; font-size: 22px;}
+/* //MELON-2891 : 20171019 */
+.section_info .info .song_name.multi {margin-top: 5px; font-size: 20px;}
+.section_info .info .artist {display: inline-block; color: #00b423;}
+.section_info .info .artist .artist_name {display: inline-block; position: relative;color: #00b423; font-size: 18px; letter-spacing: 0 !important;}
+.section_info .info .artist.ellipsis {max-width: 425px;}
+.section_info .info .artist.ellipsis {*position: relative; *display: inline;}
+.section_info .info .artist.ellipsis .artist_name {display: inline; font-size: 16px;}
+.section_info .info .artist .artist_name .thumb_atist {display:none; position:absolute; top:-56px; left:50%; width:56px; height:56px; margin-left:-28px; padding:1px 0 0 1px; background:url(//cdnimg.melon.co.kr/resource/image/web/common/bg_thumb_atist.png) no-repeat 0 0;}
+.section_info .info .artist .artist_name:hover .thumb_atist  {display: block;}
+.section_info .info .wrap_atist  .etc {position: static;}
+.section_info .meta {}
+.section_info .meta .list {padding-top: 14px;}
+.section_info .meta .list dt {float: left; width: 60px; padding-top: 6px; color: #888888; font-size:13px;}
+/* MELON-2891 : 20171019 */
+.section_info .meta .list dd {padding-top: 6px; margin-left: 60px; margin-right: 210px; color: #606060; font-size: 13px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+/* //MELON-2891 : 20171019 */
+.section_info .meta .list dd a {color: #606060; font-size: 13px; letter-spacing: 0 !important;}
+.section_info .button {margin-top: 17px;}
+.section_info .button .button_etc .cnt {margin-left: 3px;}
+.section_info .button .btn {height: 18px; margin-left: 25px; vertical-align: top;}
+.section_info .button .btn .button_icons.type03 {position: relative; top: -1px; vertical-align: middle;}
+.section_info .button .btn .button_icons.arrow_link02 {position: relative; top: 1px;}
+.section_info .button .btn .text {margin-left: 3px; color: #575757; font-size: 16px; vertical-align: middle;}
+.section_info .share {position: absolute; bottom: 95px; right: 30px; width: 120px;}
+.section_info .share dt {clear: both; float: left; margin-bottom: 10px; color: #888; font-size: 14px;}
+.section_info .share dd {float: right; margin-bottom: 8px;}
+.section_info .share dd a {color: #606060; font-size: 14px; letter-spacing: 0 !important;}
+.section_info .share dd .arrow_link02 {position: relative; top: -1px;}
+.section_info .share .wrap_sns {padding-top: 1px;}
+.section_info .share .wrap_sns .sns {margin-left: 3px;}
+.section_info .share .chart {clear: both; position: absolute; bottom: -25px; right: 0; width: 200px; color: #606060; font-size: 14px; text-align: right;}
+.section_info .share .chart .chart_i {position: relative; top: -1px;}
+.section_info .share .chart .num {color: #01b925;}
+.section_info .etc {position: absolute; top: 39px; right: 37px;}
+.section_info .etc .btn {width: 61px; height: 28px; border: 1px solid #01b925; border-radius: 100px;}
+.section_info .etc .btn .scrap {position: relative; top: -2px;}
+.section_info .etc .btn .cnt {color: #01b925; font-size: 14px;}
+.section_info .etc .btn.disabled {border-color: #c3c3c3;}
+.section_info .etc .btn.disabled .cnt {color: #c3c3c3;}
+.section_info .etc .btn:hover,
+.section_info .etc .btn.mhover {border-color: #00cd3c; background-color: #00cd3c;}
+.section_info .etc .btn:hover .button_icons.scrap.type03,
+.section_info .etc .btn.mhover .button_icons.scrap.type03 {background-position: -86px -17px;}
+.section_info .etc .btn:hover .cnt,
+.section_info .etc .btn.mhover .cnt {color: #fff;}
+/* 20171116 */
+.section_info .bottom {display: table; min-height: 60px; border: 1px solid #e5e5e5; border-top: 0; background-color: #fafafa;}
+.section_info .bottom {*display: block; *overflow: hidden; *padding: 20px 0; *min-height: 1px;}
+.section_info .bottom .download {display: table-cell; vertical-align: middle; width: 282px; text-align: center;}
+.section_info .bottom .download {*display: block;  *float: left;}
+.section_info .bottom .download .btn_album_buy {display: inline; padding-left: 24px; background: url(//cdnimg.melon.co.kr/resource/image/web/album_4x/icon_album_buy.png) no-repeat 0 50%; color: #575757; font-size: 16px;}
+.section_info .bottom .download .btn_album_buy .eng {position: relative; top: 1px;}
+.section_info .bottom .download .btn_album_buy .eng {*position: static;}
+.section_info .bottom .download .btn_album_buy .price {display: inline-block; padding: 2px 8px; border: 1px solid #afafaf; border-radius: 100px; color: #575757; font-size: 12px;}
+.section_info .bottom .download .btn_booklet {line-height: 1; padding-left: 22px; background: url(//cdnimg.melon.co.kr/resource/image/web/album_4x/icon_booklet.png) no-repeat 0 50%;}
+.section_info .bottom .download .btn_booklet .text {color: #575757; font-size: 16px;}
+.section_info .bottom .download .btn_booklet .arrow_link02 {position: relative; top: -1px;}
+.section_info .bottom .download .bar {display: inline-block; height: 21px; margin: 0 10px; border-left: 1px solid #d5d5d5; vertical-align: middle;}
+.section_info .bottom .notice {display: table-cell; width: 656px; padding: 0 30px 0 40px; font-size: 12px; font-family:  "돋움", Dotum; vertical-align: middle; text-indent: -9px; color: #969696;}
+.section_info .bottom .notice {*display: block;  *float: left; *width: 640px;}
+.section_info .bottom .notice p {padding-top: 2px;}
+.section_info .bottom .notice .ntext {padding-top: 2px;}
+.section_info .bottom .notice.right {text-align: right;}
+.section_info .bottom .notice .btn_text {margin-left: 12px; vertical-align: baseline; text-indent: 0;}
+.section_info .bottom .notice .btn_text .text {font-size: 12px; letter-spacing: 0; text-indent: 0;}
+.section_info .bottom.cell2 {min-height: 70px;}
+.section_info .bottom.cell2 .download {width: 546px;}
+.section_info .bottom.cell2 .notice {width: 420px; padding-left: 10px;}
+.section_info .bottom.cellNot,
+.section_info .bottom.cellNot .download,
+.section_info .bottom.cellNot .notice {display: block; width: auto; min-height: inherit; padding: 0; text-align: left; text-indent: 0;}
+.section_info .bottom.cellNot {padding: 17px;}
+.section_info .bottom.cellNot .notice {clear: both; float: none;}
+.section_info .bottom.cellNot .download + .notice {margin-top: 10px;} 
+/* //20171116 */
+
+/* 가사 */
+.section_lyric {margin-bottom: 35px;}
+.section_lyric .page_header {overflow: visible; height: 28px;}
+.section_lyric .page_header .button {position: absolute; top: -2px; right: 0;}
+.section_lyric .page_header .button .button_rbox {padding: 0 12px; margin-left: 5px; border-color: #ccc; color: #999;}
+.section_lyric .wrap_lyric {position: relative; padding: 5px 0 45px;}
+.section_lyric .lyric {height: 170px; line-height: 24px; color: #767676; font-size: 14px; overflow: hidden;}
+.section_lyric .lyric.on {height: auto; overflow: visible;}
+.section_lyric .wrap_lyric .button_more {position: absolute; left: 50%; bottom: 0; margin-left: -28px;}
+.section_lyric .wrap_lyric .button_more .text {color: #575757; font-size: 14px;}
+.section_lyric .wrap_lyric .button_more.arrow_d .arrow_d {width: 11px; height: 6px; background-position: -308px 0;}
+.section_lyric .wrap_lyric .button_more.arrow_u .arrow_d {width: 11px; height: 6px; background-position: -308px -8px;}
+.section_lyric .wrap_lyric .lyric_none {color: #767676; font-size: 14px;}
+/*
+.section_lyric .rgst_lyric strong {color:#1a1a1a; font-weight:normal;}
+.section_lyric .wrap_lyric .btn_text {position:absolute; right:0; bottom:0;}
+.section_lyric .wrap_lyric .lyric_none {color:#1a1a1a;}
+.list_lyric {margin-left:-14px; margin-bottom:-14px;}
+.list_lyric li {float:left; width:170px; min-height:40px; margin:0 0 14px 14px;}
+.box_lyric {position:relative; padding-left:45px;}
+.box_lyric dt {padding-top:2px; color:#1a1a1a; font-size:11px;}
+.box_lyric dd.atist {color:#1a1a1a; font-weight:bold;}
+.box_lyric dd .ellipsis {display:inline-block; max-width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.box_lyric .thumb {position:absolute; top:0; left:0; width:40px; height:40px;}
+.box_lyric .thumb .thumb_frame {position:absolute; top:0; left:0; width:40px; height:40px; background:url(//cdnimg.melon.co.kr/resource/image/web/song/bg_lyric_frame.png) no-repeat 0 0;}
+.box_lyric a.thumb .thumb_frame {cursor:pointer;}
+*/
+
+/* 작사/작곡 */
+.section_prdcr {margin-bottom: 35px;}
+.section_prdcr .page_header {margin-bottom: 0;}
+.section_prdcr .list_person {} 
+.section_prdcr .list_person li {margin-top: 20px;} 
+.section_prdcr .list_person .entry .meta {margin-top: 1px;} 
+
+/* 관련영상 */
+.section_movie {position: relative; margin-bottom: 35px;}
+.section_movie .page {position: absolute; top: 4px; right: 0;}
+
+/* 댓글 */
+.section_cmt {margin-bottom: 35px;}
+
+/* 스타일이 유사한 인기곡 */
+.section_hitsong {margin-bottom: 35px;}
+.section_hitsong .page_header {margin-bottom: 20px;}
+
+/* 수록곡이 포함된 DJ 플레이리스트 */
+.section_playlist {margin-bottom: 35px;}
+.section_playlist .page_header {margin-bottom: 20px;}
+
+/* 좋아요 한 사람 */
+.section_intst {position: relative;}
+.section_intst .list_person {margin-top: 20px;}
+.section_intst .page {position: absolute; top: 4px; right: 0;}
+
+

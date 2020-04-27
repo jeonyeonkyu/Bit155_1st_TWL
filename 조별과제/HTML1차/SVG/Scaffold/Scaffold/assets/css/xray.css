@@ -1,0 +1,37 @@
+.xray_svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 96%;
+    height: 100%;
+  }
+  
+  .xray_div,
+  .xray_a {
+    position: relative;
+    padding: 1em;
+  }
+  
+  .xray_div {
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  }
+  
+  .xray_span {
+    color: rgba(0,0,0,.4);
+  }
+  
+  .xray_a {
+    color: rgba(255,0,0,.5);
+  }
+
+  .svg_wrap {
+    width: 214px;
+    height: 263px;
+  }
+  .svg_wrap2{
+    width:350px;
+    height: 100%;
+  }
