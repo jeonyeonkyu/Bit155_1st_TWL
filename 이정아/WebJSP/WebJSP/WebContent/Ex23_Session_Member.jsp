@@ -19,10 +19,10 @@
 		if(loginstate == true){
 			out.print(memberid + "님 로그인 상태입니다.<br>");
 			out.print("당신은 이 페이지를 볼 수가 있습니다.<br>");
-			out.print("<a href = 'Ex23_Session_Logout.jsp'>로그아웃</a> ");
+			out.print("<a href = 'Ex23_Session_Logout.jsp'>로그아웃</a> "); //a는 링크를 만들어서 클릭 할 수 있도록
 		}else{
 			out.print("<script>alert('회원이 아닙니다.')</script>");
-			out.print("<script>location.href = 'Ex23_Session_Login.jsp'</script>");
+			out.print("<script>location.href = 'Ex23_Session_Login.jsp'</script>"); //script문은 바로 이동시키게
 		}
 	
 	%>

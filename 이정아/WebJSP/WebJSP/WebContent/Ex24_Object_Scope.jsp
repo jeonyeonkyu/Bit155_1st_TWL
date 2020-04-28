@@ -49,17 +49,27 @@
 	 	emp.setEmpno(2000);
 	 	emp.setEname("이정아");
 	 	
+	 	//생성은 login.jsp라고 가정하고
 	 	session.setAttribute("empobj", emp); //emp 객체를 통째로 넣은 것
 	 	
 	 	
-	 	
-	 	//다른페이지가 있다고 하면 (member.jsp)
+	 //다른페이지가 있다는 가정 하에 (member.jsp)
 	 Emp e =(Emp)session.getAttribute("empobj");
 	 out.print(e.getEmpno() + "<br>");
 	 out.print(e.getEname() + "<br>");
-	 	
-	 	
+	 
+	 //request
+	 request.setAttribute("who", "king"); //기본적으로 scope은 본인 페이지이다.
+	 String who = (String)request.getAttribute("who");
+	 out.print("who" + who);
+	 
+	 //다른페이지가 있다는 가정 하에 include나 forward를 사용하면 b.jsp에서
+	 //session.getAttribute("empobj"); >>가능
+	 //request.getAttribute("who"); >>도 가능하다.
 	 %>
+	 
+	<jsp:include page="b.jsp"></jsp:include>
+	<jsp:forward page="b.jsp"></jsp:forward>
 </body>
 </html>
 

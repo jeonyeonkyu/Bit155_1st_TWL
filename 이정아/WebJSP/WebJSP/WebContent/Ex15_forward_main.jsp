@@ -15,7 +15,7 @@
     				실제 클라이언트가 요청했던건 login.jsp이므로, login.jsp그릇(주소)에 담겨지지만, 내용은 A.jsp 혹은 B.jsp, C.jsp가 담긴다.
     				
     				http://192.168.0.213:8090/WebJSP/Ex15_forward_main.jsp?code=A ->마지막 파라미터 값에 따라서 보여지는 페이지의 내용이 달라진다.
-    				요청 주소는 http://192.168.0.213:8090/WebJSP/Ex15_forward_main.jsp로 동일ㅁ12	`   				
+    				요청 주소는 http://192.168.0.213:8090/WebJSP/Ex15_forward_main.jsp로 동일하다   				
     	*/
     	
     	String code = request.getParameter("code");
