@@ -86,7 +86,7 @@
 				out.print("</script>");
 			}
 		}
-		//while 타지 않는 경우
+		//while 타지 않는 경우 (id 가 존재하지 않는 경우)
 		out.print("<script>");
 			out.print("location.href='Ex02_JDBC_JoinForm.jsp'");
 		out.print("</script>");

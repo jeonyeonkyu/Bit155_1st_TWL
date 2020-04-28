@@ -53,7 +53,7 @@ td {
   });
  });
 </script>
-<!--  
+<!--    oracle 가서 테이블 생성함 
 CREATE TABLE koreaMember
 (
     id VARCHAR2(50) PRIMARY KEY ,
