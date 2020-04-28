@@ -1,55 +1,19 @@
 <%@page import="kr.or.bit.utils.Singleton_Helper"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
+<%@ page import="java.io.PrintWriter"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/*  
-	1.한글처리
-	2.데이터 받기 (ID ,PWD)
-	3.DB연동 (sql문)
-	4.로직처리
-	
-	id ,pwd 를 parameter 받아서 회원인지 아닌지 판단
-	
-	-판단조건
-	1.ID 존재 , PWD(0) > 회원 > Main page 이동  > session.setAttribute("userid",회원ID);
-	1.Ex02_JDBC_Main.jsp 
-	
-	2.ID 존재 , PWD(x) > 다시 한번 로그인 처리 (로그인 페이지) //어떤대는 로그인처리 횟수를 추가해 5회 이상시 lock걸어놓는데도 있음
-	2.EX02_JDBC_Login.jsp
-	
-	3.ID 존재(x) > 다시 한번 로그인 처리 (회원가입 페이지)
-	3.Ex02_JDBC_JoinForm.jsp 
-	
-	
-	 사용자가 입력한 ID , PWD 알고있고
-	>select id , pwd from kostamember where id=?
-			
-	//1. 결과 없는 경우 , 2. single row , 3. multi row 모두 만족하는 코드
-	if(rs.next()) {
-			 do {
-					 System.out.println(rs.getInt(1)+"/"+rs.getString(2)+"/"+rs.getString(3));
-			 }while(rs.next());
-	 
-	}else {
-			 //회원이 아닌 경우 (Ex02_JDBC_JoinForm.jsp )
-		  }		
-	//이코드가 더 이쁨 밑에있는 코드는 안좋은 코드
-			
-	
-	기능적 요구사항
-	
-	비기능적 요구사항이 있다면 : singleton
-*/
+
 	request.setCharacterEncoding("UTF-8");
 	
-
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
-	
-	//Class.forName("oracle.jdbc.OracleDriver"); tomcat 9.0 생략 가능
+	PrintWriter script = response.getWriter();
+	 
+	Class.forName("oracle.jdbc.OracleDriver"); //tomcat 9.0 생략 가능
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -59,7 +23,7 @@
 		//conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","bituser","1004");
 		//비기능적 요구사항
 		conn = Singleton_Helper.getConnection("oracle");
-		String sql="select id, pwd bituser koreamember where id=?";
+		String sql="select id, pwd from bituser where id=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		rs = pstmt.executeQuery(); 
@@ -77,20 +41,39 @@
 			  session.setAttribute("userid", rs.getString("id"));
 			  //session은 서버메모리를 쓴것
 			  //개발자도구에 따로 표시해주지않는 이상 볼 수 없음
+			  	script.println("<script>");
+		        script.println("alert('OK');");
+		        script.println("location.href = index.jsp");
+		        script.println("</script>");
+		        script.close();
 			  
 			  //이동처리
-			  response.sendRedirect("index.jsp");
+			  /* response.sendRedirect("index.jsp"); */
 			}else{
 				//ID 존재 , PWD(x)
-				out.print("<script>");
+				/* out.print("<script>");
+				out.print("alert('비밀번호가 틀립니다.')");
 				out.print("location.href='login.jsp'");
-				out.print("</script>");
+				out.print("</script>"); */
+				
+				script.println("<script>");
+		        script.println("alert('응 비번 틀려');");
+		        script.println("location.href = login.jsp");
+		        script.println("</script>");
+		        script.close();
 			}
 		}
 		//while 타지 않는 경우
-		out.print("<script>");
-			out.print("location.href='register.jsp'");
-		out.print("</script>");
+	/* 	out.print("<script>");
+		out.println("alert('아이디없다');");
+		out.print("location.href='register.jsp'"); 
+		out.print("</script>"); */
+		
+		script.println("<script>");
+        script.println("alert('아이디없다');");
+        script.println("location.href = login.jsp");
+        script.println("</script>");
+        script.close();
 		
 		
 		//
