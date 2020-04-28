@@ -16,7 +16,7 @@
 		  
 		  if(uid.equals(pwd)){ //로그인 성공시
 				if(chk != null){ //체크박스에 체크가 되어있다면 쿠키를 생성
-					if(chk.equals("on")){ //쿠키 생성
+					if(chk.equals("on")){ //쿠키 생성 //체크박스가 체크되어 있으면 on 상태이다.
 						Cookie co = new Cookie("UID",uid);
 						co.setMaxAge(24*60*60);
 						response.addCookie(co);
