@@ -48,7 +48,7 @@
 						<div class="card-body">
 							<h4 class="card-title">·Î±×ÀÎ</h4>
 							<form action="loginAction.jsp" method="post" name="loginForm"
-								id="joinForm" >
+								id="loginForm" >
 								<!-- class="my-login-validation" -->
 								<div class="form-group">
 									<label for="id">ID</label> <input id="id" type=text
