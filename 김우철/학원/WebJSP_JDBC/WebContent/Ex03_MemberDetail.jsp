@@ -75,7 +75,7 @@ td {
 				  			conn = Singleton_Helper.getConnection("oracle");
 				  			String sql = "select id,pwd,name,age,gender,email from koreamember where id=?";
 				  			pstmt = conn.prepareStatement(sql);
-				  			
+				  			b
 				  			pstmt.setString(1, id);
 				  			
 				  			rs = pstmt.executeQuery();

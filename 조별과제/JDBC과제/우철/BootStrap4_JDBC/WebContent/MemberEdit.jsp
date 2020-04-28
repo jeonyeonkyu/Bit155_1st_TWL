@@ -1,5 +1,33 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="kr.or.bit.utils.Singleton_Helper"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = request.getParameter("id");
+
+	if (session.getAttribute("userid") == null || !session.getAttribute("userid").equals("admin")) {
+		//강제로 페이지 이동
+		out.print("<script>location.href='index.jsp'</script>");
+	}
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		conn = Singleton_Helper.getConnection("oracle");
+		String sql = "select id,pwd,pwdcheck,name,email,phone from bituser where id=?";
+		pstmt = conn.prepareStatement(sql);
+
+		pstmt.setString(1, id);
+
+		rs = pstmt.executeQuery();
+
+		//while(rs.next())
+		rs.next(); //1건 데이터가 있다면 전제조건
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +50,7 @@
 	$(function() {
 		$('#joinForm').submit(function() {
 			//alert("가입");
-			if ($('#id').val() == "") { // 아이디 검사
-				alert('ID를 입력해 주세요.');
-				$('#id').focus();
-				return false;
-			} else if ($('#password').val() == "") { // 비밀번호 검사
+			if ($('#password').val() == "") { // 비밀번호 
 				alert('비밀번호를 입력해 주세요.');
 				$('#password').focus();
 				return false;
@@ -34,17 +58,9 @@
 				alert('비밀번호 확인을 입력해 주세요.');
 				$('#passwordCheck').focus();
 				return false;
-			} else if ($('#name').val() == "") { // 이름 검사
-				alert('name를 입력해 주세요.');
-				$('#name').focus();
-				return false;
-			} else if ($('#email').val() == "") { // 나이 검사
+			} else if ($('#email').val() == "") { // 이메일
 				alert('email를 입력해 주세요.');
 				$('#email').focus();
-				return false;
-			} else if ($('#phone').val() == "") { // 우편번호
-				alert('phone를 입력해 주세요.');
-				$('#phone').focus();
 				return false;
 			}
 
@@ -65,80 +81,73 @@
 					<div class="card fat">
 						<div class="card-body">
 							<div class="mx-auto">
-								<h4 class="card-title">회원가입</h4>
+								<h4 class="card-title">회원수정</h4>
 							</div>
-							
+
 							<!-- class="my-login-validation" -->
-							<form action="registerAction.jsp" method="post" name="joinForm"
-								id="joinForm" onsubmit="return submitCheck();" >
+							<form action="MemberEditAction.jsp" method="post" name="joinForm"
+								id="joinForm" onsubmit="return submitCheck();">
 								<div class="form-group">
-									<label for="id">아이디</label> <input id="id" type="text"
-										class="form-control" name="id">
-									<!-- <div class="invalid-feedback">아이디를 입력해주세요.</div> -->
+									<label for="id">아이디</label> <input class="form-control"
+										type="text" name="id" value="<%=rs.getString("id")%>" readonly>
 								</div>
-								
+
 								<div class="form-group">
 									<label for="password">비밀번호</label> <input id="password"
-									onchange="isSame()" type="password" class="form-control" name="password">
+										onchange="isSame()" type="password" class="form-control"
+										name="password" value="<%=rs.getString("pwd")%>">
 									<!-- <div class="invalid-feedback">비밀번호를 입력해주세요.</div>  -->
 								</div>
 
 								<div class="form-group">
 									<label for="password">비밀번호 확인</label> <input id="passwordCheck"
-										onchange="isSame()" type="password" class="form-control" name="passwordCheck">
-								<!-- 	<div class="invalid-feedback">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div> -->
+										onchange="isSame()" type="password" class="form-control"
+										name="passwordCheck" value="<%=rs.getString("pwdcheck")%>">
+									<!-- 	<div class="invalid-feedback">비밀번호가 일치하지 않습니다. 다시 입력해주세요.</div> -->
 									<div id="same"></div>
-									
+
 								</div>
 
 								<div class="form-group">
 									<label for="name">이름</label> <input id="name" type="text"
-										class="form-control" name="name" >
-							<!-- 		<div class="invalid-feedback">이름을 입력해주세요.</div> -->
+										class="form-control" name="name"
+										value="<%=rs.getString("name")%>" readonly>
+									<!-- 		<div class="invalid-feedback">이름을 입력해주세요.</div> -->
 								</div>
 
 								<div class="form-group">
 									<label for="email">이메일 주소</label> <input id="email"
-										type="email" class="form-control" name="email">
+										type="email" class="form-control" name="email"
+										value="<%=rs.getString("email")%>">
+
 									<!-- <div class="invalid-feedback">사용할 수 없는 이메일 주소 입니다.</div> -->
 								</div>
 
 								<div class="form-group">
 									<label for="password">핸드폰 번호 (-제외)</label> <input id="phone"
-										type="password" class="form-control" name="phone">
+										type="password" class="form-control" name="phone"
+										value="<%=rs.getString("phone")%>" readonly>
 									<!-- <div class="invalid-feedback">핸드폰 번호가 일치하지 않습니다. 다시
 										입력해주세요.</div> -->
 								</div>
 
 
-								<div class="form-group">
-									<div class="custom-checkbox custom-control">
-										<input type="checkbox" name="agree" id="agree"
-											class="custom-control-input" required=""> <label
-											for="agree" class="custom-control-label">이용약관에 동의합니다.<a
-											href="#"> 이용약관 보기</a></label>
-										<div class="invalid-feedback">이용약관에 동의해주세요.</div>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<div class="custom-checkbox custom-control">
-										<div id="html_element" class="g-recaptcha"
-											data-sitekey="6LcUGL4UAAAAAHQDXJveqB7FG3uS9ih1mqa2FNF3"
-											style="margin: 0 auto;"></div>
-									</div>
-								</div>
-
 								<div class="form-group m-0">
-									<button onclick="finalCheck()" type="submit" class="btn btn-primary btn-block" disabeld>
-										가입하기</button>
+									<button type="submit"
+										class="btn btn-primary btn-block" disabeld>수정하기</button>
 								</div>
-								<div class="mt-4 text-center">
-									이미 아이디가 있으신가요? <a href="login.jsp">로그인</a>
-								</div>
+
 							</form>
-							
-							
+							<%
+								} catch (Exception e) {
+
+								} finally {
+									Singleton_Helper.close(rs);
+									Singleton_Helper.close(pstmt);
+								}
+							%>
+
+
 						</div>
 					</div>
 					<div class="footer">Copyright &copy; 2020 &mdash; 26.8조</div>
@@ -149,26 +158,25 @@
 
 
 	<script>
-	var flag = false;
-		function isSame(){
+		var flag = false;
+		function isSame() {
 			var pw = document.getElementById("password");
 			var pwCheck = document.getElementById("passwordCheck");
 			var same = document.getElementById("same");
-			
-			if(pw.value != '' && pwCheck.value != ''){
-				if(pw.value == pwCheck.value){
-					same.innerHTML ='비밀번호가 일치합니다.';
+
+			if (pw.value != '' && pwCheck.value != '') {
+				if (pw.value == pwCheck.value) {
+					same.innerHTML = '비밀번호가 일치합니다.';
 					same.style.color = 'blue';
 					flag = true;
-				} else{
-					same.innerHTML ='비밀번호가 일치하지 않습니다.';
-					console.log("sssss");
+				} else {
+					same.innerHTML = '비밀번호가 일치하지 않습니다.';
 					same.style.color = 'red';
 					flag = false;
 				}
 			}
 		}
-		
+
 		function submitCheck() {
 			if (flag === false) {
 				return false;
@@ -177,6 +185,7 @@
 			}
 		}
 
+		
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

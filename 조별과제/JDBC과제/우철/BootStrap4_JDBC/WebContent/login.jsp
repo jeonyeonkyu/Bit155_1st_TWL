@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-
-
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,21 +18,26 @@
 
 
 <script type="text/javascript">
-	//jquery ·Î °£´ÜÇÏ°Ô À¯È¿¼º check ÇÏ±â
+	//jquery ë¡œ ê°„ë‹¨í•˜ê²Œ ìœ íš¨ì„± check í•˜ê¸°
 	$(function() {
 		$('#loginForm').submit(function() {
-			//alert("°¡ÀÔ");
-			if ($('#id').val() == "") { // ¾ÆÀÌµğ °Ë»ç
-				alert('ID¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.');
+			//alert("ê°€ì…");
+			if ($('#id').val() == "") { // ì•„ì´ë”” ê²€ì‚¬
+				alert('IDë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.');
 				$('#id').focus();
 				return false;
-			} else if ($('#password').val() == "") { // ºñ¹Ğ¹øÈ£ °Ë»ç
-				alert('ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.');
+			} else if ($('#password').val() == "") { // ë¹„ë°€ë²ˆí˜¸ ê²€ì‚¬
+				alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.');
 				$('#password').focus();
 				return false;
 			} 
 		});
 	});
+	
+	window.onbeforeunload =function(e){
+		location.href="index.jsp";
+		console.log("swwws");
+	}
 </script>
 <body class="my-login-page">
 	<section class="h-100">
@@ -46,9 +49,9 @@
 					</div>
 					<div class="card fat">
 						<div class="card-body">
-							<h4 class="card-title">·Î±×ÀÎ</h4>
+							<h4 class="card-title">ë¡œê·¸ì¸</h4>
 							<form action="loginAction.jsp" method="post" name="loginForm"
-								id="loginForm" >
+								id="loginForm"  >
 								<!-- class="my-login-validation" -->
 								<div class="form-group">
 									<label for="id">ID</label> <input id="id" type=text
@@ -57,8 +60,7 @@
 								</div>
 
 								<div class="form-group">
-									<label for="password">Password <a href="forgot.html"
-										class="float-right"> Forgot Password? </a>
+									<label for="password">Password
 									</label> <input id="password" type="password" class="form-control"
 										name="password">
 									<!-- <div class="invalid-feedback">Password is required</div> -->
@@ -82,7 +84,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="footer">Copyright &copy; 2017 &mdash; Your
+					<div class="footer">Copyright &copy; 2020 &mdash; Your
 						Company</div>
 				</div>
 			</div>
