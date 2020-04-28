@@ -5,12 +5,12 @@
 	//요구사항 : UID 쿠키가 존재하면 input type= text name=uid
 	//value값에 cookie 보여주고 싶어요
 	Cookie[] cs = request.getCookies();
- 	String userid= "";
+	String userid = "";
 	if (cs != null || cs.length > 0) {
 		for (Cookie c : cs) {
 			if (c.getName().equals("UID")) {
 				userid = c.getValue();
-			}else{
+			} else {
 				userid = "";
 			}
 		}
@@ -39,9 +39,10 @@
 </body>
 <script type="text/javascript">
 	/* 주의 사항 : 문자열 처리 하기 */ 	 /* 서버쪽에 있는 것을 script로 보냄, 싱글쿼터 필수!! */
-	var userdata = '<%= userid %>'; 
+	var userdata = '<%=userid%>
+	';
 	console.log(userdata);
 	let data = document.getElementById("uid");
-	data.value=userdata
+	data.value = userdata
 </script>
 </html>

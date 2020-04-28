@@ -9,11 +9,7 @@ PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
 
 2.DB 안될 시 commit 해보기
 
-3.
-
-★주제 :
-후보1) 로켓펀치
-후보2)맥도날드
+3.프로젝트는 반드시 EL과JSTL로 해야함
 
 프로젝트 반영사항
 1.비동기 처리
