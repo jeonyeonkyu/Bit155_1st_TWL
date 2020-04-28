@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+</head>
+
+<!-- 
+    computed vs watch
+항상 computed 쓰는게 좋음(코드량이 computed가 더 짧음)
+computed를 쓸 수 없는 긴박한 상황에만 watch 쓰기
+
+ -->
+<body>
+    <div id="app">
+        {{ message }}<br>
+        <button @click='changeMessage'>Click</button><br>
+        {{updated}}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '헬로우',
+                updated: '아니요'
+            },
+            methods: {
+                changeMessage(){
+                    this.message = '코지';
+                }
+            },
+            computed:{
+                // 함수를 이용한 반복제거
+                //methods에 쓰는 함수는 호출할때 '()'를 붙여줘야 한다.
+                // computed에서 쓰는 함수는 '()'안붙혀도 됨
+                reverseMessage(){
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            watch: {  // 감시하고싶은 데이터 입력
+                message(newVal, oldVal){ //함수이름은 data의 message랑 같은 값을 넣어줘야함
+                    console.log(newVal, oldVal);
+                    this.updated = '네';
+
+
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

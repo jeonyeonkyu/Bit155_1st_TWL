@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{ year }} -->
+        <!-- <button onclick="alert('hello kossie coder')">Click me</button> 일반 JS -->
+        <!-- <button v-on:click="plus()">더하기</button>
+        <button v-on:click="minus()">빼기</button> -->
+
+        <!--.prevent : event.preventDefault() submit의 리로드 방지  -->
+        <form v-on:submit.prevent="submit">
+            <!-- <input type="text" :value="text" v-on:keyup><br> -->
+            <!-- v-on:은 @로 대체가능 / keyup은 키보드를 눌렀다가 뗐을때-->
+            <!-- <input type="text" :value="text" @keyup="updateText"><br> -->
+            <input type="text" v-model="text"><br>
+            <!-- 양방향 바인딩을 쓰기 위해서는 v-model을 사용하면 됨 -->
+            {{text}}<br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                year: 2018,
+                text: 'text'
+            },
+            methods: {
+                // plus(){
+                //     this.year++;
+                // },
+                // minus(){
+                //     this.year--;
+                // }
+                // alert(){
+                //     alert('hi kossie coder');
+                // }
+                // submit(){
+                //     alert('oh mt got');
+                //     console.log("ss");
+                // }
+
+                // event Object를 자동으로 넣어준것
+                // updateText(e){
+                //     // console.log(e);
+                //     this.text = e.target.value;
+                // }
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<!-- 
+    v-for의 각 항목들에 key값을 반드시 제공해야한다
+    쌤은 보통 리스트추력할 때 v-for을 씀 (객체느느 별로 안씀)
+ -->
+
+<body>
+    <div id="app">
+        <!-- <div v-for="person in people">  -->
+        <!-- Object in 배열이름 -->
+        <!-- person of people 도 됨 쌤은 갠적으로 of 대신 in을 사용 -->
+        <!-- {{person.name}} {{person.age}}
+       </div> -->
+        <div v-for="(person, index) in people" :key="person.name">
+            <!-- name이 유니크한 값이 아니면key값을 person.name + '-' + person.age
+            와 같이 고유한 키값이 될수 있게 만들어 져야함 -->
+            <!-- key값에 index를 넣으면 안좋음 -> 중간에 있는 데이터를 지우면 인덱스가
+            변하므로 안좋음 고유성 떨어짐 -->
+            <!-- {{person.name}} {{person.age}} {{index}} -->
+        </div>
+            <li v-for="value in object">
+                {{value}}
+            </li>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                people: [
+                    { id : 1, name: 'a', age: 20 }, 
+                    { id : 2, name: 'b', age: 21 }, 
+                    { id : 3, name: 'c', age: 22 }, 
+                    { id : 4, name: 'd', age: 23 },  
+                    { id : 5, name: 'e', age: 24 }, 
+                ],
+                // 객체도 가능
+                object: {
+                    title: 'ss',
+                    author: 'sss',
+                    publishedAt: 'ssss'
+                }
+            },
+            methods: {
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

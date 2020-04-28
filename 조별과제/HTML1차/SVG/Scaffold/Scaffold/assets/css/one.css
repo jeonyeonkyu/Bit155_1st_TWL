@@ -1,0 +1,18 @@
+.one_svg {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 6000;
+    transition: 10s all;
+  }
+  
+  svg:hover .path {
+    stroke-dashoffset: 0;
+  }

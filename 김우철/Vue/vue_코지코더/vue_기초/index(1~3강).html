@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .kwc{
+            background-color:yellow;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{person.name}} {{person.age}} -->
+        {{ nextYear("안녕하세요") }}
+        <!-- {{ otherMethod() }} -->
+        <input v-bind:type="type" v-bind:value="inputData">
+        <!-- v-bind 생략가능 -->
+        <input :type="type" :value="inputData">
+        <a :href="getKossieCoderLink('com')">코지 코더 채널</a>
+        <div :class="kwc">
+            ss
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '코지 코더',
+                    age: 34
+                },
+                inputData: '55',
+                type: 'number',
+                link: 'https://www.naver.',
+                kwc : 'kwc'
+            },
+            methods: {
+                // nextYear:function(greeting){
+                //     return greeting + '! ' + this.person.name + ' 는 내년에 '
+                //     + (this.person.age+1) + '살 입니다.'
+                //     // this를 붙여 data를 안적어줘도 됨
+                // },
+                //줄여서 사용 가능(:function 삭제)
+                nextYear(greeting) {
+                    return greeting + '! ' + this.person.name + ' 는 내년에 '
+                        + (this.person.age + 1) + '살 입니다.'
+                    // this를 붙여 data를 안적어줘도 됨
+                },
+                otherMethod: function () {
+                    return this.nextYear();
+                    // this를 붙여서 ohterMethod함수에서
+                    //nextYear()함수 호출 가능
+                },
+                getKossieCoderLink(channel) {
+                    return this.link + channel;
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

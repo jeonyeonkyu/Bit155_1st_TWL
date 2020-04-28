@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+</head>
+
+<!-- 
+    computed vs methods
+1.computed속성은 캐싱을 하고 methods는 캐싱을 안함
+ex)  {{ reverseMessage }}<br>가 3개있다고 가정할때
+computed속성은 한번만 계산(캐싱에 담아두었기 때문에)
+
+methods는 {{ reverseMessage }}개수만큼 계산
+
+ -->
+<body>
+    <div id="app">
+        <button @click='changeMessage'>Click</button>
+        <!-- 버튼을 클릭하면 computed안에 있는 message가 바뀌기 때문에
+        이를 캐치하여 다시계산 -->
+        <!-- {{ message.split('').reverse().join('') }} -->
+       {{ reverseMessage }}<br>
+       {{ reverseMessage }}<br>
+       {{ reverseMessage }}<br>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello'
+            },
+            methods: {
+                changeMessage(){
+                    this.message = '코지';
+                }
+            },
+            computed:{
+                // 함수를 이용한 반복제거
+                //methods에 쓰는 함수는 호출할때 '()'를 붙여줘야 한다.
+                // computed에서 쓰는 함수는 '()'안붙혀도 됨
+                reverseMessage(){
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
