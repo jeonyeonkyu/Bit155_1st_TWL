@@ -24,7 +24,7 @@
 	
 	try{
 		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","bit","1004");
-		String sql="insert into koreamember(id,pwd,pwdCheck,name,email,phone,ip) values(?,?,?,?,?,?,?)";
+		String sql="insert into bituser(id,pwd,pwdCheck,name,email,phone,ip) values(?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);

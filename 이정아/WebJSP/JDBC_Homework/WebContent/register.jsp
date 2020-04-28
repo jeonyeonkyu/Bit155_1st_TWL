@@ -30,8 +30,8 @@
 								</div>
 								
 								<div class="form-group">
-									<label for="password">비밀번호</label>
-									<input id="password" type="password" class="form-control" name="password">
+									<label for="pwd">비밀번호</label>
+									<input id="pwd" type="password" class="form-control" name="pwd">
 								</div>
 
 								<div class="form-group">
@@ -94,6 +94,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="./assets/js/my-login.js"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
+	
     <script type="text/javascript">
     function FormSubmit() {
         if (grecaptcha.getResponse() == "") {
@@ -117,7 +118,7 @@
 					alert('비밀번호를 입력해 주세요.');
 					$('#pwd').focus();
 					return false;
-				} else if ($('#pwd').val() != $('#pwd').val()) { // 비밀번호 체크
+				} else if ($('#pwdCheck').val() != $('#pwd').val()) { // 비밀번호 체크
 					alert('비밀번호를 다시 입력해 주세요.');
 					$('#pwdCheck').focus();
 					return false;
@@ -131,7 +132,7 @@
 					return false;
 				} else if ($('#phone').val() == "") { // 핸드폰 입력
 					alert('핸드폰번호를 입력해 주세요.');
-					$('#age').focus();
+					$('#phone').focus();
 					return false;
 
 				}

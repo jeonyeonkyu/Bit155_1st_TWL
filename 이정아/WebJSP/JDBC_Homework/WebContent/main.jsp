@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
 
 <head>
 <meta charset="utf-8">
@@ -50,8 +50,8 @@
 					<li>
 						<%
 							if (session.getAttribute("userid") != null) {
-							out.print("<b>[ " + session.getAttribute("userid") + " ]</b> 로그인 상태");
-							out.print("<a href='Ex02_JDBC_Logout.jsp'>[ 로그아웃 ]</a>");
+							out.print("<b>[ " + session.getAttribute("userid") + " ]</b> 님 환영합니다.");
+							out.print("<a href='logout.jsp'>[ 로그아웃 ]</a>");
 						} else {
 							out.print("<b>[비회원 상태입니다.]</b>");
 						}
@@ -60,12 +60,9 @@
 					</li>
 				</ul>
 			</nav>
-			<!-- #nav-menu-container -->
 		</div>
 	</header>
-	<!-- End Header -->
 
-	<!-- ======= Intro Section ======= -->
 	<section id="intro">
 
 		<div class="intro-content">
@@ -114,7 +111,7 @@
 	</footer>
 	<!-- End Footer -->
 
-	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+	<a href="#topbar" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
