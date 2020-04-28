@@ -2,28 +2,21 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-table {
-	border: solid 2px black;
-	border-collapse: collapse;
-}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-tr {
-	border: solid 1px blue;
-	background-color: white;
-	color: black;
-}
+  <title>Reveal Bootstrap Template</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-td {
-	border: solid 1px red;
-}
-</style>
+  <!-- Google Fonts -->
 </head>
+
 <body>
-	<table
+	<table>
 		style="width: 900px; height: 500px; margin-left: auto; margin-right: auto;">
 		<tr>
 			<td colspan="2">
