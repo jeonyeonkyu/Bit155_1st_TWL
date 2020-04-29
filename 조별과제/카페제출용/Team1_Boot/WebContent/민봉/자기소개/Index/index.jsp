@@ -28,7 +28,7 @@
 				<!-- 버튼을 눌렀을때 나오는 창 만들기(id 값은 위에있는 데이터 타겟이랑 같게하면됨) -->
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="../../../main.html" class="nav-link">Main</a>
+						<a href="../../../main.jsp" class="nav-link">Main</a>
 					</li>
 					<!-- ▲ 네비게이션 요소들 (왼쪽 마진은 auto로 줫음) -->
 					<li class="nav-item">

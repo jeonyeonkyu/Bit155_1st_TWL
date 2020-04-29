@@ -132,7 +132,7 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <!-- <span class="d-lg-none"></span> -->
             <div class="d-flex ">
-                <img class="img-fluid  ml-5 mb-2 mt-3" src="./main_images/thumbs.svg" alt="">
+                <img class="img-fluid  ml-5 mb-2 mt-3" src="./images/thumbs.svg" alt="">
                 <div class="d-flex align-items-center" id="logoText">
                     <h3 class="mt-3">26.8조</h3>
                 </div>
@@ -155,7 +155,7 @@
                     <a class="nav-link js-scroll-trigger mb-2" href="./연규/introduction/index.jsp">JEON YEONKYU</a>
                 </li>
                 <li class="nav-item mx-auto">
-                    <a class="nav-link js-scroll-trigger mb-2" href="./민봉/자기소개/index/index.jsp">JANG MINBONG</a>
+                    <a class="nav-link js-scroll-trigger mb-2" href="./민봉/자기소개/Index/index.jsp">JANG MINBONG</a>
                 </li>
                 <li class="nav-item mx-auto">
                     <a class="nav-link js-scroll-trigger mb-2" data-toggle="modal" data-target="#myModal"
@@ -175,9 +175,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <img class="mr-2" src="./main_images/crown.svg">
+                        <img class="mr-2" src="./images/crown.svg">
                         <span>우리 조의 랭킹</span>
-                        <img class="ml-2" src="./main_images/crown.svg"></h4>
+                        <img class="ml-2" src="./images/crown.svg"></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
@@ -195,32 +195,32 @@
                             <tr>
                                 <td>김우철</td>
                                 <td></td>
-                                <td><img src="./main_images/Crown_1.png" alt=""></td>
-                                <td><img src="./main_images/Crown_1.png" alt=""></td>
+                                <td><img src="./images/Crown_1.png" alt=""></td>
+                                <td><img src="./images/Crown_1.png" alt=""></td>
                             </tr>
                             <tr>
                                 <td>이정아</td>
                                 <td></td>
-                                <td><img src="./main_images/Crown_4.png" alt=""></td>
-                                <td><img src="./main_images/Crown_2.png" alt=""></td>
+                                <td><img src="./images/Crown_4.png" alt=""></td>
+                                <td><img src="./images/Crown_2.png" alt=""></td>
                             </tr>
                             <tr>
                                 <td>구슬기</td>
                                 <td></td>
-                                <td><img src="./main_images/Crown_2.png" alt=""></td>
-                                <td><img src="./main_images/Crown_5.png" alt=""></td>
+                                <td><img src="./images/Crown_2.png" alt=""></td>
+                                <td><img src="./images/Crown_5.png" alt=""></td>
                             </tr>
                             <tr>
                                 <td>전연규</td>
                                 <td></td>
-                                <td><img src="./main_images/Crown_5.png" alt=""></td>
-                                <td><img src="./main_images/Crown_3.png" alt=""></td>
+                                <td><img src="./images/Crown_5.png" alt=""></td>
+                                <td><img src="./images/Crown_3.png" alt=""></td>
                             </tr>
                             <tr>
                                 <td>장민봉</td>
                                 <td></td>
-                                <td><img src="./main_images/Crown_3.png" alt=""></td>
-                                <td><img src="./main_images/Crown_4.png" alt=""></td>
+                                <td><img src="./images/Crown_3.png" alt=""></td>
+                                <td><img src="./images/Crown_4.png" alt=""></td>
                             </tr>
                         </tbody>
                     </table>
@@ -244,21 +244,21 @@
                 </ul>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./main_images/식당3.jpg" alt="Los Angeles">
+                        <img src="./images/식당3.jpg" alt="Los Angeles">
                         <div class="carousel-caption">
                             <h3>2020.04.21</h3>
                             <p>와촌에서 한컷....!</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./main_images/교실4.jpg" alt="Chicago">
+                        <img src="./images/교실4.jpg" alt="Chicago">
                         <div class="carousel-caption">
                             <h3>2020.04.23</h3>
                             <p>조장님한테 혼나기 1분전!!</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="./main_images/회의1.jpg" alt="New York">
+                        <img src="./images/회의1.jpg" alt="New York">
                         <div class="carousel-caption">
                             <h3>2020.04.23</h3>
                             <p>조장한테 혼나는중....</p>
@@ -285,7 +285,7 @@
                     <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
-                                src="./main_images/우철카드.JPG">
+                                src="./images/우철카드.JPG">
                             <div class="middle">
                                 <div class="text">
                                     <p class="ptag">정아 : 산소같은 우철..<br>
@@ -309,7 +309,7 @@
                     <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
-                                src="./main_images/연규카드.JPG">
+                                src="./images/연규카드.jpg">
                             <div class="middle">
                                 <div class="text">
                                     <p class="ptag">정아 : 연규야 연규야 연규야..<br>
@@ -333,7 +333,7 @@
                     <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
-                                src="./main_images/슬기카드.JPG">
+                                src="./images/슬기카드.jpg">
                             <div class="middle">
                                 <div class="text">
                                     <p class="ptag">정아 : 슬기로운 슬기야~<br>
@@ -358,7 +358,7 @@
                     <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
-                                src="./main_images/정아카드.JPG">
+                                src="./images/정아카드.jpg">
                             <div class="middle">
                                 <div class="text">
                                     <p class="ptag">우철 : 지식으로 저좀 혼내주세요..<br>
@@ -383,7 +383,7 @@
                     <div class="card mx-auto" style="width:250px; height:400px;">
                         <div class="wrapper">
                             <img class="card-img-top" id="image" alt="Card image" style="width:100%"
-                                src="./main_images/민봉카드.JPG">
+                                src="./images/민봉카드.jpg">
                             <div class="middle">
                                 <div class="text">
                                     <p class="ptag">슬기 : 의외의 귀염성<br>
