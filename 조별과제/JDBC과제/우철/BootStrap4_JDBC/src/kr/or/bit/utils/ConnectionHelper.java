@@ -10,7 +10,8 @@ public class ConnectionHelper {
 		try {
 			  if(dsn.equals("oracle")) {
 				  Class.forName("oracle.jdbc.OracleDriver");
-				  conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","c##book_ex","rladncjf1");
+				  //conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","c##book_ex","rladncjf1");
+				  conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","BIT","1004");
 			  }else if(dsn.equals("mysql")) {
 				  Class.forName("com.mysql.jdbc.Driver");
 				  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shopmall","bit","1004");

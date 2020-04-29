@@ -1,0 +1,24 @@
+.svg-cls{
+    max-width: 500px;
+    width: 100%;
+    display: block;
+     background-color: #ddd;
+    margin: 5% auto;
+      }
+    #clsLayer_1{
+        max-width: 90%;
+        position: absolute;
+    }
+      .cls-1, cls-3, cls-4{
+        cursor: pointer;
+    }
+      .cls-1:hover{
+        fill: #F12345;
+      }
+      .cls-4:hover{
+        fill: #894765;
+      }
+      .cls-3:hover{
+        fill: #09fe98;
+      }
+      

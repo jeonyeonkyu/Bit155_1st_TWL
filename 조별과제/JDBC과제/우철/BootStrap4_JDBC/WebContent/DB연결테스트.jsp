@@ -10,9 +10,9 @@
 
 <%
 /*   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","c##book_ex","rladncjf1"); */
-String DB_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-String DB_USER = "c##book_ex";
-String DB_PASSWORD= "rladncjf1";
+String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
+String DB_USER = "BIT";
+String DB_PASSWORD= "1004";
 
 Connection conn;
 Statement stmt;

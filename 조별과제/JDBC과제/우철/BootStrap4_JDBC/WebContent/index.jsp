@@ -10,7 +10,7 @@
 
 		<div class="intro-content">
 			<h2>
-				Making <span>your ideas</span><br>happen!
+				환영합니다! 여기는 <span>26.8조</span>의<br> 홈페이지입니다!
 			</h2>
 			<div>
 				<a href="#about" class="btn-get-started scrollto">Get Started</a> <a

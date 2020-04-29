@@ -21,8 +21,9 @@
 	PreparedStatement pstmt=null;
 	
 	try{
-		/*   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","c##book_ex","rladncjf1"); */
-		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","c##book_ex","rladncjf1");
+		
+		 conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","BIT","1004");
+		//conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","c##book_ex","rladncjf1");
 		String sql="insert into bituser(id,pwd,pwdCheck,name,email,phone,ip) values(?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		

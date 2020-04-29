@@ -107,7 +107,7 @@
 										<td>
 											<h6><%=rs.getString("ip")%></h6>
 										</td>
-										<td class="d-flex ml-3 pt-2"><a
+										<td class="d-flex pt-2" style="margin-left:34px;"><a
 											class="btn btn-success btn-sm mr-3" type="button"
 											href='MemberEdit.jsp?id=<%=rs.getString("id")%>'>수정</a> <a
 											class="btn btn-danger btn-sm" type="button"
