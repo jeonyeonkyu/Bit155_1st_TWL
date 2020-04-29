@@ -124,7 +124,7 @@
 					return false;
 				} else if ($('#name').val() == "") { // 이름 검사
 					alert('이름을 입력해 주세요.');
-					$('#mname').focus();
+					$('#name').focus();
 					return false;
 				} else if ($('#email').val() == "") { // 이메일 입력
 					alert('email를 입력해 주세요.');

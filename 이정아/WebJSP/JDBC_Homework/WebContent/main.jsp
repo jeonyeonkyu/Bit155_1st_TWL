@@ -49,8 +49,14 @@
 					<li><a href="register.jsp">회원가입</a></li>
 					<li>
 						<%
-							if (session.getAttribute("userid") != null) {
-							out.print("<b>[ " + session.getAttribute("userid") + " ]</b> 님 환영합니다.");
+							String id = null;
+						id = (String) session.getAttribute("userid");
+
+						if (id != null) {
+							out.print("<b>[ " + id + " ]</b> 님 환영합니다.");
+							if (id.equals("admin")) {
+								out.print("<a href='memberlist.jsp'>회원관리</a>");
+							}
 							out.print("<a href='logout.jsp'>[ 로그아웃 ]</a>");
 						} else {
 							out.print("<b>[비회원 상태입니다.]</b>");

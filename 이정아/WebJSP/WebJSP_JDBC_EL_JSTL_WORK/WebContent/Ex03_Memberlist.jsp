@@ -4,9 +4,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%-- <%
 	/*  
 	 1.관리자만 접근 가능한 페이지
 	 2.로그인한 일반 회원이 주소값을 외워서 ... 접근불가 
@@ -17,7 +16,11 @@
 		//out.print("<script>location.href='Ex02_JDBC_Login.jsp'</script>");
 		response.sendRedirect("login.jsp");
 	} 
-%>	
+%>	 --%>
+
+<c:if test = ${sessionScope.userid == null || !sessionScope.userid.equals('admin')}">
+<script>location.href='Ex02_JDBC_Login.jsp'</script>
+</c:if>
 
 <!DOCTYPE html>
 <html>
