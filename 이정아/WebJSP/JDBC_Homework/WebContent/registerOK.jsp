@@ -15,7 +15,7 @@
 	String phone = request.getParameter("phone"); 
 	//String ip = request.getParameter("ip"); 
 	
-	//out.print(id + "/"+pwd + "/"+name + "/"+age + "/"+gender + "/"+email);
+	//out.print(id + "/"+pwd + "/"+name + "/"+email + "/"+phone);
 	//out.print(request.getRemoteAddr()); //IP정보를 받아 올 수 있음
 	
 	Class.forName("oracle.jdbc.OracleDriver");

@@ -4,6 +4,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
 <%
 	/*  
 	 1.관리자만 접근 가능한 페이지
