@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li></ul>
+
+    <button onclick="myFunc()">Try it</button>
+    <button onclick="myFunc2()">Try it</button>
+
+<script type="text/javascript">
+    function myFunc(){
+        var list = document.getElementById("mylist");
+        list.removeChild(list.childNodes[0]);
+    }
+    function myFunc2(){
+        var textnode = document.createTextNode("Water");
+        var item=document.getElementById("mylist").childNodes[0];
+        item.replaceChild(textnode,item.childNodes[0]);
+    }
+</script>
+
+
+
+
+    
+</body>
+</html>
