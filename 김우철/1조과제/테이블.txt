@@ -1,0 +1,11 @@
+create table JO_MEMBER(
+    userId varchar2(50),
+    userPw varchar2(100),
+    userPwCheck varchar2(100),
+    userName varchar2(10),
+    userEmail varchar2(50),
+    userAddress varchar2(50),
+    userDetailAddress varchar2(50),
+    userPhone varchar2(50),
+    constraint pk_JO_MEMBER_userId primary key(userId)
+);
