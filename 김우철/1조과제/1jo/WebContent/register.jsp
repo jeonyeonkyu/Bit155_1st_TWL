@@ -7,15 +7,15 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<title>회원가입</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./assets/css/my-login.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-	<script type="text/javascript">
-		//jquery 로 간단하게 유효성 check 하기
+	<script type="text/javascript"> //jquery 유효성 check 
+		//1.공백 검사
 		$(function () {
 			$('#joinForm').submit(function () {
 				//alert("가입");
@@ -56,8 +56,28 @@
 
 			});
 		});
+	
+		//2.유효성 검사
+		var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/); 
+		//아이디 : 영문 대소문자,숫자,'_,-'만 입력가능, 5~20자리
+		var passwdCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+		//비밀번호 : 영문 대소문자, 숫자, 특수문자를 하나이상 포함하여 8~16자
+		var nameCheck = RegExp(/^[가-힣]{2,6}$/);
+		//이름 : 한글, 2~6자
+		var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		//이메일 : aa@aa.aa
+		
+		$('id').keyup(function(){
+			if(userIdCheck.id($('#id').val))){
+				$('#idFeedback').val() = '아이디 표현식 맞춰!!';
+			}else{
+				
+			}
+		})
 	</script>
 </head>
+
+
 
 <body class="my-login-page">
 	<section class="h-100">
@@ -74,12 +94,12 @@
 							</div>
 
 							<!-- class="my-login-validation" -->
-							<form action="registerAction.jsp" method="post" name="joinForm" id="joinForm"
+							<form action="join.do" method="post" name="joinForm" id="joinForm"
 								onsubmit="return submitCheck();">
 								<div class="form-group">
 									<label for="id">아이디</label> <input id="id" type="text" class="form-control"
 										name="id">
-									<!-- <div class="invalid-feedback">아이디를 입력해주세요.</div> -->
+									<div id="idFeedback" class="invalid-feedback"></div>
 								</div>
 
 								<div class="form-group">
