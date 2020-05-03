@@ -50,7 +50,7 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">로그인</h4>
-							<form action="loginAction.jsp" method="post" name="loginForm"
+							<form action="login.do" method="post" name="loginForm"
 								id="loginForm"  >
 								<!-- class="my-login-validation" -->
 								<div class="form-group">
