@@ -41,7 +41,7 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8"
 									<div class="custom-checkbox custom-control">
 										<input type="checkbox" name="remember" id="remember"
 											class="custom-control-input"> <label for="remember"
-											class="custom-control-label">이메일 기억하기</label>
+											class="custom-control-label">아이디 기억하기</label>
 									</div>
 								</div>
 

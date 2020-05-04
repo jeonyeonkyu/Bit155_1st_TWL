@@ -142,6 +142,7 @@ function getMousePosition(event) {
   return { X: x, Y: y };
 }
 
+
 function mouseListener(event) {
   switch (event.type) {
     case "mousedown":

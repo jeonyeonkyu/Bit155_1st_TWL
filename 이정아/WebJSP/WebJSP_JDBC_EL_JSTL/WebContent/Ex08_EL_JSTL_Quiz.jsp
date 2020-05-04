@@ -59,17 +59,17 @@ empty
 		<option value="2010"
 			<c:if test="${param.year == 2010"}>selected</c:if>>2010</option>
 		<option value="2011"
-			<c:if test="${param.year == 2011"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2011"}>selected</c:if>>2011</option>
 		<option value="2012"
-			<c:if test="${param.year == 2012"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2012"}>selected</c:if>>2012</option>
 		<option value="2013"
-			<c:if test="${param.year == 2013"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2013"}>selected</c:if>>2013</option>
 		<option value="2014"
-			<c:if test="${param.year == 2014"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2014"}>selected</c:if>>2014</option>
 		<option value="2015"
-			<c:if test="${param.year == 2015"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2015"}>selected</c:if>>2015</option>
 		<option value="2016"
-			<c:if test="${param.year == 2016"}>selected</c:if>>2010</option>
+			<c:if test="${param.year == 2016"}>selected</c:if>>2016</option>
 	</select>
 
 
