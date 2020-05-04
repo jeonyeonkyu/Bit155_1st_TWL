@@ -1,0 +1,49 @@
+.wrapper {overflow:hidden;position:relative;min-width:1280px;min-height:100%;padding:140px 0 230px}
+.wrapper footer {position:absolute;bottom:0;left:0;right:0}
+
+.header{position:absolute;top:0;left:0;right:0;min-width:1280px;height:141px;text-align:center;border-bottom:1px solid #ffbc0d;background:#fff}
+.header .headArea{height:100%}
+.header .hLogo{position:relative;top:28px;float:left;z-index:1}
+.header .hLogo a{display:block}
+.header .hMenu{height:100%;padding:52px 0}
+.header .hMenu .menu{position:absolute;top:0;left:0;right:0;text-align:center;background:#fff}
+.header .hMenu .menu .depth1{display:inline-block;padding-left:60px;text-align:left;vertical-align:top}
+.header .hMenu .menu .depth1 a{display:inline-block;vertical-align:top}
+.header .hMenu .menu .depth1>li{float:left}
+.header .hMenu .menu .depth1>li .dth1{position:relative;margin-right:85px;padding:0 10px;color:#292929;font-size:20px;line-height:140px;font-weight:600}
+.header .hMenu .menu .depth1>li .dth1.current:before{content:'';position:absolute;bottom:55px;left:10px;right:10px;border-bottom:1px solid #000}
+.header .hMenu .menu .depth1>li.on .dth1:after,
+.header .hMenu .menu .depth1>li:hover .dth1:after{content:'';position:absolute;bottom:-3px;left:0;right:0;border-bottom:3px solid #f5bd43}
+.header .hMenu .menu .depth2{display:none;padding:35px 10px 45px}
+.header .hMenu .menu .depth2>li{margin-top:15px}
+.header .hMenu .menu .depth2>li:first-child{margin-top:0}
+.header .hMenu .menu .depth2>li .dth2{line-height:1.6;border-bottom:1px solid transparent}
+.header .hMenu .menu .depth2>li .dth2:hover,
+.header .hMenu .menu .depth2>li .dth2:focus{color:#000;border-bottom:1px solid #000}
+.header .hMenu .util{position:relative;float:right;margin:0 0 0 50px}
+.header .hMenu .util .lang{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#264a36;border-radius:48px}
+.header .hMenu .util .recruit{display:inline-block;width:80px;padding-top:2px;color:#fff;font-size:13px;font-weight:600;line-height:34px;text-align:center;background:#ffbc0d;border-radius:48px}
+.header .hMenu .util .srch{margin-left:26px;width:36px;height:36px;text-indent:-9999px;background:url(../images/common/ico_search.png) 0 0 no-repeat}
+.header.open{z-index:11}
+.header.open .hMenu .menu .depth1:before{content:'';position:absolute;top:140px;left:0;right:0;height:1px;background:#e2e2e2}
+.header.open .hMenu .menu .depth1:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:#ffbc0d}
+.header.open .hMenu .menu .depth1 .dth1.current:before{display:none}
+.header.open .hMenu .menu .depth1 .depth2{display:block}
+.header.fixed{position:fixed;height:81px;z-index:11}
+.header.fixed .hLogo{top:18px}
+.header.fixed .hLogo img{height:45px}
+.header.fixed .hMenu{padding:22px 0}
+.header.fixed .hMenu .menu .depth1>li .dth1{line-height:80px}
+.header.fixed .hMenu .menu .depth1>li .dth1.current:before{bottom:25px}
+.header.fixed.open .hMenu .menu .depth1:before{top:80px}
+.header .dummy{height:100%;overflow:hidden}/* 가이드 */
+.header.fixed .dummy img{margin-top:-140px}
+
+.headArea, .footArea{width:1168px;margin:0 auto}
+.header .headArea{height:100%}
+
+.header .hLogo{position:relative;top:28px;float:left;z-index:1}
+.header .hLogo a{display:block}
+.header.fixed .hLogo{top:18px}
+.header.fixed .hLogo img{height:45px}
+

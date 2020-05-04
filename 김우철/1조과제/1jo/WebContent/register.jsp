@@ -1,504 +1,416 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE html>
-<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>네이버 : 회원가입</title>
-<link rel="stylesheet" href="./inc/user/css/V2Join.css?190621">
-<script type="text/javascript"
-	src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Ju3MJQVQ1aT9Ao2XGomx-gpo57OTvsXLw2XEfeVVxcBHkH6H4Ml0ujADkpDCfBk0duhByQ45MoPluZBqmbwWAKfc11gxcS-JDr67YOmxmZkiTqpgcYrblV8H4CG2mKE1rMhEuDjNTiCm6Knx5auZcJ3dLAhBEm-17WS0vk0Bkm0Caedsx3vL6uDJmfgx1JFiaLk2zgkE9j2NgrmSaDm0JA"
-	charset="UTF-8"></script>
-<script type="text/javascript" src="https://nid.naver.com/js/clickcr.js"></script>
-<script type="text/javascript" src="./inc/common/js/lcs_nclicks.js"></script>
-<script type="text/javascript">lcs_do();</script>
-<meta name="decorator" content="V2_JOIN">
+    <meta charset="utf-8">
+    <meta name="author" content="Kodinger">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/my-login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
-	<div id="wrap">
 
-		<!-- 스킵네비게이션 : 웹접근성대응-->
-		<div id="u_skip">
-			<a href="#content"
-				onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로
-					바로가기</span></a>
-		</div>
-		<!-- //스킵네비게이션 -->
-		<!-- header -->
-		<div id="header" class="join_membership" role="banner">
-			<h1>
-				<a href="http://www.naver.com" class="h_logo"><span
-					class="blind">NAVER</span></a>
-			</h1>
-		</div>
-		<!-- // header -->
+<body class="my-login-page">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        <a href="#"> <img src="./assets/img/thumbs.svg" alt="bootstrap 4 login page"></a>
+                    </div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <div class="mx-auto">
+                                <h4 class="card-title">회원가입</h4>
+                            </div>
 
-		<form id="join_form" method="post" action="★★★★">
-			<!-- container -->
-			<div id="container" role="main">
-				<div id="content">
-					<!-- tg-text=title -->
-					<h2 class="blind">네이버 회원가입</h2>
-					<div class="join_content">
-						<!-- 아이디, 비밀번호 입력 -->
-						<div class="row_group">
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="id">아이디</label>
-								</h3>
-								<span class="ps_box int_id"> <input type="text" id="id"
-									name="id" class="int" title="ID" maxlength="20"> <span
-									class="step_url">@naver.com</span></span> <span class="error_next_box"
-									id="idMsg" style="display: none" aria-live="assertive"></span>
-							</div>
+                            <!-- class="my-login-validation" -->
+                            <form action="join.do" method="post" name="joinForm" id="joinForm"
+                                onsubmit="return submitCheck();">
+                                <div class="form-group">
+                                    <label for="id">아이디</label> <input id="id" type="text" class="form-control"
+                                        name="id">
+                                    <div id="idFeedback" class="feedback"></div>
+                                </div>
 
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="pswd1">비밀번호</label>
-								</h3>
-								<span class="ps_box int_pass" id="pswd1Img"> <input
-									type="password" id="pswd1" name="pswd1" class="int"
-									title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
-									<span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
-								</span> <span class="error_next_box" id="pswd1Msg"
-									style="display: none" aria-live="assertive">5~12자의 영문
-									소문자, 숫자와 특수기호(_)만 사용 가능합니다.</span>
+                                <div class="form-group">
+                                    <label for="password">비밀번호</label> <input id="password" onchange="isSame()"
+                                        type="password" class="form-control" name="password">
+                                    <div id="passwordFeedback" class="feedback"></div>
+                                </div>
 
-								<h3 class="join_title">
-									<label for="pswd2">비밀번호 재확인</label>
-								</h3>
-								<span class="ps_box int_pass_check" id="pswd2Img"> <input
-									type="password" id="pswd2" name="pswd2" class="int"
-									title="비밀번호 재확인 입력" aria-describedby="pswd2Blind"
-									maxlength="20"> <span id="pswd2Blind" class="wa_blind">설정하려는
-										비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.</span>
-								</span> <span class="error_next_box" id="pswd2Msg"
-									style="display: none" aria-live="assertive"></span>
-							</div>
-						</div>
-						<!-- // 아이디, 비밀번호 입력 -->
+                                <div class="form-group">
+                                    <label for="password">비밀번호 확인</label> <input id="passwordCheck" onchange="isSame()"
+                                        type="password" class="form-control" name="passwordCheck">
+                                    <div id="same"></div>
+                                </div>
 
-						<!-- 이름, 생년월일 입력 -->
-						<div class="row_group">
+                                <div class="form-group">
+                                    <label for="name">이름</label> <input id="name" type="text" class="form-control"
+                                        name="name">
+                                    <div id="nameFeedback" class="feedback"></div>
+                                </div>
 
-							<!-- lang = ko_KR -->
-							<div class="join_row">
-								<h3 class="join_title">
-									<label for="name">이름</label>
-								</h3>
-								<span class="ps_box box_right_space"> <input type="text"
-									id="name" name="name" title="이름" class="int" maxlength="40">
-								</span> <span class="error_next_box" id="nameMsg" style="display: none"
-									aria-live="assertive"></span>
-							</div>
-							<!-- lang = ko_KR -->
+                                <div class="form-group">
+                                    <label for="email">이메일 주소</label> <input id="email" type="email"
+                                        class="form-control" name="email">
+                                    <div id="emailFeedback" class="feedback"></div>
+                                </div>
 
-							<div class="join_row join_birthday">
-								<h3 class="join_title">
-									<label for="yy">생년월일</label>
-								</h3>
-								<div class="bir_wrap">
-									<div class="bir_yy">
-										<span class="ps_box"> <input type="text" id="yy"
-											placeholder="년(4자)" aria-label="년(4자)" class="int"
-											maxlength="4">
-										</span>
-									</div>
-									<div class="bir_mm">
-										<span class="ps_box"> <select id="mm" class="sel"
-											aria-label="월">
-												<option value="">월</option>
-												<option value="01">1</option>
-												<option value="02">2</option>
-												<option value="03">3</option>
-												<option value="04">4</option>
-												<option value="05">5</option>
-												<option value="06">6</option>
-												<option value="07">7</option>
-												<option value="08">8</option>
-												<option value="09">9</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-										</select>
-										</span>
-									</div>
-									<div class=" bir_dd">
-										<span class="ps_box"> <input type="text" id="dd"
-											placeholder="일" aria-label="일" class="int" maxlength="2">
-											<label for="dd" class="lbl"></label>
-										</span>
-									</div>
-								</div>
-								<span class="error_next_box" id="birthdayMsg"
-									style="display: none" aria-live="assertive"></span>
-							</div>
+                                <div class="form-group">
+                                    <label for="address">주소</label>
+                                    <input type="text" style="display: none;" class="form-control" id="sample3_postcode"
+                                        placeholder="우편번호">
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="주소"><br>
+                                    <input type="text" class="form-control mb-4" name="detailAddress" id="detailAddress"
+                                        placeholder="상세주소">
+                                    <input type="button" class="form-control" onclick="sample3_execDaumPostcode()"
+                                        value="검색"><br>
+                                    <input style="display: none;" type="text" id="sample3_extraAddress"
+                                        placeholder="참고항목">
+                                    <!-- <input id="address" type="address" class="form-control" name="address"> -->
+                                    <div id="wrap"
+                                        style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                                        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                                            style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+                                            onclick="foldDaumPostcode()" alt="접기 버튼">
+                                    </div>
+                                </div>
 
-							<div class="join_row join_sex">
-								<h3 class="join_title">
-									<label for="gender">성별</label>
-								</h3>
-								<div class="ps_box gender_code">
-									<select id="gender" name="gender" class="sel" aria-label="성별">
-										<option value="" selected>성별</option>
-										<option value="M">남자</option>
-										<option value="F">여자</option>
-									</select>
-								</div>
-							</div>
-							<span class="error_next_box" id="genderMsg" style="display: none"
-								aria-live="assertive"></span>
+                                <div class="form-group">
+                                    <label for="text">핸드폰 번호 (-제외)</label> <input id="phone" type="text"
+                                        class="form-control" name="phone">
+                                    <!-- <div class="invalid-feedback">핸드폰 번호가 일치하지 않습니다. 다시
+                                        입력해주세요.</div> -->
+                                    <div id="phoneFeedback" class="feedback"></div>
+                                </div>
 
-							<div class="join_row join_email">
-								<h3 class="join_title">
-									<label for="email">본인 확인 이메일<span class="terms_choice">(선택)</span></label>
-								</h3>
-								<span class="ps_box int_email box_right_space"> <input
-									type="text" id="email" name="email" placeholder="선택입력"
-									aria-label="선택입력" class="int" maxlength="100">
-								</span>
-							</div>
-							<span class="error_next_box" id="emailMsg" style="display: none"
-								aria-live="assertive"></span>
-						</div>
-						<!-- // 이름, 생년월일 입력 -->
 
-						<!-- 휴대전화 번호, 인증번호 입력 -->
-						<div class="join_row join_mobile" id="mobDiv">
-							<h3 class="join_title">
-								<label for="phoneNo">휴대전화</label>
-							</h3>
-							<div class="ps_box country_code">
-								<select id="nationNo" name="nationNo" class="sel"
-									aria-label="전화번호 입력">
-									<option value="82" selected>대한민국 +82</option>
-								</select>
-							</div>
-							<div class="int_mobile_area">
-								<span class="ps_box int_mobile"> <input type="tel"
-									id="phoneNo" name="phoneNo" placeholder="전화번호 입력"
-									aria-label="전화번호 입력" class="int" maxlength="16"> <label
-									for="phoneNo" class="lbl"></label>
-								</span> <a href="#" class="btn_verify btn_primary" id="btnSend"
-									role="button"> <span class="">인증번호 받기</span>
-								</a>
-							</div>
-							<div class="ps_box_disable box_right_space" id="authNoBox">
-								<input type="tel" id="authNo" name="authNo"
-									placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-									aria-describedby="wa_verify" class="int" disabled maxlength="4">
-								<label id="wa_verify" for="authNo" class="lbl"> <span
-									class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span> <span
-									class="input_code" id="authNoCode" style="display: none;"></span>
-								</label>
-							</div>
+                                <div class="form-group">
+                                    <div class="custom-checkbox custom-control">
+                                        <input type="checkbox" name="agree" id="agree" class="custom-control-input"
+                                            required=""> <label for="agree" class="custom-control-label">이용약관에 동의합니다.<a
+                                                href="#"> 이용약관 보기</a></label>
+                                        <div class="invalid-feedback">이용약관에 동의해주세요.</div>
+                                    </div>
+                                </div>
 
-							<span class="error_next_box" id="phoneNoMsg"
-								style="display: none" aria-live="assertive"></span> <span
-								class="error_next_box" id="authNoMsg" style="display: none"
-								aria-live="assertive"></span> <span class="error_next_box"
-								id="joinMsg" style="display: none" aria-live="assertive"></span>
-						</div>
-						<!-- // 휴대전화 번호, 인증번호 입력 -->
+                                <div class="form-group">
+                                    <div class="custom-checkbox custom-control">
+                                        <div id="html_element" class="g-recaptcha"
+                                            data-sitekey="6LcUGL4UAAAAAHQDXJveqB7FG3uS9ih1mqa2FNF3"
+                                            style="margin: 0 auto;"></div>
+                                    </div>
+                                </div>
 
-						<!-- tg-display=>{"보호자 모바일 인증": [], "오류 메시지": []} -->
-						<div class="join_minor tab" id="pmobDiv" style="display: none">
-							<ul class="tab_m" role="tablist">
-								<li class="m1" role="presentation"><a href="#"
-									onclick="return false;" class="on" role="tab"
-									aria-selected="true" aria-controls="wa_tab_phone">휴대전화인증</a></li>
-								<li class="m2" role="presentation"><a href="#"
-									id="tabPrtsIpin" role="tab" aria-selected="false"
-									aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-							</ul>
-							<div id="wa_tab_phone" role="tabpanel">
-								<div class="agree_check_wrap">
-									<div class="terms_chk_all">
-										<span class="input_chk"> <input type="checkbox"
-											id="pagree_all" class="chk_all"> <label
-											for="pagree_all"> <span class="chk_all_txt">아래
-													약관에 모두 동의합니다.</span>
-										</label>
-										</span>
-									</div>
-									<div class="small_check_box">
-										<span class="input_chk"> <input type="checkbox"
-											id="pagree_01" class="chk"> <label for="pagree_01">
-												<a
-												href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewPersonalInfoTerms"
-												target="_blank"><span>개인정보 이용</span></a>
-										</label>
-										</span> <span class="input_chk"> <input type="checkbox"
-											id="pagree_02" class="chk"> <label for="pagree_02">
-												<a
-												href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewUniqInfoTerms"
-												target="_blank"><span>고유식별정보 처리</span></a>
-										</label>
-										</span> <span class="input_chk"> <input type="checkbox"
-											id="pagree_03" class="chk"> <label for="pagree_03">
-												<a
-												href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewCellPhoneCarriersTerms"
-												target="_blank"><span>통신사 이용약관</span></a>
-										</label>
-										</span> <span class="input_chk"> <input type="checkbox"
-											id="pagree_04" class="chk"> <label for="pagree_04">
-												<a
-												href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewServiceTerms"
-												target="_blank"><span>인증사 이용약관</span></a>
-										</label>
-										</span> <span class="input_chk"> <input type="checkbox"
-											id="pagree_05" class="chk"> <label for="pagree_05">
-												<a
-												href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewNaverTerms"
-												target="_blank"><span>네이버 개인정보 수집</span></a>
-										</label>
-										</span>
-									</div>
-									<span class="error_next_box" id="pagreeMsg"
-										style="display: none" aria-live="assertive">필수 정보입니다.</span>
-								</div>
-								<div class="row_group">
-									<div class="join_row">
-										<h3 class="join_title">
-											<label for="pname">보호자 이름</label>
-										</h3>
-										<span class="ps_box box_right_space"> <input
-											type="text" id="pname" name="pname" title="보호자 이름"
-											class="int" maxlength="40">
-										</span> <span class="error_next_box" id="pnameMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-									<div class="join_row join_birthday">
-										<h3 class="join_title">
-											<label for="pyy">보호자 생년월일</label>
-										</h3>
-										<div class="bir_wrap">
-											<div class="bir_yy">
-												<span class="ps_box"> <input type="text" id="pyy"
-													placeholder="년(4자)" aria-label="년(4자)" class="int"
-													maxlength="4">
-												</span>
-											</div>
-											<div class="bir_mm">
-												<span class="ps_box"> <select id="pmm" name="pmm"
-													class="sel" aria-label="월">
-														<option>월</option>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
-														<option>8</option>
-														<option>9</option>
-														<option>10</option>
-														<option>11</option>
-														<option>12</option>
-												</select>
-												</span>
-											</div>
-											<div class="bir_dd">
-												<span class="ps_box"> <input type="text" id="pdd"
-													placeholder="일" aria-label="일" class="int" maxlength="2">
-													<label for="pdd" class="lbl"></label>
-												</span>
-											</div>
-										</div>
-										<span class="error_next_box" id="pbirthdayMsg"
-											style="display: none" aria-live="assertive">필수 정보입니다.</span>
-									</div>
-									<div class="join_row">
-										<h3 class="join_title">
-											<label for="pgender">보호자 성별/국적</label>
-										</h3>
-										<div class="join_guardian">
-											<div class="gender_nationality">
-												<div class="ps_box gender_code">
-													<select id="pgender" name="pgender" class="sel"
-														aria-label="성별">
-														<option value="" selected="">성별</option>
-														<option value="0">남자</option>
-														<option value="1">여자</option>
-													</select>
-												</div>
-											</div>
-											<div class="gender_nationality">
-												<div class="ps_box gender_code">
-													<select id="pforeign" name="pforeign" class="sel"
-														aria-label="내국인여부">
-														<option value="0" selected="">내국인</option>
-														<option value="1">외국인</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<span class="error_next_box" id="pgenderMsg"
-											style="display: none" aria-live="assertive"></span>
-									</div>
-								</div>
-								<div class="join_row join_mobile">
-									<h3 class="join_title">
-										<label for="ptelecom">통신사</label>
-									</h3>
-									<div class="ps_box country_code">
-										<select id="ptelecom" name="ptelecom" class="sel"
-											aria-label="통신사">
-											<option value="SKT">SKT</option>
-											<option value="KTF">KT</option>
-											<option value="LGT">LG U+</option>
-											<option value="SKR">SKT 알뜰폰</option>
-											<option value="KTR">KT 알뜰폰</option>
-											<option value="LGR">LG U+ 알뜰폰</option>
-										</select>
-									</div>
-								</div>
-								<div class="join_row join_mobile">
-									<h3 class="join_title">
-										<label for="pphoneNo">휴대전화</label>
-									</h3>
-									<div class="int_mobile_area">
-										<span class="ps_box int_mobile"> <input type="tel"
-											id="pphoneNo" name="pphoneNo" placeholder="전화번호 입력"
-											aria-label="전화번호 입력" class="int" maxlength="16">
-										</span> <a href="#" class="btn_verify btn_primary" id="btnPrtsSend"
-											role="button"> <span class="">인증번호 받기</span>
-										</a>
-									</div>
-									<div class="ps_box_disable box_right_space" id="pauthNoBox">
-										<input type="tel" id="pauthNo" name="pauthNo"
-											placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-											aria-describedby="pwa_verify" class="int" disabled
-											maxlength="6"> <label id="pwa_verify" for="pauthNo"
-											class="lbl"> <span class="wa_blind">인증받은 후
-												인증번호를 입력해야 합니다.</span> <span class="input_code" id="pauthNoCode"
-											style="display: none;"></span>
-										</label>
-									</div>
-									<span class="error_next_box" id="pphoneNoMsg"
-										style="display: none" aria-live="assertive">필수 정보입니다.</span> <span
-										class="error_next_box" id="pauthNoMsg" style="display: none"
-										aria-live="assertive">필수 정보입니다.</span> <span
-										class="error_next_box" id="pjoinMsg" style="display: none"
-										aria-live="assertive">필수 정보입니다.</span>
-								</div>
-							</div>
-						</div>
-						<!-- tg-display -->
+                                <div class="form-group m-0">
+                                    <button type="submit" id="joinButton" class="btn btn-primary btn-block">
+                                        가입하기</button>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    이미 아이디가 있으신가요? <a href="login.jsp">로그인</a>
+                                </div>
+                            </form>
 
-						<!-- tg-display=>{"보호자 아이핀 인증": [], "오류 메시지": []} -->
-						<div class="join_minor tab" id="pipinDiv" style="display: none">
-							<ul class="tab_m" role="tablist">
-								<li class="m1" role="presentation"><a href="#"
-									id="tabPrtsMobile" role="tab" aria-selected="false"
-									aria-controls="wa_tab_phone">휴대전화인증</a></li>
-								<li class="m2" role="presentation"><a href="#"
-									onclick="return false;" class="on" role="tab"
-									aria-selected="true" aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-							</ul>
-							<div id="wa_tab_ipin" role="tabpanel">
-								<div class="terms_chk_all">
-									<span class="input_chk"> <input type="checkbox"
-										id="iagree_all" class="chk"> <label for="iagree_all"
-										class="ipin_label"> <span class="txt">보호자 인증이
-												완료되면 보호자 이름, 생년월일, 성별, 중복가입확인정보(DI)가 보호자 동의 확인을 위하여 아동의 정보와
-												함께 저장되며, 아동이 성년이 되는 시점에 파기됩니다.</span>
-									</label>
-									</span> <span class="error_next_box" id="iagreeMsg"
-										style="display: none" aria-live="assertive">필수 정보입니다.</span>
-								</div>
-								<div class="ipin_box">
-									<p class="ipin_certify_txt">
-										보호자 명의의 아이핀으로 인증 후<br> 가입이 가능 합니다.
-									</p>
-									<button type="button" id="btnIpinPopup"
-										class="ipin_certify_btn" title="새 창">
-										<span>아이핀 인증하기</span>
-									</button>
-									<span class="error_next_box" id="ipopupMsg"
-										style="display: none" aria-live="assertive">필수 정보입니다.</span>
-								</div>
-								<div class="join_row join_mobile">
-									<h3 class="join_title">
-										<label for="iphoneNo">휴대전화</label>
-									</h3>
-									<div class="int_mobile_area">
-										<span class="ps_box int_mobile"> <input type="tel"
-											id="iphoneNo" name="iphoneNo" placeholder="전화번호 입력"
-											aria-label="전화번호 입력" class="int" maxlength="16">
-										</span> <a href="#" class="btn_verify btn_primary" id="btnIpinSend"
-											role="button"> <span class="">인증번호 받기</span>
-										</a>
-									</div>
-									<div class="ps_box_disable box_right_space" id="iauthNoBox">
-										<input type="tel" id="iauthNo" name="iauthNo"
-											placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요"
-											aria-describedby="iwa_verify" class="int" disabled
-											maxlength="4"> <label id="iwa_verify" for="iauthNo"
-											class="lbl"> <span class="wa_blind">인증받은 후
-												인증번호를 입력해야 합니다.</span> <span class="input_code" id="iauthNoCode"
-											style="display: none;"></span>
-										</label>
-									</div>
-									<span class="error_next_box" id="iphoneNoMsg"
-										style="display: none" aria-live="assertive">필수 정보입니다.</span> <span
-										class="error_next_box" id="iauthNoMsg" style="display: none"
-										aria-live="assertive">필수 정보입니다.</span> <span
-										class="error_next_box" id="ijoinMsg" style="display: none"
-										aria-live="assertive">필수 정보입니다.</span>
-								</div>
-							</div>
-						</div>
 
-						<div class="btn_area">
-							<button type="button" id="btnJoin" class="btn_type btn_primary">
-								<span>가입하기</span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- // container -->
-		</form>
+                        </div>
+                    </div>
+                    <div class="footer">Copyright &copy; 2020 &mdash; 26.8조</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!--가상주민번호-아이핀 팝업페이지 호출시 필요한 form-->
-		<form name="form_ipin" method="post" action="">
-			<input type="hidden" name="m" value="pubmain"> <input
-				type="hidden" name="enc_data"
-				value="AgEEQTczONB+1C9AKxh2uThH0u46rlGnhQKE8J1j5KgUon2pvcMBV4gNgOkHAvJL6XCz0kT1E+bZB7Rp496q6mHNUHy7rqZplKzcGnQoEp2I7yo4/yDOBI8sMAtt3alWo/aQFABdkwvnKiJSfiUyUdx/UlZw5qOMGpT0+s89lWR6Y9YHlO5n5QSfWcp6EFNZ8Il5RO/6gm+F+CqUo42H0K2z1CADEnCTdTIPXRQPu671/AAAPXZUeUdgloYpWxClDVGBhZLZXKJ36ziWtGOLytyqrGlJXjXiP/1X7o6DmPg0tcrUBrRk0bHYUIs0R+tNAJSpGyYLEA==">
-		</form>
+    <script type="text/javascript"> //jquery 유효성 check 
 
-		<script type="text/javascript"
-			src="https://nid.naver.com/inc/common/js/rsaAll.js"></script>
-		<script type="text/javascript" src="./inc/common/js/lua.js"></script>
-		<script type="text/javascript" src="./inc/common/js/jquery.min.js"></script>
-		<script type="text/javascript" src="./inc/common/js/bvsd.1.3.4.js"></script>
+        //1.공백 검사(alert)
+        $(function () {
 
-		<!-- footer -->
-		<div id="footer" role="contentinfo">
-			<ul>
-				<li><a href="http://policy.naver.com/rules/service.html">이용약관</a></li>
-				<li><strong><a
-						href="http://policy.naver.com/policy/privacy.html">개인정보처리방침</a></strong></li>
-				<li><a href="http://policy.naver.com/rules/disclaimer.html">책임의
-						한계와 법적고지</a></li>
-				<li><a
-					href="https://help.naver.com/support/alias/membership/p.membership/p.membership_26.naver"
-					target="_blank">회원정보 고객센터 </a></li>
-			</ul>
-			<address>
-				<em><a href="https://www.navercorp.com/" target="_blank"
-					class="logo"><span class="blind">naver</span></a></em> <em class="copy">Copyright</em>
-				<em class="u_cri">&copy;</em> <a href="https://www.navercorp.com/"
-					target="_blank" class="u_cra">NAVER Corp.</a> <span class="all_r">All
-					Rights Reserved.</span>
-			</address>
-		</div>
-		<!-- //footer -->
-	</div>
+            $('#joinForm').submit(function () {
+                //alert("가입");
+                if ($('#id').val() == "") { // 아이디 검사
+                    alert('ID를 입력해 주세요.');
+                    $('#id').focus();
+                    return false;
+                } else if ($('#password').val() == "") { // 비밀번호 검사
+                    alert('비밀번호를 입력해 주세요.');
+                    $('#password').focus();
+                    return false;
+                } else if ($('#passwordCheck').val() == "") { // 비밀번호 검사
+                    alert('비밀번호 확인을 입력해 주세요.');
+                    $('#passwordCheck').focus();
+                    return false;
+                } else if ($('#name').val() == "") { // 이름 검사
+                    alert('name를 입력해 주세요.');
+                    $('#name').focus();
+                    return false;
+                } else if ($('#email').val() == "") { // 나이 검사
+                    alert('email를 입력해 주세요.');
+                    $('#email').focus();
+                    return false;
+                } else if ($('#address').val() == "") { // 주소 검사
+                    alert('주소를 입력해 주세요.');
+                    $('#email').focus();
+                    return false;
+                } else if ($('#detailAddress').val() == "") { // 상세주소 검사
+                    alert('상세주소를 입력해 주세요.');
+                    $('#email').focus();
+                    return false;
+                }
+                else if ($('#phone').val() == "") { // 우편번호
+                    alert('phone를 입력해 주세요.');
+                    $('#phone').focus();
+                    return false;
+                }
+
+            });
+        });
+
+        var regFlag = [false, false, false, false, false];
+        //2.정규표현식 검사
+        $(function () {
+            $("#idFeedback").hide();
+            $("#passwordFeedback").hide();
+            $("#nameFeedback").hide();
+            $("#emailFeedback").hide();
+
+             var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
+            //아이디 : 영문 대소문자,숫자,'_,-'만 입력가능, 5~20자리
+            // var passwordCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+            //비밀번호 : 영문 대소문자, 숫자, 특수문자를 하나이상 포함하여 8~16자
+            var passwordCheck = RegExp(/(?=.*[a-z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,16}$/);
+            //8~16자 사이에 적어도 하나의 영어대문자,특수문자가 포함
+
+            var nameCheck = RegExp(/^[가-힣]{2,6}$/);
+            //이름 : 한글, 2~6자
+            var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+            //이메일 : aa@aa.aa
+            var phoneCheck = RegExp(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/); 
+         
+
+            $('.feedback').css('color', 'red');
+            $('#id').keyup(function () {
+                if (!userIdCheck.test($('#id').val())) { //정규표현식 refuse
+                    regFlag[0] = false;
+                    $("#idFeedback").show();
+                    $('#idFeedback').text('영문 대소문자,숫자,특수기호(_,-),5~20자리 입력가능')
+                } else {
+                    regFlag[0] = true;
+                    $("#idFeedback").hide();
+                }
+            });
+            $('#password').keyup(function () {
+                if (!passwordCheck.test($('#password').val())) { //정규표현식 refuse
+                    regFlag[1] = false;
+                    $("#passwordFeedback").show();
+                    $('#passwordFeedback').text('하나이상의 특수문자,8~16자')
+                } else {
+                    regFlag[1] = true;
+                    $("#passwordFeedback").hide();
+                }
+            });
+            $('#name').keyup(function () {
+                if (!nameCheck.test($('#name').val())) { //정규표현식 refuse
+                    regFlag[2] = false;
+                    $("#nameFeedback").show();
+                    $('#nameFeedback').text('한글, 2~6자 입력가능')
+                } else {
+                    regFlag[2] = true;
+                    $("#nameFeedback").hide();
+                }
+            });
+            $('#email').keyup(function () {
+                if (!emailCheck.test($('#email').val())) { //정규표현식 refuse
+                    regFlag[3] = false;
+                    $("#emailFeedback").show();
+                    $('#emailFeedback').text('*@*.* 형식 입력가능')
+                } else {
+                    regFlag[3] = true;
+                    $("#emailFeedback").hide();
+                }
+            });
+            $('#phone').keyup(function () {
+                if (!phoneCheck.test($('#phone').val())) { //정규표현식 refuse
+                    regFlag[4] = false;
+                    $("#phoneFeedback").show();
+                    $('#phoneFeedback').text('01012341234 입력가능(-제외)')
+                } else {
+                    regFlag[4] = true;
+                    $("#phoneFeedback").hide();
+                }
+            });
+        });
+
+        // function regCheck(e) {
+        //     for (var index in regFlag) {
+        //         if ($('#id').val() != "" && $('#password').val() != "" && $('#name').val() != "" && $('#email').val() != "" && regFlag[index] === false) {
+        //             alert('정규표현식을 맞춰주세요.')
+        //             // e.preventDefault();
+        //             e.stopPropagation();
+        //             break;
+        //         }
+        //     }
+        // }
+
+        var flag = false;
+        var pw = document.getElementById("password");
+        var pwCheck = document.getElementById("passwordCheck");
+        var same = document.getElementById("same");
+        function isSame() {
+            if (pw.value != '' && pwCheck.value != '') {
+                if (pw.value == pwCheck.value) {
+                    same.innerHTML = '비밀번호가 일치합니다.';
+                    same.style.color = 'blue';
+                    flag = true;
+                } else {
+                    same.innerHTML = '비밀번호가 일치하지 않습니다.';
+                    console.log("sssss");
+                    same.style.color = 'red';
+                    flag = false;
+                }
+            }
+        }
+
+        function submitCheck() {
+            if (flag === false && pw.value != '') {
+                alert('비밀번호가 일치하지 않습니다.');
+                return false;
+            } else if (regFlag[0] === false || regFlag[1] === false || regFlag[2] === false || regFlag[3] === false || regFlag[4] === false) {
+                alert('정규표현식을 맞춰주세요.')
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+
+    <!-- <script>
+        var flag = false;
+        var pw = document.getElementById("password");
+        var pwCheck = document.getElementById("passwordCheck");
+        var same = document.getElementById("same");
+        function isSame() {
+            if (pw.value != '' && pwCheck.value != '') {
+                if (pw.value == pwCheck.value) {
+                    same.innerHTML = '비밀번호가 일치합니다.';
+                    same.style.color = 'blue';
+                    flag = true;
+                } else {
+                    same.innerHTML = '비밀번호가 일치하지 않습니다.';
+                    console.log("sssss");
+                    same.style.color = 'red';
+                    flag = false;
+                }
+            }
+        }
+
+        function submitCheck() {
+            if (flag === false && pw.value != '') {
+                alert('비밀번호가 일치하지 않습니다.');
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script> -->
+
+    <!-- 다음주소 API 우편번호 -->
+    <script>
+        // 우편번호 찾기 찾기 화면을 넣을 element
+        var element_wrap = document.getElementById('wrap');
+
+        function foldDaumPostcode() {
+            // iframe을 넣은 element를 안보이게 한다.
+            element_wrap.style.display = 'none';
+        }
+
+        function sample3_execDaumPostcode() {
+            // 현재 scroll 위치를 저장해놓는다.
+            var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if (data.userSelectedType === 'R') {
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                        // 조합된 참고항목을 해당 필드에 넣는다.
+                        document.getElementById("sample3_extraAddress").value = extraAddr;
+
+                    } else {
+                        document.getElementById("sample3_extraAddress").value = '';
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('sample3_postcode').value = data.zonecode;
+                    document.getElementById("address").value = addr;
+                    // 커서를 상세주소 필드로 이동한다.
+                    document.getElementById("detailAddress").focus();
+
+                    // iframe을 넣은 element를 안보이게 한다.
+                    // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                    element_wrap.style.display = 'none';
+
+                    // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                    document.body.scrollTop = currentScroll;
+                },
+                // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+                onresize: function (size) {
+                    element_wrap.style.height = size.height + 'px';
+                },
+                width: '100%',
+                height: '100%'
+            }).embed(element_wrap);
+
+            // iframe을 넣은 element를 보이게 한다.
+            element_wrap.style.display = 'block';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/my-login.js"></script>
+
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </body>
+
 </html>

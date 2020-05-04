@@ -3,27 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-   
-</head>
-<body>
-    <ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li>
-    </ul>
+    <script>
+        window.onload=function(){
+            document.getElementById("b1").onclick=function(){
+                var intRow = parseInt(document.getElementById("txtrow").value);
+                var intColumn = parseInt(document.getElementById("txtcolumn").value);
 
-    <button onclick="myFunc()">Try it</button>
-    <button onclick="myFunc2()">Try it</button>
+                var eletable = document.createElement("table");
+                eletable.setAttribute("id","Tab"); //요소의 id 속성에 Tab을 설정한다
 
-    <script type="text/javascript">
-        function myFunc(){
-            var list =document.getElementById("mylist");
-            list.removeChild(list.childNodes[0]);
-        }
-        function myFunc2(){
-            var textnode = document.createTextNode("water");
-            var item= document.getElementById("mylist").childNodes[0];
-            item.replaceChild(textnode,item.childNodes[0]);
+                for(var i=0; i<intRow; i++){
+                    var elerow = document.createElement("tr");
+                    for(var j=0; j< intColumn ; j++){
+                        if(i==0){
+                            var eCell = document.createElement("th");
+                            var eText = document.createTextNode((i+1)+"행"+","+(i+1)+"열");
+                            eCell.appendChild(eText);
+                            elerow.appendChild(eCell);
+                        }else{
+                            var eCell = document.createElement("td");
+                            var eText = document.createTextNode((i+1)+"행"+","+(i+1)+"열");
+                            eCell.appendChild(eText);
+                            elerow.appendChild(eCell);
+                        }
+                    }
+                    eletable.appendChild(elerow);
+                }
+                document.getElementById("div").appendChild(eletable);
+            }
+            document.getElementById("b2").onclick = function(){
+            var tables = document.getElementsByTagName("table");
+            console.log(tables);
+            console.log(tables.length);
+            console.log(tables[tables.length-1]);
+
+            if(tables.length > 0 ){
+                document.getElementById("div").removeChild(tables[tables.length-1]);
+            }else{
+                alert("모두 삭제 했어여");
+            }    
+            }
         }
     </script>
-   
+</head>
+<body>
+    <div id="div">
+        행의 수: <input type="text" id="txtrow" name="txtrow" value="2"><br>
+        열의 수: <input type="text" id="txtcolumn" name="txtcolumn" value="2"><br>
+        <input type="button" id="b1" value="동적 테이벌 생성">
+        <input type="button" id="b2" value="동적테이블 제거">
+    </div>
     
 </body>
     
