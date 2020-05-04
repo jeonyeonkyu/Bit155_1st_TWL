@@ -1,0 +1,13 @@
+package kr.or.bit.dao;
+
+/*
+DB작업
+CRUD 함수를 생성
+
+memo table CRUD 작업
+전체 조회 : select id, email, content from memo;
+
+*/
+public class memodao {
+	
+}

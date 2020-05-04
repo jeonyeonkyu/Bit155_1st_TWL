@@ -1,0 +1,12 @@
+
+DB Table .. 기존 그대로
+
+Model : 순수한 java (POJO) 파일 >> DTO(VO,DOMAIN) >> DB Table 1:1 매핑 설계
+							>> DAP(Data Access Object) : DB 연결 ... CRUD 작업
+							>>>> 전체조회 , 조건조회, INSERT, UPDATE, DELETE 
+
+View : JSP(EL & JSTL)
+
+
+
+Controller : 오전(Servlet) 중앙통제 (요청 응답 처리)

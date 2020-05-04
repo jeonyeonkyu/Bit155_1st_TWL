@@ -1,0 +1,8 @@
+
+DB Table .. 기존 그대로
+
+Model : 순수한 java (POJO) 파일 >> DTO(VO,DOMAIN) >> DB Table 1:1 매핑 설계
+
+View
+
+Controller

@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	//http://192.168.0.169:8090/WEBJSP_JDBC_EL_JSTL/Ex04_EL_JSTL.jsp?ID=hong
+		String id = request.getParameter("ID");
+		if(id.equals("hong")){
+	%>
+		<%=id %><img src="images/1.jpg" alt="이미지" style="width:100px; height:100px;"/>
+	<% 
+		}
+	%>
+</body>
+</html>
