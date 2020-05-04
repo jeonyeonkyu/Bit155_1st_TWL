@@ -40,7 +40,7 @@
 	EL request value : ${requestScope.name}<br> <!-- 현업에선 대부분 이코드 씀  -->
 	EL request value : (requestScope 객체명 생략) : ${name}<br> <!-- 생략은 안좋은 방법, request에 들어있는지 session에 들어있는지 모름  -->
 	<!-- 구분선  --> 
-	EL session value : $(sessionScope.user}<br>
+	EL session value : ${sessionScope.user}<br>
 	EL session value : (sessionScope 객체명 생략)${user}
 	<!-- 구분선  -->
 	EL parameter : ${param.userid}<br>

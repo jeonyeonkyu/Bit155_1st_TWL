@@ -39,7 +39,7 @@
 	</ul>
 	<h3>EL & JSTL 사용해서 2~9단까지 출력(forEach(중첩))</h3>
 	<table border="1">
-		<c:forEach var="i" begin="2" end="9">>
+		<c:forEach var="i" begin="2" end="9">
 			<c:forEach var="j" begin="0" end="9">
 				<c:choose>
 					<c:when test="${j == 0}">

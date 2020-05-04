@@ -1,0 +1,22 @@
+Model2 기반의 MVC 패턴 웹 프로젝트
+
+DB Table ... 기존 그대로 
+
+Model : 순수한 java(POJO) 파일 >> DTO(VO, DOMAIN) >> DB Table 1:1 매핑 설계
+						   >> DAO(Data Access Object) : DB연결 .... CRUD
+						   >> 전체조회, 조건조회, INSERT, UPDATE, DELETE 
+
+view : JSP(EL & JSTL) 
+
+Controller : 오전에 연습한 Servlet : 중앙통제(요청과 응답을 모두다 처리)
+
+원칙적으로는 : Controller 1개 생성 (FrontController) >> 모든 요청을 처리 (프로젝트에서..)
+cmd방식 or url방식으로 받아서 게시판 글쓰기인지 목록보기인지 등을 판단..
+
+지금은 연습 : 요청당 하나씩 서블릿을 만듬
+
+>> 글쓰기 >> servlet 처리
+>> 글목록보기 >> servlet 처리
+->이런방식으로 하면 cmd나 url방식이 필요없음
+
+
