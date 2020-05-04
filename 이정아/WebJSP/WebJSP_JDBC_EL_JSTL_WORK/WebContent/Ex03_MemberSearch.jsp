@@ -14,7 +14,6 @@
 
 %>    
 
-<c:
 <!DOCTYPE html>
 <html>
 <head>
