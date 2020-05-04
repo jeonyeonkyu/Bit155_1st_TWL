@@ -1,0 +1,108 @@
+package kr.or.bit.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import kr.or.bit.dto.memo;
+import kr.or.bit.utils.Singleton_Helper;
+
+/*
+DB작업
+CRUD 함수를 생성
+
+memo table CRUD 작업
+전체 조회 : select id, email, content from memo;
+조건 조회 : select id, email, content from memo where id=?
+삽입 : insert into memo(id,email,content) values(?,?,?);
+수정 : update memo set email=?,content=?where id=?
+삭제 : delete from memo where id=?;
+
+기본 5개 + 알파(필요하다면 ....)
+
+
+
+*/
+public class memodao {
+	Connection conn = null;
+	public memodao() {
+		conn = Singleton_Helper.getConnection("oracle");
+	}
+	
+	//전체 데이터 조회(where 절이 없어요)
+	public List<memo> getMemoList() throws SQLException{
+		PreparedStatement pstmt = null;
+		String sql = "select id, email, content from memo";
+		pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<memo> memolist = new ArrayList<>();
+		
+		while(rs.next()) {
+			memo m = new memo();
+			m.setId(rs.getString("id"));
+			m.setEmail(rs.getString("email"));
+			m.setContent(rs.getString("content"));
+			memolist.add(m);
+		}
+		
+		Singleton_Helper.close(rs);
+		Singleton_Helper.close(pstmt);
+		return null;
+	}
+	
+	//조건 데이터 조회(where 사용되는 컬럼은 : unique, primary key)
+	public memo getMemoListById(String id) {
+		
+		return null;
+	}
+	
+	//Insert
+	//권장사항 : public int insertMemo (memo m){}
+	public int insertMemo(String id, String email, String content) {
+		int resultrow = 0;
+		
+		PreparedStatement pstmt= null;
+		//데이터를 담지 않을것이기 때문에 preparedstatement 만 있으면 됨
+		
+		try {
+				String sql = "insert into memo(id,email,content) values(?,?,?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, email);
+				pstmt.setString(3, content);
+				
+				resultrow = pstmt.executeUpdate();
+		} catch (Exception e) {
+			
+		} finally {
+			
+		}
+		
+			
+		
+		
+		return 0;
+	}
+	
+	//Update
+	public int updateMemo(memo m) {
+		return 0;
+	}
+	
+	
+	//Delete
+	public int deleteMemo(String id) {
+		return 0;
+	}
+	
+	//추가함수 구현 ...
+	//
+	public String isCheckById(String id) {
+		return null;
+	}
+	
+}

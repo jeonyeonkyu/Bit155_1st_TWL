@@ -1,0 +1,13 @@
+package kr.or.bit;
+
+public class Enp {
+	private int empno;
+	private String ename;
+	
+	public Emp() {}
+	
+	public Emp(int empno, String ename) {
+			this.empno = empno;
+			this.ename = ename;
+	}
+}

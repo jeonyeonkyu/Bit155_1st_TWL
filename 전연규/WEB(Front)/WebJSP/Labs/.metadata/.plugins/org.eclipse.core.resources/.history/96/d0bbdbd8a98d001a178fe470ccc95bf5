@@ -1,0 +1,84 @@
+package comm;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+/*
+
+   	서블릿(servlet)
+   	java 로 만든 팡릴로 웹 서비스를 할 목적
+   	서블릿 파일 조건 : extends HttpServlet >> 웹 request, responese 객체 사용가능
+   	
+   	1. extends HttpServlet 반드시 상속(웹 환경에서 요청, 응답) 처리
+   	2. SimpleController 서블릿
+   	3. 서블릿은 이벤트 기반의 동작(특정함수들이 특정 상황에 (사건이 발생) 자동호출)
+   	ex ) 페이지가 로드 나면... 함수 호출 
+   	 protected void doGet
+   	 protected void doPost 2개의 함수가 자동 호출
+   	
+   	크라이언트가 SimpleController 요청하면
+   	요청방식 (GET) >> doGET 자동호출
+   				>> <form method="GET"
+   				>> <a href = "login.jsp?num=1000">게시판</a>
+   	요철방식 (POST) >> doPOST 자동호출 
+   				>> <form method="POST"
+ 	doGET, doPOST : request.getParameter()
+   
+   
+   
+   
+   
+   
+   
+   4.Model 1 방식
+   4.1 JSP 요청과 응답을 처리(DAO,DTO) + JSP
+   4.2 클라이언트의 모든 요청을 JSP 처리
+   4.3 UI + 업무(로직) : JSP 처리
+   
+   5.Model2 방식 (MVC 패턴)
+   5.1 MVC(Model, View, Controller)
+   Model(순수한 자바파일) : DAO(DeptDao.java) , DTO(VO,DOMAIN)(Detp.java)
+   
+   
+   
+ */
+
+
+/**
+ * Servlet implementation class SimpleController
+ */
+
+
+//@WebServlet("/SimpleController")
+public class SimpleController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SimpleController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("클라이언트 요청");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

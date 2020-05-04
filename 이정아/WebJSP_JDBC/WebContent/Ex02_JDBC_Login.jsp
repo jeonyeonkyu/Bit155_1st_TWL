@@ -20,6 +20,7 @@ tr {
 td {
 	border: solid 1px red;
 }
+
 </style>
 </head>
 <body>

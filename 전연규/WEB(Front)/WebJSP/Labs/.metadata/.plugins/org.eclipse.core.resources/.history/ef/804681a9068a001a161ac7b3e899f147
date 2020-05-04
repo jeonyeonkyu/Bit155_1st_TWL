@@ -1,0 +1,61 @@
+package kr.or.bit.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class KoreaMember {
+		
+	private String id;
+	private String pwd;
+	private String name;
+	private int age;
+	private String email;
+	private String ip;
+
+
+	List<KoreaMember> introList = new ArrayList()<KoreaMember>();
+
+	while(rs.next()){
+	KoreaMember m = new KoreaMember();
+	m.setEmp(rs.getInt("empno"))
+	introList.add(m)
+	}
+
+	<c:set var="list" value="<%= introlist %>">
+	<c:forEach var ="member" items="${list}">
+	${member.empno}
+
+
+	
+}
+
+
+public class Emp {
+	private int empno;
+	private String ename;
+	
+	public Emp() {}
+	
+	public Emp(int empno , String ename) {
+		this.empno = empno;
+		this.ename = ename;
+	}
+
+	public int getEmpno() {
+		return empno;
+	}
+
+	public void setEmpno(int empno) {
+		this.empno = empno;
+	}
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+	
+	
+}

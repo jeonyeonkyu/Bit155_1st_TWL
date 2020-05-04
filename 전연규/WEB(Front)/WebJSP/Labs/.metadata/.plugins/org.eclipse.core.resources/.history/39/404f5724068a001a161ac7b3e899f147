@@ -1,0 +1,26 @@
+package kr.or.bit.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DTO {
+	
+	class KoreaMember{
+		
+	}
+
+	Listt<KoreaMember> introList = new ArrayList()<KoreaMember>();
+
+	while(rs.next()){
+	KoreaMember m = new KoreaMember();
+	m.setEmp(rs.getInt("empno"))
+	introList.add(m)
+	}
+
+	<c:set var="list" value="<%= introlist %>">
+	<c:forEach var ="member" items="${list}">
+	${member.empno}
+
+
+	
+}

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;WebJSP_EL_JSTL&apos;" deleteContents="false" description="Delete resource &apos;WebJSP_EL_JSTL&apos;" element1="/WebJSP_EL_JSTL" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1588051773870"/>&#x0A;<refactoring comment="Delete resource &apos;BootStrap4_JDBC&apos;" deleteContents="false" description="Delete resource &apos;BootStrap4_JDBC&apos;" element1="/BootStrap4_JDBC" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1588073577446"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WebServlet_4_memp_mvc&apos; to &apos;WebServlet_4_memo_mvc&apos;" description="Rename resource &apos;WebServlet_4_memp_mvc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/WebServlet_4_memp_mvc" name="WebServlet_4_memo_mvc" stamp="1588574530867" updateReferences="true"/>
+</session>
