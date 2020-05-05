@@ -37,4 +37,24 @@
 
 	</h3>
 </body>
+
+<%-- 선생님 답
+<body>
+<h3>EL & JSTL 사용 (choose 구문 : Java 코드 if(){} else if(){} ,,, 처리)
+ Java 코드 :switch~case
+</h3>
+	<ul>
+		<c:choose>
+			<c:when test="${param.name == 'kglim'}">
+				<li><b>${param.name}</b></li>
+			</c:when>
+			<c:when test="${param.name == 'hong'}">
+				<li><b>${param.name}</b></li>
+			</c:when>
+			<c:otherwise>
+				<li><b>${param.name}</b></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+</body> --%>
 </html>

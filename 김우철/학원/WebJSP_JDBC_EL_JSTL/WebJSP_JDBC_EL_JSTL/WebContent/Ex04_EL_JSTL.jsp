@@ -48,6 +48,7 @@
 		param.value : ${param.age}<br>
 	</c:if>
 	if 구문에서 만들었던 var 변수값은 : ${result}
+	<!-- true or false 나옴  -->
 </body>
 </html>
 
