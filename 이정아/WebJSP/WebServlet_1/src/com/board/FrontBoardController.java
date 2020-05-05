@@ -62,7 +62,7 @@ public class FrontBoardController extends HttpServlet {
     	// 위 코드의 문제점 : 보안상 노출된다. ex)클라이언트가 직접 주소창에 //http://192.168.0.213:8090/WebServlet_1/board/boardEditOk.jsp 와 같은 주소를 입력할 수 있게 되어버린다.
     	//그래서 실제 프로젝트에서는 JSP파일을 보안폴더에 넣어놓는다. 
     	//1. WEB-INF >> views >> board >> boardlist.jsp 혹은
-    	//2. WEB-INF >> view >> error >> eroor404.jsp
+    	//2. WEB-INF >> view >> error >> error404.jsp
     	//WAS 내부에서는 서로 접근이 가능하다. 클라이언트만 접근하지 못할뿐. forward 방식으로 처리했을 때 서버코드를 read 할 수 있다.
     	
     	//6. view에게 저장된 객체를 전달 ( forward 하는 것 )

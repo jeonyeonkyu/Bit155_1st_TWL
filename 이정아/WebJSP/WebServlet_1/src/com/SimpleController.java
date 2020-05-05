@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /*
  Servlet(서블릿)
  "java로 만든 파일"로 웹 서비스를 할 목적으로 만들어진 것.
- 서블릿의 파일의 조건은 [extends HttpServlet] 상속받아야 하며, 그럼으로써 웹 request, resoponse라는 객체를 사용 할 수 있게 된다. (상속 안받은거는 일반 java파일, 상속받은게 survlet파일)
+ 서블릿의 파일의 조건은 [extends HttpServlet] 상속받아야 하며, 그럼으로써 웹 request, reponse라는 객체를 사용 할 수 있게 된다. (상속 안받은거는 일반 java파일, 상속받은게 survlet파일)
  
 	 1. 서블릿이라는 이름을 붙여주기 위해서는 반드시 extends HttpServlet 되어진 상태여야 한다. (웹 환경에서의 요청, 응답을 처리)
 	 2. SimpleController 서블릿!
