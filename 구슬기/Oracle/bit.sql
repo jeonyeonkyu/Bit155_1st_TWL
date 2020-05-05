@@ -4045,3 +4045,7 @@ create table Department
     deptno number,
     dname varchar2(50)
 ); 
+
+
+select * from Department;
+
