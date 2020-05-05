@@ -40,7 +40,7 @@ public class memodao {
 		List<memo> memolist = new ArrayList<memo>();
 		
 		while(rs.next()) {
-			memo m = new memo();
+			memo m = new memo(); //DTO객체에 DB에서 가져온 정보를 저장
 			m.setId(rs.getString("id"));
 			m.setEmail(rs.getString("email"));
 			m.setContent(rs.getString("content"));
@@ -94,6 +94,68 @@ public class memodao {
 	public String isCheckById(String id) {
 		return null;
 	}
+	
+	//전체 글의 개수를 리턴하는 메소드
+	public int getAllCount() {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			//쿼리 준비
+			String sql = "select count(*) from memo";
+			pstmt = conn.prepareStatement(sql);
+			//쿼리 실행 후 결과 리턴
+			ResultSet rs = pstmt.executeQuery();
+			//행이 단일행이므로, while문을 돌릴 필요가 없다.
+			
+			if(rs.next()) { //데이터가 있다면
+				count = rs.getInt(1);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	//모든(화면에 보여질) 데이터를 10개씩 추출해서 리턴하는 메소드
+	public List<memo> getAllBoard(int startRow, int endRow){
+		List<memo> m = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		
+		try {
+			//쿼리 날리기
+			String sql = "select * from (select A.*, Rownum Rnum from (select * from board order by ref desc, re_step asc)A)"+
+		"where Rnum >= ? and Rnum <= ?";
+			//쿼리 실행할 객체 선언
+			pstmt = conn.prepareStatement(sql);
+			//?에 값을 대입
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			//쿼리 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//10개의 결과가 나올 것이므로 while문 돌리기
+			while (rs.next()) {
+				
+				//데이터를 패키징 해준다. (가방인 memo클래스를 이용)
+				memo memo = new memo();
+				
+				memo.setId(rs.getString(1));
+				memo.setEmail(rs.getString(2));
+				memo.setContent(rs.getString(3));
+				//패키징한 데이터를 list에 저장	
+				m.add(memo);
+			}
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return m;
+		
+	}
+	
 }
 
 
