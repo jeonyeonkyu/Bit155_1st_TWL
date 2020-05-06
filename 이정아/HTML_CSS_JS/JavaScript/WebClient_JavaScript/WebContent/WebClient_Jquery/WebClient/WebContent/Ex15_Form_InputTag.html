@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form태그 내부에서 동작하는 input 태그들(input태그는 데이터를 read, write)</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text : Password</legend>
+			Text : <input type="text" name="userid" id="userid"><br>
+			Password : <input type="password" name="pwd" maxlength="5"><br>
+			<hr>
+			Text2 : <input type="text" name="data" maxlength="10" size="20px"
+				value="아이디를 입력하세요">
+			<hr>
+			readonly(읽기 전용 : 서버로 데이터 전송 가능)
+			<input type="text" name="data2" value="junga" readonly> <br> 
+			
+			disabled(비활성화 : 서버로 데이터 전송하지 못함)
+			<input type="text" name="data3" value="junga2" disabled>
+		</fieldset>
+		<fieldset>
+			<legend>체크박스(다중선택)</legend>
+			농구:<input type="checkbox" name="sports_1" value="A" checked />
+			<!-- 기본으로 체크가 되어져서 노출 -->
+			축구:<input type="checkbox" name="sports_2" value="B" /> 야구:<input
+				type="checkbox" name="sports_3" value="C" />
+			<!--  1. 변수명을 각각 따로 만들어서 써도 되고
+			register.jsp?sports_1=A&csports_2=B&sports_3=C
+			서버(JSP)에서는 아래처럼 입력해야 한다.
+			String a = request.getParameter("sports_1"); name속성값을 넣어주면 value값을 얻어 낼 수 있다.
+			String b = request.getParameter("sports_2");
+			String c = request.getParameter("sports_3");
+			
+			2. 변수명을 하나로 통일해서 배열에 넣는다(더 많이 씀)
+			농구:<input type="checkbox" name="sports_1" value="A" checked/>
+			축구:<input type="checkbox" name="sports_2" value="B"/>
+			야구:<input type="checkbox" name="sports_3" value="C"/>
+			
+			register.jsp?sports=A&csports=B&sports=C
+			서버(JSP)에서는 아래처럼 입력해야 한다.
+			String[] strarr = request.getPArameterValues("sports") ->값들의 목록을 받아야하므로 배열에 담아서 저장
+			strarr[0] = "A";
+			strarr[1] = "B";
+			strarr[2] = "C";
+		 -->
+		
+		</fieldset>
+		<fieldset>
+			<legend>Select 태그(단일선택 : 년, 월, 일)</legend>
+			<select name="year">
+			<option value="2020">2020</option>
+			<option value="2019" selected>2019</option> <!-- 기본적으로 2019가 선택되어져서 보임 -->
+			<option value="2018">2018</option>
+			</select>
+			<!-- 
+			?year = 2020
+			 -->
+		</fieldset>
+		<fieldset>
+			<legend>Select 태그(다중선택 : 년, 월, 일)</legend>
+			<select name="items" multiple>
+				<!-- 다중선택은 잘 안쓰이긴 함  value는 실제로 보이는 값, JAVA는 서버에 저장되는 값-->
+				<option value="01">JAVA</option>
+				<option value="02" selected>ORACLE</option>
+				<option value="03">HTML</option>
+			</select>
+			<!-- 
+			?items =01&items=02... 식으로 서버에 넘어감(다중으로 연결되어서)
+			 -->
+		</fieldset>
+		<filedset> <legend>라디오 버튼(단일선택: 남, 여) : 같은 그룹에 묶여야
+			함. name이 동일하면 됨 </legend> 남<input type="radio" name="gender" value="1" checked />
+		여<input type="radio" name="gender" value="2" /> <!-- name값이 달라서 의미가 없어짐. 하나로 묶인 상태에서 둘 중 하나만 선택 가능하도록 해야함 -->
+
+		</filedset>
+		<filedset>
+		<legend>기타 등등</legend>
+		1. 화면에 출력이 안돼요(소스는 있어요) 화면에 보이진 않지만 오른쪽 소스보기 하면 소스는 뜸<br>
+		<input type="hidden" value = "1000" name = "hdata" />
+		<hr>
+		2. 파일 업로드<br><!-- 내 컴퓨터에서 파일 선택까지만 가능 (이후는 구현해야 함) -->
+		<input type="file" name="upload"/>
+		<hr>
+		3. 게시판 글쓰기(여러 줄 쓸 수 있음)(초기 크기 : cols, rows 로 지정 가능)<br>
+		<textarea name="content" cols="20" rows="10">입력데이터</textarea>
+		<hr>
+		4. 각종 버튼들<br>
+		<input type="button" value="나 눌러도 아무것도 없음" onclick="alert('월요일')" />
+		<br>
+		image는 submit기능을 내장 : <input type="image" src="images/unnamed.png" width=100 />
+		<br>
+		<input type="submit" value="전송" />
+		<input type="reset" value="취소" />
+		</filedset>
+		<fileset>
+		<legend>목록 정의하기</legend>
+			<input list="browsers" name="data"> <!-- list이름이 아래의 datalist와 같으면 됨. -->
+			<datalist id="browsers">
+				<option value="Internet Explorer">
+				<option value="Firefox">
+				<option value="Chrome">
+				<option value="Opera">
+				<option value="Safari">
+			</datalist>
+		</form>
+		</fileset>
+
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

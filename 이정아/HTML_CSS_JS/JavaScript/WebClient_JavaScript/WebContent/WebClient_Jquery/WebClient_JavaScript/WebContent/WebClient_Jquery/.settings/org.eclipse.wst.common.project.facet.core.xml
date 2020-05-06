@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+<<<<<<< HEAD:이정아/WebJSP/WebServlet_1/.settings/org.eclipse.wst.common.project.facet.core.xml
+=======
+  <runtime name="Apache Tomcat v9.0"/>
+  <fixed facet="wst.jsdt.web"/>
+>>>>>>> 9d6b05fff567d13538ba2830456e1c9abcc46b14:이정아/HTML_CSS_JS/JavaScript/WebClient_JavaScript/WebContent/WebClient_Jquery/.settings/org.eclipse.wst.common.project.facet.core.xml
+  <fixed facet="java"/>
+  <fixed facet="jst.web"/>
+  <installed facet="java" version="1.8"/>
+  <installed facet="jst.web" version="4.0"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+</faceted-project>

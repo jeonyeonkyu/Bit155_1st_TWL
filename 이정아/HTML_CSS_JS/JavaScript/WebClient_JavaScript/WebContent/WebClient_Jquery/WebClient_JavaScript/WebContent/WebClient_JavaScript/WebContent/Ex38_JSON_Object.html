@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+   /*
+
+  자바 설계도(클래스) => 재사용성
+  class Product{
+   private String carname="pony";
+
+   public Product(){}
+
+   public Product(String carname){
+    this.carname= carname;
+   }
+   public void print(){
+    System.out.println(this.carname);
+   }
+  }
+
+
+  메모리 load ... (new)
+  Product p = new Product();
+  Product p2 = new Product("pony2");
+  p.print();
+  p2.print();
+  /////////////////////////////////////////////////////
+  
+  <javaScript >> 객체지향언어(OOP)>
+
+  <클래스 정의 3가지 방법>
+
+  1. 프로토타입 방식 : 일반적인 클래스 제작 방법
+                      인스턴스마다 공통된 메서드를 공유해서 사용하는 장점
+                      Jquery 도 prototype 방식으로 설계
+
+
+  2. 함수 방식 :  간단한 클래스 제작 시 사용
+                 인스턴스마다 메서드가 독립적으로 만들어지는 단점
+
+
+  3. 리터럴 방식  :  클래스 만드는 용도는 아니며 주로 여러개의 매개변수를 그룹으로 묶어 함수의 매개변수로 보낼때
+                       정의와 함께 인스턴스가 만들어지는 장점이 있음 단 인스턴스는 오직 하나
+                         (초보자에게도 중요 ^^)
+
+
+  4. ECMA6 버전부터 : class 키워드 제공
+         class Person {
+         constructor(name) {
+           this._name = name;
+         }
+
+         sayHi() {
+           console.log(`Hi! ${this._name}`);
+         }
+       }
+
+     [ javascript 객체 생성 ]
+    1.오브젝트 리터럴 방식 (객체를 만드는 방법): 클래스 생성과 동시에 객체가 만들어 져요
+    1.1 리터럴 방식 >> 제일 간단한 방법 > var obj = {}; //var objarr = [] 배열 !!!!!!!중괄호 블럭!!!!!!!
+    1.2 JSON 표기 : {} >> JSON: JavaScript Object Notation
+    ex) var myObj = { "name":"John", "age":31, "city":"New York" }; "name"(변수명) : "John"(값)
+    TIP) JSON >> XML (텍스트 기반의 형식화된 문서 제공)
+    XML :이기종간의 데이터 호환  (한 때는 서점 : xml webservice) 그러나 너무 무거워서 이제는 잘 쓰지 않는다.
+    이러한 점을 보완한게 'JSON'(가벼운 텍스트 기반의 형식화된 문서) (javascript로 객체를 표현하는 방법)
+
+    다른 이야기
+    객체지향언어 장점 : 설계도 (재사용성)
+
+    *오브젝트 리터럴 방식 : [재사용]을 지원하지 않는다
+    *설계도를 생성과 동시에 객체 생성(장점 : 편하고 , 빠르다 )
+    *설계도를 미리 만들어 놓고 재사용하는 방식은 아니다
+    *설계도당 하나의 객체만 생성 사용 (only object)
+
+    var product = {};
+    var product2 = {제품명:'사과',년도:'2018',원산지:'대구'};
+
+    var 인스턴스 ={
+        프로퍼티:초기값,
+        프로퍼티:초기값,
+        .....
+        메서드:function(){},
+        메서드:function(){}....
+                }
+            리터럴 방식 > 선언과 동시에 인스턴스 자동 생성
+    var 인스턴스 = {}
+            특징 : 생성자 존재하지 않는다.
+                    프로퍼티와 메서드만 정의 가능
+            단점 : 객체 하나 생성(재사용성 없다)
+            접근방법 : 인스턴스이름.자원 >> product2.제품명
+            */
+          var product = {제품명: '사과', 년도: '2020', 원산지: '대구'};
+          console.log(product);
+          document.write(product.제품명+"<br>");
+          document.write(product.년도+"<br>");
+          document.write(product.원산지+"<br>");
+          document.write(product.toString()+"<br>");
+
+          var person={
+            name:"홍길동",
+            addr:'안산시 단원구 중앙대로',
+            eat:function(food){ //함수이름 eat
+              document.write(this.name + "/" + this.addr + "/" + food + "꿀꺽" + "<br>"); //this는 person을 가리킴. 내부에서 접근하는 방법 //parameter는 this안붙임
+            }
+          };
+          document.write("<hr>")
+          person.eat("apple");
+
+          //1. 속성 제거가 가능하다.
+          delete(product.년도);
+          console.log(product);          
+          
+          //2. javascript [Array 개선된 for]
+          /*for(let index in Array){
+            arr[index];
+          }
+          */
+
+          //3. JSON 객체도 개선된 for문을 사용해서 제어 할 수 있다.
+          //JSON {키 : value, 키:값, ....}
+          for(let key in product){ //키 값을 리턴한다.
+            console.log("key :" + key); //key값 도출
+            console.log(product[key]); //key값을 제시하면 value값을 얻을 수 있다. key+value로 나옴
+          }
+
+          //person은 eat이라는 함수를 가지고 있다. 함수는 개선된 for문에서 어떻게 도출될까
+          for(let key in person){
+            console.log("key: " + key + "=" + person[key]); //함수 통째로 텍스트로 들고옴
+          }
+          //JSON 객체(XML)
+          //외부 API()를 사용(구글지도..., 우편번호(다음,네이버), 서울시 화장실 정보, data.seoul.go.kr, 기상청에 날씨정보, 대법원 판례 등등)
+          //KEY POINT는 제공받은 JSON정보를 가공해서 원하는 정보만 추출해서 사용하는 것이 목적! (중간프로젝트 의무...(강제ㅠ 3개이상의 OPEN API사용하기))
+
+          var Member={}; //빈 객체
+          Member.name="lee"; //{name: "lee"} 와 같은 것임
+          console.log(Member);
+          console.log(Member.name);
+          Member.age=100;
+          console.log(Member);
+          console.log(Member.age);
+
+          //함수를 넣는 방법
+          Member.print = function(){
+            document.write(this.name + "/" + this.age + "<br>");
+          }
+          //사용 할 때에는 객체이름.함수명
+
+          Member.print();
+
+          //객체가 객체를 가질 수 있다 Grade가 list라는 객체속성을 가진 것
+            var Grade = {
+              list: {
+                "hong": 10,
+                "kim": 20,
+                "lee": 30,
+              },
+              "show": function () {
+                for (let key in this.list) {
+                  document.write(key + ":" + this.list[key] + "<br>"); //key값 + this.list[key]가 value값 hong : 10 ~~ 이 출력
+                }
+              }
+            };
+            Grade.show();
+            document.write("<br>")
+
+            var listobj = Grade.list; //listobj에게 list가 가진 객체를 준 것 (hong~ 정보를 전달)
+            document.write(listobj.kim + "<br>"); //kim이라는 키값으로 value 도출
+
+            for(let key in listobj){
+              document.write(key + ": " + listobj[key] + "<br>");
+            }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

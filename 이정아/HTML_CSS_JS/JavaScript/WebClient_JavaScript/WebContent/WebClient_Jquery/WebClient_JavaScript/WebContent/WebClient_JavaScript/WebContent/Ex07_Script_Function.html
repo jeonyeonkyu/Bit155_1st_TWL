@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    var myTime= window.setInterval(function(){
+        var d = new Date(); //d가 date함수의 여러 기능을 갖게 됨 그 중에 tolocale~ 함수를 선택해서 t에게 전달
+        var t = d.toLocaleTimeString(); //t가 시간을 갖게 됨
+        document.getElementById("time").innerHTML = t; //id 가 time인 것의 elements 중 시간을 표현하겠다.
+    }, 1000); //setInterval도 내장함수
+    //첫번째 인자로 익명함수를 받고, 두번째는 숫자 //1초마다 익명함수를 호출하라는 의미 //여기서만 쓸 거기 때문에 함수를 만들지 않고 익명함수 이용해서 일회성으로 쓰고 버리는... 재사용하지 않을거기때문
+    //익명함수는 한번 쓰이고 끝, 다른데서 활용 못함
+    //javascript 다양한 객체를 제공받는다.
+   
+    function myTimeStop(){
+        window.clearInterval(myTime); //clearInterval이라는 함수는 interval하는 함수를 clear 시키는데, 현재 interval하는 함수의 주소값을 myTime이 있기 때문에 이것을 사용하면 멈출 수 있게 된다.
+    }
+    </script>
+</head>
+<body>
+    <p id="time"></p>
+    <button onclick="myTimeStop()">stop time</button>
+
+</body>
+</html>
