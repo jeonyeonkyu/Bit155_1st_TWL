@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\Users\HANSUNG\Desktop\TWL\±¸½½±â\WebJSP\Labs\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3148244147.index
-1761657327.index
-2107445650.index
-2588457875.index
-799011890.index
-3302321450.index
