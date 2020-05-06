@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var array = ['포도', '사과'];
+        document.write(array.toString() + "<br>");
+        document.write(array + "<br>"); //toString을 default로 가지고 있다.
+
+        for (let i = 0; i < array.length; i++) {
+            document.write(array[i] + "<br>");
+        }
+        //동적인 기능
+        //출력 : array[0] : 포도, array[1] : 사과
+        //방이 2개인 상태에서
+
+        array[2] = "바나나"; //3번째 방에 데이터 추가가 가능하다(동적추가)
+        document.write(array.toString() + "<br>" + array.length + "<br>");
+
+        array[10] = "애플망고"; //뜬금없이 10번째 방에 넣는것도 가능
+        //빈 방은 ,,,,, 으로 빼놓고 출력
+        document.write(array[9] + "<br>"); //9번째 빈 방에 접근하려고 하면? //undefined 출력
+
+        array[9] = "배";
+        document.write(array[9]); //초기화를 해서 배가 출력됨
+
+        var array2 = ["one", "two", "three"];
+        document.write(array2.length + "<br>"); //3
+
+        array2.length = 2; //강제로 사이즈를 줄여보면 
+        document.write(array2.toString() + "<br>" + array2.length + "<br>"); //맨 끝을 잘라내서 버려버림 ㅎ
+
+        array2.length = 4; //강제로 사이즈를 늘리기
+        document.write(array2.toString() + "<br>" + array2.length + "<br>"); //늘려지긴 하지만
+        document.write(array2[3] + "<br>"); //초기화되지 않았으므로 undefined
+
+        //POINT ! (javascript의 array가 갖는 자료구조는 stack 이다. Last In Fist Out)
+        array2.push("Four");
+        document.write("push: " + array2.toString() + "<br>" + array2.length + "<br>");
+        document.write("pop : " + array2.pop() + "<br>");
+        document.write("pop : " + array2.pop() + "<br>");
+        document.write("pop : " + array2.pop() + "<br>");
+        document.write("pop : " + array2.pop() + "<br>");
+        document.write("pop : " + array2.pop() + "<br>"); //(LIFO 순으로 나온다.)
+
+        //javascript에서의 배열 선언은
+
+        var list = [];
+        list.push("A");
+        list.push("B");
+        list.push("C");
+
+        document.write("<br>" + list.pop()); //C
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

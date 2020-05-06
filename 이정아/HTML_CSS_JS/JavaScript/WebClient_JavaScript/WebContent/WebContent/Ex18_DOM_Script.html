@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Script</title>
+    <script type="text/javascript">
+    /*
+    DOM 이란
+    When a web page is [loaded], 
+    the browser creates a Document Object Model of the page.
+
+    JavaScript can change all the HTML elements in the page
+    JavaScript can change all the HTML attributes in the page
+    JavaScript can change all the CSS styles in the page
+    JavaScript can remove existing HTML elements and attributes
+    JavaScript can add new HTML elements and attributes
+    JavaScript can react to all existing HTML events in the page
+    JavaScript can create new HTML events in the page
+
+    id = "demo" 하나의 페이지 안에 같은 id 이름을 만들지 않는다.
+    Ex) <p id= "page"></p> 
+        <p id= "page"></p> (X)
+    */
+    </script>
+</head>
+<body>
+    <div id ="demo">첫번째</div>
+    <div id ="demo">두번째</div> <!--똑같은 id값이 두개여도 에러는 나지 않지만, 계층트리 형태에서 일치하는 id를 찾으면
+    더 찾지 않고 끝나기 때문에 첫번째 값 이후에는 값 적용이 안된다.-->
+
+</body>
+    <script type = "text/javascript">
+    var ele_dev = document.getElementById("demo");
+    console.log(ele_dev);
+    ele_dev.innerHTML = "<b>Hello world</b>"</script> <!--inner란 태그와 태그 사이를 의미--> 
+</html>
