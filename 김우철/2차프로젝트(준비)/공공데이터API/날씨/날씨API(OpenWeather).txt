@@ -1,0 +1,8 @@
+https://openweathermap.org/current
+
+[ajax를 이용한 지역날씨(검색)]
+https://articles09.tistory.com/23
+[ajax를 이용한 지역날씨2 ]
+https://blog-han.tistory.com/35
+[현재날씨 실시간]
+https://blog-han.tistory.com/35

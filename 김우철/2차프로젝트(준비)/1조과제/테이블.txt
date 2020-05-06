@@ -1,0 +1,25 @@
+create table JO_MEMBER(
+    userId varchar2(50),
+    userPw varchar2(100),
+    userPwCheck varchar2(100),
+    userName varchar2(50),
+    userEmail varchar2(100),
+    userAddress varchar2(100),
+    userDetailAddress varchar2(100),
+    userPhone varchar2(50),
+    constraint pk_JO_MEMBER_userId primary key(userId)
+);
+
+
+create table board(
+  boardNo varchar2(50) not null primary key,
+  boardTitle varchar2(100) not null,
+  boardAuthor varchar2(100),
+  boardDate varchar2(100),
+  boardCount varchar2(50),
+  boardLike varchar2(50)
+);
+
+insert into board values('12', '1', '1', '1', '1', '1');
+
+select * from board;

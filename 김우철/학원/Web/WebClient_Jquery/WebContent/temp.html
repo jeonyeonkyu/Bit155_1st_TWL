@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$('#btncopy').click(function(){
+        $('#txtcopyuserid').val($('txtuserid').val())
+    })
+
+    $('#select_hobby').change(function(){
+        let text = $(':selected').text();
+        let val = $('#select_hobby').val();
+    })
+
+    $('input').focus(function(){
+        $(this).css('background-color', 'gray');
+    });
+
+    $('p').hover(function() {
+        $(this).css('background-color', 'yellow');
+    }, function () {
+        $(this).css('background-color', 'pink')
+    })
+    });
+
+</script>
+</head>
+<body>
+	<button id="btn">버튼 감추기</button>
+</body>
+</html>
