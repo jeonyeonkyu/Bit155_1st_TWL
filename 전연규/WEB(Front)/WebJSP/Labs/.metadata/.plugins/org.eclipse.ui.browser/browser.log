@@ -1,0 +1,29 @@
+
+4월 24, 2020 09:58:50.69 NEW SESSION
+4월 24, 2020 09:58:50.69 [11156:3508:0424/095850.691:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+4월 27, 2020 13:04:31.79 NEW SESSION
+4월 27, 2020 13:04:31.79 [12312:12504:0427/130431.792:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:33:16.38 [16120:4188:0427/143316.384:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 15:52:59.85 [15476:1408:0427/155259.859:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 15:53:52.36 [11204:1384:0427/155352.362:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+4월 28, 2020 11:45:01.46 NEW SESSION
+4월 28, 2020 11:45:01.47 [6600:3548:0428/114501.434:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 13:38:13.20 [6600:8692:0428/133813.203:ERROR:socket_stream.cc(218)] Closing stream with result -2
+4월 28, 2020 13:38:14.32 [6600:8692:0428/133814.329:ERROR:socket_stream.cc(218)] Closing stream with result -2
+4월 28, 2020 14:23:00.09 [6600:1756:0428/142255.565:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+4월 28, 2020 14:23:00.10 [6600:8692:0428/142256.598:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -106
+4월 28, 2020 14:44:03.38 [13524:14968:0428/144403.380:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 14:45:07.48 [11716:15812:0428/144507.488:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 15:54:36.71 [5976:13192:0428/155436.716:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 15:56:05.57 [8668:10280:0428/155605.570:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 15:59:06.51 [12420:14768:0428/155906.519:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 16:50:21.64 [8612:15964:0428/165021.649:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 17:04:36.08 [13460:11976:0428/170436.088:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 20:34:20.06 [3712:5184:0428/203420.062:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 20:34:33.06 [11376:16336:0428/203433.069:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 28, 2020 20:35:00.79 [3652:10220:0428/203500.799:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+4월 29, 2020 20:48:37.79 NEW SESSION
+4월 29, 2020 20:48:37.79 [1064:14704:0429/204837.688:ERROR:browser_switcher_service.cc(238)] XXX Init()

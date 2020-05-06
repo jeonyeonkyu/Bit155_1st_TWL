@@ -1,0 +1,22 @@
+package kr.or.bit.utils;
+
+public class DTO {
+	class KoreaMember{
+	.....
+	}
+
+	List<KoreaMember> introList = new ArrayList<KoreaMember>();
+
+	while(rs.next()){
+	Member m = new Member();
+	m.setEmp(rs.getInt("empno"))
+	introList.add(m)
+	}
+
+	<c:set var="list" value="<%= introlist %>">
+	<c:forEach var ="member" items="${list}">
+	${member.empno}
+
+
+	
+}
