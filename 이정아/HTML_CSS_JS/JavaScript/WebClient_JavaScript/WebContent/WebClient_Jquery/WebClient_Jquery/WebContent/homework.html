@@ -44,125 +44,162 @@
 
             //취미는 최소 하나 골라야하게 만들기
             //생년은 1900년 이후 & 현재 년도만 입력 가능하게.
-         
-            
-            var userPass = $('#userPass').val();
-            var userPassCheck = $('#userPassCheck').val();
-            var userEmail = $('#userEmail').val();
-            var userSsn1 = $('#userSsn1').val();
-            var userSsn2 = $('#userSsn2').val();
-            var userZipCode = $('#userZipCode').val();
+
+
+
+
+
+
+
+
             var userAddr1 = $('#userAddr1').val();
             var userAddr2 = $('#userAddr2').val();
-            var userPhone = $('#userPhone').val();
-            var userBYear = $('#year').val();
+           
             var userHobby = $('hobby').val();
 
-            var submit = document.getElementById("submit");
+            var checkAll = []; //형식 체크 결과를 담을 배열
+            let chkbox = $(".hobby").val();
+            let submit = $('submit').val();
 
-            console.log(userId);
 
-            function regCheck(check, info, div, msg) {
+            function regCheck(index, check, info, div, msg) {
                 console.log(check.test(info));
-                if (check.test(info) != true){
+                if (check.test(info) != true) {
                     $(div).show().text(msg).css('background-color', 'yellow');
-            }else{
-                console.log('asda123123123sd');
-                $(div).hide();
-                
-            }
+                } else {
+                    console.log('asda123123123sd');
+                    $(div).hide();
+
+                } return true;
             };
 
-
-            function nullCheck(info,div,msg) {
-                    if (info == "") {
-                        $(div).show().text(msg);
-                    } else {
-                        $(div).hide();
-                        // regCheck(info,div,msg);
-                    }
-            }
-            
             //아이디
-             $('#userId').blur(function () {
-                var userId = $('#userId').val();
-                nullCheck(userId,'#divid','공백은 안됩니다.');
-             });    
-
             $('#userId').keyup(function () {
                 var userId = $('#userId').val();
-                regCheck(re_id, userId, '#divid', '형식에 맞게 작성해주세요');
+                regCheck(0, re_id, userId, '#divid', '형식에 맞게 작성해주세요');
             });
 
 
             //이름
-            $('#userName').blur(function () {
-                var userName = $('#userName').val();
-                nullCheck(userName);
-             });    
-
             $('#userName').keyup(function () {
-                regCheck(re_name, userName, '#nameid', '한글만 입력 가능합니다');
+                var userName = $('#userName').val();
+                regCheck(1, re_name, userName, '#nameid', '한글만 입력 가능합니다');
             });
 
 
             //비밀번호
-            $('#userPass').blur(function () {
-                nullCheck(userPass);
-             });    
-
             $('#userPass').keyup(function () {
-                regCheck(re_pwd, userPass, '#passid', '8~20자 사이에 적어도 하나의 영어대문자,특수문자가 포함되어야 합니다');
+                var userPass = $('#userPass').val();
+                regCheck(2, re_pwd, userPass, '#passid', '8~20자 사이에 적어도 하나의 영어대문자, 특수문자가 포함되어야 합니다');
             });
 
             //비밀번호 확인
             $('#userPassCheck').keyup(function () {
-                if ($('#userPass').val() != $('#userPassCheck').val()) {
-                regCheck(re_pwd, userPass, '#passcheckid', '비밀번호가 일치하지 않습니다');
+                var userPass = $('#userPass').val();
+                var userPassCheck = $('#userPassCheck').val();
+                if ('#userPass' != '#userPassCheck') {
+                    regCheck(3, re_pwd, userPass, '#passcheckid', '비밀번호가 일치하지 않습니다');
+                    checkAll[3] = false;
+                } else {
+                    checkAll[3] = true;
                 }
+                changeSubmit();
             });
 
             $('#userEmail').keyup(function () {
-                regCheck(reg_email, userEmail, '#emaildiv' ,'이메일 형식에 맞춰주세요');
+                var userEmail = $('#userEmail').val();
+                regCheck(4, reg_email, userEmail, '#emaildiv', '이메일 형식에 맞춰주세요');
             });
 
             //주민번호 첫번째
-            $('#userSsn1').blur(function () {
-                nullCheck(userSsn1);
-             });    
-
             $('#userSsn1').keyup(function () {
-                regCheck(re_ssn1, userSsn1, '#jumindiv' ,'주민번호 형식에 맞춰주세요');
+                var userSsn1 = $('#userSsn1').val();
+                regCheck(5, re_ssn1, userSsn1, '#jumindiv', '주민번호 형식에 맞춰주세요');
             });
 
-            //주민번호 두번째
-            $('#userSsn2').blur(function () {
-                nullCheck(userSsn2);
-             });   
-
+            //주민번호 두번째 
             $('#userSsn2').keyup(function () {
-                regCheck(re_ssn2, userSsn2, '#jumindiv2','주민번호 형식에 맞춰주세요');
+                var userSsn2 = $('#userSsn2').val();
+                regCheck(6, re_ssn2, userSsn2, '#jumindiv2', '주민번호 형식에 맞춰주세요');
             });
 
             //우편번호
-            $('#userZipCode').blur(function () {
-                nullCheck(userZipCode);
-             });   
-
             $('#userZipCode').keyup(function () {
-                regCheck(re_zipCode, userZipCode, '#zipdiv','우편번호 형식에 맞춰주세요');
+                var userZipCode = $('#userZipCode').val();
+                regCheck(7, re_zipCode, userZipCode, '#zipdiv', '우편번호 형식에 맞춰주세요');
             });
 
-            //핸드폰번호
-            $('#userPhone').blur(function () {
-                nullCheck(userPhone);
-             });   
-
+            //핸드폰번호 
             $('#userPhone').keyup(function () {
-                regCheck(re_phone, userPhone, '#phonediv', '휴대폰 번호 형식에 맞춰주세요');
+                var userPhone = $('#userPhone').val();
+                regCheck(8, re_phone, userPhone, '#phonediv', '010-0000-0000 형식으로 입력하세요');
+                checkForm(userHobby);
             });
+
+            $('#userBYear').change = function () {
+                var userBYear = $('#year').val();
+                checkForm(userHobby);
+                changeSubmit();
+            }
+
+            // $('#signForm').submit(function(){
+            //     let chkbox = $(".hobby");
+            //     let checkboxCount = 0;
+            //     chkbox.each(function(index){
+            //         if(chkbox[index].checked){
+            //             checkboxCount++;
+            //         }
+            //     });
+
+            //     if(checkboxCount < 1){
+            //         alert('취미를 1개이상 선택');
+            //         return false;
+            //     }
+            //     });
+
+
+
+
+            function changeSubmit() {
+                if (checkAll.length == 10) {
+                    let isitok = false;
+                    for (let i = 0; i < checkAll.length; i++) {
+                        if (checkAll[i] == false) {
+                            $('submit').attr("disabled", "disabled");
+                            isitok = false;
+                            break;
+                        }
+                        isitok = true;
+                    }
+                    if (isitok) {
+                        $('submit').remove("disabled");
+                    }
+                }
+            }
+
+
+            function checkForm(Arr) {
+                console.log(checkForm(Arr));
+                //체크박스 체크여부 확인
+                var isitChked = false;
+                for (var i = 0; i < Arr.length; i++) {
+                    if (Arr[i].checked == true) {
+                        isitChked = true;
+                        checkAll[8] = true;
+                        break;
+                    }
+                }
+
+                if (!isitChked) {
+                    alert("한개 이상의 취미를 선택해주세요");
+                    checkAll[8] = false;
+                }
+            }
+
 
         });
+
+
 
 
 
@@ -198,39 +235,39 @@
             <tr>
                 <th>아이디</th>
                 <td>
-                    <input type="text" maxlength="20" id="userId" name="userId" title="5~12자리의 영문+숫자 조합으로 입력해주세요"required>
-                    <div id = "divid"></div>
+                    <input type="text" maxlength="20" id="userId" name="userId" title="5~12자리의 영문+숫자 조합으로 입력해주세요"
+                        required>
+                    <div id="divid"></div>
                 </td>
-               
                 <td class="tdid"></td>
-       
+
             </tr>
-          
+
 
             <tr>
                 <th>이름</th>
                 <td>
                     <input type="text" maxlength="20" id="userName" name="userName" title="이름은 한글만 입력해주세요" required>
-                    <div id = "nameid"></div>
+                    <div id="nameid"></div>
                 </td>
-              
+
             </tr>
             <tr>
                 <th>패스워드</th>
                 <td>
                     <input type="password" maxlength="20" id="userPass" name="userPass"
                         title="8~20자리의 대문자, 특수문자를 포함한 영문+숫자 조합으로 입력해주세요" required>
-                        <div id = "passid"></div>
+                    <div id="passid"></div>
                 </td>
                 <td class="tdpw"></td>
-           
+
             </tr>
             <tr>
                 <th>패스워드 확인</th>
                 <td><input type="password" maxlength="20" id="userPassCheck" name="userPassCheck" title="패스워드 확인"
                         required>
-                        <div id = "passcheckid"></div>
-                    </td>
+                    <div id="passcheckid"></div>
+                </td>
                 <td class="tdpwch"></td>
             </tr>
             <tr>
@@ -241,15 +278,17 @@
             <tr>
                 <th>이메일</th>
                 <td><input type="email" maxlength="50" id="userEmail" name="userEmail" title="이메일" required>
-                    <div id = "emaildiv"></div></td>
+                    <div id="emaildiv"></div>
+                </td>
                 <td class="tdmail"></td>
             </tr>
             <tr>
                 <th>주민번호</th>
                 <td>
-                    <input type="text" maxlength="6" id="userSsn1" name="userSsn1" title="주민번호 앞자리" required>-<input type="text" maxlength="7" id="userSsn2" name="userSsn2" title="주민번호 뒷자리" required>
-                    <div id = "jumindiv"></div>
-                    <div id = "jumindiv2"></div>
+                    <input type="text" maxlength="6" id="userSsn1" name="userSsn1" title="주민번호 앞자리" required>-<input
+                        type="text" maxlength="7" id="userSsn2" name="userSsn2" title="주민번호 뒷자리" required>
+                    <div id="jumindiv"></div>
+                    <div id="jumindiv2"></div>
                 </td>
             </tr>
             <tr>
@@ -257,7 +296,7 @@
                 <td>
                     <input type="text" maxlength="5" id="userZipCode" name="userZipCode" size="9" title="주소-우편번호"
                         required>
-                        <div id = "zipdiv"></div>
+                    <div id="zipdiv"></div>
                     <input type="button" value="우편번호검색" />
                 </td>
             </tr>
@@ -280,7 +319,7 @@
                 <td>
                     <input type="text" size="30" maxlength="20" id="userPhone" name="userPhone"
                         title="'010-0000-0000' 형식으로 입력하세요">
-                        <div id = "phonediv"></div>
+                    <div id="phonediv"></div>
                 </td>
                 <td class="tdphone"></td>
             </tr>
@@ -306,6 +345,14 @@
                         <option value="02">02</option>
                         <option value="03">03</option>
                         <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
                     </select> 월
                     <select name="day">
                         <option value="01">01</option>
@@ -317,7 +364,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" id="submit" value="가입완료" disabled>
+                    <input type="submit" id="submit" value="가입완료">
                     <input type="reset" value="입력취소">
                 </td>
             </tr>
