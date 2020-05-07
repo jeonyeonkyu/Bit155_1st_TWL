@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FrontServletController
  */
-@WebServlet(description = "이녀석은 설명입니다^^",  
+@WebServlet(description = "이 녀석은 설명 입니다 ^^",
 			urlPatterns = { "/action.do" }) //여러개의 주소를 적을 수 있음
-//트렌드한 현업에서는 백프로 어노테이션, 과거에 한건 web.xml -> 둘다 알아야 됨
+//트렌드한 현업에서는 백프로 어노테이션, 과거에 한건 web.xml(유지보수 간편) -> 둘다 알아야 됨 
 public class FrontServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,8 +22,8 @@ public class FrontServletController extends HttpServlet {
         super();
     }
 
-    //doProcess와 같아요
-    //protected void servcie 만들면 doGET, doPOST 호출되지 않음
+  //doProcess 와 같아요
+    //protected void service 만들면 doGet, doPost 호출되지 않아요 
 //	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		System.out.println("service 실행");
 //	}

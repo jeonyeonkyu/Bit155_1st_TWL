@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){ //ready == onload
+            $('body > *').css("color", "gold"); //자식 선택자
+            $('div > *').css("color", 'red'); //div 태그의 자식요소(중복 안쪽 우선)
+
+            $('input[type=text]').css("color","green");
+            console.log($('input[type=text]').val()) //처음 만나는 태그 value read
+
+            /* 3총사(값을 read, write) : 암기하면 편하다
+            val(), text(), html()
+            ex) val('홍길동') >> setter(write)
+            ex) val() >> getter (read)
+            
+            일반적인 방법 : jquery >> id 부여
+            <input type="text" id="userid" value="aaa" >> $('#userid')val()
+            <input type="text" id="userid" value="aaa" >> $('#userid')val('홍') aaa가 홍으로 바뀜
+
+            DOM
+            document.getElementById("userid").value
+            */
+            $('input[type=text').val("hong"); 
+            //read할때는 처음 만나는 것 한개(다 읽을라면 배열이 필요)
+            //write할때는 다 write함
+            $('input[type=password]').val("1111"); //모든 요소중에서 타입이 password인것의 모든 것을 1111로 바뀜
+
+            $('tr:odd').css("background", 'gray'); //1, 3, 5
+            $('tr:even').css("background", 'pink'); //0, 2, 4
+
+            //javascript와 jquery와 혼합 사용 가능
+            //setTimeout은 일회성, setInterval은 반복
+            setTimeout(function(){
+                let value = $('select > option:selected').val();
+                alert("select tag value: " + value);
+            }, 1000);
+        });
+	</script>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>사과</li>
+			<li>배</li>
+			<li>수박</li>
+		</ul>
+	</div>
+	<div>
+		<ul>
+			<li>사과2</li>
+			<li>배2</li>
+			<li>수박2</li>
+		</ul>
+	</div>
+	<input type="text" value="AAA">
+	<input type="text" value="BBB">
+	<input type="text" value="CCC">
+	<input type="password">
+	<input type="radio">
+	<input type="file">
+	<hr>
+	<table>
+		<tr>
+			<td>이름</td>
+			<td>나이</td>
+			<td>취미</td>
+		</tr>
+		<tr>
+			<td>홍길동</td>
+			<td>50</td>
+			<td>훔치기</td>
+		</tr>
+		<tr>
+			<td>이순신</td>
+			<td>10</td>
+			<td>싸움</td>
+		</tr>
+		<tr>
+			<td>학생</td>
+			<td>30</td>
+			<td>잠자기</td>
+		</tr>
+	</table>
+	<hr>
+	<select>
+		<option>농구</option>
+		<option>축구</option>
+		<option>야구</option>
+		<option>배구</option>
+	</select>	
+</body>
+</html>
+
+
+
+
+
