@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Service.AMain;
 import com.Service.BListService;
 import com.Service.MJoinService;
 import com.Service.MLoginService;
@@ -61,6 +62,11 @@ public class FrontServletController extends HttpServlet {
 			service = new BListService();
 			service.execute(request, response);
 			viewPage = "boardList.jsp";
+		} else if(command.equals("/adminMain.do")) {
+			service = new AMain();
+			service.execute(request, response);
+			viewPage = "./admin/jsonTest.jsp";
+			
 		}
 
 		// 3.결과저장

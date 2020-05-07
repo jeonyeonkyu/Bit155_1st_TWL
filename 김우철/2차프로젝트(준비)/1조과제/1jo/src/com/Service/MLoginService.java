@@ -17,7 +17,8 @@ public class MLoginService implements Service {
 
 		UserDAO userDAO = UserDAO.getInstance();
 		int loginResult = userDAO.login(userId, userPw);
-
+		
+		System.out.println(loginResult);
 		if (loginResult == 1) {
 			request.setAttribute("loginResult", loginResult);
 			HttpSession session = request.getSession();
