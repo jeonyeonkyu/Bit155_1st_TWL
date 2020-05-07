@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript">
+
+        /*
+          1. XMLHttpRequest 객체 얻기
+              2. onreadystatechange 이벤트 핸들러 구현 (함수)
+              3. 요청 정보 ( open() )
+              4. 요청 보내기 (send() )
+              5. 응답 처리 (Text(JSON), xml )
+        */
+
+        var httpReq = null;
+
+        function getInstance() {
+            if (window.XMLHttpRequest) { //현재 브라우저는 XMLHttpRequest 를 내장하고 있다. 이거 옛날코드임;; IE6버전은 이 객체를 가지고 있지 않았다. 그래서 ActiveXObject(IE가 가지던 객체)가 있는지도 확인해야함
+                httpReq = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                httpReq = new ActiveXObject("Msxml2.XMLHTTP");
+            } else {
+                throw new Error("AJAX를 지원하지 않는 브라우저 입니다.");
+            }
+            return httpReq;
+        }
+
+        function handlerStateChange() { //핸들러 함수 호출
+            if (httpReq.readyState == 4) { //readystate가 4라는 의미는 서버에서 응답이 왔다면이라는 뜻이다.
+                if (httpReq.status >= 200 && httpReq.status < 300) {
+
+                    document.getElementById("container").innerHTML = httpReq.responseText;
+                } else {
+                    alert("status Text:" + httpReq.status);
+                }
+            }
+        }
+
+        function sendData() {
+            httpReq = getInstance();
+            httpReq.onreadystatechange = handlerStateChange;
+            httpReq.open("GET", "Ex01_Server.html");
+            httpReq.send();
+        }
+
+    </script>
+</head>
+
+<body>
+    <h3>update a web page without reloading the page</h3>
+    <img src="/WebClient_JavaScript_Ajax/images/logo.png" style="width:150px; height:150px">
+
+    <h3>비동기(Ajax) 요청처리</h3>
+    <input type="button" value="비동기처리" onclick="sendData()">
+    <div id="container">First Data load ....</div>
+
+    <h3>동기식 데이터 처리</h3>
+    <a href="Ex01_Server.html">데이터 요청(동기식으로...)</a>
+
+</body>
+
+</html>
