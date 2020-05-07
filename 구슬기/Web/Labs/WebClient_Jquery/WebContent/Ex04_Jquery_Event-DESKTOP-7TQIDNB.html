@@ -5,6 +5,14 @@
 	<title>Insert title here</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	/* 
+	https://www.w3schools.com/jquery/jquery_events.asp
+	Mouse Events	Keyboard Events		Form Events		Document/Window Events
+	click			keypress			submit			load
+	dblclick		keydown				change			resize
+	mouseenter		keyup				focus			scroll
+	mouseleave	 						blur			unload
+	*/
 		$(function(){
 			$('#btncopy').click(function(){
 				//let data = $('#txtuserid').val(data);
@@ -31,12 +39,22 @@
 				}
 			});
 
-			$('input').focus(function() {
+			$('input').focus(function() { //모든 input 태그
 				$(this).css('background-color','lightgray'); //커서거 들어오면
 			});
 			$('input').blur(function() {
 				$(this).css('background-color','white'); //커서가 나가면
 			});
+			//하나의 이벤트가 여러개의 함수를 가질 수 있따 (hover내부에 이벤트 2개걸기)
+			$('p').hover(function() {
+				$(this).css('background-color','yellow');
+			},function() {
+				$(this).css('background-color','pink');
+			})
+
+
+
+
 		});
 	</script>
 </head>
