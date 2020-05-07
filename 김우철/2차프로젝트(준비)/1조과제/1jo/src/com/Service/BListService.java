@@ -14,6 +14,7 @@ import com.DTO.BoardDTO;
 public class BListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
 		try {
     		BoardDAO dao = new BoardDAO();
     		List<BoardDTO> boardList = dao.selectList();

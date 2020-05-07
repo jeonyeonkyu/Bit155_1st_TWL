@@ -10,6 +10,8 @@ import com.DTO.UserDTO;
 public class MJoinService implements Service{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
+		
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("password");
 		String userPwCheck = request.getParameter("passwordCheck");

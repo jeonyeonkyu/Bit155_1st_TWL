@@ -13,6 +13,7 @@ import com.DTO.BoardDTO;
 public class AMain  implements Service{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
 		try {
     		AdminDAO adminDAO = new AdminDAO();
     		

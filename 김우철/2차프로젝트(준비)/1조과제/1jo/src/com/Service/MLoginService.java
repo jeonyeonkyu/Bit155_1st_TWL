@@ -12,6 +12,9 @@ public class MLoginService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		response.setCharacterEncoding("utf-8");
+		
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("password");
 
