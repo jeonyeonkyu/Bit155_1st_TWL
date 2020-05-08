@@ -14,14 +14,11 @@ import com.DTO.BoardDTO;
 public class BListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
 		try {
     		BoardDAO dao = new BoardDAO();
     		List<BoardDTO> boardList = dao.selectList();
     		request.setAttribute("boardList", boardList);
-    		
-			 RequestDispatcher dis = request.getRequestDispatcher("/boardList.jsp");
-			 
-			 dis.forward(request, response); 
     	}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -12,12 +12,16 @@ public class MLoginService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		response.setCharacterEncoding("utf-8");
+		
 		String userId = request.getParameter("id");
 		String userPw = request.getParameter("password");
 
 		UserDAO userDAO = UserDAO.getInstance();
 		int loginResult = userDAO.login(userId, userPw);
-
+		
+		System.out.println(loginResult);
 		if (loginResult == 1) {
 			request.setAttribute("loginResult", loginResult);
 			HttpSession session = request.getSession();

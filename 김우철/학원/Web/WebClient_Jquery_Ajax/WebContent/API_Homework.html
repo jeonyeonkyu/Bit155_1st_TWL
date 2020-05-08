@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		// http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20200507
+		//key=430156241533f1d058c603178cc3ca0e&targetDt=20200507
+		//tags : 검색어
+
+		$(function () {
+			$('#btn').click(function () {
+				//파라미터 날림
+				//JSON객체를 서버에서 반환해주면 알아서 파라미터로 변환되서 붙여진다
+				let filckrAPI = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?';
+				let data = {targetDt: "20200507", key: "430156241533f1d058c603178cc3ca0e" }; //tags값을 사용자가 입력하게 받음
+				// console.log(data);
+				var html = "";
+				$.getJSON(filckrAPI, data, function (data, textStatus, xhr) {
+					//console.log(data.boxOfficeResult.dailyBoxOfficeList[0]);
+					$('#tableHead').empty();
+					$.each(data.boxOfficeResult.dailyBoxOfficeList, function(index, obj) {
+						var s = $('#myInput').val()
+						console.log("obj.movieNm : " + obj.movieNm)
+						if(obj.movieNm.match(s)){
+							html += "<td>" + obj.movieNm + "</td>";
+						}
+					});
+					$('#tableHead').append(html);
+				});
+			
+			})
+
+		});
+
+
+
+	</script>
+
+</head>
+
+<body>
+
+	<div class="ml-3 mr-3">
+ 
+        <img src="https://www.worldvision.or.kr/images/icon/png/wv-06-protection03-childProtection.png" width="100px"
+            style="float: left;">
+        <img src="https://cdn.pixabay.com/photo/2018/10/08/08/56/graphic-3732290__340.png" width="100px"
+            style="float: right;">
+        <h2 class="text-center" style="font-size: 50px;">20200507 영화 오피스 순위</h2>
+ 
+        <p>20200507 영화 오피스 순위 </p>
+      	<p>레이니 데이 인 뉴욕, 저 산 너머</p>
+ 
+		<input class="form-control" id="myInput" type="text" placeholder="영화제목검색">
+		<input type="button" value="검색하기" id="btn" />
+        <br>
+        <table class="table table-bordered">
+ 
+            <thead class="thead-dark">
+                <tr class="text-center" id="tableHead">
+					
+                </tr>
+            </thead>
+            <tbody id="myTable">
+ 
+ 
+            </tbody>
+        </table>
+    </div>
+ 
+</body>
+
+</html>

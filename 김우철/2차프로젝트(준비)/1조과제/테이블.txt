@@ -11,7 +11,7 @@ create table JO_MEMBER(
 );
 
 
-create table board(
+create table JO_board(
   boardNo varchar2(50) not null primary key,
   boardTitle varchar2(100) not null,
   boardAuthor varchar2(100),
@@ -23,3 +23,6 @@ create table board(
 insert into board values('12', '1', '1', '1', '1', '1');
 
 select * from board;
+
+관리자 계정
+admin / 1004

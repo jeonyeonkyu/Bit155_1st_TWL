@@ -1,0 +1,58 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       $(function(){
+         $('#btn').click(function (){
+            let publicAPI = "http://api.openweathermap.org/data/2.5/weather?";
+            let data = {q: $('#myInput').val(), appid:"128c1b018422127293c9b438200c8ab8"};
+            $.getJSON(publicAPI, data, function(data, textStatus, xhr){
+                $('#result').empty();
+                console.log(data.weather);
+                console.log(data.weather[0].description);
+                console.log(data.weather[0]);
+                $.each(data.weather[0],function(index,obj){
+                    console.log("s : " + obj + "index : " + index);
+                    if(index.includes("description")){
+                        console.log("descriptionsss");
+                       // $('<p></p>').text(obj.description).appendTo("#result");
+                       //$('#result').val(obj);
+                       $('<span>').text(obj).appendTo("#result");
+                    }
+                    
+                   // $('<img>').attr('src', obj.media.m).appendTo("#images");
+            });
+        });
+    });
+});
+
+    </script>
+</head>
+ 
+<body>
+ 
+    <div class="ml-3 mr-3">
+ 
+        <img src="https://www.worldvision.or.kr/images/icon/png/wv-06-protection03-childProtection.png" width="100px"
+            style="float: left;">
+        <img src="https://cdn.pixabay.com/photo/2018/10/08/08/56/graphic-3732290__340.png" width="100px"
+            style="float: right;">
+        <h2 class="text-center" style="font-size: 50px;">어린이 보호구역</h2>
+ 
+        <p>어린이 보호구역 위치 정보를 담은 API입니다. </p>
+ 
+        <input type="text" class="form-control" id="myInput"  placeholder="Search..">
+        <input type="button" value="검색하기" id="btn">
+        <div id="result"></div>
+    </div>
+   
+</body>
+ 
+</html>

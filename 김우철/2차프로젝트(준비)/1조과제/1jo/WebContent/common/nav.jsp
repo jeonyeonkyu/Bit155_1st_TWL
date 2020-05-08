@@ -39,7 +39,7 @@
 
 								</c:when>
 								<c:when test="${userid.equals('admin')}">
-									<li><a href="./admin/jsonTest.jsp" class="dth2">관리자페이지</a></li>
+									<li><a href="adminMain.do" class="dth2">관리자페이지</a></li>
 									<li><a href="logout.do" class="dth2">로그아웃</a></li>
 								</c:when>
 								<c:otherwise>

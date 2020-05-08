@@ -41,7 +41,7 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<>();
 
 		try {
-			String sql = "select * from board";
+			String sql = "select * from jo_board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 				

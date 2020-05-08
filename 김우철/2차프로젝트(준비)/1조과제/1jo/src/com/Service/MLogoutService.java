@@ -9,6 +9,8 @@ import com.DAO.UserDAO;
 public class MLogoutService implements Service  {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
+		
 		HttpSession session = request.getSession();
 		session.invalidate();
 	}

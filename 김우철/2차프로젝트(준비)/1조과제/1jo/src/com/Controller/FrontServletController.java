@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Service.AMain;
 import com.Service.BListService;
 import com.Service.MJoinService;
 import com.Service.MLoginService;
@@ -43,6 +44,8 @@ public class FrontServletController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String command = uri.substring(conPath.length());
+		
+		System.out.println("command : " + command);
 
 		// 2.요청판단
 		if (command.equals("/join.do")) {
@@ -61,11 +64,23 @@ public class FrontServletController extends HttpServlet {
 			service = new BListService();
 			service.execute(request, response);
 			viewPage = "boardList.jsp";
+		} else if(command.equals("/adminMain.do")) {
+			System.out.println("여긴타는거맞지.222.?");
+//			service = new AMain();
+//			service.execute(request, response);
+			viewPage = "./admin/AdminMain.jsp";
+			
+		}else if(command.equals("/admin.do")) {
+			System.out.println("여긴타는거맞지..?");
+			service = new AMain();
+			service.execute(request, response);
+			return;
 		}
 
 		// 3.결과저장
 
 		// 4.view지정
+		System.out.println("viewPage : " + viewPage);
 		RequestDispatcher dis = request.getRequestDispatcher(viewPage);
 
 		// 5.데이터 전달
