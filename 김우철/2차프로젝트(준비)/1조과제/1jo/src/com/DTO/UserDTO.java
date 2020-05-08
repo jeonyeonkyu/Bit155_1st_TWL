@@ -11,8 +11,6 @@ public class UserDTO {
 	private String userDetailAddress;
 	private String userPhone;
 	
-	
-	
 	public String getUserId() {
 		return userId;
 	}

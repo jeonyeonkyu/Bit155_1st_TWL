@@ -105,7 +105,7 @@
             } else if (window.ActiveXObject) { //IE6 이하 버전은 내장 X(ActiveXObject : MS가 만든 비동기 객체)
                 xhr = new ActiveXObject("Msxml2.XMLHTTP");
             } else {
-                throw new Error("AJAX") //비동기를 지원하지 않는 브라우저
+                throw new Error("AJAX"); //비동기를 지원하지 않는 브라우저
             }
             console.log(xhr);
             //xhr객체 이벤트, 함수, 속성 활용 비동기....

@@ -10,7 +10,7 @@ import com.DAO.AdminDAO;
 import com.DAO.BoardDAO;
 import com.DTO.BoardDTO;
 
-public class AMain  implements Service{
+public class AMain implements Service{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		response.setCharacterEncoding("utf-8");
@@ -18,7 +18,7 @@ public class AMain  implements Service{
     		AdminDAO adminDAO = new AdminDAO();
     		
     		int count = adminDAO.LoadJSON();
-    		System.out.println("ÃÑ È¸¿ø ¼ö  :"  +count);
+    		System.out.println("ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½  :"  +count);
     		
     		JSONObject obj = new JSONObject();
     		obj.put("count", count);
