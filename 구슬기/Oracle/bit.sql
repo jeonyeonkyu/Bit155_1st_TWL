@@ -4049,3 +4049,18 @@ create table Department
 
 select * from Department;
 
+create table texttable(
+ boardid number not null 
+ 
+);
+
+select* from koreamember;
+
+select * from memo;
+
+ create table memo(
+	id varchar2(15) not null,
+	email varchar2(20) not null,
+	content varchar2(100)
+); 
+]
