@@ -28,7 +28,7 @@
         $(function () {
             $('#btn').click(function () {
                 let publicAPI = "http://api.openweathermap.org/data/2.5/weather?";
-                let data = { q: $('#myInput').val(), appid: "128c1b018422127293c9b438200c8ab8" };
+                let data = { q: $('#myInput').val(), units:"metric", appid: "128c1b018422127293c9b438200c8ab8"};
                 $.getJSON(publicAPI, data, function (data, textStatus, xhr) {
                     $('#result').empty();
                     // console.log(data.weather);
@@ -49,7 +49,7 @@
                     table += "<td>" + data.weather[0].description + "</td>";
                     table += "<td>" + data.wind.speed + "</td>";
                     table += "<td>" + data["clouds"].all + "</td>";
-                    table += "<td>" + Math.round(((data.main.temp)-(273))*10) / 10 + "℃" + "</td>";
+                    table += "<td>" + data.main.temp+ "℃" + "</td>";
                     table += "</tr>";
                     table += "</table>";
                     // $('#result').append(table);
