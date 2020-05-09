@@ -44,7 +44,7 @@
 						error:function(xhr){
 							alert(xhr.status); //404 , 500
 						}
-						,beforeSend:function(){ //서버에서데이터가 가공하고있는 도중에 걸림
+						,beforeSend:function(){
 				        //(이미지 보여주기 처리)
 				        alert("beforeSend");
 				        $('.wrap-loading').removeClass('display-none');
@@ -55,7 +55,7 @@
 				        $('.wrap-loading').addClass('display-none');
 				   		 }
 						
-						
+						r
 					}		
 			);
 		});

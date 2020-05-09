@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text : Password</legend>
+			Text: <input type="text" name = "userid" id = "userid"/><br>
+			Password : <input type="password" name = "userpwd" maxlength="5"/><br />
+			<hr />
+			Text2 : <input type="text" name = "data" maxlength="10" size="100px" value="초기값" />
+			<hr />
+			readonly(읽기전용 : 서버 데이터 전송 가능)
+			<input type="text" name = "data2" value ="hong" readonly = "readonly"/>
+			<br />
+			disabled(비활성화 : 서버 데이터 전송 불가)  
+			<input type="text" name = "data2" value ="hong" disabled = "disabled"/>
+			
+		</fieldset>
+		<fieldset>
+			<legend>체크박스(다중선택)</legend>
+			농구:<input type="checkbox" name = "sports_1" value = "A" checked="checked"/>
+			야구:<input type="checkbox" name = "sports_2" value = "B" />
+			축구:<input type="checkbox" name = "sports_3" value = "C" />
+			<!-- 
+				register.jsp?sports_1=A&sports_2=B&sports_3=C
+				서버(JSP)
+				String a = request.getParameter("sports_1");
+				String b = request.getParameter("sports_2");
+				String c = request.getParameter("sports_3");
+			
+				
+				농구:<input type="checkbox" name = "sports" value = "A" checked="checked"/>
+				야구:<input type="checkbox" name = "sports" value = "B" />
+				축구:<input type="checkbox" name = "sports" value = "C" />
+				
+				
+				---------------------------------------------------------------
+				register.jsp?sports=A&sports=B&sports=C
+				서버(JSP)
+				String[] strarr = request.getParameterValues("sports");
+				strarr[0] = "A";
+				strarr[1] = "B";
+				strarr[2] = "C";
+				
+			 -->
+		</fieldset>
+		
+		<fieldset>
+			<legend>Select 태그(단일 선택 : 년, 월, 일)</legend>
+			<select name="year">
+				<option value="2020">2020</option>
+				<option value="2019" selected>2019</option>
+				<option value="2018">2018</option>
+			</select>
+			
+			<!-- 
+				?year=2020 
+			
+			 -->
+		
+		</fieldset>
+		<fieldset>
+			<legend>Select 태그(다중 선택 )</legend>
+			<select name="items" multiple="multiple">
+				<option value="01">JAVA</option>
+				<option value="02" selected>ORACLE</option>
+				<option value="03">HTML</option>
+			</select>
+			
+			<!-- 
+				
+				?items=01&items=02 ...
+			 -->
+		</fieldset>
+		
+		<fieldset>
+			<legend>라디오 버튼(단일선택 : 남 , 여) : 같은 group >> name 동일</legend>
+			남<input type="radio" name= "gender" value = "1" checked = "checked" /> <!-- 이름을 gender로 똑같이해야지만 체크를 했을때 다른쪽 체크가 해제된다 -->
+			여<input type="radio" name= "gender" value = "2" />
+			
+		</fieldset>
+		
+		<fieldset>
+		<legend>기타 등등</legend>
+		1.화면에 출력이 안되요(소스는 있어요) <br />
+		<input type="hidden" value="1000" name = "hdata" />
+		<hr />
+		2.파일 업로드(선택) <br/>
+		<input type="file" name="upload" />
+		<hr />
+		3. 게시판 글쓰기(여러줄)(초기 크기 : cols, rows)
+		<textarea name="content" id="" cols="10" rows="20">입력데이터</textarea>
+		<hr />
+		4. 각종 버튼들
+		<input type="button" value = "나 눌러봐" onclick="alert('월요일')" />
+		<br />
+		<input type="image" src="images/2.jpg"/>
+		<br />
+		<input type="submit" value="전송" />
+		<input type="reset" value="취소" />
+		</fieldset>
+		<fieldset>
+			<legend>목록 정의하기</legend>
+				<input list="browswers"  name="data"/>
+					<datalist id = "browswers">
+					<option value="Internet Explorer">
+					<option value="Firefox">
+					<option value="Chrome">
+					<option value="Opera">
+					<option value="Safari">
+					</datalist>
+		</fieldset>
+		
+		
+	</form>
+	
+</body>
+</html>

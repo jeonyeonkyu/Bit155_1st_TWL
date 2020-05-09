@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>load 함수</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	//메인은 동기식으로 가게 하는데 그안의  필요한것들만 비동기로 한다.
+	//ex> 비동기 함수 네개를 만들었을대는 실행되는 순서가 없다.  동기는 하나끝나고 하나 한다.(순서보장)
+	//기본적인 베이스는 동기로 작업하되, 필요에 따라 비동기를 끼우는 방식으로 하자!!!!!
+	
+	/*
+		Jquery 가 제공하는 비동기 (Ajax 관련)함수 공부하기~!
+		https://www.w3schools.com/jquery/jquery_ref_ajax.asp           Ajax 함수 참조 하세여
+			https://api.jquery.com/category/ajax/shorthand-methods/    이것도 있음
+			
+		Api 보기 --		.load( url [, data ] [, complete ] )    // complete 은 콜백함수임 , 요청이 완료되었을때 실행된다 . //https://api.jquery.com/load/
+																// callback >> 함수 >> 호출( 특정 상황 자동 호출)
+		load함수    	이렇게 써있으면 파라메터가 최소 1개 있어야 하고 대괄호는생략 가능하다. 즉, 최소 한개 최대 3개의 parameter임 										
+						[url]
+						Type: String
+						A string containing the URL to which the request is sent.
+						[data]
+						Type: PlainObject or String
+						A plain object or string that is sent to the server with the request.
+						[complete]
+						Type: Function( String responseText, String textStatus, jqXHR jqXHR )
+						A callback function that is executed when the request completes.		
+						
+						load 함수
+						1. 서버에서 받은 데이터가 (html, text 형식)
+						2. Client 정한 특정요소에 자동 삽입할 목적으로 사용 (내부적으로 innerHTML())
+						
+						[data]
+						parameter 설정
+						?msg = hello
+								
+				--		json 객체 parameter 설정
+						{name:"kglim",age:100}
+						?name=kglim&age=100 이라고 보내겠다   --
+				        
+				        **구글링도 좋지만 Api 를 잘 해석해서 활용할 수 있는 능력이 중요하다. **
+				        
+				    	
+				        $( "#result" ).load( "ajax/test.html" );
+						서버에 요청한 ajax/test.html 데이터를 앞에 써놓은 엘리먼트에 넣어준다 
+						
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+		Ajax 관련 함수는 : xmlHttpRequest 객체를 사용하는 함수
+		
+		종류 
+		1.Global Ajax Event Handlers
+		2.Helper Functions
+		3.Low-Level Interface : 원하는걸 한땀한땀 만들어야함, 그래서 디테일하게 설정 가능하다 
+		4.Shorthand Methods   :
+			
+		.load( url [, data ] [, complete ] )   
+		
+	*/
+	
+	$(function(){
+		$('#btn').click(function(){//버튼 누르면 데이터 가져오도록!
+			//$('#display').load("Ex01_Ajax_Load.jsp");  //이 한줄의 코드로 비동기끝 !!!!!!!
+			$('#display').load("Ex01_Ajax_Load2.jsp",{
+				"msg":$('#msg2').val()},
+				//함수가 자동 호출( 서버로 부터 응답이 도착하면 ...)
+				function(responseText, textStatus, xhr){
+					//ResponseText : 서버가 응답한 결과물(html, text)
+					//응답이 왔어요 (정상(200),비정상(404,500))
+					//textStatus: success, error  두번째로 받는 파라메터가 success 라면 정상적인거임
+					if(textStatus =="success"){
+						//응답 : 4, status code :200
+						//그 결과를 자동으로 #display 넣어준다 
+						alert('responseText : '+responseText);  //보통은 이쯤에서 가공후 뿌리는데 load함수가 그거까지 해준다
+					}else{
+						//응답 : 4 status code : 500,404
+						alert('response fail :'+ xhr.status + "/" + xhr.statusText);
+						
+					}
+				}
+			)
+			
+		});
+		
+	})
+	</script>
+</head>
+<body>
+	<h3>동기처리</h3>
+	<div id="frmsend">
+		<form action="Ex01_Ajax_Load.jsp" method="get">
+			<input type ="text" name="msg" id="msg">
+			<input type="submit" value="동기전송">
+		</form>
+	</div>
+	
+	<h3>비동기처리</h3>
+		<form action="Ex01_Ajax_Load.jsp" method="get">
+			<input type ="text" name="msg2" id="msg2">
+			<input type="button" id="btn" value="비동기전송">
+		</form>
+	<div id="display"></div>
+</body>
+<!-- Network 안의 200코드 뜬거 보고 한번클릭하면! 옆에 창이뜬다. 거기서 Response 탭을 보면된다 !! preview 는 보여지는 화면
+				주석처리까지 데이터로 넘어올때까지 있으니까, 											   !!	response 는 소스 -->
+</html>
+ 

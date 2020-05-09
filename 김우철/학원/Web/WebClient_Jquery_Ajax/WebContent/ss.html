@@ -1,58 +1,86 @@
-</html>
-<!DOCTYPE html>
-<html lang="en">
- 
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!--https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript">
-       $(function(){
-         $('#btn').click(function (){
-            let publicAPI = "http://api.openweathermap.org/data/2.5/weather?";
-            let data = {q: $('#myInput').val(), appid:"128c1b018422127293c9b438200c8ab8"};
-            $.getJSON(publicAPI, data, function(data, textStatus, xhr){
-                $('#result').empty();
-                console.log(data.weather);
-                console.log(data.weather[0].description);
-                console.log(data.weather[0]);
-                $.each(data.weather[0],function(index,obj){
-                    console.log("s : " + obj + "index : " + index);
-                    if(index.includes("description")){
-                        console.log("descriptionsss");
-                       // $('<p></p>').text(obj.description).appendTo("#result");
-                       //$('#result').val(obj);
-                       $('<span>').text(obj).appendTo("#result");
-                    }
-                    
-                   // $('<img>').attr('src', obj.media.m).appendTo("#images");
-            });
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    <script>
+
+        // let publicAPI = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?";
+        // let data = { address: "서울특별시 강남구" };
+
+        let plenty = 0;
+        let some = 0;
+        let few = 0;
+        let empty = 0;
+        let none = 0;
+
+        $(function () {
+            $.getJSON("https:8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address:서울특별시 강남구",
+                function (data) {
+                    $.each(data.stores, function (index, obj) {
+                        var temp = data.stores[index].remain_stat;
+                        if (temp === null || temp === undefined) {
+                            return;
+                        } else {
+                            if (temp.includes("plenty")) {
+                                plenty++;
+                            } else if (temp.includes("some")) {
+                                some++;
+                            } else if (temp.includes("few")) {
+                                few++;
+                            } else if (temp.includes("empty")) {
+                                empty++;
+                            } else if (temp.includes("break")) { //왠지 모르겠는데 break 변수로 선언하면 자꾸 에러떠서 none으로 했음
+                                none++;
+                            }
+                        }
+                    }) //$.each 끝
+
+                    var ctx = $('#myChart').get(0).getContext("2d");
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',//차트타입
+                        data: {
+                            labels: ["plenty", "some", "few", "empty", "none"], //차트에 들어갈 라벨명
+                            datasets: [{
+                                label: "공적마스크재고량",
+                                data: [plenty, some, few, empty, none],
+                                // data: [5, 10, 3, 1, 10],
+                                backgroundColor: [
+                                    'rgba(244,99,132,0.2)',
+                                    'rgba(54,162,235,0.2)',
+                                    'rgba(255,206,86,0.2)',
+                                    'rgba(75,192,192,0.2)',
+                                    'rgba(153,102,255,0.2)',
+                                    'rgba(255,159,64,0.2)',
+                                ],
+                            }],
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: "공적마스크재고량",
+                                position: 'top',
+                                fontsize: 13,
+                            },
+                        }
+                    })
+
+                })//function(data) 끝
+
         });
-    });
-});
 
     </script>
+
 </head>
- 
+
 <body>
- 
-    <div class="ml-3 mr-3">
- 
-        <img src="https://www.worldvision.or.kr/images/icon/png/wv-06-protection03-childProtection.png" width="100px"
-            style="float: left;">
-        <img src="https://cdn.pixabay.com/photo/2018/10/08/08/56/graphic-3732290__340.png" width="100px"
-            style="float: right;">
-        <h2 class="text-center" style="font-size: 50px;">어린이 보호구역</h2>
- 
-        <p>어린이 보호구역 위치 정보를 담은 API입니다. </p>
- 
-        <input type="text" class="form-control" id="myInput"  placeholder="Search..">
-        <input type="button" value="검색하기" id="btn">
-        <div id="result"></div>
-    </div>
-   
+
+    <div style="width: 75%">
+        <canvas id="myChart" style="padding: 50px"></canvas>
+        <button id="btn" type="button" onclick="init()"></button>새로고침</div>
 </body>
- 
+
 </html>

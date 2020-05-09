@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	/*
+		Css 적용
+		1. 일반태그에 적용하는 방법(p, h3, div, hr)
+		2.사용자가 CSS 이름 정의 해서 사용(.이름, #이름)
+			.>> 태그 class  속성 반영
+			# >> 태그 id 속성 반영
+		암기	. > class , # > id
+			**id,class 속성은 css,javascript, jquery 에서도 활용
+		3. 다중 선택자 
+	*/		
+	
+	/*
+	h1{color : pink}
+	h2{color : pink}
+	h3{color : pink}
+	*/
+	h1,h2,h3 {color : pink} /* 이런식으로 묶어서 한번에 사용 */
+	p{background-color: gold}		
+	#kglim{color:red}
+	.hong{color:blue}
+	/* 이미지 %로 정의하면 반응형이미지가 되서 창이 커지면 커진다 */
+	/* float는 창 크기가 작아져도 고정된 위치에 남아잇게함 */
+	</style>
+</head>
+<body>
+	<p>일반 CSS 적용</p>
+	<p id ="kglim">id 속성을 사용</p>
+	<p class = "hong">class 속성을 사용</p>
+	<p class = "hong">class 속성을 사용</p>
+	<h1>핑크</h1>
+	<h2>핑크</h2>
+	<h3>핑크</h3>
+	<img src="https://cdn.pixabay.com/photo/2020/03/27/09/29/waterfall-4973028__340.jpg" alt="폭포그림" />	
+	
+	<!-- image map 신기하게 반응하게 만들기 가능 (지도에서 경기도 클릭하면 경기도 나오고 등등..) -->
+	<!-- 백그라운드 이미지는 크게에 맞게 자동 반복해서 채운다 (  -->
+	
+		
+</body>
+</html>

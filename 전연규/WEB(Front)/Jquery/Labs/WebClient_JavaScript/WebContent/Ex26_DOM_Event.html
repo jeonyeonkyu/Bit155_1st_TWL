@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+
+	<script>
+		function displateDate() {
+			document.getElementById("demo").innerHTML = new Date();
+		}
+		//document.getElementById("mybtn").onclick = displateDate();
+		//이건 에러난다() 해결방법은 뒤에다가 자바스크립트코드를 작성하거나, onload를 사용
+		//window.onload = function(){}
+		//function call(){}
+		//window.onload = call();
+		window.onload = function () {
+			document.getElementById("mybtn").onclick = displateDate;
+			//주의사항 displateDate()를 할때 ()괄호를 넣으면 함수를 호출해버림
+			//.onclick = displateDate; 로 해야함 >> ()(x) 호출 하게...
+		}
+	</script>
+</head>
+
+<body>
+	<button id="mybtn">눌러봐</button>
+	<br />
+	<button id="mybtn2" onclick="displateDate()">눌라봐2</button>
+	<!-- 이렇게 하면 문제가 없지만 언제 문제가 발생하느냐? -->
+	<br>
+	<p id="demo"></p>
+	<script>
+	//	document.getElementById("mybtn").onclick = displateDate();
+	</script>
+</body>
+
+</html>

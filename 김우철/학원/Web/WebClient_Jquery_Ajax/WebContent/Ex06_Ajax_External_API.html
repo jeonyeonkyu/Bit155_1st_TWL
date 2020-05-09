@@ -19,6 +19,7 @@
 				//console.log(data);
 				$.getJSON(filckrAPI, data, function (data, textStatus, xhr) {
 					console.log(data.items);
+					console.log("ss" + xhr.status);
 					$('#images').empty();
 					$.each(data.items, function(index, obj) {
 						$('<img>').attr('src', obj.media.m).appendTo("#images");

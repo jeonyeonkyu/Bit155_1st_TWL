@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내장 객체(제공받는..)</title>
+    <script>
+        //javascript 다양한 내장 객체 >> java class 제공 >> new 사용
+        //Date() , Array()
+        //내장객체(클래스) new 연산자를 통해서 객체 만들고 재사용가능
+        //var d = new Date()
+        
+        var today = new Date(); //날짜객체의 주소가 넘어온다
+        document.write(today + "<br>");
+        document.write(today.getFullYear() + "년<br>");
+        document.write(today.getMonth() +1 + "월<br>");
+        document.write(today.getDate() + "일<br>");
+        document.write(today.getHours() + "시<br>") ;
+        document.write(today.getMinutes() + "분<br>");
+        document.write(today.getSeconds() + "초<br>");
+        
+
+        //Math
+        document.write(Math.random() + "<br>") //static 함수가 있다
+        document.write(parseInt((Math.random()*45)+1) + "<br>")
+         //0 ~ < 1
+         document.write(Math.round(3.5678) + "<br>"); //4
+         document.write(Math.max(3,8,78,55,10) + "<br>"); //최댓값 (최솟값)을 뽑아주는 함수가 있다
+
+         //https://www.w3schools.com/js/js_math.asp
+
+         //POINT 문자열 관련 함수
+         var str = "ABCDEF";
+         with(document){  //블럭 안에 document 객체 생략 가능
+             write(str + "<br>");
+             write(str.length + "<br>");
+             write(str.charAt(2) + "<br>");
+             write(str.indexOf('D')+"<br>");
+             write(str.concat("홍길동")+"<br>");
+
+             var str2 = str.replace("E","ZZZZZZZZ");
+             write(str2 + "<br>");
+             write(str.substring(2,4) + "<br>");
+             write(str.substring(1,1) + "<br>");
+             write(str.substring(1,2) + "<br>");
+             write(str.substring(1) + "<br>");
+             
+
+             var strarr = "A B C D";
+             var arr = strarr.split(" ");
+             write(arr); //A,B,C,D
+
+             //Point
+             //개선된 for문
+             //java >> for(String s : arr) {}
+            //C# >> for(String s int arr){}
+            //javascript >> for(var s in arr){}
+            //주의사항 : s 출력되는 값은 index입니다
+            ///약속 : 개선된 for문의 변수명은 >> index라고 한다
+            //약속(let index in array){array[index]} 
+            
+         write ("<br>");
+             for(var index in arr){
+                 //write*index + "<br>";
+                 write(arr[index] + "<br>");
+             }
+         }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

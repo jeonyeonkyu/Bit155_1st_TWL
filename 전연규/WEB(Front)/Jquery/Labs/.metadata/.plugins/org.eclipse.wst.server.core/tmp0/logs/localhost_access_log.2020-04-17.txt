@@ -1,0 +1,5 @@
+127.0.0.1 - - [17/Apr/2020:09:37:05 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [17/Apr/2020:09:50:37 +0900] "GET /WebClient_JavaScript/Ex08_Script.html HTTP/1.1" 200 2080
+0:0:0:0:0:0:0:1 - - [17/Apr/2020:09:50:37 +0900] "GET /favicon.ico HTTP/1.1" 404 761
+0:0:0:0:0:0:0:1 - - [17/Apr/2020:09:50:41 +0900] "GET /WebClient_JavaScript/Ex08_login.jsp?txtuserid=asdf&txtpwd=asdf HTTP/1.1" 200 188
+0:0:0:0:0:0:0:1 - - [17/Apr/2020:10:03:24 +0900] "GET /WebClient_JavaScript/Ex09_Script_Scope.html HTTP/1.1" 200 126

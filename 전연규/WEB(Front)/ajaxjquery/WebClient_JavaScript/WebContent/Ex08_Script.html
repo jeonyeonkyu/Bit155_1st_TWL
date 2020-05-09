@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//유효성 검증
+		//1. Client 서버 전송 >> 서버검증  > 검증 여부(true, false)  : ID검사 
+		//2. Client 에서 검증 >> 입력유무 , 숫자 , 문자 검증 , 주민번호 >> 검증 >> 서버전송
+		//최대한 client 처리할수 있는 부분은 처리하자 ... (서버전송수를 줄이자)
+		
+		//2 번은 javascript 해결
+		function send(){
+			//javascript 가 요소의 정보를 가지고 있어야 한다
+			//var ele = document.forms[0].elements[0].value
+			
+			//form name 속성....
+			var inputuserid = document.loginform.txtuserid;
+			console.log(inputuserid);
+			console.log(inputuserid.value);
+			
+			//활용 (DOM script) 사용
+			var userpwd = document.getElementById("txtpwd");
+			console.log(userpwd);
+			console.log(userpwd.value);
+			
+			//검증 로직 (여러분이 알아서 )
+			if(inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)){
+				alert("다시 입력해");
+				document.loginform.txtuserid.focus();
+				inputuserid.select();
+			}else{
+				alert("검증완료");
+				//여기서 서버 전송
+				
+				document.loginform.action="Ex08_login.jsp";
+				document.loginform.submit(); //form >> 내장 >> submit
+			}
+			
+		}
+		
+	</script>
+</head>
+<body>
+<!--  
+<input tag 에 name 속성을 주지 않으면  server 에서 받을 수 없다
+<input tag 에 id >> javascript , css front 작업 가능 
+
+name="txtpwd" id="txtpwd" 둘다 ...	
+-->
+	<form action="" method="" name="loginform">
+		ID:<input type="text" name="txtuserid"><br>
+	    PWD:<input type="password" name="txtpwd" id="txtpwd"><br>
+	    <input type="button" value="전송" onclick="send()">
+	    <!--  
+	    type="submit"
+	    type="image"
+	    type="button" onclick ="함수...."
+	    -->
+	</form>
+	
+</body>
+</html>

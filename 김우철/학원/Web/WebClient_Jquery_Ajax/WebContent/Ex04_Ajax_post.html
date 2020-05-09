@@ -20,9 +20,13 @@
 				});
 				*/
 				//권장방법 : 두번째 parameter 설정 : {}객체
+				//data : json으로 가공한 데이터, responsedata는 서버에서 그대로 보내준 값
 				let data = {"name":$('#name').val() , "pwd":$('#pwd').val()}
 				$.post('Ex04_Server.jsp',data,function(responsedata){
 					$('#message').html(responsedata);
+					console.log(responsedata); //서버에서 보내준 그대로..
+					console.log(data); //{name:"ss"m pwd:"ss"}
+					
 				});
 			});
 		});

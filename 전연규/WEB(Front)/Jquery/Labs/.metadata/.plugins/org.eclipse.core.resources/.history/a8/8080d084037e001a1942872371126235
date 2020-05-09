@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+  />
+  <link rel="manifest" href="/manifest-web.json" />
+  <!-- include PWACompat _after_ your manifest -->
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="/icon-512x512.png"
+  />
+  <link rel="apple-touch-icon" sizes="512x512" href="/icon-512x512.png" />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="/icon-192x192.png"
+  />
+  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192x192.png" />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="128x128"
+    href="/icon-128x128.png"
+  />
+  <link rel="apple-touch-icon" sizes="128x128" href="/icon-128x128.png" />
+
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="인프런" />
+  <meta name="apple-mobile-web-app-title" content="인프런" />
+  <meta name="theme-color" content="#2EC276" />
+  <meta name="msapplication-navbutton-color" content="#2EC276" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="msapplication-starturl" content="/?utm_source=pwa" />
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="dns-prefetch" href="https://cdn.inflearn.com" />
+  <link rel="dns-prefetch" href="//cdn.iamport.kr" />
+  <link rel="dns-prefetch" href="//google-analytics.com" />
+  <link rel="dns-prefetch" href="//static.dable.io" />
+  <link rel="dns-prefetch" href="//api.dable.io" />
+  <link rel="dns-prefetch" href="//www.youtube.com" />
+  <link rel="dns-prefetch" href="//f.vimeocdn.com" />
+
+  
+    <title>1조 회원가입</title>
+    
+    <!-- verbose - twitter processor can use og: for a fallback  -->
+  
+
+  <link rel="stylesheet" href="https://cdn.inflearn.com/dist/css/npm_tinymce.bb1ce6cdd129e47c2d25.css" />
+  <link rel="stylesheet" href="https://cdn.inflearn.com/dist/css/MAIN.a4870ad4c1ff4d9533a7.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.inflearn.com/dist/vendor/bulma-accordion.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.inflearn.com/dist/vendor/bulma-switch.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.inflearn.com/dist/vendor/bulma-tooltip.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css"
+    integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz"
+    crossorigin="anonymous"
+  />
+  
+</head>
+  <body id="inflearn" class="signup_page is_logged_out " fxd-data='{"google":"https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&response_type=code&client_id=887875630717-ror9t8ig4obhvokdij07eoochpqbu5kf.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgoogle","facebook":"https://facebook.com/dialog/oauth?response_type=code&client_id=1101702136522636&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&scope=email","github":"https://github.com/login/oauth/authorize?response_type=code&client_id=5fd8e44b142806d9cbea&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgithub&scope=user%3Aemail"}'>
+    <div id="root">
+      
+  
+      
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>
+</header>
+
+      <main id="main">
+<div class="container sign_up_container">
+  <h2 class="heading">회원가입</h2>
+  <div class="section_container">
+    <section class="email_section">
+      <form class="signup_form">
+        <div class="input_container">
+          <label class="input_label">
+            <span class="label_text">이메일</span>
+            <input class="text_input" name="email" type="email" minlength="5" required />
+          </label>
+          <p class="error_msg"></p>
+        </div>
+        <div class="input_container">
+          <label class="input_label">
+            <span class="label_text">이메일 확인</span>
+            <input class="text_input" name="email_confirm" type="email" data-role="confirm" required />
+          </label>
+          <p class="error_msg"></p>
+        </div>
+        <div class="input_container">
+          <label class="input_label">
+            <span class="label_text">비밀번호</span>
+            <input class="text_input" type="password" name="password" minlength="8" required />
+          </label>
+          <p class="error_msg"></p>
+        </div>
+        <div class="input_container">
+          <label class="input_label">
+            <span class="label_text">비밀번호 확인</span>
+            <input class="text_input" type="password" name="password_confirm" data-role="confirm" required />
+          </label>
+          <p class="error_msg"></p>
+        </div>
+        </label>
+        <div class="button_wrapper">
+          <button type="submit" class="button signup_button">가입하기</button>
+        </div>
+      </form>
+    </section>
+    <section class="social_section">
+      <a class="google_signin oauth2" data-type="google" href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&response_type=code&client_id=887875630717-ror9t8ig4obhvokdij07eoochpqbu5kf.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgoogle" aria-label="구글 회원가입" rel="noreferrer noopener">
+        <i class="fab fa-google"></i>
+        <span>구글 가입</span>
+      </a>
+      <a class="facebook_signin oauth2" data-type="facebook" href="https://facebook.com/dialog/oauth?response_type=code&client_id=1101702136522636&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&scope=email" aria-label="페이스북 회원가입" rel="noreferrer noopener">
+        <i class="fab fa-facebook-f"></i>
+        <span>페이스북 가입</span>
+      </a>
+      <a class="github_signin" href="https://github.com/login/oauth/authorize?response_type=code&client_id=5fd8e44b142806d9cbea&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgithub&scope=user%3Aemail" aria-label="깃허브 회원가입" rel="noreferrer noopener">
+        <i class="fab fa-github"></i>
+        <span>깃허브 가입</span>
+      </a>
+    </section>
+  </div>
+</div></main>
+      
+
+      
+  </svg>
+</div>
+    </div>
+  </body>
+</html>
