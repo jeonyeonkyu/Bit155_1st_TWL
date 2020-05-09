@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+
+<title>1조 회원가입</title>
+
+
+<link rel="stylesheet"
+	href="https://cdn.inflearn.com/dist/css/npm_tinymce.bb1ce6cdd129e47c2d25.css" />
+<link rel="stylesheet"
+	href="https://cdn.inflearn.com/dist/css/MAIN.a4870ad4c1ff4d9533a7.css" />
+
+</head>
+<body id="inflearn" class="signup_page is_logged_out "
+	fxd-data='{"google":"https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&response_type=code&client_id=887875630717-ror9t8ig4obhvokdij07eoochpqbu5kf.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgoogle","facebook":"https://facebook.com/dialog/oauth?response_type=code&client_id=1101702136522636&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&scope=email","github":"https://github.com/login/oauth/authorize?response_type=code&client_id=5fd8e44b142806d9cbea&redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgithub&scope=user%3Aemail"}'>
+	<div id="root">
+
+
+
+		<header id="header">
+			<nav class="navbar">
+				<div class="container mobile_container">
+					<div class="content">
+						<div class="mobile_left">
+							<span class="icon_cover e_left_aside_btn" data-type="open"><span
+								class="icon"><i class="far fa-search"></i></span></span>
+						</div>
+						<div class="brand_header">
+							<a href="/" class="brand_logo"> <span class="visually_hidden">인프런</span>
+							</a>
+						</div>
+						<div class="mobile_right"></div>
+					</div>
+				</div>
+				<div class="container desktop_container">
+					<div class="content"></div>
+				</div>
+	</div>
+	</nav>
+	</header>
+
+	<main id="main">
+		<div class="container sign_up_container">
+			<h2 class="heading">회원가입</h2>
+			<div class="section_container">
+				<section class="email_section">
+					<form class="signup_form">
+						<div class="input_container">
+							<label class="input_label"> <span class="label_text">이메일</span>
+								<input class="text_input" name="email" type="email"
+								minlength="5" required />
+							</label>
+							<p class="error_msg"></p>
+						</div>
+						<div class="input_container">
+							<label class="input_label"> <span class="label_text">이메일
+									확인</span> <input class="text_input" name="email_confirm" type="email"
+								data-role="confirm" required />
+							</label>
+							<p class="error_msg"></p>
+						</div>
+						<div class="input_container">
+							<label class="input_label"> <span class="label_text">비밀번호</span>
+								<input class="text_input" type="password" name="password"
+								minlength="8" required />
+							</label>
+							<p class="error_msg"></p>
+						</div>
+						<div class="input_container">
+							<label class="input_label"> <span class="label_text">비밀번호
+									확인</span> <input class="text_input" type="password"
+								name="password_confirm" data-role="confirm" required />
+							</label>
+							<p class="error_msg"></p>
+						</div>
+						</label>
+						<div class="button_wrapper">
+							<button type="submit" class="button signup_button">가입하기</button>
+						</div>
+					</form>
+			</div>
+		</div>
+	</main>
+
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            javaScript : Array( 정적 + Collection)
+        */
+        var array = ['포도','사과'];
+        document.write(array.toString() + "<br>");
+        document.write(array + "<br>"); //자바스크립트도 toString을 default로 toString과 똑같은 값이 나온다
+
+        for(let i = 0; i< array.length; i++){
+            document.write(array[i] + "<br>");
+        }
+
+        //동적기능
+        //출력 : array[0] >> 포도, array[1] >> 사과
+        //방은 2개
+
+        array[2] = "바나나"; //동적으로 데이터 추가 가능
+        for(let i = 0; i< array.length; i++){
+            document.write(array[i] + "<br>");
+        }
+
+        array[10] = "애플망고" //뜬금없이 array[10]번째에 값을 넣어주면
+        
+        document.write(array[9] + "<br>");
+        array[9] = "배";
+        document.write(array[9] + "<br>");
+
+        var array2 = ["one","two","three"];
+        document.write(array2.length + "<br>"); //3
+
+        array2.length = 2; //강제로 줄이기
+        document.write(array2.toString() + "<br>" + array2.length + "<br>");
+
+        array2.length = 4;
+        document.write(array2.toString() + "<br>" + array2.length + "<br>");
+        
+        //POINT (javascript : Array >> Stack >> LIFO)
+        array2.push("Four");
+        document.write(array2.toString() + "<br>" + array2.length + "<br>");
+        
+        document.write(array2.pop()+"<br>");
+        document.write(array2.pop()+"<br>");
+        document.write(array2.pop()+"<br>");
+        document.write(array2.pop()+"<br>");
+        document.write(array2.pop()+"<br>");
+        
+
+        //javascript 배열선언
+        var list=[];
+        list.push("A");
+        list.push("B");
+        list.push("C");
+
+        document.write("<br>" + list.pop());
+    </script>
+</head>
+
+<body>
+    
+</body>
+</html>

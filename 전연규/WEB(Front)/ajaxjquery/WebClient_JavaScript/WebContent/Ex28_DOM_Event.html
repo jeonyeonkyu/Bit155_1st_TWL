@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//window.onload =function(){}
+	</script>
+</head>
+<body>
+	<button id="mybtn">Try it</button>
+
+<script type="text/javascript">
+	/*
+	var x = document.getElementById("mybtn");
+	x.addEventListener("click",myfunc);
+	x.addEventListener("click",otherFunc);
+	
+	function myfunc(){
+		alert("hello world");
+	}
+	function otherFunc(){
+		alert("korea world");
+	}
+	*/
+	//element.addEventListener("click", function(){ alert("Hello World!"); });
+	var x = document.getElementById("mybtn");
+	x.addEventListener("mouseover",myFunc);
+	x.addEventListener("mouseout",myFunc2);
+	x.addEventListener("click",myFunc3);
+	
+	function myFunc(){
+		document.getElementById("mybtn").innerHTML += "Mouse over<br>";
+	}
+	function myFunc2(){
+		document.getElementById("mybtn").innerHTML += "Mouse out<br>";
+	}
+	function myFunc3(){
+		document.getElementById("mybtn").innerHTML += "Click<br>";		
+	}
+</script>
+</body>
+</html>
+
+
+
+
+

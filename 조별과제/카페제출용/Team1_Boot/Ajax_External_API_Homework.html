@@ -36,7 +36,7 @@
                     // console.log(data.weather[0]);
 
                     var table = "<table>";
-                    table += "<tr><td>날씨</td><td>상세</td><td>바람</td><td>구름</td></tr>";
+                    table += "<tr><td>지역</td><td>날씨</td><td>상세</td><td>바람</td><td>구름</td><td>온도</td></tr>";
 
                     // console.log("data.weather[0].des==="+data.weather[0].description);//o
                     // console.log("data.wind.speed==="+data.wind.speed);//0
@@ -44,10 +44,12 @@
                     // console.log("data[clouds].all==="+data["clouds"].all); //o
                     console.log(data.weather[0].icon);
                     table += "<tr>";
+                    table += "<td>" + data.name + "</td>";
                     table += "<td>" + data.weather[0].main + "</td>";
                     table += "<td>" + data.weather[0].description + "</td>";
                     table += "<td>" + data.wind.speed + "</td>";
                     table += "<td>" + data["clouds"].all + "</td>";
+                    table += "<td>" + Math.round(((data.main.temp)-(273))*10) / 10 + "℃" + "</td>";
                     table += "</tr>";
                     table += "</table>";
                     // $('#result').append(table);
