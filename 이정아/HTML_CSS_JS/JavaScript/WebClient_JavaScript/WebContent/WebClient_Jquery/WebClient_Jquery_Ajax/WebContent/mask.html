@@ -1,91 +1,46 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
-
+        var apiURI = "https://api.dropper.tech/covid19/status/korea?locale=busan"
+        //var apiURI = "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=128c1b018422127293c9b438200c8ab8"
         $(function () {
-            console.log($('#sss').val());
-            google.charts.load('current', { 'packages': ['corechart'] });
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                let publicAPI = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?";
-                let data2 = { address: "서울특별시 강남구" };
-                var plenty = 0;
-                var some = 0;
-                var few = 0;
-                var empty = 0;
-                var stop = 0;
+            $.ajax(
+                {
+                    url: apiURI,
+                    headers: {
+                        'APIKey': 'f834d9eb9734028ec74e91ac889e49ccb6a361df6fe371ec08b68ab7bb8014c8',
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                    type: "GET",       //httpReq.open("post")
+                    dataType: "json", //서버가 응답하는 데이터 형식(Text(json,script,txt,html) , xml) 
+                    // beforeSend: function (xhr) {
+                    //     console.log("이건타냐?")
+                    //     xhr.setRequestHeader("APIKey", "f834d9eb9734028ec74e91ac889e49ccb6a361df6fe371ec08b68ab7bb8014c8");
+                    //     xhr.setRequestHeader("Content-Type", "application/json");
+                    // },
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data.data[0]);
+                    },
+                    error: function (xhr) {
+                        console.log("error : " + xhr.status + "/" + xhr.statusText);
+                    },
 
-                $.getJSON(publicAPI, data2, function (data2) {
-                    //console.log(data.stores.length);
-                    for (var i = 0; i < data2.stores.length; i++) {
-                        $.each(data2.stores[i], function (index, obj) { //index는 키, obj는 value
-                            //console.log("값이다!! : " + obj + " /// 키다: " + index);
-
-                            if (obj === null) {
-                                return;
-                            } else {
-                                if (index.includes("remain_stat")) {
-                                    if (obj.includes("plenty")) {
-                                        plenty += 1;
-                                    } else if (obj.includes("some")) {
-                                        some += 1;
-                                    } else if (obj.includes("few")) {
-                                        few += 1;
-                                    } else if (obj.includes("empty")) {
-                                        empty += 1;
-                                    } else if (obj.includes("break")) {
-                                        stop += 1;
-                                    }
-                                }
-                            }
-                        }); //each(end)
-                        //console.log(plenty);
-
-                    } //for(end)
-                    temp1 = plenty;
-                    console.log();
-                    $('<p>').attr('id', 'plenty').attr('value', plenty).appendTo("#kwc");
-                        console.log($('#p'));
-                    $('<p>').attr('id', 'some').attr('value', some).appendTo("#kwc");
-                    $('<p>').attr('id', 'few').attr('value', few).appendTo("#kwc");
-                    $('<p>').attr('id', 'empty').attr('value', empty).appendTo("#kwc");
-                    $('<p>').attr('id', 'stop').attr('value', stop).appendTo("#kwc");
-                }); //$.getJSON (end)
-
-           
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    // ['Work', $('#plenty').val()],
-                    ['Work', 11],
-                    ['Eat', 2],
-                    ['Commute', 2],
-                    ['Watch TV', 2],
-                    ['Sleep', 7]
-                ]);
-
-                var options = {
-                    title: 'My Daily Activities'
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                chart.draw(data, options);
-            }
-         
+                }
+            );
         });
     </script>
-
 </head>
 
 <body>
-    <div id="sss" value="ssss">swws</div>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-    <div id="kwc"></div>
-  
+    <div class="wrap-loading display-none">
+    </div>
 </body>
 
-  
 </html>
