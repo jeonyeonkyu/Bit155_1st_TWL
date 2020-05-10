@@ -1,0 +1,13 @@
+1조과제
+회원가입 (정규표현식)
+로그인(관리자, 사용자 메뉴 다름)
+다음API
+dataTables
+
+2.adminPage
+총회원수 ajax로 반영
+
+따로한것
+결제API
+날씨
+fullcalendar

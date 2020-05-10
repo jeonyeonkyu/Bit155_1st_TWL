@@ -47,6 +47,17 @@
 				cache : false,
 				dataType : 'json',
 				data: $('#wwww').serialize(),
+				//serialize()를 이용함으로서 form태그 안에 있는 값들을 한번에 전송가능
+				/* serialize()를 사용하지 않았을때
+					fname=값&femail=값&sex=값&job=값
+					또는 
+					var params = {
+						fname       : '값',
+						femail : '값',
+						sex    : '값',
+						job : '값'
+					};
+				*/
 				success : function(data) {
 					/* alert('성공띠') */
 					console.log(data.count);

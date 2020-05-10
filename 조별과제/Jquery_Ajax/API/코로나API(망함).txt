@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       // var apiURI = "https://api.dropper.tech/covid19/status/korea?locale=busan"
+        //var apiURI = "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=128c1b018422127293c9b438200c8ab8"
+        $(function () {
+            $.ajax(
+                {
+                    url: "https://api.dropper.tech/covid19/status/korea?locale=busan",
+                    type: "GET",       
+                    dataType: "json", 
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("APIKey", "f834d9eb9734028ec74e91ac889e49ccb6a361df6fe371ec08b68ab7bb8014c8");
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data.data[0]);
+                    },
+                    error: function (xhr) {
+                        console.log("error : " + xhr.status + "/" + xhr.statusText);
+                    },
+
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrap-loading display-none">
+    </div>
+</body>
+
+</html>
