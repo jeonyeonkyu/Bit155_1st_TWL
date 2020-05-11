@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/*
+	id= "message" 클릭하면 $.ajax 함수 통해서
+	id 값이 DB Table 있는지 검증(사용, 사용불가)
+	
+	샘플 : http://localhost:8090/WebServlet_4_memo_mvc_dbcp/MemoList 
+	>> 목록보기 요청 >> @WebServlet("/MemoList") >> doGet,doPost 
+	
+	요청주소 : http://localhost:8090/WebServlet_4_memo_mvc_dbcp/MemoId
+	Parameter :id
+	비동기로 받은 데이터가 "false" 라는 문자면 >> 사용불가 >> 재입력 요청
+	비동기로 받은 데이터가 "true" 라는 문자면 >> 사용가능
+		
+	*/
+	$(function(){
+		$('#message').click(function(){
+			var actionurl = "http://localhost:8090/WebServlet_4_memo_mvc_dbcp/MemoId";
+			
+			//비동기 함수 
+			$.ajax(
+					{
+						url:'MemoId',
+						type:"POST",
+						dataType:"html",
+						data:{id:$('#id').val()},
+						success:function(responsedata){ 
+							console.log(">"+responsedata+"<");
+							var result = responsedata.trim();
+							console.log('result : ' + result)
+							if(result === "true"){
+								alert('sss');
+								$('#ss').html("<p style='color:green;font-weight:bold'>로그인 성공</p>");
+							}else{
+								alert('ww');
+								$('#ss').html("<p style='color:red;font-weight:bold'>로그인 실패</p> 다시 입력하세요");
+								$('id').val("");
+								$('id').focus();
+								
+							}
+							
+						},
+						error:function(xhr){
+							alert("error : " +xhr.status + "/" + xhr.statusText);
+						}
+					}		
+			);
+		});	
+	});
+	</script>
+</head>
+<body>
+	<div style="margin-top:70px;"></div> 
+	<!--  html 파일  action="MemoServlet"  -->
+	<form name="f" action="MemoServlet" method="get"> 
+	 <div align="center"> 
+	    <table width="600" border="0" cellpadding="7" > 
+	        <tr align="center" bgcolor="gold" height="50"> 
+	            <td colspan="2"> 
+	                <font size="4" color="#0033CC" face="굴림체"> 
+	                <b> 
+	                   Servlet Memo
+	                </b> 
+	                </font> 
+	            </td> 
+	        </tr> 
+	        <tr> 
+	            <td width="25%" align="center" > 
+	                <b>ID</b> 
+	            </td> 
+	            <td> 
+	                <input type="text" size="40" name="id" maxlength="10" id="id" > 
+	                <input type="button" value="ID확인" id="message">
+	                <div id="ss"></div>
+	            </td> 
+	        </tr>     
+	        <tr> 
+	            <td width="25%" align="center"> 
+	                <b>EMAIL</b> 
+	            </td> 
+	            <td> 
+	                <input type="text" size="40" name="email" maxlength="60" > 
+	            </td> 
+	        </tr> 
+	        <tr> 
+	            <td width="25%" align="center"> 
+	                <b>MEMO</b> 
+	            </td> 
+	            <td> 
+	                <textarea name="memo" cols="50" class="box2"></textarea> 
+	            </td> 
+	        </tr> 
+	        <tr bgcolor="gold"> 
+	            <td colspan="2" align="center" class="c2"> 
+	                <input type="submit" value="전송" >
+	                <input type="reset" value="취소"> 
+	            </td> 
+	        </tr> 
+	     
+	    </table> 
+	  
+	  
+	 </div>
+	</form>
+	<hr>
+	<a href="MemoList">목록보기</a> 
+ 
+</body>
+</html>
+
+
+
+
+
+
