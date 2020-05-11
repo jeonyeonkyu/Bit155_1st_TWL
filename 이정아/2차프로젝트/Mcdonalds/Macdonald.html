@@ -21,222 +21,246 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 
+		<style>
+			#progress {
+			  width: 100%;
+			}
+			
+			#myprogress {
+			  width: 1%;
+			  height: 30px;
+			}
+			</style>	
+
 	<title>비트날드</title>
 </head>
 
 <body>
 
-	<div class="wrapper " wfd-id="7">
-		<header class="header fixed">
-			<!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
-
-			<div class="d-flex p-4 bg-black text-black" wfd-id="67">
-				<strong class="hLogo"><a href="Macdonald.html" class="logo" title="메인으로 이동"><img
-							src="/kor/images/common/logo.png" alt="맥도날드"></a></strong>
-				<nav class="p-3">
-					<div class="d-flex flex-row">
-						<ul>
-							<li wfd-id="91">
-								<!-- li 오버시 on 클래스 추가 -->
-								<a href="javascript:gotoMenu(1);" class="dth1 ">Menu</a>
+	
+			<!--. 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
+			<nav class="navbar navbar-expand-sm d-flex flex-row p-md-4"><a href="Macdonald.html" class="logo" title="메인으로 이동" style="
+				margin-left: 56px;
+				margin-right: 56px;
+			">
+				<img src="/kor/images/common/logo.png" alt="맥도날드"></a>
+				<!-- <div class="d-flex p-4 bg-black text-black" wfd-id="67"> -->
+					<div class="navbar navbar-expand-lg d-flex flex-row" style="
+					padding-top: 52px;
+					padding-bottom: 52px;
+					padding-left: 0px;
+					padding-right: 0px;"
+				>
+						<ul class="nav nav-justified">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Menu</a>
 								<!-- 현재페이지 메뉴에 current 클래스 추가 -->
-								<ul class="depth2" wfd-id="92">
-									<li wfd-id="98"><a href="javascript:gotoMenu(1);" class="dth2">버거</a></li>
-									<li wfd-id="97"><a href="javascript:gotoMenu(3);" class="dth2">맥모닝</a></li>
-									<li wfd-id="96"><a href="javascript:gotoMenu(5);" class="dth2">해피밀</a></li>
-									<li wfd-id="95"><a href="javascript:gotoMenu(7);" class="dth2">사이드 &amp; 디저트</a>
-									</li>
-									<li wfd-id="94"><a href="javascript:gotoMenu(9);" class="dth2">맥카페 &amp; 음료</a></li>
-								</ul>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">버거</a>
+									<a class="dropdown-item" href="#">맥모닝</a>
+									<a class="dropdown-item" href="#">해피밀</a>
+									<a class="dropdown-item" href="#">사이드 &amp; 디저트</a>
+									<a class="dropdown-item" href="#">맥카페 &amp; 음료</a>
+								</div>
 							</li>
 						</ul>
-						<ul>
-							<li wfd-id="74">
-								<a href="/kor/story/main.do" class="dth1  ">Story</a>
-								<ul class="depth2" wfd-id="75">
-									<li wfd-id="79"><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a>
-									</li>
-									<li wfd-id="78"><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a>
-									</li>
-									<li wfd-id="77"><a href="/kor/story/competition/farmToRestaurant.do"
-											class="dth2">맥도날드 경쟁력</a></li>
-									<li wfd-id="76"><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
-								</ul>
+						<ul class="nav nav-justified">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Comm</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">공지사항</a>
+									<a class="dropdown-item" href="#">리뷰게시판</a>
+								</div>
 							</li>
 						</ul>
-						<ul>
-							<li wfd-id="85">
-								<a href="/kor/store/main.do" class="dth1 ">Comm</a>
-								<ul class="depth2" wfd-id="86">
-									<li wfd-id="90"><a href="#" class="dth2">공지사항</a></li>
-									<li wfd-id="89"><a href="#" class="dth2">리뷰게시판</a></li>
-								</ul>
+						<ul class="nav nav-justified">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">MyPage</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">계정 설정</a>
+									<a class="dropdown-item" href="#">주문 조회</a>
+									<a class="dropdown-item" href="#">문의하기</a>
+									<a class="dropdown-item" href="#">관리자 페이지</a>
+								</div>
 							</li>
 						</ul>
-						<ul>
-							<li wfd-id="80">
-								<a href="#" class="dth1  ">MyPage</a>
-								<ul class="depth2" wfd-id="81">
-									<li wfd-id="84"><a href="#" class="dth2">계정 설정</a></li>
-									<li wfd-id="83"><a href="#" class="dth2">주문 조회</a></li>
-									<li wfd-id="82"><a href="#" class="dth2">문의하기</a></li>
-									<li wfd-id="81"><a href="#" class="dth2">관리자 페이지</a></li>
-								</ul>
-							</li>
-						</ul>
-						<ul>
-							<li wfd-id="80"><a href="#" class="dth2">날씨 API</a></li>
+						<ul class="nav nav-justified">
+							<li class="nav-item">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">날씨 API</a>
+								<div class="dropdown-menu"></li>
 						</ul>
 						</ul>
 					</div>
 					<!-- //menu -->
-				</nav>
-			</div>
-		</header>
+			 </nav>
 		<!-- //header -->
 		<section id="container" wfd-id="28">
-			<div id = "main-carousel" class = "carousel slide" data-ride="carousel">
-						<ul class="carousel-indicators">
-							<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#main-carousel" data-slide-to="1" class="active"></li>
-							<li data-target="#main-carousel" data-slide-to="2" class="active"></li>
-						</ul>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-							  <img src="https://www.mcdonalds.co.kr/upload/main/banner/1585129372254.png">
-							  <div class="carousel-caption"></div>
-							</div>
-							<div class="carousel-item">
-							  <img src="https://www.mcdonalds.co.kr/upload/main/banner/1587529093913.png">
-							  <div class="carousel-caption"></div>
-							</div>
-							<div class="carousel-item">
-							  <img src="https://www.mcdonalds.co.kr/upload/main/banner/1588122129631.png">
-							  <div class="carousel-caption"></div>
-							</div>
-						  </div>
+			<div id="main-carousel" class="carousel slide" data-ride="carousel">
+				<ul class="carousel-indicators">
+					<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+					<li data-target="#main-carousel" data-slide-to="1" class="active"></li>
+					<li data-target="#main-carousel" data-slide-to="2" class="active"></li>
+				</ul>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="https://www.mcdonalds.co.kr/upload/main/banner/1585129372254.png">
+						<div class="carousel-caption"></div>
+					</div>
+					<div class="carousel-item">
+						<img src="https://www.mcdonalds.co.kr/upload/main/banner/1587529093913.png">
+						<div class="carousel-caption"></div>
+					</div>
+					<div class="carousel-item">
+						<img src="https://www.mcdonalds.co.kr/upload/main/banner/1588122129631.png">
+						<div class="carousel-caption"></div>
+					</div>
+				</div>
 
-						  <a class="carousel-control-prev" href="#main-carousel" data-slide="prev">
-							<span class="carousel-control-prev-icon"></span>
-						  </a>
-						  <a class="carousel-control-next" href="#main-carousel" data-slide="next">
-							<span class="carousel-control-next-icon"></span>
-						  </a>
-						</div>
-				<!-- //mainEvent -->
-				<div class="contArea mainCont" wfd-id="32">
-					<div class="inner" wfd-id="33">
-						<h2 class="titMain">McDonald's LIVE</h2>
-						<ul class="whatsNew" id="menuList" wfd-id="35">
-							<li wfd-id="51"><a
-									href="/kor/promotion/detail.do?page=1&amp;seq=270&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0423_HCCshanghai&amp;utm_content=Corp_Contents"
-									data-seq="53">
-									<div class="tmb" wfd-id="53"><img src="/upload/main/card/1587529214177.png"
-											alt="매콤함의 부드러운 반전!NEW 허니 크림치즈 상하이 버거!"></div>
-									<div class="con" wfd-id="52">
-										<strong class="tit">매콤함의 부드러운 반전!<br>NEW 허니 크림치즈 상하이 버거!</strong>
-									</div>
-								</a></li>
+				<a class="carousel-control-prev" href="#main-carousel" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#main-carousel" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+				
+				<div class="progress" id="progress">
+					<div class="progress-bar bg-warning progress-bar-striped" style="width:1%" id="myprogress"></div>
+				  </div>
+				 
+				  <script>
+					var i = 0;
+					$(function(){
+					  if (i == 0) {
+						i = 1;
+						var elem = document.getElementById("myprogress");
+						var width = 1;
+						var id = setInterval(frame, 59);
+						function frame() {
+						  if (width >= 100) {
+							clearInterval(id);
+							i = 0;
+						  } else {
+							width++;
+							elem.style.width = width + "%";
+						  }
+						}
+					  }
+					});
+					</script>
+			</div>
+			<!-- //mainEvent -->
+			<div class="contArea mainCont" wfd-id="32">
+				<div class="inner" wfd-id="33">
+					<h2 class="titMain">McDonald's LIVE</h2>
+					<ul class="whatsNew" id="menuList" wfd-id="35">
+						<li wfd-id="51"><a
+								href="/kor/promotion/detail.do?page=1&amp;seq=270&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0423_HCCshanghai&amp;utm_content=Corp_Contents"
+								data-seq="53">
+								<div class="tmb" wfd-id="53"><img src="/upload/main/card/1587529214177.png"
+										alt="매콤함의 부드러운 반전!NEW 허니 크림치즈 상하이 버거!"></div>
+								<div class="con" wfd-id="52">
+									<strong class="tit">매콤함의 부드러운 반전!<br>NEW 허니 크림치즈 상하이 버거!</strong>
+								</div>
+							</a></li>
 
-							<li wfd-id="48"><a
-									href="/kor/promotion/detail.do?page=1&amp;seq=265&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0323_CLR&amp;utm_content=Corp_Contents"
-									data-seq="50">
-									<div class="tmb" wfd-id="50"><img src="/upload/main/card/1585129454903.png"
-											alt="더 편리해진 맥도날드 앱 사용법"></div>
-									<div class="con" wfd-id="49">
-										<strong class="tit">더 편리해진 맥도날드 앱 사용법</strong>
-									</div>
-								</a></li>
+						<li wfd-id="48"><a
+								href="/kor/promotion/detail.do?page=1&amp;seq=265&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0323_CLR&amp;utm_content=Corp_Contents"
+								data-seq="50">
+								<div class="tmb" wfd-id="50"><img src="/upload/main/card/1585129454903.png"
+										alt="더 편리해진 맥도날드 앱 사용법"></div>
+								<div class="con" wfd-id="49">
+									<strong class="tit">더 편리해진 맥도날드 앱 사용법</strong>
+								</div>
+							</a></li>
 
-							<li wfd-id="45"><a
-									href="/kor/menu/detail.do?page=1&amp;seq=322&amp;sub_category_seq=9&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0402_Pear_Chiller&amp;utm_content=Corp_Contents"
-									data-seq="52">
-									<div class="tmb" wfd-id="47"><img src="/upload/main/card/1588122162048.png"
-											alt="과일 땡겨? 쉽게 칠러!자두 칠러, 배 칠러"></div>
-									<div class="con" wfd-id="46">
-										<strong class="tit">과일 땡겨? 쉽게 칠러!<br>자두 칠러, 배 칠러</strong>
-									</div>
-								</a></li>
+						<li wfd-id="45"><a
+								href="/kor/menu/detail.do?page=1&amp;seq=322&amp;sub_category_seq=9&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0402_Pear_Chiller&amp;utm_content=Corp_Contents"
+								data-seq="52">
+								<div class="tmb" wfd-id="47"><img src="/upload/main/card/1588122162048.png"
+										alt="과일 땡겨? 쉽게 칠러!자두 칠러, 배 칠러"></div>
+								<div class="con" wfd-id="46">
+									<strong class="tit">과일 땡겨? 쉽게 칠러!<br>자두 칠러, 배 칠러</strong>
+								</div>
+							</a></li>
 
-							<li wfd-id="42"><a
-									href="/kor/promotion/detail.do?page=1&amp;seq=259&amp;searchStatus=&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0120_BFCombo&amp;utm_content=Corp_Contents"
-									data-seq="47">
-									<div class="tmb" wfd-id="44"><img src="/upload/main/card/1579235808560.png"
-											alt="2900원 부터 즐기는 맥모닝 콤보를 만나보세요"></div>
-									<div class="con" wfd-id="43">
-										<strong class="tit">2900원 부터 즐기는<br> 맥모닝 콤보를 만나보세요</strong>
-									</div>
-								</a></li>
+						<li wfd-id="42"><a
+								href="/kor/promotion/detail.do?page=1&amp;seq=259&amp;searchStatus=&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=0120_BFCombo&amp;utm_content=Corp_Contents"
+								data-seq="47">
+								<div class="tmb" wfd-id="44"><img src="/upload/main/card/1579235808560.png"
+										alt="2900원 부터 즐기는 맥모닝 콤보를 만나보세요"></div>
+								<div class="con" wfd-id="43">
+									<strong class="tit">2900원 부터 즐기는<br> 맥모닝 콤보를 만나보세요</strong>
+								</div>
+							</a></li>
 
-							<li wfd-id="39"><a
-									href="/kor/story/competition/farmToRestaurant.do?utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=Farm_to_the_restaurant&amp;utm_content=Corp_Contents"
-									data-seq="23">
-									<div class="tmb" wfd-id="41"><img src="/upload/main/card/1564052119826.png"
-											alt="농장에서 레스토랑까지"></div>
-									<div class="con" wfd-id="40">
-										<strong class="tit">농장에서 레스토랑까지<br>좋은 음식을 제공하기 위한 맥도날드의 노력을 확인하세요!</strong>
-									</div>
-								</a></li>
+						<li wfd-id="39"><a
+								href="/kor/story/competition/farmToRestaurant.do?utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=Farm_to_the_restaurant&amp;utm_content=Corp_Contents"
+								data-seq="23">
+								<div class="tmb" wfd-id="41"><img src="/upload/main/card/1564052119826.png"
+										alt="농장에서 레스토랑까지"></div>
+								<div class="con" wfd-id="40">
+									<strong class="tit">농장에서 레스토랑까지<br>좋은 음식을 제공하기 위한 맥도날드의 노력을 확인하세요!</strong>
+								</div>
+							</a></li>
 
-							<li wfd-id="36"><a
-									href="/kor/promotion/detail.do?page=1&amp;seq=227&amp;rnum=5&amp;searchStatus=&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=GMAL_launching&amp;utm_content=Corp_Contents"
-									data-seq="18">
-									<div class="tmb" wfd-id="38"><img src="/upload/main/card/1564021259329.png"
-											alt="취향저격 쿠폰부터 쏠쏠한 정보까지! 맥도날드앱 출시!"></div>
-									<div class="con" wfd-id="37">
-										<strong class="tit">취향저격 쿠폰부터 쏠쏠한 정보까지! 지금 맥도날드 앱 가입하고 쿠폰받자</strong>
-									</div>
-								</a></li>
-						</ul>
-						<div class="btnMore" id="btnMore" wfd-id="34">
-							<a href="javascript:more();" class="more" title="더보기">더보기</a>
-						</div>
+						<li wfd-id="36"><a
+								href="/kor/promotion/detail.do?page=1&amp;seq=227&amp;rnum=5&amp;searchStatus=&amp;utm_medium=Corp_site&amp;utm_source=Main_cardblock&amp;utm_campaign=GMAL_launching&amp;utm_content=Corp_Contents"
+								data-seq="18">
+								<div class="tmb" wfd-id="38"><img src="/upload/main/card/1564021259329.png"
+										alt="취향저격 쿠폰부터 쏠쏠한 정보까지! 맥도날드앱 출시!"></div>
+								<div class="con" wfd-id="37">
+									<strong class="tit">취향저격 쿠폰부터 쏠쏠한 정보까지! 지금 맥도날드 앱 가입하고 쿠폰받자</strong>
+								</div>
+							</a></li>
+					</ul>
+					<div class="btnMore" id="btnMore" wfd-id="34">
+						<a href="javascript:more();" class="more" title="더보기">더보기</a>
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btnTop" wfd-id="116">맨 위로 가기</button>
-		</section>
-		<!-- //container -->
-		<footer class="footer">
-			<div class="footArea" wfd-id="8">
-				<ul class="fUtil" wfd-id="21">
-					<li class="privacy" wfd-id="27"><a href="/kor/etc/private.do">개인정보 처리방침</a></li>
-					<li wfd-id="26"><a href="/kor/etc/location.do">위치정보 이용약관</a></li><!-- 추가 -->
-					<li wfd-id="25"><a href="/kor/etc/sitemap.do">사이트맵</a></li>
-					<li wfd-id="24"><a href="/kor/store/rental.do">임차문의</a></li>
-					<li wfd-id="23"><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank"
-							title="새창 열림">고객문의</a></li>
-					<li wfd-id="22"><a href="/kor/story/people/recruit.do">인재채용</a></li>
+	<button type="button" class="btnTop" wfd-id="116">맨 위로 가기</button>
+	</section>
+	<!-- //container -->
+	<footer class="footer">
+		<div class="footArea" wfd-id="8">
+			<ul class="fUtil" wfd-id="21">
+				<li class="privacy" wfd-id="27"><a href="/kor/etc/private.do">개인정보 처리방침</a></li>
+				<li wfd-id="26"><a href="/kor/etc/location.do">위치정보 이용약관</a></li><!-- 추가 -->
+				<li wfd-id="25"><a href="/kor/etc/sitemap.do">사이트맵</a></li>
+				<li wfd-id="24"><a href="/kor/store/rental.do">임차문의</a></li>
+				<li wfd-id="23"><a href="https://voc.mcd.co.kr/MC/HOM/faqMain.jsp" target="_blank"
+						title="새창 열림">고객문의</a></li>
+				<li wfd-id="22"><a href="/kor/story/people/recruit.do">인재채용</a></li>
+			</ul>
+			<ul class="fSns" wfd-id="15">
+				<li wfd-id="20"><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank"
+						title="새창 열림">맥도날드 페이스북</a></li>
+				<li wfd-id="19"><a href="https://www.instagram.com/mcdonalds_kr/" class="ig" target="_blank"
+						title="새창 열림">맥도날드 인스타그램</a></li>
+				<li wfd-id="18"><a href="https://www.youtube.com/user/McDonaldsKor" class="yt" target="_blank"
+						title="새창 열림">맥도날드 유투브</a></li>
+				<li wfd-id="17"><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank"
+						title="새창 열림">맥도날드 카카오스토리</a></li>
+				<li class="web_accessibility" wfd-id="16">
+					<a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" class="web_accessibility"
+						title="국가 공인 인증기관 : 웹와치" target="_blank">
+						<img src="/kor/images/common/web_accessibility.png"
+							alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
+					</a>
+				</li>
+			</ul>
+			<div class="fInfo" wfd-id="9">
+				<ul class="info" wfd-id="10">
+					<li wfd-id="14">한국맥도날드(유)</li>
+					<li wfd-id="13">대표이사: 앤토니 마티네즈</li>
+					<li wfd-id="12">사업자등록번호: 101-81-26409</li>
+					<li wfd-id="11">전화주문: 1600-5252</li>
 				</ul>
-				<ul class="fSns" wfd-id="15">
-					<li wfd-id="20"><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank"
-							title="새창 열림">맥도날드 페이스북</a></li>
-					<li wfd-id="19"><a href="https://www.instagram.com/mcdonalds_kr/" class="ig" target="_blank"
-							title="새창 열림">맥도날드 인스타그램</a></li>
-					<li wfd-id="18"><a href="https://www.youtube.com/user/McDonaldsKor" class="yt" target="_blank"
-							title="새창 열림">맥도날드 유투브</a></li>
-					<li wfd-id="17"><a href="https://story.kakao.com/ch/mcdonalds/feed" class="ks" target="_blank"
-							title="새창 열림">맥도날드 카카오스토리</a></li>
-					<li class="web_accessibility" wfd-id="16">
-						<a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110"
-							class="web_accessibility" title="국가 공인 인증기관 : 웹와치" target="_blank">
-							<img src="/kor/images/common/web_accessibility.png"
-								alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)">
-						</a>
-					</li>
-				</ul>
-				<div class="fInfo" wfd-id="9">
-					<ul class="info" wfd-id="10">
-						<li wfd-id="14">한국맥도날드(유)</li>
-						<li wfd-id="13">대표이사: 앤토니 마티네즈</li>
-						<li wfd-id="12">사업자등록번호: 101-81-26409</li>
-						<li wfd-id="11">전화주문: 1600-5252</li>
-					</ul>
-					<p class="copy">COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</p>
-				</div>
+				<p class="copy">COPYRIGHT © 2019 ALL RIGHTS RESERVED BY McDonald's.</p>
 			</div>
-		</footer>
-		<!-- //footer -->
+		</div>
+	</footer>
+	<!-- //footer -->
 	</div>
 
 
