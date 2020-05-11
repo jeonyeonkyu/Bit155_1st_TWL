@@ -5,11 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-
-
-
 public class Singleton_Helper {
-	
 	public static void close(Connection conn) {
 		if(conn != null) {
 			try {
