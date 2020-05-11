@@ -2,11 +2,12 @@ package com.DAO;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.DTO.BoardDTO;
 
-import util.Singleton_Helper;
+import util.ConnectionHelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,16 +18,17 @@ import java.util.List;
 
 public class BoardDAO {
 	public static BoardDAO boardDAO;
-	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	DataSource ds = null;
 
 	public BoardDAO() {
-    	 try{
-         	conn = Singleton_Helper.getConnection("oracle");
-         }catch(Exception e){
-             e.printStackTrace();
-         }
+		try {
+			Context context = new InitialContext();
+			ds = (DataSource)context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
     }
 
 	public static synchronized BoardDAO getInstance() {
@@ -38,13 +40,13 @@ public class BoardDAO {
 	// +-------------½Ì±ÛÅæ ÆÐÅÏ Àû¿ë-------------+
 
 	public List<BoardDTO> selectList() {
+		String sql = "select * from jo_board";
 		List<BoardDTO> list = new ArrayList<>();
-
+		Connection conn = null;
 		try {
-			String sql = "select * from jo_board";
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-				
 			while (rs.next()) {
 				BoardDTO boardDTO = new BoardDTO();
 				boardDTO.setBoardNo(rs.getString("boardNo"));
@@ -59,8 +61,9 @@ public class BoardDAO {
 			System.out.println(e);
 			System.err.println("selectList SQLException error");
 		} finally {
-			Singleton_Helper.close(rs);
-			Singleton_Helper.close(pstmt);
+			ConnectionHelper.close(rs);
+			ConnectionHelper.close(pstmt);
+			ConnectionHelper.close(conn);
 		}
 		return list;
 	}
