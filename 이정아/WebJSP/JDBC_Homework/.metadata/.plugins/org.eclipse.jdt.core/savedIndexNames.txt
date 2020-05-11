@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\wlsgm\Desktop\1조 학습기록 저장소\이정아\WebJSP\JDBC_Homework\.metadata\.plugins\org.eclipse.jdt.core
-3833045593.index
-799011890.index
-1460550983.index
