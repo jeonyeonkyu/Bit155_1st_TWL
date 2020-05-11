@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button class = "button">버튼</button>
+    <button id = "test">숨겨질 버튼</button>
+    <script type="text/javascript">
+    $(document).ready(function() { //항상 사용되는 구문
+        $(".button").click(function() { //안의 함수 내용을 정의 - button이라는 클래스가 클릭이 되면, test라는 id값을 가진 것을 hide 시키겠다.
+            $("#test").hide();
+        });
+    });
+     </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id="text">text</button>
+    <button id="html">html</button>
+    <button id="value">value</button>
+    <p></p>
+    <input type="text" value="">
+    <script type="text/javascript">
+    $(document).ready(function () {
+       $("#text").click(function() { 
+           $("p").text("안녕하세요.");
+       });
+       $("#html").click(function() {
+           $("p").html("<b>안녕하세요.</b>");
+       });
+       $("#value").click(function() {
+           $("input").val("안녕하세요."); //각 태그의 내용을 parameter 안의 내용으로 덮어쓰기
+       });
+    });
+    </script>
+</body>
+</html>

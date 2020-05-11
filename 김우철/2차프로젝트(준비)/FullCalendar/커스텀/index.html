@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <title>커스텀</title>
+  <link href='./fullcalendar/core/main.css' rel='stylesheet' />
+  <link href='./fullcalendar/daygrid/main.css' rel='stylesheet' />
+  <link href='./index.css' rel='stylesheet' />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src='./fullcalendar/core/main.js'></script>
+  <script src='./fullcalendar/daygrid/main.js'></script>
+  <script src="./fullcalendar/interaction/main.min.js"></script>
+  <script src="./fullcalendar/timegrid/main.min.js"></script>
+</head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    // $.ajax({
+    //   url: "data.json",
+    //   type: "get",
+    //   dataType: 'json',
+    //   success: function (data) {
+    //     console.log(data[0].title);
+    //   }
+    // })
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: ['interaction', 'dayGrid'],
+      header: {
+        left: 'prevYear,prev,next,nextYear today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      },
+      //defaultDate: '2020-02-12',
+      navLinks: true, // can click day/week names to navigate views
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      eventSources: [{
+        events: function (info, successCallback, failureCallback) {
+          $.ajax({
+            url: "data.json",
+            type: "get",
+            dataType: 'json',
+            success: function (data) {
+              successCallback(data); //json데이터 화면에 뿌려줌
+            }
+          })
+        }
+      }]
+      // events: [
+      //   {
+      //     title: data[0].title,
+      //     start: data[0].start
+      //   },
+      //   {
+      //     title: 'Long Event',
+      //     start: '2020-05-07',
+      //     end: '2020-05-10'
+      //   }
+      //   // {
+      //   //   groupId: 999,
+      //   //   title: 'Repeating Event',
+      //   //   start: '2020-02-16T16:00:00'
+      //   // },
+      //   // {
+      //   //   title: 'Click for Google',
+      //   //   url: 'http://google.com/',
+      //   //   start: '2020-02-28'
+      //   // }
+      // ]
+    });
+
+    calendar.render();
+  });
+
+</script>
+</head>
+
+<body>
+  <div id='calendar'></div>
+
+</body>
+
+</html>

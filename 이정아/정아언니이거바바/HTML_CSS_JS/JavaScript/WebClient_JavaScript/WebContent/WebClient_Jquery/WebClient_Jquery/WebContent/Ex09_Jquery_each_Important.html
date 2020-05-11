@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*
+            한번 정리
+    
+            - JAVA에서의 개선된 FOR문 : for(String str : 배열(Collection)){} //배열의 값을 받음
+            - JavaScript 개선된 FOR문 : for(let index in Array){Array[index]} //인덱스 값을 받음
+              JavaScript(Object json) : for(let key in Object(json)){ key } //key 값을 받음
+                                        {Object[key] }
+            - Jquery : each() : 반복구문
+            - Jquery : 
+            1. $(selector).each(function(){this});
+            2. $(selector).each(function(index){this});
+            3. $(selector).each(function(index,element){this}); - 가장중요
+    
+            -Jquery :
+            1. $.each(selector , function(){this});
+            2. $.each(selector , function(index){this});
+            3. $.each(selector , function(index, element){this}); - 가장 중요 위의 것과 결과는 똑같으나 편한걸로 골라쓰기 but 아래것은 selector가 객체로 들어옴 위에는 요소?
+    
+            selector가 json인 경우
+            var obj = {name:"홍길동", age:100}
+            $(obj).each(function(key, value){}); 
+        */
+
+        $(document).ready(function () {
+            $('p').each(function () { //3번 호출 p태그의 갯수만큼 = 재귀호출 = callback함수 //1번 방법 쓴 것
+                console.log("this :" + $(this).text()); //this는 foreach가 돌 때 마다 가져오는 값(p태그 3개 값)
+            });
+
+
+            $('p').each(function (index) { //3번 호출 p태그의 갯수만큼 = 재귀호출 = callback함수 //2번 방법 쓴 것(파라미터값)
+                console.log("index:" + index);
+                console.log("this :" + $(this).text()); //배열의 첨자값 + p태그의 값을 가져와줌 p태그의 0번째는 java, 1번째는 jsp ... 이렇게
+
+                //$(this).attr("id", "param-" + index ); //attr함수는 속성을 부여하는 것 각각의 p태그에 id속성을 부여하고 param-0, param-1, param-2 이런식으로 부여가 됨
+                //다수의 동일한 p태그에 충돌 안나게 식별값을 줄 수 있음 (동적으로 !)
+
+                //attr() 응용 - 다수의 속성을 정의 할 수 있다.
+                //Jquery의 함수들은 다수의 parameter를 받을 수 있다. 라는 점을 기억. 만약 그런데 parameter가 json객체로 들어온다면
+                $(this).attr(
+                    {
+                        "id": "param-" + index,
+                        "style": "color:red", //id값 부여와 style을 json객체 형태로 한번에 부여시킨 것
+                    }
+                );
+
+            });
+
+            //활용도가 제일 높은 방법
+            //$(selector).each(function(index,element){element});
+            $('p').each(function (index, element) {
+                console.log("index: " + index);
+                //element라는 parameter가 받는 값은 첫번째 돌 때 <p>java</p> 두번째 돌 때 다음거,,, 돌면서 다 받아옴
+                console.log("element:" + element + "/" + $(element).text());
+            });
+
+            $('#btn').click(function () {
+                alert($('#param-1').text()); //알림창으로 param-1의 값을 가져와서 보여준다. //순서 중요 먼저 param id값을 부여해줘야 함.
+            });
+
+            /*
+                응용
+                javaScript
+                let arr = ['사과', '배', '수박']; //Array
+                let ojb = {} //객체{json}
+                let arrobj = [{},{},{}]; //객체배열
+            */
+            var array = [
+                { "name": "naver", "link": "www.naver.com" },
+                { "name": "daum", "link": "www.daum.com" },
+                { "name": "bit", "link": "www.bit.com" }
+            ];
+
+            //문제 : name값, link 값을 출력
+            //객체 $(obj).each(function(key,value){});
+            //$(selector).each(function(index,element){element});
+
+            $(array).each(function (index, element) { //parameter명은 아무거나 해도 상관없음 그러나 이렇게 하자
+                console.log(element); //객체. 속성명, 객체["속성명"]
+                console.log(element.name + "/" + element["link"]);
+            });
+
+            //구분 
+            //$(selector).each(function(index,element){this}); //body 안의 태그 읽어올 때 좋음
+            //$('p')
+
+            //$.each(selector , function(index, element){this}); //script 안의 배열이나 객체 읽어올 때 좋음
+            //$.each(Array.)
+
+            var board = {
+                values: [
+                    { no: 1, title: "hello world" },
+                    { no: 2, title: "korea" },
+                    { no: 3, title: "bit" },
+                ],
+
+                search: "검색"
+            };
+
+            //1번 $.each() 사용해서 no값, title값을 출력
+            $.each(board.values, function (index, element) {
+                console.log(index + "/" + element.no + "/" + element["title"]);
+            });
+
+            //2번 방법 >>(board)안에 들어가있는 값이 객체이므로, key, value를 가지고 있음 (key, value만 출력됨)
+            $.each(board, function (key, value) {
+                console.log(key + "/" + value);
+            });
+
+            //3번 방법 $.each() no, title, search 값을 출력하기 이 방법을 자주 써야함. 1번, 2번 합친 것이 3번 == 객체와 배열이 섞여있는 케이스
+            $.each(board, function (key, value) {
+                //value 값이 text도 있고 Array도 있음
+                //타입을 비교해서 그것에 따라 조건을 달리해야 함
+                if (typeof (value) == "object") { //object타입 즉 객체(배열)인 경우 or 그렇지 않은 경우
+                    $.each(value, function (index, element) {
+                        console.log(index + "/" + element.no + "/" + element["title"]);
+                    });
+                } else {
+                    console.log(key + "/" + value);
+                }
+            });
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <p>java</p>
+    <p>jsp</p>
+    <p>oracle</p>
+    <input type="button" value="click" id="btn">
+
+
+</body>
+
+</html>

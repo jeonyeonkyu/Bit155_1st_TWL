@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+		$(function(){
+			$('#btn .btnload').click(function(){
+				$.getJSON("Ex05_json.json",function(data){
+				let table = "<table border ='1'>";
+				table += "<tr><th>index</th><th>num</th><th>name</th></tr>";
+					$.each(data,function(index,obj){
+						table += "<tr>";
+							table += "<td>" + index + "</td>";
+							table += "<td>" + obj.num + "</td>";
+							if(obj.num){
+								table += "<td>" + obj["Name"] + "</td>";
+							}else{
+								table +="<td>" +"EMPTY" +"</td>";
+							}
+							table+="</tr>";
+					})	
+					table += "</table>";
+					$('#display').append(table);
+			})
+		})
+		})
+		</script>
+</head>
+<body>
+<div id="btn">
+		<div class="btnload">JSON DATA LOAD</div>
+	</div>
+	<div id="display"></div>
+</body>
+</html>
