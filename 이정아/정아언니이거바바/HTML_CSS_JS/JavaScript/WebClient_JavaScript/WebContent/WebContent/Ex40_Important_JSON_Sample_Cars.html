@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+<body>
+
+<p>Looping through arrays inside arrays.</p>
+
+<p id="demo"></p>
+
+<script>
+//객체->문자열(stringify)
+var myObj = {name: "John", age: 31, city: "New York"};
+console.log(myObj); //여기까지는 객체
+var myJSON = JSON.stringify(myObj); //여기부터는 문자열 (String) ->객체를 문자열로 바꾸는 함수 stringify()
+console.log(myJSON);
+//login.jsp?name=john&age=31&city=New York 과 같은 문자열 형태로 서버에 전송한다.
+
+//문자열->객체(parse)
+var myJSON2 = '{"name":"John", "age":31, "city":"New York"}';
+console.log(myJSON2); //찍어보면 그대로 찍힌다. 객체이기 때문
+var myObj2 = JSON.parse(myJSON); // JSON.parse() 문자열을 JSON객체로 바꿔주는 것
+
+//JSON 객체의 데이터를 [read] 할 때
+console.log(myObj2.name); //John
+console.log(myObj2["name"]); //[key이름] 으로도 할 수 있음 = John //객체["속성명"]
+
+//myObj2.name = "홍길동"; >>setter가 내부적으로 있어서 값이 변경(쓰기)됨
+//console.log(myObj2.name) >>getter가 내부적으로 있어서 값을 읽어옴
+
+/*확장자
+index.html / index.htm 의 2종류가 있다. 
+css는 [common.css]
+javascript는 [common.js]
+json은 [common.json]
+xml은 [common.xml]
+
+The file type for JSON files is ".json"
+The MIME type for JSON text is "application/json"
+*/
+
+//json문서를 parsinn(보기쉽게 바꿔주는) 사이트들이 있다. jasonparser
+
+/*  json객체가 value값으로 json객체를 가질 수 있다. /////////////////////////////////////////////
+    {"employee":{ "name":"John", "age":30, "city":"New York" }}
+    
+    혹은 value값으로 배열을 가질 수 있다.
+    {"employees":[ "John", "Anna", "Peter" ]} ////////////////////////////////////////////////
+
+    { "sale":true } //true, false값도 가능하다.
+*/
+
+
+let myCars;
+myCars = {
+  "name":"John",
+  "age":30,
+  "cars": [
+    {"name":"Ford", "models":["Fiesta", "Focus", "Mustang"]},
+    {"name":"BMW", "models":["320", "X3", "X5"]},
+    {"name":"Fiat", "models":["500", "Panda"] }
+  ]
+}
+
+// for(let index in myCars.cars){
+//     //console.log(myCars.cars[index]); //0번째 객체 1번째 객체, 2번째 객체
+//     //console.log(myCars.cars[index].models); //model의 배열들이 찍힘  "models":["Fiesta", "Focus", "Mustang"]}, "models":["320", "X3", "X5"]},
+//     console.log("차량이름: " + myCars.cars[index].name); //index가 돌면서 속성명으로 접근해서 차량 이름만 뽑아내기
+//     for(let i in myCars.cars[index].models){
+//     console.log("차량모델: " + myCars.cars[index].models[i]); //models의 0,1,2번째 방의 값
+//   }
+//   }
+
+  for(let index in myCars.cars){
+    //console.log(myCars.cars[index]); //0번째 객체 1번째 객체, 2번째 객체
+    //console.log(myCars.cars[index].models); //model의 배열들이 찍힘  "models":["Fiesta", "Focus", "Mustang"]}, "models":["320", "X3", "X5"]},
+    console.log("차량이름: " + myCars.cars[index].name); //index가 돌면서 속성명으로 접근해서 차량 이름만 뽑아내기
+    for(let i in myCars.cars[index].models){
+    console.log("차량모델: " + myCars.cars[index].models[i]); //models의 0,1,2번째 방의 값
+  }
+  }
+
+
+</script>
+
+</body>
+</html>

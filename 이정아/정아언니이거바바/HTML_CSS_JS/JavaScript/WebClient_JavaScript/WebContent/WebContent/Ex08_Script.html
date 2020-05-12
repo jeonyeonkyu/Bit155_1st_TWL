@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //유효성 검증
+        //1. 입력을 다 한 후, client가 서버로 전송을 보내면 서버에서 검증(java코드가 맞는지 틀린지) 그리고 검증여부를 client에게 다시 전송 : ID중복체크
+        //2. 굳이 client쪽에서 서버로 전송하지 않고도 검증 가능한 것들은 입력유무, 숫자 문자 검증, 주민번호 검증... 검증이 끝난 후에 서버로 전송
+        //최대한 client단계에서 처리 할 수 있는 부분은 처리한다. 서버와의 네트워크 트래픽을 줄이자.
+        
+        //2번에 대한 해결을 javascript를 통해서 한다.
+        function send(){
+            //javascript가 우리가 원하는 요소의 정보를 가지고 있어야 한다. 그래야 입력된 값에 대한 검증이 가능하다.
+            //var ele = document.forms[0].elements[0].value 로 ele 변수에 입력한 데이터를 뽑아 낼 수 있지만,
+            //form에 loginform이라는 name속성이 있으므로 name속성값을 통해서 form의 name이 가진 속성 값에 접근이 가능하다.
+            var inputuserid = document.loginform.txtuserid;
+            console.log(inputuserid);
+            console.log(inputuserid.value);
+
+            //실제 활용은 위의 방법보다는 [DOM script]를 이용한다. 이 방법 주로 사용
+            var userpwd = document.getElementById("txtpwd"); //대신 이 방법을 사용하려면 id값을 통해 찾아가는 것이기 때문에 id속성값을 기본적으로 가지고 있어야 한다.
+            console.log(userpwd);
+            console.log(userpwd.value);
+
+            //검증 로직 만들기(마음대로)
+            if (inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <=10)) {
+                alert("다시 입력해주세요");
+                document.loginform.txtuserid.focus(); //focus 함수는 깜빡거리는 함수 (입력하도록 하는 곳에 focus를 맞추고)
+                inputuserid.select(); //select는 블럭을 잡아준다. 틀린 곳에 대한 표시를 블럭으로 해줌
+            }else{
+                alert("로그인 되었습니다.");
+                //여기서 서버로 전송 (검증이 끝났으므로)
+
+                document.loginform.action="Ex08_login.jsp"; //loginform에 대한 action에 대한 정의를 위에서 따로 정의 해줄 수 있음. (아래에서 굳이 안해도?)
+                document.loginform.submit(); //form이 이미 submit이라는 함수를 내장하고 있음. (전송함수)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" method="" name="loginform">
+        ID:<input type="text" name="txtuserid"><br> <!--name은 [중복값]을 쓸 수 있다 + 서버로 전송 할 때 사용하는 변수명으로 사용 중요합니다.-->
+        PWD:<input type="password" name="txtuserpwd" id="txtpwd"><br> <!--ID값은 [하나만] 쓸 수 있다 + Front(javascript,css에서 사용) 중요합니다. 헷갈리면 그냥 둘 다 써버리기-->
+        <input type="button" value="전송" onclick="send()"> 
+
+        <!--type="submit"
+            type="image"
+            type="button" + 이벤트 동반(onclick 함수를 통해서)-->
+  
+
+    </form>
+</body>
+
+</html>

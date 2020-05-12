@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script type="text/javascript">
+
+        //while문
+        var i = 1;
+        var sum = 0;
+        while (i <= 10) {
+            sum += i;
+            i++;
+        }
+        document.write("sum: " + sum + "<br>");
+
+
+        var sum2 = 0;
+        for (let i = 0; i <= 10; i++) {
+            if (i % 3 === 0) {
+                console.log("i: " + i);
+                //console.log(0%3); 자바는 0으로 나눌 수 없지만 Js는 나눌 수 있다. 0으로 나눈 모든 값은 0
+                console.log(0 % 3);
+                break;
+            }
+            sum2 += i;
+        }
+        document.write("sum2 :" + sum2 + "<br>");
+
+        //do while문
+        var a = 1;
+        do {
+            document.write(a + "<br>");
+            a++;
+        } while (a < 11);
+
+        //오늘의 포인트 Array
+        //java에서는 Array : Collection 정적 : 동적배열로 나누어서 처리
+        /*
+            <java code>
+            int[] arr = new int[10];
+            int[] arr2 = new int[]{1,2,3,4};
+            int[] arr3 = {10,20,30}; -> 얘 주의해서 보기
+    
+            ArrayList al = new ArrayList();
+            al.add(1);
+            al.add(2);
+            al.get();....
+    
+            <java Script>
+            JavaScript : Array(정적 + 동적)
+        */
+       // var arr = []; (정적배열 만들기?)
+        var arr = [10, 20, 30]; //java에서는 int[] arr = {10,20,30} 과 같음 //선언과 할당 동시에 하는 것
+        for (let i = 0; i < 3; i++) {
+            document.write(arr[i] + "<br>");
+        }
+        //int[] arr = new int[10]; //int타입이라서 값을 넣지 않으면 기본 0으로 셋팅되지만,
+        var eng = new Array(3); //아직 타입이 정해지지 않아서 기본값이 정의되지 않았다고 나온다.
+        for(let i = 0; i < eng.length; i++){
+            document.write(eng[i]+"<br>"); //undefined //값이 들어갈 때 타입이 할당되므로... 그러므로 이 방법은 좋지 않다.
+        }
+        eng[0] = 100;
+        eng[1] = 200; //초기화를 해주면서 이제 타입이 설정됨
+        eng[2] = 300;
+        for(let i = 0; i < eng.length; i++){
+            document.write(eng[i]+"<br>");
+        }
+
+        //동적배열을 만드는 좋은 방법은 아래처럼 빈 배열을 만들고 push로 넣는 것
+        var arr2 = [];
+        arr2.push(10);
+        arr2.push(20);
+        
+        //1. 배열(Array) 기본 방법은
+        var array = new Array(5); //이것은 안좋은 방법임. 방을 만들고 초기화를 안해주는거기 때문
+        
+        //2. 배열을 만들고 바로 초기화를 한다면?
+        var array2 = new Array(10,20,30); //이것도 안좋은 방법
+
+        //3.이 방법을 사용하세요(값으로 배열을 초기화 정적+동적) : 내부적으로 stack구조를 가지고 있다. (push. pop이용)
+        var array3 = [1,2,3]; //이렇게나
+        var array4 = []; //이렇게 (이 방법은 추후에 필요하면 push로 데이터 넣기)
+        array4.push(19); //넣기
+        document.write(array4.pop()); //꺼내기
+
+        
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

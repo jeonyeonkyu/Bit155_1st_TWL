@@ -1,0 +1,58 @@
+tomcat7.0 서버에 있는 Jar 복사 
+-tomcat-dbcp 파일을 사용해서 DBCP
+
+
+2. WEB-INF > lib >
+ - ojdbc6.jar
+ - tomcat-dbcp.jar
+ 
+ -------------------------------------------------------------------------------
+ 9.0 버전부터
+ java resources/src/libraries/tomcat-dbcp.jar 내장하고 있다. 
+ 
+ 
+ 
+ 
+ 3. Tomcat 설정파일인 context.xml 파일
+ -META-INF > context.xml
+ 만약에 모든 프로젝트에서 공통으로 사용하고 싶다면
+ - Tomcat9.0 서버가 가지고 있는 context.xml 파일에 
+   연결설정 및  pool 옵션 설정을 하면 됩니다 
+     뭔소리냐? context.xml 설정하면 모든 파일이 공유할수 있다. 
+     
+ 현재 프로젝트에서 설정하기 위해서  
+ -META-INF > context.xml 작업 실행
+ (자바에서 설정관련 파일을 저장하는 폴더)
+ 
+ 
+ 4. web.xml 기본 설정 하기
+ resource-ref 통한 context.xml 설정참조 코딩
+<resource-ref>
+   <description>Connection Info</description>
+   <res-ref-name>jdbc/oracle</res-ref-name>  /jdbc/oracle == context.xml설정
+   <res-type>javax.sql.DataSource</res-type>
+   <res-auth>Container</res-auth>
+</resource-ref>
+ 
+ 
+ 
+ 
+ 
+ 5. 프로그램 설정 (JNDI 사용)
+ //컴에서 C: (java:comp/env) 밑에있는   (->jdbc->oracle) jata.txt 찿아라 
+   Context context = new InitialContext();
+  context.lookup("java:comp/env/jdbc/oracle"); 
+
+3. JNDI(Java Naming and Directory Interface) 
+- 서비스가 다른 서비스를 탐색할 때 유용하게 사용된다. (분산된 자원)
+- 분산된 자원 끼리의 탐색을 원할하게 하기 위한 type casting 임. (DNS 도 이에 속함) 
+- JNDI에 설정해 놓았다는것은 Context.xml에 리소스를 생성해놓은 것을 말한다.
+  
+// 등록된 객체 = context.lookup("등록된 JNDI 이름");
+DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/mySpring"); 
+// 파일 시스템에서 루트의 역할을 하는 것이 c:\에서 부터 찾는 것처럼 실제 등록된 지원도
+// 루트의 역할을 하는 곳 부터 찾아야 하고 그 역할을 하는 것이 java:comp/env이다.
+// 파일 시스템 폴더명을 적을 때 c:\ 폴더명을 적는 것처럼 자원을 찾을 때에도 java:comp/env/JNDI 명으로 표현한다.  
+  
+  
+  

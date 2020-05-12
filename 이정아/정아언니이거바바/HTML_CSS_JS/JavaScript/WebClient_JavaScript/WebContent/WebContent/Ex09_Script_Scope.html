@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var, let, const</title>
+    <script type="text/javascript">
+    var v = "hello"; //전역변수(global variable) //굳이 자바랑 비교하자면 instance variable
+    var p = "pppp";
+    //아래처럼 모든 함수에서 사용 가능하다.
+    function func(){
+         v = "world";
+         p="QQQQ" //전역변수에 덮어쓰는걸로 해당되어서 QQQQ가 출력됨
+         //함수 내부에서 var v; -> 지역변수
+         //함수 내부에서 v; -> 전역변수 (타입이 붙어있는지 아닌지의 차이) 헷갈리니까 이렇게 쓰지 말자
+      document.write("func: " + v +"<br>");
+    }
+    func(); //호출에 의해서 동작
+    document.write(v+"<br>");
+    document.write(p);
+    /*
+        function makePlan(){
+            var name; //function level
+
+        if(){
+            let id; //block level
+        }    
+        }
+    */
+    //Es6 이전의 var의 역할
+    /*
+        
+    
+    */
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

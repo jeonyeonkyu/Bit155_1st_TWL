@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax get함수 보기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    /*
+    ◆get()
+     - 문법 : jQuery.get( url [, data ] [, success ] [, dataType ] )
+     httpReq.open("GET") ,  httpReq.open("POST")로 설정을 했었는데, get함수는 미리 get으로 설정되어 있는 것 
+    
+    */
+        $(function () {
+            $('#btn').click(function(){
+                $.get("Ex03_Company.xml",function(data){  //서버가 보낸 data를 parameter로 받는 것. 확인해보면 xml데이터를 통째로 받아온다.
+                    //console.log(data); //잘 받아왔는지, 무엇을 받아왔는지 콘솔로 확인해보고, 이후로는 데이터를 가공
+                    $('#display').empty(); //자식요소를 제거 (원래 있던 것을 없애고 받아온 데이터를 추가하기 위해 // 안없애면 있는 데이터에 추가해버림)
+                    console.log($(data).find('Company')); //find함수를 통해 Company만 가져와보기(배열) [Company, Company]
+                    //$.each($(data)) 혹은
+                    $(data).find('Company').each(function(){
+                        //console.log(this); //.each(function(){index, element}) 로 해도 됨. this가 company 배열셋트를 하나씩 들고 옴 (총 2개) 0번방 Company, 1번방 Company
+                        let entry = $(this); //this가 가지고 있는 결과를 entry에 넘겨준 것
+                        console.log(entry); //Company들을 가지고 있음
+                        /*
+                            <Company CompanyType="private">
+                            <CompanyName>Bit</CompanyName>
+                            <CompanyNumber>2019</CompanyNumber>
+                            <CompanyAddress>서울시 서초구</CompanyAddress>
+		                    <Name></Name>
+	                        </Company> 
+                            그룹이 하나씩 들어있는 것 이후로는 가공을 하면 됨.
+                        */
+                       let html = "<div>" + entry.attr('CompanyType') + "</div>" //entry는 company가 가지고 있는 값들을 의미함. 그 값들의 속성(element) 중 Type을 가지고 오겠다. 이하동문
+                       html+= "<div>" + entry.find('CompanyName').text() + "</div>"
+                       html+= "<div>" + entry.find('CompanyNumber').text() + "</div>"
+                       html+= "<div>" + entry.find('CompanyAddress').text() + "</div>"
+                       html+= "<div>" + entry.find('Name').text() + "</div>"
+                       $('#display').append(html);
+
+                       //만약에 var companyarr = $(data).find('Company');
+                       //$.each(companyarr,function(index, obj){}); 이런식으로도 사용이 가능하다.
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="button" id="btn" value="회사소개">
+    <div id="display" style="background-color: gray;">DATA</div>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .democlass {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <h1 class="democlass">Hello world_1</h1>
+        <h1 class="democlass">Hello world_2</h1>
+        <h1 class="democlass">Hello world_3</h1>
+    </div>
+
+    <script type="text/javascript">
+
+        //배열 전체 값으로 접근해서 속성을 없앤 것
+         var arr = document.getElementsByTagName("h1") //h1 태그"들" 을 들고 온다.
+        // for(let index in arr){
+        //     console.log(arr[index]); //h1태그를 다 들고와서 console창에 띄움
+        //     //arr[index].removeAttribute("class"); //removeAttribute를 통해 class 속성을 다 지워버려서 css값 준 것들이 다 빠짐
+        //     //document.body.removeChild(arr[index]); h1은 div의 자식이기 때문에 body로 접근해서 지우는 것은 불가능
+            
+        //     //document.getElementById("div").removeChild(arr[index]);
+        //     /*
+        //     if(arr.length >0){
+        //         console.log(index + "/" + arr.length + "/" + (arr.length-1));
+        //         document.getElementById("div").removeChild(arr[arr.length -1]);
+        //         //위와 같은 방법으로 시도했을 때, length값이 점점 줄어들면서 0과 가까워지기 때문에
+        //         //마지막 2번 node가 0이 되면서 에러가 나기 때문에,(인덱스 값을 못잡게 됨) 중간에 튀어버려서
+        //         //마지막에 조건으로 length-1을 해주면 length가 하나씩 줄어들면서 2->1->0 순으로 돌게 되면서
+        //         //그 안에 들어있는 요소들을 다 지우게 됨.
+
+        //     }else{
+        //         alert("모두 삭제 되었습니다.");
+        //     }*/
+        // }
+         var len = arr.length;
+        for(let i = 0; i < len; i++){
+            arr[arr.length -1].remove(); //remove child와 달리 본인 삭제
+            console.log(arr[i]);
+        }
+
+        //document.getElementsByTagName("h1")[0].removeAttribute("class");
+        //이런식으로 인덱스값을 통해 특정 부분의 속성을 없애는 것도 가능하다. 0번째의 h1만 class를 제거
+
+        	 //*******복습하기********
+	    /*var len = arr.length;
+	  	for(var i= 0 ; i < len ; i++){
+	  		console.log("len :" + len);
+	  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+	  		console.log(arr[arr.length -1]); 
+	  		console.log("arr.length -1 : " + (arr.length -1));
+	  		console.log("***********************************");
+	  		document.getElementById("div").removeChild(arr[arr.length -1]);
+	   		//arr.length -1 >> 2,1,0
+	  	}
+        
+	  	
+	  	 /*
+		  	for(var i= 0 ; i < arr.length ; i++){
+		  		console.log("arr.length :" + arr.length + " - " +  "i : " + i);
+		  		console.log(arr[i]);
+		  		console.log("***********************************");
+		  		document.getElementById("div").removeChild(arr[i]);
+		   	    //[h1][h2][h3]
+		   	    //[0] [1] [2]
+		   	    //[h2][h3]
+		   	    //[0] [2]
+
+              }
+              */
+        
+
+
+        </script>
+</body>
+
+</html>

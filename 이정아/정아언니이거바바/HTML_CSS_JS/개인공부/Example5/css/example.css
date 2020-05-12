@@ -1,0 +1,39 @@
+ @import url(https://fonts.googleapis.com/earlyaccess/notosansthaana.css); */
+body{
+    font-family: 'Noto sans Thaana';
+}
+
+.head{
+padding-left:10px;
+}
+.main{
+display:table;
+}
+.navigation{
+    width: 150px;
+    background-color: gray;
+    color:white;
+    padding: 10px;
+    display: table-cell;
+}
+.section{
+    padding-left: 10px;
+    display: table-cell;
+}
+
+.footer{
+text-align: center;
+}
+
+@media(max-width: 480px){
+    .main{
+        display:block;
+    }
+    .navigation{
+        width:480px;
+    }
+}
+
+.changed{
+color:blue;
+}

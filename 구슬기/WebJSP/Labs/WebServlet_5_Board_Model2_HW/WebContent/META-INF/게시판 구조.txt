@@ -1,0 +1,159 @@
+1. 현재 프로젝트 게시판 만들기 연습 (Model1 방식으로)
+1.1 [JSP] 가 [클라이언트] 요청을 받고 흐름을 제어
+
+단) Model > DTO, DAO 사용
+
+단) Servlet 사용하지 않아요   
+
+1.2 
+   <form action="loginok.jsp" 코딩 .... 모델 1방식은 요청을 받는 주소가 jsp 이다 
+   
+1.3 Model2 기반 MVC
+    [servlet] 가 [클라이언트] 요청을 받고 흐름을 제어
+   
+    <form action="Memolist" 코딩 .... 모델2방식은 요청을 받는 주소가 survlet 이다 
+----------------------------------------------------------
+게시판 만들기
+
+1. DB 설계 (Table 만들기)
+1.1 요구사항 파악
+-게시판 종류 (일반게시판, 답변형 게시판으로 나눠진다)옵션으로 답글 
+--일반게시판 (답글(x)) >> 공지사항 게시판
+--답변(답글) 계층형 게시판  (답글(0))
+--일반게시판 , 답변(계층형) 게시판  : 댓글게시판 (옵션) : 비동기(비기능적 요구사항)
+
+
+게시판 (일반,계층형)  얘네는 또 회원전용이냐 비회원전용이냐 로 나뉘어진다 
+	회원가입하지 않고 글을 쓸때에는 비밀번호를 입력한다. 그래서 설계자체가 다르다 
+---회원 전용 게시판
+---비회원 전용 게시판
+
+일반게시판 : 회원전용 (로그인한 사용자 (권한처리 : session))
+일반게시판 : 비회원전용 (비번처리 :글수정 , 삭제  권한 처리) > 글쓴이 , 비번 
+
+계층형게시판 : 회원전용 (로그인한 사용자 (권한처리 : session))
+계층형게시판 : 비회원전용 (비번처리 :글수정 , 삭제  권한 처리) > 글쓴이 , 비번 
+
+-----------------------------------------------------------------
+테이블 설계   --기본적으로는 세팅이 되어있고 필요에따라 첨삭한다 
+(비인증형 일반 게시판)
+create table board(
+	idx number constraint pk_board_idx primary key,  글번호에는 not null & unique한 데이터가 들어오게 하겠다 
+    --글번호 (오라클 : sequence 객체) --MS-sql , mysql(테이블에 종속 자동증가)
+    writer varchar2(30) not null,
+    --글쓴이(필수 입력 사항 : 회원전용 > 로그인한 ID값 (session) , 비회원전용 : 입력)//session.setAttribute해서 로그인한 아이디를 담아놓겠다.
+    																				 //글쓸때는 session.getAttribute ..를 사용한다 
+    pwd varchar2(30) not null,
+    --회원전용(x) , 비회원(0)  비회원은 누가 썻는지 검증할때 필요하니까...비번..
+    subject varchar2(50) not null, --글제목
+    content varchar2(2000) not null, 글내용
+    filename varchar2(50), --파일명 또는 파일경로 (note.hwp)
+    filesize number, --byte 옵션
+    writedate date default SYSDATE, --기본값 설정 (DB 서버 날짜 insert)
+    readnum number default 0, --글 조회수 증가 (업무 로직 구현)
+    homepage varchar2(20), --옵션 ...
+    email varchar2(20) -- 옵션 ... 필수 입력사항이 아님 (null 허용) 
+);
+
+------------------------------------------------------------
+(비인증형 계층형 게시판)     //답글달수 있는 게시판 
+create table multiboard(
+	idx number constraint pk_board_idx primary key,
+    --글번호 (오라클 : sequence 객체) --MS-sql , mysql(테이블에 종속 자동증가)
+    writer varchar2(30) not null,
+    --글쓴이(필수 입력 사항 : 회원전용 > 로그인한 ID값 (session) , 비회원전용 : 입력)
+    pwd varchar2(30) not null,
+    --회원전용(x) , 비회원(0)
+    subject varchar2(50) not null, --글제목
+    content varchar2(2000) not null, 글내용
+    filename varchar2(50), --파일명 또는 파일경로 (note.hwp)
+    filesize number, --byte 옵션
+    writedate date default SYSDATE, --기본값 설정 (DB 서버 날짜 insert)
+    readnum number default 0, --글 조회수 증가 (업무 로직 구현)
+    homepage varchar2(20), --옵션 ...
+    email varchar2(20), -- 옵션 ... 필수 입력사항이 아님 (null 허용) 
+    
+    --추가적인 컬럼  이 컬럼 세개의 유무가 계층과 일반의 차이다         //이거 이해하는게 중요하다 ☆☆☆
+    refer number default 0, --참조글 or 글의 그룹번호
+    depth number default 0, --글의 깊이, 들여쓰기 (화면처리) 로직 (x)  //이컬럼이 없으면 논리적문제 전혀 없음 , 대신 들여쓰기 없어짐 
+    step  number default 0, --글의 정렬 순서 , 답글 정렬				//얘는 뭐가 뭐의 답글 부모글인지를 알기위해 꼭 필요하다 
+);
+
+idx ,  ref  , depth , step ,   		title
+1       1       0      0       		원본글  
+2       2       0      0       		원본글2
+3       1       1      1       		원본글     답글1-1 (원본글 : idx:1)
+4       2       1      1       		원본글2  답글2-1 (원본글 : idx:2) 
+5       1       2      2(+1)> 3     답글1-2  답글1-1 (읽고 있는 글 : idx:3)
+6       1       2      2        	답글1-1  답글1-1 (읽고 있는 글 : idx:3)
+
+--------------------
+order by ref desc  , step asc    //게시판 첫 퀴리문
+// ref 를 desc 한다는 얘기는 최신글을 앞에 두겠다는 얘기 
+// step 를 asc  얘기는 그 그룹안에서 스텝 숫자가 작은게 젤 앞에온다 
+
+화면에 출력
+idx
+2           2    0    0
+>4          2    1    1 
+1           1    0    0
+>3          1    1    1
+>>7         1    2    2
+>>6         1    2    2+1 > 3
+>>5         1    2    3+1 > 4
+------------------------------------------
+일반 게시판
+select * from board order by idx desc (최신글 위에)  //asc 해도 상관은 없다 (최신글이 제일뒤로 감)
+
+계층형 게시판
+논리 2가지
+1. 최신 답글을 위로
+2. 답글쓴 순서대로 
+
+1. 최신 답글을 위로
+규칙 : 원본글 : depth , step >> 0 0
+	 (같은  ref)현재 read 한 글의 step 값다 더 큰 step 값이 있으면 +1  
+          답글 : depth+1  step+1
+
+select * from multiboard order by ref desc , step asc
+
+----------------------------------------------------------
+--순번 처리 (oracle)    시퀀스 객체 사용한다
+create sequence board_idx
+start with 1
+increment by 1;
+----------------------------------------------------------
+--댓글(꼬리말) 을 위한 테이블 생성    // 얘는 옵션이다 . 별도의 테이블 필요로함   (댓글도 하나의 게시판이다)
+--댓글은 누구의 댓글인가 
+--일반게시판 글번호 ...... 필요 .....
+
+create table reply(  //테이블 생성해야함 
+ no number primary key,
+ writer varchar2(30),
+ pwd varchar2(30),
+ content varchar2(2000),
+ writedate date default sysdate,
+ idx number not null   //댓글은 글의 번호를 참조해야한다  (어떤글의 댓글인지를 알기위해서)
+);
+--이어서 목요일
+....
+alter table reply
+add constraint fk_reply_deptno foreign key(idx) references board(idx);  //게시판의 글번호를 참조하도록 한다 
+
+
+*******************************************************************
+select * from multiboard order by ref desc , step asc
+update multiboard set step= step+1 where refer =? and step > ? 
+
+pstmt.setInt(9, depth+1); // 규칙 현재 읽은 글에 depth + 1
+pstmt.setInt(10, step+1); // 순서 update 통해서  자리 확보 + 1				    		   
+-------------------------------------------------------------------
+select * from multiboard order by ref desc, step desc
+update multiboard set step=step+1 where refer=? and step >= ?
+
+
+
+
+
+
+    
