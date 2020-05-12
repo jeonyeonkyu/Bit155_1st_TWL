@@ -66,6 +66,7 @@
 				<input type="hidden" name="cp" value="<%= cpage %>" /> 
 				<input type="hidden" name="ps" value="<%= pagesize %>" /> 
 				<input type="hidden" name="idx" value="<%= idx %>" />
+				<!-- 눈에보이진 않지만 값을 넘길 수 있음  -->
 			
 
 				<table width="95%" border="2" align="center">

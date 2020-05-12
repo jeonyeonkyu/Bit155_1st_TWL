@@ -30,13 +30,16 @@
 						<ul class="depth2">
 							<li><a href="#" class="dth2">공지사항</a></li>
 							<li><a href="#" class="dth2">리뷰게시판</a></li>
-							<li><a href="boardList.do" class="dth2">자유게시판(여기만!!)</a></li>
+							<li><a href="boardList.do" class="dth2">자유게시판(dataTables)</a></li>
+							<li><a href="boardCustomList.do" class="dth2">자유게시판(수업 적용)</a></li>
 						</ul></li>
 					<li><a href="#" class="dth1">MyPage</a>
 						<ul class="depth2">
 							<c:choose>
 								<c:when test="${userid == null}">
-
+									<li><a href="./login.jsp" class="dth2">계정설정</a></li>
+									<li><a href="./login.jsp" class="dth2">주문조회</a></li>
+									<li><a href="./login.jsp" class="dth2">문의하기</a></li>
 								</c:when>
 								<c:when test="${userid.equals('admin')}">
 									<li><a href="adminMain.do" class="dth2">관리자페이지</a></li>

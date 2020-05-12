@@ -18,6 +18,9 @@ public class BListService implements Service {
 		try {
     		BoardDAO dao = new BoardDAO();
     		List<BoardDTO> boardList = dao.selectList();
+    		
+    		
+    		
     		request.setAttribute("boardList", boardList);
     	}catch (Exception e) {
 			System.out.println(e.getMessage());

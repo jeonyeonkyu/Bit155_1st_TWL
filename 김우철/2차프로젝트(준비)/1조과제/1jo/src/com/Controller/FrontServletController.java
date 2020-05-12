@@ -1,6 +1,7 @@
 package com.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Service.AMain;
 import com.Service.BListService;
+import com.Service.CBListService;
 import com.Service.MJoinService;
 import com.Service.MLoginService;
 import com.Service.MLogoutService;
@@ -45,13 +47,22 @@ public class FrontServletController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String command = uri.substring(conPath.length());
 		
+		System.out.println("uri : " + uri);
+		System.out.println("conPath : " + conPath);
 		System.out.println("command : " + command);
 
 		// 2.요청판단
 		if (command.equals("/join.do")) {
+			
+			
+			
+			
+			
 			service = new MJoinService();
 			service.execute(request, response);
-			viewPage = "main.jsp";
+			
+			//viewPage = "main.jsp";
+			viewPage = "redirect.jsp";
 		} else if (command.equals("/login.do")) {
 			service = new MLoginService();
 			service.execute(request, response);
@@ -65,16 +76,21 @@ public class FrontServletController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "boardList.jsp";
 		} else if(command.equals("/adminMain.do")) {
-			System.out.println("여긴타는거맞지.222.?");
 //			service = new AMain();
 //			service.execute(request, response);
 			viewPage = "./admin/AdminMain.jsp";
-			
-		}else if(command.equals("/admin.do")) {
-			System.out.println("여긴타는거맞지..?");
+		} else if(command.equals("/admin.do")) {
 			service = new AMain();
 			service.execute(request, response);
 			return;
+		} else if(command.equals("/boardCustomList.do")){ //게시판 목록
+			service = new CBListService();
+			service.execute(request, response);
+			viewPage = "boardCustomList.jsp";
+		} else if(command.equals("/boardCustomWrite.do")) { //게시판 작성
+//			service = new CBListService();
+//			service.execute(request, response);
+//			viewPage = "boardCustomList.jsp";
 		}
 
 		// 3.결과저장
