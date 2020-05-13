@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443" relaxedQueryChars="[,]"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="WebServlet_4_memo_mvc" path="/WebServlet_4_memo_mvc" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_4_memo_mvc"/><Context docBase="WebServlet_4_memo_mvc_dbcp" path="/WebServlet_4_memo_mvc_dbcp" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_4_memo_mvc_dbcp"/><Context docBase="WebServlet_5_Board_Model1_Sample" path="/WebServlet_5_Board_Model1_Sample" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_5_Board_Model1_Sample"/></Host>
+      <Context docBase="WebServlet_4_memo_mvc" path="/WebServlet_4_memo_mvc" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_4_memo_mvc"/><Context docBase="WebServlet_4_memo_mvc_dbcp" path="/WebServlet_4_memo_mvc_dbcp" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_4_memo_mvc_dbcp"/><Context docBase="WebServlet_5_Board_Model1_Sample" path="/WebServlet_5_Board_Model1_Sample" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_5_Board_Model1_Sample"/><Context docBase="WebServlet_7_Member_Model2_Mvc_Command" path="/WebServlet_7_Member_Model2_Mvc_Command" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_7_Member_Model2_Mvc_Command"/><Context docBase="WebServlet_8_Member_Model2_Mvc_Url_Interface" path="/WebServlet_8_Member_Model2_Mvc_Url_Interface" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_8_Member_Model2_Mvc_Url_Interface"/><Context docBase="WebServlet_9_memo_mvc_dbcp_helper_Interface" path="/WebServlet_9_memo_mvc_dbcp_helper_Interface" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_9_memo_mvc_dbcp_helper_Interface"/><Context docBase="WebServlet_91_Filter" path="/WebServlet_91_Filter" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_91_Filter"/><Context docBase="WebServlet_92_Session" path="/WebServlet_92_Session" reloadable="true" source="org.eclipse.jst.jee.server:WebServlet_92_Session"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,40 +32,30 @@
 	
 </head>
 <body>
-<%= request.getAttribute("memolist") %>
 <div align=center>
 <hr color=green width=400>
 <h2> Line Memo List </h2>
 <hr color=green width=400>
 <table> 
+	<tr>
+	 	<th>Writer</th> 
+	 	<th>MemoContent</th>
+	 	<th>Email</th>
+	 </tr>
+	<c:set var="memolist" value="${requestScope.memolist}"></c:set>
+	<c:forEach var="memo" items="${memolist}">
 		<tr>
-			<th>writer</th>
-			<th>email</th>
-			<th>content</th>
+			<td>${memo.id}</td>
+			<td>${memo.email}</td>
+			<td>${memo.content}</td>
 		</tr>
-		<c:set var ="memolist" value ="${requestScope.memolist}"></c:set>
-		<c:forEach var="memo" items="${memolist}">
-		<tr>
-				<td>${memo.id}</td>
-				<td>${memo.email}</td>
-				<td>${memo.content}</td>
-		</tr>
-		</c:forEach>
-		
-		
+	</c:forEach>
 </table>
 </div>
 <a href='memo.html'>글쓰기</a>
 
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
