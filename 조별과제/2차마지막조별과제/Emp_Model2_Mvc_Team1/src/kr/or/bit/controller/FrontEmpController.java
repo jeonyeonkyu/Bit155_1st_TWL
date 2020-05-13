@@ -33,16 +33,16 @@ public class FrontEmpController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
 		}
-		else if (url_Command.equals("/EmpTable.do")) { // È¸¿ø°ü¸® ÆäÀÌÁö ÀÌµ¿ + ¸®½ºÆ® Ãâ·Â
-			// UI+·ÎÁ÷
+		else if (url_Command.equals("/EmpTable.do")) { // íšŒì›ê´€ë¦¬ í˜ì´ì§€ ì´ë™ + ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+			// UI+ë¡œì§
 			action = new EmpListService();
     		forward = action.execute(request, response);
-		} else if (url_Command.equals("/")) { // È¸¿ø°ü¸® ÆäÀÌÁö ÀÌµ¿
+		} else if (url_Command.equals("/")) { // íšŒì›ê´€ë¦¬ í˜ì´ì§€ ì´ë™
 			
 		}
 
-		// 4. ºä ÁöÁ¤ÇÏ±â
-		// 5. forward(request °´Ã¼ÀÇ ÁÖ¼Ò°ªÀ» °øÀ¯)
+		// 4. ë·° ì§€ì •í•˜ê¸°
+		// 5. forward(request ê°ì²´ì˜ ì£¼ì†Œê°’ì„ ê³µìœ )
 		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());

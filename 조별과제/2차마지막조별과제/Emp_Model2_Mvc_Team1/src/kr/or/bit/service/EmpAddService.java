@@ -13,7 +13,7 @@ public class EmpAddService implements Action {
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/WEB-INF/views/.jsp"); //¡Ú
+		forward.setPath("/WEB-INF/views/.jsp"); 
 		
 		return forward;
 	}
