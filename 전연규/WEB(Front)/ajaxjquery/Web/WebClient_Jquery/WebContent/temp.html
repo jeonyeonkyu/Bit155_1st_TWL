@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript"
+		src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=nZ8KAKrwU6keUPfHJr_a7Y9G9Rdd1z0tsRVkcrkZf_hXoQyr6HffF1oKWPdGA-zyBNKbbijGWuuNdhAV0BNnbD_uD4lc4XtvT0pneWvNe2T2N2Gw7IYhaLcZPM9wjoXlFqdouW_NZ8iGvS_cwlMsTw"
+		charset="UTF-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			
+			function javascriptFunc(){
+				let arrayobj = [];
+
+				$("table > tbody > tr").each(function(){
+					arrayobj.push(
+						{
+							th : $(this).children().eq(0).text(),
+							name: $(this).children().eq(1).text();
+							age : $(this).children().eq(2).text()
+						}
+					)
+				})
+			}
+
+			
+
+
+
+		});
+	</script>
+</head>
+
+<body>
+	<p>java</p>
+	<p>jsp</p>
+	<p>oracle</p>
+	<input type="button" value="click" id="btn">
+</body>
+
+</html>

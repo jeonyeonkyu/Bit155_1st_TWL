@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.box {width: 100px ; height: 100px}
+		.box1 {
+			background-color: red;
+			position:static;  /*기본 속성*/
+			left:10px;
+			top:10px;
+		}
+		.box2 {
+			background-color: blue;
+            position: relative; /*기존의 위치에서 움직임*/
+            left:60px;
+            top:10px;
+			
+		}
+		.box3 {
+			background-color: green;
+            position: absolute; /*브라우저 상단 기준*/
+        /* (부모에 relative, fixed 속성이 없으면 body요소를 기준으로 이동.*/
+            left:60px;
+            top:10px;
+			
+		}
+		.box4 {
+			background-color: yellow;
+            position: fixed; /* 스크롤을 내려도 사라지지 않고 고정 */
+            right:60px;
+            bottom:10px;
+			
+		}
+	</style>
+</head>
+<body>
+<div class="box box1">static</div>
+<div class="box box2">relative</div>
+<div class="box box3">absolute</div>
+<div class="box box4">fixed</div>
+</body>
+</html>

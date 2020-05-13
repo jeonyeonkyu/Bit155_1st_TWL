@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>WebJSP</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <context-param>
+  	<description>기본적인 설명..개발자 마음</description>
+  	<param-name>email</param-name>
+  	<param-value>webmaster@bit.or.kr</param-value>
+  </context-param>
+  <!-- email 변수가 모든 jsp, java페이지 사용가능한 전역 자원 -->
+  <context-param>
+  	<description>파일 저장 경로</description>
+  	<param-name>FilePath</param-name>
+  	<param-value>C:\\WEB\\Download</param-value>
+  </context-param>
+  
+  <!-- 
+  	Web App 전체 페이지에 적용될 수 있는 Error 처리
+  	기준
+  	1. 상태코드(500 > 서버개발자, 404 >> 요청 페이지 없는 것, 403 접근 권한
+  		상태코드 (정상 200 ~ 299 까지)
+  	2.예외 객체에 따라서(세분화) : NullPoint, IndexOutBound...)쌤피셜 어려움.. / 굳이 하나씩다할필요 없음 >> 500이 다 잡기 때문에)
+  	
+  	TEST하고 최종 배포할때 설정 ... 개발 단계에서는 예외화면 처리
+   -->
+   
+   
+  <!--  <error-page>
+   		<error-code>404</error-code>
+   		<location>/error/error404.jsp</location>
+   </error-page>
+   <error-page>
+   		<error-code>500</error-code>
+   		<location>/error/error500.jsp</location>
+   </error-page> 
+   	배포하기 전까지는 주석처리
+   -->
+</web-app>
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        //https://www.w3schools.com/jquery/jquery_ref_html.asp
+        //Jquery 많이 쓰는 함수
+        //https://www.w3schools.com/jquery/jquery_ref_selectors.asp
+        //jqery Selector
+        //사실 제일 좋은 방법은 jquery 공식문서 보면서 하는것
+
+        //https://api.jquery.com/category/selectors/form-selectors/
+        $(function () {
+            $('#txtname').val('hong'); //setter
+            //1.radio에 기본값을 설정하고 싶어요(checked 속성)
+            //$('input[type=radio]')
+            $('input:radio').val(['F']); //기본적으로 라디오가 체크되어있는 버튼 조절 가능
+            //아주 특수한 문법, 라디오는 여러개라 배열을 사용해야함..
+            console.log($('input:radio').val()); //순서대로 먼저 만나는 value값 출력
+            console.log($('input:checked').val()); //선택된(check) 태그의 value값 출력
+            //input대신 #id값 입력이 최고긴함(id값은 중복 X)
+            //radio, checkbox는 id 속성을 사용 안해요
+            //위에 있는 태그들은 name or class 속성을 사용
+            console.log($('input:radio[name=gender]:checked').val());
+
+            //select, 라디오, 체크박스만 조심하면 나머지는다 거기서 거기..
+            //select
+            //단일선택
+            //multiple 속성 부여
+            //다중선택(잘 사용X)
+
+            //단일값
+            console.log($('#isF').val());
+            $('#isF').val('oracle'); //selected 선택, 
+            //select 태그는 val()안에 값을 넣으면 값을 쓰는것이 아니라 선택하는것
+            //input 태그는 값을 쓰는것 
+            //테스트 할때     <!-- multiple="multiple" size="3" --> 이거 생략
+            //★★★★
+
+
+            $('#isF2').val(['java','oracle']); //다중 옵션 선택하기, 많이 안쓰임, 재미삼아 보기..
+            
+            $('#btnok').click(function(){
+                let selecttag = $('#isF').val();
+                console.log(selecttag);
+                for(let index in selecttag){
+                    console.log("value:" + selecttag[index]);
+                }
+            });
+
+           if($('#myform').children().is('input:submit')){//재미삼아 보시길..
+                //너 자식요소로 submit element를 가지고 있니?
+                alert('true');
+            }else{
+                alert('false');
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    Textbox : <input type="text" id="txtname">
+    <br>
+
+    RadioButton : Checked 속성
+    <input type="radio" name="gender" value="M">남
+    <input type="radio" name="gender" value="F">여
+    <br>
+
+    Dropdownlist(select 태그)
+    <select id="isF" multiple="multiple" size="3" >
+        <option value="java">자바</option>
+        <option value="jsp">웹</option>
+        <option value="oracle">오라클</option>
+    </select>
+    <br>
+    Dropdownlist(select 태그)
+	<select id="isF2" multiple="multiple" size=3>
+		<option value="java">자바</option>
+		<option value="jsp">웹</option>
+		<option value="oracle">오라클</option>
+	</select>
+	<br>
+    <input type="button" value="확인" id="btnok">
+    <br>
+    <div id="myform">
+        submit button : <input type="submit" value="전송">
+    </div>
+</body>
+
+</html>

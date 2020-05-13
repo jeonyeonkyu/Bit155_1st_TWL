@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<script>
+    //while
+    var i = 1;
+    var sum = 0;
+    while (i <= 10) {
+        sum += i;
+        i++;
+    }
+    document.write("sum : " + sum + "<br>");
+
+    var sum2 = 0;
+    for (let i = 0; i <= 10; i++) {
+        if (i % 3 === 0) { // 0%3 >> 0
+            console.log("i : " + i);
+            // console.log(0 % 3); //주의사항
+            // break;
+            continue; // sum2 : 37
+        }
+        console.log("for : i" + i + "<br>");
+        sum2 += i;
+    }
+    document.write("sum2 : " + sum2 + "<br>");
+
+    var a = 1;
+    do {
+        document.write(a + "<br>");
+        a++;
+    } while (a < 11);
+
+    //Today POINT(Array)
+    //Java >> Array : Collection 나누어서 처리
+    /*
+    JAVA
+    int[] arr = new int[10];
+    int[] arr2 = new int[]{10,20,30};
+    int[] arr3 = {10,20,30}; 
+
+    ArrayList al = new ArrayList();
+    al.add(10);
+    a1.add(29);
+
+    JavaScript : Array(정적 + 동적)
+    
+    */
+   //var arr = []; //제일 많이 쓰는 형식(동적 가능)
+    var arr = [10,20,30]; //int[] arr = {10,20,30};
+    for(let i = 0; i < 3; i++) {
+        document.write(arr[i] + "<br>");
+    }
+    
+    //int[] arr = new int[10];
+    //java는 10개의 방을 만들고 정수의 기본값 : 0 초기화(타입이 있어서 0으로 초기화)
+    var eng = new Array(3); //이 방식 잘 안씀, 타입이 없으므로 undefined
+    for(let i = 0; i < eng.length; i++){ 
+        document.write(eng[i]+"<br>");
+    }
+    eng[0] = 100
+    eng[1] = "ss";
+    eng[2] = true;
+    for(let i = 0; i < eng.length; i++){ 
+        document.write(eng[i]+"<br>");
+    }
+
+    //빈 배열(좋아하는 스타일)
+    var arr2 = []; //good
+    arr2.push(10); //js의 배열은 내부적으로 stack이라는 자료구조 사용
+    arr2.push(20);
+    
+    //1. 배열(Array) 기본 방법
+    var array = new Array(5); //bad, undefined가 들어가므로 의미없음
+    
+    //2. 배열(Array) 초기화
+    var array2 = new Array(10,20,30); //1번방법과 헷갈려서 bad
+
+    //3. 값으로 배열 초기화(정적,동적) : stack 구조(push, pop)
+    var array3 = [1,2,3]; //good
+    var array4 = [];
+    array4.push(10);
+    document.write(array4.pop());
+    
+    //요청했던 페이지의 모든 요소를 브라우저의 메모리에 올려놈(모든 태그)
+    //https://www.w3schools.com/js/js_htmldom.asp(HTML DOM 객체 트리 중요★)
+    //selector를 잘하는 사람 = 프런트 잘하는 사람
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

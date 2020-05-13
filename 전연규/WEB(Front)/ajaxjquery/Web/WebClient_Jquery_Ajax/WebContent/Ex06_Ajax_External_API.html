@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		// http://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?
+		//?tags=raccoon&tagmode=any&format=json
+		//tags : 검색어
+
+		$(function () {
+			$('#btn').click(function () {
+				//파라미터 날림
+				//JSON객체를 서버에서 반환해주면 알아서 파라미터로 변환되서 붙여진다
+				let filckrAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
+				let data = { tags: $('#search').val(), tagmode: "any", format: "json" }; //tags값을 사용자가 입력하게 받음
+				//console.log(data);
+				$.getJSON(filckrAPI, data, function (data, textStatus, xhr) {
+					console.log(data.items);
+					console.log("ss" + xhr.status);
+					$('#images').empty();
+					$.each(data.items, function(index, obj) {
+						$('<img>').attr('src', obj.media.m).appendTo("#images");
+						//img 태그를 생성하고 속성을 부여하고 div태그에 append 검
+					});
+				});
+			})
+
+		});
+
+
+
+	</script>
+
+</head>
+
+<body>
+
+	<input type="text" id="search" />
+	<input type="button" value="검색하기" id="btn" />
+	<hr />
+	<div id="images"></div>
+</body>
+
+</html>
