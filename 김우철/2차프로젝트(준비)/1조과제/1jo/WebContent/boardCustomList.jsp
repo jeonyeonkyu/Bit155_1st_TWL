@@ -10,7 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./board.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -24,12 +23,19 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>게시판 UI</title>
 <style>
 tr>th {
 	text-align: center;
 }
 </style>
+
+<script>
+	console.log($("#kwc option:checked").text());
+
+</script>
 </head>
 
 <body>
@@ -65,9 +71,9 @@ tr>th {
 				<div class="col-sm-12 col-md-6">
 					<div class="d-flex justify-content-end">
 						<div class="col-sm-3" style="padding-left: 25px;">
-							<select class="form-control">
+							<select id="kwc" class="form-control">
 								<option value="제목">제목</option>
-								<option value="작성자">작성자</option>
+								<option value="작성자" selected>작성자</option>
 							</select>
 						</div>
 
