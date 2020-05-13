@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript">
+
+        var myTime = window.setInterval(function(){
+            //javascript 다양한 객체를 웹브라우저한테 제공받음
+            var d = new Date();
+            var t = d.toLocaleTimeString(); //현재 시간을 나타냄
+            document.getElementById("time").innerHTML=t; //DOM 스크립트
+        },1000); 
+
+        // window.setInterval(function(){},1000); 
+        //function(){} 익명함수 : 
+        //1초마다 익명함수를 호출해라
+        function myTimeStop(){
+            window.clearInterval(myTime); //시간 멈춤
+        }
+    </script>
+</head>
+
+<body>
+    <p id="time"></p>
+    <button onclick="myTimeStop()">Stop Time</button>
+
+</body>
+
+</html>
+
+

@@ -10,7 +10,7 @@ public class EmpDao {
 
 	public EmpDao() {
 		try {
-			Context context = new InitialContext(); // ÇöÀç ÇÁ·ÎÁ§Æ®¿¡ ÀÌ¸§±â¹İ °Ë»ö
+			Context context = new InitialContext(); // í˜„ì¬ í”„ë¡œì íŠ¸ì— ì´ë¦„ê¸°ë°˜ ê²€ìƒ‰
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
 		} catch (Exception e) {
 			e.printStackTrace();

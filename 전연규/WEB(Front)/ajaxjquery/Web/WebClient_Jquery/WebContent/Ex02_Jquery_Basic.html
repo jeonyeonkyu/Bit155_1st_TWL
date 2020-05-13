@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	/* window.onload = function(){
+		document.getElementById("btn").onclick = function(){
+			alert("DOM Script");
+		}
+	} */
+	// $(document).ready(function(){
+	// 	$('#btn').click(function(){
+	// 		$(this).hide();
+	// 	})
+	// })
+	$(function(){ //단축표현
+		$('#btn').click(function(){
+			$(this).hide();
+		})
+	})
+	//https://www.w3schools.com/jquery/jquery_selectors.asp
+	//가장 기본적인 선택자 사용하기
+</script>
+</head>
+<body>
+	<button id="btn">버튼 감추기</button>
+</body>
+</html>

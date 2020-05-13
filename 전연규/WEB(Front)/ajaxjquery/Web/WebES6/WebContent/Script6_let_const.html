@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ECMA 표준정의</title>   
+</head>
+<body>
+  
+</body>
+
+<script>
+   /* 
+    객체 표기법
+
+  let 구문은 블록 유효 범위를 갖는 지역 변수를 선언하며, 선언과 동시에 임의의 값으로 초기화할 수도 있다.
+
+
+  let은 변수가 선언된 블록, 구문 또는 표현식 내에서만 유효한 변수를 선언한다. 
+  이는 var 키워드가 블록 범위를 무시하고 전역 변수나 함수 지역 변수로 선언되는 것과 다른 점이다.
+
+
+  let 으로 선언된 변수는 변수가 선언된 블록 내에서만 유효하며, 당연하지만 하위 블록에서도 유효하다. 
+  이러한 점에서는 let 과 var는 유사하지만, var는 함수 블록 이외의 블록은 무시하고 선언된다는 점이 다르다
+       
+   https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let
+   */
+   let x = 1;
+
+    if (x === 1) {
+        let x = 2;
+          console.log(x);
+    // expected output: 2
+    }
+
+    console.log(x);
+
+    function varTest(){
+        var x = 1;
+        if(true){
+            var x = 2; //상위 블럭과 같은 변수
+            console.log(x);
+        }
+        console.log(x);
+    }
+   
+   varTest();
+
+
+   function letTest(){
+        let x = 1;
+        if(true){
+            let x = 2; //상위 블럭과 다른 변수
+            console.log(x);
+        }
+        console.log(x);
+    }
+   
+    letTest();
+
+    //프로그램이나 함수의 최상위에서는 let과 var은 서로 다르게 행동한다. let은 전역 객체의 속성 값을 생성하지 않는다.
+
+    var data = 'global';
+    let data1= 'global2';
+    
+    console.log(this.data);
+    console.log(this.data1); //undefined
+    console.log(data1);
+
+    const con = 100;
+    //con = 200; //Uncaught TypeError: Assignment to constant variable.
+
+    function test(){
+        const co = 300;
+        console.log(co);
+
+        //con = 200; Assignment to constant variable.
+    }
+    test();
+
+
+ //   var의 유효 범위는 전체 외부 함수까지이지만 let은 변수를 선언한 블록과 그 내부 블록들에서 유효합니다.
+
+        function varTest() {
+            var x = 31;
+            if (true) {
+                var x = 71;  // same variable!
+                console.log(x);  // 71
+            }
+            console.log(x);  // 71
+        }
+
+        function letTest() {
+            let x = 31;
+            if (true) {
+                let x = 71;  // different variable
+                console.log(x);  // 71
+            }
+            console.log(x);  // 31
+        }
+        function varTest() {
+            if (true) {
+                var x = 71;
+                console.log(x);  // 71
+            }
+            console.log(x);  // 71
+        }
+
+        function varTest() {
+            let x = 71;
+            if (true) {
+                console.log(x);  // 71
+            }
+            console.log(x);  // 71
+        }
+
+        function varTest() {
+            if (true) {
+                let x = 71;
+                console.log(x);  // 71
+            }
+            console.log(x);  // Uncaught ReferenceError: x is not defined
+        };
+
+        //Statement - For...Of
+
+        const array1 = ['a', 'b', 'c'];
+
+        for (const element of array1) {
+            console.log(element);
+        }
+        //for (variable of iterable) {
+        //statement
+        //}
+
+        let iterable = [10, 20, 30];
+
+        for (let value of iterable) {
+            console.log(value);
+        }
+
+        //let 대신 const도 사용할 수 있습니다, 블록 내부 변수를 수정하지 않는 경우.
+
+        let iterable = [10, 20, 30];
+
+        for (const value of iterable) {
+        console.log(value);
+        }
+
+        let iterable = "boo";
+
+        for (let value of iterable) {
+        console.log(value);
+        }
+        // "b"
+        // "o"
+        // "o"
+        let iterable = new Map([["a", 1], ["b", 2], ["c", 3]]);
+
+        for (let entry of iterable) {
+        console.log(entry);
+        }
+        // [a, 1]
+        // [b, 2]
+        // [c, 3]
+
+        for (let [key, value] of iterable) {
+        console.log(value);
+        }
+        // 1
+        // 2
+        // 3
+
+        let iterable = new Set([1, 1, 2, 2, 3, 3]);
+
+        for (let value of iterable) {
+        console.log(value);
+        }
+        // 1
+        // 2
+        // 3
+/*
+Promises
+Promise는 비동기 프로그래밍을 위한 라이브러리입니다. Promise는 미래에 생성되는 값을 나타내는 일급 객체입니다. Promise는 현존하는 많은 JavaScript 라이브러리에 사용되고 있습니다.
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+
+https://jsdev.kr/t/es6/2944#math--number--string--array--object-apis
+*/
+function timeout(duration = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, duration);
+    })
+}
+
+var p = timeout(1000).then(() => {
+    return timeout(2000);
+}).then(() => {
+    throw new Error("hmm");
+}).catch(err => {
+    return Promise.all([timeout(100), timeout(200)]);
+})
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<!-- Ex07에 setInterval 있음 -->
+<style>
+
+</style>
+
+<!-- <script>
+
+    // window.onload = function () {
+
+        function displayDate() {
+            document.getElementById("demo").innerHTML = new Date();
+        }
+
+        document.getElementById("mybtn").onclick = displayDate();
+        //window.onload = function() {}
+        //function call(){}
+        //window.onload = call();
+    // }
+</script> -->
+
+<body>
+    <button id="mybtn">눌러봐</button>
+    <br>
+    <button id="mybtn2" onclick="displayDate()">눌러봐2</button>
+    <br>
+    <p id="demo">
+
+    </p>
+
+
+</body>
+<script>
+    function displayDate() {
+        document.getElementById("demo").innerHTML = new Date();
+    }
+    document.getElementById("mybtn").onclick = displayDate;
+    //★주의사항
+    //가로를 주면 함수를 호출, onclick일때는 가로를 주면 자동으로 호출이됨
+    //onclick에 사용할 시 가로는 빼자
+</script>
+
+</html>
+

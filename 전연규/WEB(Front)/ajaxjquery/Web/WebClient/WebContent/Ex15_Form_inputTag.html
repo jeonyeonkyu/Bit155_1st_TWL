@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text: Password</legend>
+			Text: <input type="text" name="userid" id="userid"><br> Password: <input type="password" name="pwd" maxlength="5"><br>
+			<hr>
+			Text2 : <input type="text" name="data" maxlength="10" size="100px" value="초기값">
+			<hr>
+			readonly(읽기전용 : 서버 데이터 전송 가능) <input type="text" name="data2" value="hong" readonly /> <br> disabled(비활성화 : 서버 데이터 전송 불가능) <input type="text" name="data2" value="kim" disabled />
+		</fieldset>
+
+		<fieldset>
+			<legend>체크박스(다중선택)</legend>
+			농구 : <input type="checkbox" name="sports_1" value="A" checked /> 축구 : <input type="checkbox" name="sports_2" value="B" /> 야구 : <input type="checkbox" name="sports_3" value="C" />
+			<!--
+				register.jsp?sports_1=A&sports_2=B&sports_3=C
+				서버(JSP)
+				String a = request.getParameter("sports_1");
+				String b = request.getParameter("sports_2");
+				String c = request.getParameter("sports_3");
+				
+				농구 : <input type="checkbox" name="sports" value="A" checked/>
+				축구 : <input type="checkbox" name="sports" value="B" />
+				야구 : <input type="checkbox" name="sports" value="C" />
+				
+				register.jsp?sports=A&sports=B&sports=C
+			★	String[] strarr = request.getParameterValues("sports")
+				strarr[0] = "A";
+				strarr[1] = "B";
+				strarr[2] = "C";
+				
+			  -->
+		</fieldset>
+
+		<fieldset>
+			<legend>Select 태그(단일 선택 : 년, 월, 일)</legend>
+			<select name="year">
+				<option value="2020">2020</option>
+				<option value="2019" selected>2019</option>
+				<option value="2018">2018</option>
+			</select>
+			<!--  
+				?year=2020
+			-->
+		</fieldset>
+
+		<fieldset>
+			<legend>Select 태그(다중 선택)</legend>
+			<select name="items" multiple>
+				<option value="01">JAVA</option>
+				<option value="02" selected>Oralce</option>
+				<option value="03">HTML</option>
+			</select>
+			<!--  
+				?items=01&items=02 ...
+			-->
+		</fieldset>
+
+		<fieldset>
+			<legend>라이도 버튼(단일 선택 : 남,여) : 같은group >> name 동일</legend>
+			<!-- name 동일시 하는거 중요!!!  -->
+			남<input type="radio" name="gender" value="1" checked /> 여<input type="radio" name="gender" value="2" />
+			<!--  
+				?items=01&items=02 ...
+			-->
+		</fieldset>
+
+		<fieldset>
+			<legend>기타 등등</legend>
+			1.화면에 출력이 안돼요(소스는 있어요)<br> <input type="hidden" value="100" name="hdata" />
+			<hr>
+			2.파일 업로드(선택)<br> <input type="file" name="upload" />
+			<hr>
+			3.게시판 글쓰기(여러줄)(초기 크기 : cols, rows)
+			<textarea rows="10" cols="20" name="content">입력데이터</textarea>
+			<hr>
+			4.각종 버튼들 <input type="button" value="나 눌러봐" onclick="alert('월요일')" /> <br> submit 기능 내장 : <input type="image" src="./image.jpg"> <br> <input type="submit" value="전송" /> <input type="reset" value="취소" />
+
+		</fieldset>
+
+		<fieldset>
+			<legend>목록 정의하기</legend>
+			<input list="browsers" name="browser"> <!-- list랑 id랑 일치시켜야됨 -->
+			<datalist id="browsers">
+				<option value="Internet Explorer">
+				<option value="Firefox">
+				<option value="Chrome">
+				<option value="Opera">
+				<option value="Safari">
+			</datalist>
+			<input type="submit">
+		</fieldset>
+
+	</form>
+
+</body>
+</html>

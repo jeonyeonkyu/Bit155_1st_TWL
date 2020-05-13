@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Css 가상 클래스 선택자</title>
+<style type="text/css">
+/*
+		가상 클래스 선택자(<a:link)
+		<a href="" >네이버 방문</a>
+		link, visited, hover, active 의미만 존재
+	*/
+/* unvisited link */
+a:link {
+	color: red;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+	color: green;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+	color: hotpink;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+/* selected link */
+a:active {
+	color: yellow;
+	background-color: transparent;
+	text-decoration: none;
+}
+</style>
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+	<a href="http://www.president.go.kr">저장</a>
+
+
+</body>
+</html>
+
+
