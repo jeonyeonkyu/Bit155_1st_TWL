@@ -35,6 +35,7 @@ public class MemoList extends HttpServlet {
 		//view 단 페이지 별도 구성(과제) >>memolist.jsp
 		try {
 			//요청 판단...필요없다(요청당 servlet 1개씩)
+			
 			//이 servlet 전체조회
 			
 			memodao dao = new memodao();
