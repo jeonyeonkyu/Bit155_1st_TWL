@@ -4064,3 +4064,6 @@ select * from memo;
 	content varchar2(100)
 ); 
 ]
+
+
+select * from jspboard;

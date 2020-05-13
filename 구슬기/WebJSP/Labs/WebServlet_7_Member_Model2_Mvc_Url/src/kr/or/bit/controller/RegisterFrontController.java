@@ -47,7 +47,7 @@ public class RegisterFrontController extends HttpServlet {
     	
     	//requestURI :  /WebServlet_7_Member_Model2_Mvc_Url/Register.do
     	//contextPath : /WebServlet_7_Member_Model2_Mvc_Url
-    	//url_Command : /Register.do
+    	//url_Command : /Register.do        두개를 가져와거 앞에거를 잘라낸 값이다 
     	
     	System.out.println("requestURI : " + requestURI);
     	System.out.println("contextPath : " + contextPath);
