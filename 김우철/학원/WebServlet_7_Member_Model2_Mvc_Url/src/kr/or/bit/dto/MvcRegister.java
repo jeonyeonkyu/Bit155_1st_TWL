@@ -4,6 +4,7 @@ public class MvcRegister {
 	private int id;
 	private String pwd;
 	private String email;
+	
 	public int getId() {
 		return id;
 	}

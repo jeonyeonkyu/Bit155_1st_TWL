@@ -33,11 +33,12 @@ public class RegisterFrontController extends HttpServlet {
 		//1. 요청 받기
 		String command = request.getParameter("cmd");
 		
-		//2. 요청 판단 처리 (command  방식 : ?cmd=list)
+		//2. 요청 판단 처리 (command  방식 : ?cmd=list) : 무조껀 파라미터를 만듬
 		String viewpage="";
 		if(command.equals("register")) { //?cmd=register
 			//회원가입 페이지 전달
 			viewpage = "/WEB-INF/Register/Register.jsp"; //WEB-INF 접근 가능
+			//response.sendDIrect로 하면ㅁ 주소가 바뀌기대문에 페이지만 이동시키느것도 다 포워드로 해줘라!!
 		}else if(command.equals("registerok")) { //?cmd=registerok
 			//회원가입 처리
 			//?cmd=registerok&id=hong&pwd=1004&email=hong@naver.com
@@ -68,7 +69,7 @@ public class RegisterFrontController extends HttpServlet {
 			}
 			
 			//3. 결과 저장하기 (여기서 view 생성 태그 만들고 ..... 하지 않고 별도의  jsp)
-			request.setAttribute("data", resultdata);
+			request.setAttribute("data", resultdata); //세션으로전달하면 다른페이지에서도 사용가능, 내가포워드하는 페이지에서만 쓸꺼면 request!!
 			viewpage = "/WEB-INF/Register/Register_welcome.jsp";
 		}
 		
@@ -77,6 +78,7 @@ public class RegisterFrontController extends HttpServlet {
 		
 		//5. forward 
 			dis.forward(request, response);
+			//현재요청한 페이지의 URL의 버퍼에 viewpage의 내용만 심기 때문에 URL변경 X
 	}
 
 }

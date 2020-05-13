@@ -63,19 +63,19 @@ body {
 				<div class="mb-3">
 					<label for="reg_id">작성자</label> <input type="text"
 						class="form-control" name="writer" id="reg_id"
-						placeholder="이름을 입력해 주세요">
+						placeholder="작성자를 입력해 주세요">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">이메일</label> <input type="text"
 						class="form-control" name="email" id="reg_id"
-						placeholder="이름을 입력해 주세요">
+						placeholder="이메일을 입력해 주세요">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">홈페이지</label> <input type="text"
 						class="form-control" name="homepage" id="reg_id"
-						placeholder="이름을 입력해 주세요">
+						placeholder="홈페이지를 입력해 주세요">
 				</div>
 
 				<!-- 썸머노트 반영 -->
@@ -88,7 +88,7 @@ body {
 				<div class="mb-3">
 					<label for="reg_id">비밀번호</label> <input type="text"
 						class="form-control" name="pwd" id="reg_id"
-						placeholder="이름을 입력해 주세요">
+						placeholder="비밀번호를 입력해 주세요">
 				</div>
 			</form>
 			<div>

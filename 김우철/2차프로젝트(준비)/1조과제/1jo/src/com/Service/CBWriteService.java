@@ -16,9 +16,37 @@ public class CBWriteService  implements Service {
 
 		CBoardDAO dao = new CBoardDAO();
 		
-		request.getP
+		String subject = request.getParameter("subject");
+		String writer = request.getParameter("writer");
+		String email = request.getParameter("email");
+		String homepage = request.getParameter("homepage");
+		String content = request.getParameter("content");
+		String pwd = request.getParameter("pwd");
 		
-		dao.writeok(boarddata)
+		Board board = new Board();
+		CBoardDAO cboard = new CBoardDAO();
+		board.setSubject(subject);
+		board.setWriter(writer);
+		board.setEmail(email);
+		board.setHomepage(homepage);
+		board.setContent(content);
+		board.setPwd(pwd);
+		
+		int writeResult = dao.writeok(board);
+		
+		String msg = "";
+		String url = "";
+		if (writeResult > 0) {
+			msg = "글쓰기 성공";
+			url = "boardCustomList.jsp";
+		} else {
+			msg = "글쓰기 실패";
+			url = "boardCustomWrite.jsp";
+		}
+		
+		request.setAttribute("board_msg", msg);
+		request.setAttribute("board_url", url);
+		
 		
 //		if (loginResult == 1) {
 //			request.setAttribute("loginResult", loginResult);

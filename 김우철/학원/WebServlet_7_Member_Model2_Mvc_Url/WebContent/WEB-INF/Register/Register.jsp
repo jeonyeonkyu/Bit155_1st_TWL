@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- request.getContextPath() : Path경로 , 이방식대로 해라  -->
 	<form action="<%= request.getContextPath() %>/ok.do" method="post">
 		ID:<input type="text" name="id" placeholder="id입력"><br>
 		PWD:<input type="password" name="pwd" placeholder="pwd입력"><br>

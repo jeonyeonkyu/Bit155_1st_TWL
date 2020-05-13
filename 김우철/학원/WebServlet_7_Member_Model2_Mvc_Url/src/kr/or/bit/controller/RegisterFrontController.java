@@ -40,9 +40,9 @@ public class RegisterFrontController extends HttpServlet {
     	//registerok.do
     	//regiseterlist.do
     	
-    	//주소 요청의 판단 근거 (함수)
-    	String requestURI = request.getRequestURI();
-    	String contextPath = request.getContextPath();
+    	//주소 요청의 판단 근거 (함수 / 공식화)
+    	String requestURI = request.getRequestURI(); //포트를 제외한 나머지 앞의 주소
+    	String contextPath = request.getContextPath(); 
     	String url_Command = requestURI.substring(contextPath.length());
     	
     	//requestURI :  /WebServlet_7_Member_Model2_Mvc_Url/Register.do

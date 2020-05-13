@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Service.AMain;
 import com.Service.BListService;
 import com.Service.CBListService;
+import com.Service.CBWriteService;
 import com.Service.MJoinService;
 import com.Service.MLoginService;
 import com.Service.MLogoutService;
@@ -56,8 +57,6 @@ public class FrontServletController extends HttpServlet {
 			
 			
 			
-			
-			
 			service = new MJoinService();
 			service.execute(request, response);
 			
@@ -88,9 +87,9 @@ public class FrontServletController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "boardCustomList.jsp";
 		} else if(command.equals("/boardCustomWrite.do")) { //게시판 작성
-//			service = new CBListService();
-//			service.execute(request, response);
-//			viewPage = "boardCustomList.jsp";
+			service = new CBWriteService();
+			service.execute(request, response);
+			viewPage = "redirect.jsp";
 		}
 
 		// 3.결과저장
