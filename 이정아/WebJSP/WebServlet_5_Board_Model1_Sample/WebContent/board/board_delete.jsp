@@ -7,7 +7,7 @@
 	{
 %>
 	<script>
-		alert("글번가 넘어오지 않았습니다");
+		alert("글번호가 넘어오지 않았습니다");
 		history.back();
 	</script>
 <%	

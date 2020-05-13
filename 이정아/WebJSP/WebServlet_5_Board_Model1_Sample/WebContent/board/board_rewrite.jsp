@@ -63,8 +63,8 @@
 		<div style="padding-top: 25px; text-align: center">
 			<form name="bbs" action="board_rewriteok.jsp" method="POST">
 			
-				<input type="hidden" name="cp" value="<%= cpage %>" /> 
-				<input type="hidden" name="ps" value="<%= pagesize %>" /> 
+				<input type="hidden" name="cp" value="<%= cpage %>" /> <!-- hidden 화면상에는 보이지 않는데 데이터를 가질 수 있는 태그 -->
+				<input type="hidden" name="ps" value="<%= pagesize %>" /> <!-- 이 데이터 값들을 가지고 rewriteok.jsp로 넘기겠다 -->
 				<input type="hidden" name="idx" value="<%= idx %>" />
 			
 
@@ -72,7 +72,7 @@
 					<tr>
 						<td width="20%" align="center">제목</td>
 						<td width="80%" align="left">
-							<input type="text" name="subject" size="40" value="[RE]<%= subject%>">
+							<input type="text" name="subject" size="40" value="<%= subject%>">
 						</td>
 
 					</tr>
@@ -115,7 +115,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-						<input type="button" 	value="글쓰기" onclick="boardcheck();" /> 
+						<input type="button" 	value="글쓰기" onclick="boardcheck();" /> <!-- 글쓰기를 다 하면 이 함수 호출 -->
 						<input type="reset" 	value="다시쓰기" />
 						<a href="<%=request.getContextPath()%>/board/board_list.jsp">HOME</a>
 						</td>
