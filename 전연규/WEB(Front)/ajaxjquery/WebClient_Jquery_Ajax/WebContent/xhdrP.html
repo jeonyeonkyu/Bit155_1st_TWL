@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!--https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    <script>
+
+        // let publicAPI = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?";
+        // let data = { address: "서울특별시 강남구" };
+
+        let plenty = 0;
+        let some = 0;
+        let few = 0;
+        let empty = 0;
+        let none = 0;
+
+        $(function () {
+            var mask = [];
+            $.getJSON("https:8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address:서울특별시 강남구",
+                function (data) {
+                    $.each(data.stores, function (index, obj) {
+                        mask.push(obj.remain_stat);
+                            if (mask[index] === null || mask[index] === undefined) {
+                                return;
+                            } else {
+                                if (mask[index].includes("plenty")) {
+                                    plenty++;
+                                } else if (mask[index].includes("some")) {
+                                    some++;
+                                } else if (mask[index].includes("few")) {
+                                    few++;
+                                } else if (mask[index].includes("empty")) {
+                                    empty++;
+                                } else if (mask[index].includes("break")) { //왠지 모르겠는데 break 변수로 선언하면 자꾸 에러떠서 none으로 했음
+                                    none++;
+                                
+                                }
+                                
+                            }
+                    });
+
+                        var ctx = $('#myChart').get(0).getContext("2d");
+                        var myChart = new Chart(ctx, {
+                            type: 'pie',//차트타입
+                            data: {
+                                labels: ["plenty", "some", "few", "empty", "none"], //차트에 들어갈 라벨명
+                                datasets: [{
+                                    label: "공적마스크재고량",
+                                    data: [plenty, some, few, empty, none],
+                                    backgroundColor: [
+                                        'rgba(244,99,132,0.2)',
+                                        'rgba(54,162,235,0.2)',
+                                        'rgba(255,206,86,0.2)',
+                                        'rgba(75,192,192,0.2)',
+                                        'rgba(153,102,255,0.2)',
+                                        'rgba(255,159,64,0.2)',
+                                    ],
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "ABCF",
+                                            position: 'top',
+                                            fontsize: 13,
+                                        },
+                                    }
+                                }]
+                            }
+                        });
+
+
+                    
+
+                });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div style="width: 75%">
+        <canvas id="myChart" style="padding: 50px"></canvas>
+        <button id="btn" type="button" onclick="init()"></button>새로고침</div>
+</body>
+
+</html>

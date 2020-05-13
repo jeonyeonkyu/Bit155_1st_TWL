@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event & load</title>
+</head>
+<script>
+    /*
+        ★onload 이벤트가 발생하는 시점 : body 태그 안에 있는 모든 요소가 브라우저에
+        로딩 되고 나서 발생
+        <body onload="call()">
+
+        function call() {} //call 다른 곳에서 사용가능(재사용))
+        window.onload = call() 같은 방식
+
+    */
+    //함수의 이름이 없다(익명함수 : 일회성 함수) : 재사용 불가능, JS는 익명함수 많이 사용
+    //page 모든 요소가 loading 된 후에 함수가 자동 실행...
+    //body 안에 있는 모든 태그 요소를 제어....
+    window.onload = function () {
+        var out = "";
+        out += "<ul>";
+        out += "<li>javascript</li>";
+        out += "<li>jquery</li>";
+        out += "<li>vue</li>";
+        out += "</ul>";
+        document.body.innerHTML = out;
+
+        var header = document.createElement("h1");
+        //<h1></h1> 이 만들어진다
+        var textnode = document.createTextNode("hello");
+        //text가 만들어진다
+        //아직 두개는 연관성이 없지만 ▼
+        header.appendChild(textnode) //header에다가 자식을 하나 주겠다
+        //<h1>hello</h1>가 된다
+
+        document.body.appendChild(header);
+
+        //img 태그 생성하고 src 속성을 만들고 body 태그의 자식으로 append 하기
+        var img = document.createElement("img"); //<img>
+        img.setAttribute("src", "images/1.jpg"); //<img src="images/1.jpg">
+        img.setAttribute("width", '100');
+        img.setAttribute("height", '100');
+        //<img src="images/1.jpg" width="100" height="100">
+        document.body.appendChild(img);
+    }
+
+</script>
+
+<body>
+    HELLO WORLD
+</body>
+
+</html>

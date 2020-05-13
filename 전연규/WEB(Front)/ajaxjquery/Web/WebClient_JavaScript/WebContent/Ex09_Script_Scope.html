@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var, let, const</title>
+    <script type="text/javascript">
+
+        var v = "hello"; //전역변수(global) //class Car{private int door;}
+        //전역... 모든 함수에 사용가능
+        var p = "PPPP";
+        function func() {
+            var v = "world"; //지역변수(local)
+            p = "QQQQ";
+            //함수 안에서
+            //var v; 지역변수
+            //v; 전역변수
+            document.write("func : " + v + "<br>");
+        }
+
+        func(); //호출
+        document.write(v + "<br>");
+        document.write(p);
+
+        /* 
+            function makePlan(){
+                var name;
+                if(){
+                    let id;
+                }
+            }
+        */
+        //ES6 이전
+        //var 혼자서 살던 시대
+
+        //var는 function단위 {} X 두개의 hello는 같음
+        var hello = 'hello';
+        if (true) {
+            var hello = 'hello in if';
+        }
+        console.log(hello); //hello in if
+
+        //const 상수
+        const hello6 = 'hello';
+        // hello6 = 'change hello';
+        // console.log(hello6);
+        //TypeError: Assignment to constant variable.
+
+        //Scope은 {} 블럭
+        const hello2 = 'hello!';
+        {
+            const hello2 = 'inner hello!';
+            console.log(hello2); //inner hello!
+        }
+        console.log(hello2); 
+
+        //let 변수는 재정의 가능
+        let hello3 = 'first hello';
+        hello3 = 'changed hello';
+        console.log(hello3);
+
+        //Scope은 {} 블럭
+        let hello4 = 'first hello'
+        {
+            let hello4 = 'inner hello'
+            console.log(hello4);
+        }
+        console.log(hello4);
+
+        let hello5='first hello';
+        //let hello5 = 'second hello';
+        //let은 같은 범위내에서 같은 변수명 X
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

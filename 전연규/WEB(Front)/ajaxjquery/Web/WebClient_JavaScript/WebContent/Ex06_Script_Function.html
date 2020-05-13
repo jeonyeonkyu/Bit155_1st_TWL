@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 함수 vs 내장함수</title>
+    <script type="text/javascript">
+        //java : public void print() {}
+        //java : public String print() {return "";}
+        //java : public int print(int num, int num2) {return num+num2;}
+
+        //javascript (사용자 정의 함수)
+        function callConfirm(){ //void(x), return type(x)
+            if(window.confirm("작업내용")){ //confirm은 (내장함수) (확인and취소버튼 있음)
+                alert('삭제합니다');   
+            }else{
+                alert('취소합니다.') //내장함수
+            }
+        } 
+
+        function showPopup(){ //open() 새창...
+            window.open("Ex06_popup.html", "zipcode", "width=200,height=200");
+        }
+
+        function myFunc() {
+            var mywindow = window.open("Ex06_popup.html", "Msgwindow", "width=500,height=200");
+            //mywindow 새창의 주소(팝업창)
+            mywindow.document.write("<p>this is Msgwindow window </p>");
+        }
+        
+        //java : public String goUrlTime(String url) {return ""}
+        function goUrlTime(url) { //parameter는 type을 갖지 않는다...(var url)(X)
+            window.setTimeout("location.href='" + url + "'", 1000);
+        }
+
+        function myfun(a,b,c){
+            return a+b+c;
+        }
+
+        var result = myfun(1,2,3); //내부에 함수가 다른 함수를 호출...
+        console.log(result);
+
+        //익명함수(함수의 주소를 리턴해서 하는 객체를 만듬)(일회성 함수)
+        changeColor = function(){ //function changeColor
+            window.document.bgColor="silver";
+            window.document.fgColor="red";
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h3>내장함수, 사용자 정의 함수 사용하기</h3>
+    <button onclick="callConfirm()">클릭 사건 발생(함수 호출)</button>
+    <br>
+    <button onclick="showPopup()">팝업창</button>
+    <br>
+    <button onclick="myFunc()">팝업을 객체형태로</button>
+    <br>
+    <button onclick="goUrlTime('http://www.naver.com')">주소이동</button>
+    <br>
+    <button onclick="changeColor()">익명함수</button>
+    <br>
+
+</body>
+
+</html>
+
+

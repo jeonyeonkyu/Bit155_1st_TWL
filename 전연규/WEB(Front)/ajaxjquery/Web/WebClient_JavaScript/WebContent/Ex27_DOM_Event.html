@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<body>
+
+    <button id="myBtn">눌러봐</button>
+    <br>
+    <button id="mybtn2">눌러봐2</button>
+    <br>
+    <p id="demo">
+
+    </p>
+    <script>
+        /*
+          you Can add many event handlers to one element.
+          you can easily remove an event listener by using the removeEventListener() method.(붙였다 / 뗐다의 개념)      
+        */
+      
+        document.getElementById("myBtn").addEventListener("click", displayDate);
+        
+        function displayDate() {
+            document.getElementById("demo").innerHTML = new Date();
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- addEventListener()
+You can add many event handlers to one element.
+You can easily remove an event listener by using the removeEventListener() method.
+document.getElementById("myBtn").addEventListener("click", displayDate);
+function displayDate() {
+      document.getElementById("demo").innerHTML = Date();
+} -->
