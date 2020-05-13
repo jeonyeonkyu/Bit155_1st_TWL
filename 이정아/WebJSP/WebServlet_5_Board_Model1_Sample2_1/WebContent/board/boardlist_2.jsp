@@ -107,8 +107,6 @@ tr>th {
 								<option value="작성자">작성자</option>
 							</select>
 						</div>
-
-
 						<label for=""> <input type="search" class="form-control"
 							placeholder="Search">
 						</label>

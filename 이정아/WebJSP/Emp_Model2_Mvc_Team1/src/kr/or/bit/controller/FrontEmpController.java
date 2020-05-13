@@ -33,17 +33,14 @@ public class FrontEmpController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
 		}
-		else if (url_Command.equals("/EmpTable.do")) { // 회원관리 페이지 이동 + 리스트 출력
-			// UI+로직
+		else if (url_Command.equals("/EmpTable.do")) {
+	                               
 			action = new EmpListService();
     		forward = action.execute(request, response);
-		} else if (url_Command.equals("/")) { // 회원관리 페이지 이동
+		} else if (url_Command.equals("/")) { 
 			
 		}
 
-		// 4. 뷰 지정하기
-		// 5. forward(request 객체의 주소값을 공유)
-		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);
