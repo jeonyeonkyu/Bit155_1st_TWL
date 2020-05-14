@@ -190,7 +190,6 @@ public class EmpDao {
 		try {
 			conn = ConnectionHelper.getConnection("oracle");// 추가
 
-			System.out.println(hiredate);
 			String sql = "update emp set ename = ?, job =?, mgr = ?, hiredate = ?, sal = ?,comm = ?, deptno = ? WHERE empno = ?";
 									
 			

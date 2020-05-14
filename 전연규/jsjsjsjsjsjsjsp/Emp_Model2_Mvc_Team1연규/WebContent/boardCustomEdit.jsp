@@ -34,8 +34,10 @@
 					'#btnList',
 					function(e) {
 						e.preventDefault();
-						location.href = "EmpTable.do";
+						location.href = "boardCustomEdit.do";
 					});
+	
+	
 </script>
 
 <style>
@@ -48,7 +50,8 @@ body {
 </head>
 
 <body>
-
+<c:set var="list" value="${requestScope.list}" />
+	
 	<article>
 		<div class="container" role="main">
 			<h2>사원 등록</h2>
@@ -57,47 +60,47 @@ body {
 				<div class="mb-3">
 					<label for="title">사원 번호</label> <input type="text"
 						class="form-control" name="empno" id="empno"
-						value="${list2.empno}">
+						value="${list.empno}">
 				</div>
 
 				<div class="mb-3">
 					<label for="reg_id">사원 이름</label> <input type="text"
 						class="form-control" name="ename" id="ename"
-						value="${list2.ename}">
+						value="${list.ename}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">사원 직종</label> <input type="text"
 						class="form-control" name="job" id="job"
-						value="${list2.job}">
+						value="${list.job}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">관리자 번호</label> <input type="text"
 						class="form-control" name="mgr" id="mgr"
-						value="${list2.mgr}">
+						value="${list.mgr}">
 				</div>
 
 				<div class="mb-3">
 					<label for="reg_id">입사일</label> <input type="text"
 						class="form-control" name="hiredate" id="hiredate"
-						value="${list2.hiredate}">
+						value="${list.hiredate}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">급여</label> <input type="text"
 						class="form-control" name="sal" id="sal"
-						value="${list2.sal}">
+						value="${list.sal}">
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">커미션</label> <input type="text"
 						class="form-control" name="comm" id="comm"
-						value="${list2.comm}">
+						value="${list.comm}">
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">부서번호</label> <input type="text"
 						class="form-control" name="deptno" id="deptno"
-						value="${list2.deptno}">
+						value="${list.deptno}">
 				</div>
 			<%-- 	<div class="mb-3">
 					<label for="reg_id">사원 사진</label> <input type="file"
