@@ -97,17 +97,6 @@ tr>th {
 				</div>
 			</div>
 		</div>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
     <!-- <form name="list"> -->
         <div class="container">
             <div class="form-group">
@@ -151,7 +140,7 @@ tr>th {
             </div>
 
         </div>
-<%-- ${requestScope.list} --%>
+${requestScope.list}
    <!--  </form> -->
 		<div class="main-panel">
 			<div class="content-wrapper">
@@ -169,7 +158,7 @@ tr>th {
 							</thead>
 							<tbody>
 							<c:set var="list" value="${requestScope.list}" />
-								<c:forEach var="list2" items="list">
+								<c:forEach var="list2" items="${list}">
 									<tr onmouseover="this.style.backgroundColor='gray'"
 										onmouseout="this.style.backgroundColor='white'">
 										<td align="center">${list2.ename}</td>
@@ -227,11 +216,11 @@ tr>th {
 		</div>
 	</div>
 
-	</div>
+
 
 
 	<!-- .content -->
-	</div>
+	
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
