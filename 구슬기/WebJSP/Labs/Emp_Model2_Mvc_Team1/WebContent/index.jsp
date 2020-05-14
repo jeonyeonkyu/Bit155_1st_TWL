@@ -218,33 +218,19 @@
 		</div>
 		<!-- .content 여기다 카드 넣어보자 -->
 
-${requestScope.list}
 
-		<c:set var="list" value="${requestScope.list}" />
-		<%-- ${requestScope.emp} --%>
+		
 		<div class="col-sm-6 col-lg-3">
 			<!--	<div class="card text-white bg-flat-color-4"> -->
 			<div class="card-body pb-0">
 				<button type="button" class="btn btn-sm btn-clear" id="btnList">
 					<a href="chartView.do">차트</a>
 				</button>
-			</div>
-
-			${list.sar} ${list.job}
-			<table border="1">
-				<tr>
-					<td>직업</td>
-					<td>급여</td>
-				</tr>
-				<c:forEach var="e" items="${list}">
-					<tr>
-						<td>${e.job}</td>
-						<td>${e.sar}</td>
-					</tr>
-				</c:forEach>
-			</table>
-
 		</div>
+
+				
+
+		
 		<!--  </div> -->
 	</div>
 

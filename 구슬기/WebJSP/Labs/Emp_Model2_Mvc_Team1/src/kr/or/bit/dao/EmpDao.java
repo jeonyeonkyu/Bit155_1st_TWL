@@ -144,13 +144,14 @@ public class EmpDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Emp> list = new ArrayList<Emp>();
+		
 		try {
 			conn = ds.getConnection();
-			/*
-			 * String sql = "select job , avg(sal)*12 sar\r\n" + "from emp\r\n" +
-			 * "group by job\r\n" + "order by sar desc";
-			 */
-			String sql = "select * from vv2";
+			
+			  String sql = "select job , avg(sal)*12 sar\r\n" + "from emp\r\n" +
+			  "group by job\r\n" + "order by sar desc";
+			 
+//			String sql = "select * from vv2";
 			pstmt = conn.prepareStatement(sql);
 
 			
@@ -158,11 +159,11 @@ public class EmpDao {
 			while (rs.next()) {
 				Emp emp = new Emp();
 				emp.setJob(rs.getString("job"));
-				emp.setSal(rs.getLong("sal"));
+				emp.setSal(rs.getLong("sar"));
 				
 				list.add(emp);
+				System.out.println(emp);
 			}
-
 		} catch (Exception e) {
 			System.out.println("오류 :" + e.getMessage());
 		} finally {
