@@ -1,4 +1,4 @@
-<%@page import="sun.security.krb5.internal.ReplayCache"%>
+
 <%@page import="kr.or.bit.dto.Reply"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.bit.dto.Board"%>

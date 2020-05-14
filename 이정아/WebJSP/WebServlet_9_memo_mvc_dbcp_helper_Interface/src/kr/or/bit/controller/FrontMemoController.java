@@ -21,7 +21,6 @@ public class FrontMemoController extends HttpServlet {
 
 	public FrontMemoController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
