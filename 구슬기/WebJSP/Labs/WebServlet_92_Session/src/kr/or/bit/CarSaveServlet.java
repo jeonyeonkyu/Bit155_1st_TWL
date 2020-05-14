@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/carsave")
-public class CarSaveServlet extends HttpServlet { //세션은 브라우저를 닫거나, session.invalidate 하면 사라진다 
+public class CarSaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     public CarSaveServlet() {
@@ -30,11 +30,11 @@ public class CarSaveServlet extends HttpServlet { //세션은 브라우저를 �
 		//POINT (session)
 		//JSP : 내장객체지원 : session.getId()
 		//servlet : session 얻어서 >> request 한테
-		HttpSession session= request.getSession();      //이게 중요. 이거 포인트임 
+		HttpSession session= request.getSession();
 	
-		System.out.println("sessionID : " + session.getId()); //식별값
+		System.out.println("sessionID : " + session.getId());
 		
-		List<String> list = (ArrayList<String>)session.getAttribute("productlist"); //productlist 에서 세션을 얻어옴. 
+		List<String> list = (ArrayList<String>)session.getAttribute("productlist");
 		System.out.println("list Collection : " + list);
 		
 		if(product == null) {
@@ -44,7 +44,7 @@ public class CarSaveServlet extends HttpServlet { //세션은 브라우저를 �
 				System.out.println("list Collection is null");
 				list = new ArrayList<String>();
 				list.add(product);
-				session.setAttribute("productlist", list); //담아준다 
+				session.setAttribute("productlist", list); //
 				//다른 페이지에서 장바구니 공유 
 			}else {
 				System.out.println("list Collection is not null");
@@ -54,7 +54,7 @@ public class CarSaveServlet extends HttpServlet { //세션은 브라우저를 �
 		
 		out.print("<html>");
 			out.print("<body>");
-				out.print("<a href='carbasket'>장바구니 보기</a>");  //바스켓 서블릿
+				out.print("<a href='carbasket'>장바구니 보기</a>");
 			out.print("</body>");
 		out.print("</html>");
 		

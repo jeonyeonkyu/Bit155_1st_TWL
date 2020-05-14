@@ -29,15 +29,11 @@ public class CarBasketServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession(); //세션의 장점 : 모든 페이지 에서 볼수 있다 
+		HttpSession session = request.getSession();
 		System.out.println("sessionID : " + session.getId());
 		
 		/*
-		 * 
-		 *
-		 * 
-		 * 
-		  1. getSession() or getSession(true)     -------얘쓰면됩니다 
+		  1. getSession() or getSession(true)
 		     -HttpSession  타입의 session객체가 이미 존재한다면 그 session 객체의
 		           주소를 반환하고
 		     -존재하지 않으면 새로운 세션을 생성

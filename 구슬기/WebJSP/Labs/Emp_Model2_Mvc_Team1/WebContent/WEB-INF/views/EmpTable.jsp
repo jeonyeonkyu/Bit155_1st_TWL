@@ -166,6 +166,7 @@ tr>th {
 									<th style="width: 30px;">부서번호</th>
 									<th style
 									="width: 50px;">고용일자</th>
+									<th style="width: 30px;">버튼</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -180,6 +181,15 @@ tr>th {
 										<td align="center">${list2.job}</td>
 										<td align="center">${list2.deptno}</td>
 										<td align="center">${list2.hiredate}</td>
+										<td align="center">
+										<button type="button" class="btn btn-sm btn-primary" id="btnList">
+										<a href="detailView.do?empno= ${list2.empno}">수정</a></button>
+										<button type="button" class="btn btn-sm btn-warning" id="btnList">삭제</button>
+										</td>
+										<!-- <td align="center">
+										<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+										<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+										</td> -->
 									</tr>
 								</c:forEach>
 							</tbody>

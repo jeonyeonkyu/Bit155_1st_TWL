@@ -32,7 +32,7 @@ public class CarDeleteServlet extends HttpServlet {
  		if(session.getAttribute("productlist")!= null) {
  			//비우기
  			//session 객체 삭제
- 			session.invalidate(); //장바구니 비우기  
+ 			session.invalidate();
  		}else {
  			out.print("장바구니가 비어 있어요");
  		}
