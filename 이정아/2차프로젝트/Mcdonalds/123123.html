@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form name="list">
+        <div class="container">
+            <div class="form-group">
+                <div class="row ">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="form-group d-flex align-items-center">
+                            <div class="col-sm-2" style="padding-left: 0">
+                                <select name="ps" class="form-control" onchange="submit()">
+                                    <c:forEach var="i" begin="5" end="20" step="5">
+                                        <c:choose>
+                                            <c:when test="${pagesize == i }">
+                                                <option value="${i}" selected>${i}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="${i}">${i}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <label for="" style="margin-bottom: 0">개씩 보기</label>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <div class="col-sm-3" style="padding-left: 25px;">
+                                <select class="form-control">
+                                    <option value="제목">제목</option>
+                                    <option value="작성자">작성자</option>
+                                </select>
+                            </div>
+
+
+                            <label for=""> <input type="search" class="form-control" placeholder="Search">
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</body>
+
+</html>
