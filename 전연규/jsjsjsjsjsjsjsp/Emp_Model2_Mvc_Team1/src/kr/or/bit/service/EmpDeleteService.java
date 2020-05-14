@@ -29,10 +29,10 @@ public class EmpDeleteService implements Action {
 			String url = "";
 			if (result > 0) {
 				msg = "삭제 성공";
-				url = "empList.jsp";
+				url = "/WEB-INF/views/EmpTable.jsp";
 			} else {
 				msg = "삭제 실패";
-				url = "empList.jsp";
+				url = "/WEB-INF/views/EmpTable.jsp";
 			}
 
 			request.setAttribute("emp_msg", msg);

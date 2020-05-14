@@ -38,7 +38,7 @@ public class EmpAddService implements Action {
 		String url = "";
 		if (result > 0) {
 			msg = "등록 성공";
-			url = "empList.jsp";
+			url = "/WEB-INF/views/EmpTable.jsp";
 		} else {
 			msg = "등록 실패";
 			url = "boardCustomWrite.jsp";

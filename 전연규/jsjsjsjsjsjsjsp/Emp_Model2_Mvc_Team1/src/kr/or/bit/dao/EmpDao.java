@@ -2,7 +2,7 @@ package kr.or.bit.dao;
 
 import javax.sql.DataSource;
 
-
+import kr.or.bit.dto.Emp;
 import kr.or.bit.utils.ConnectionHelper;
 import kr.or.bit.utils.DB_Close;
 
@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Date;
 
 import javax.naming.Context;
@@ -33,7 +35,8 @@ public class EmpDao {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//등록하기
 	public int insertEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
 			long deptno) {
 		Connection conn = null;// 추가
@@ -68,7 +71,7 @@ public class EmpDao {
 		}
 		return result;
 	}
-
+	//EmpDao 싱글턴
 	public static synchronized EmpDao getInstance() {
 		if (empDao == null) {
 			empDao = new EmpDao();
@@ -102,7 +105,7 @@ public class EmpDao {
 		return d;
 	}
 
-	
+	//삭제하기
 	public int deleteEmp(long empno) {
 		//일반게시판 : 삭제 ...
 		
@@ -180,4 +183,118 @@ public class EmpDao {
 		}
 		return row;
 	}
-}
+	// 게시물 총 건수 구하기
+		public int totallistCount() {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int totalcount = 0;
+			try {
+				conn = ds.getConnection(); // dbcp 연결객체 얻기
+				String sql = "select count(*) cnt from emp";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					totalcount = rs.getInt("cnt");
+				}
+			} catch (Exception e) {
+
+			} finally {
+				try {
+					pstmt.close();
+					rs.close();
+					conn.close();// 반환 connection pool 에 반환하기
+				} catch (Exception e) {
+
+				}
+			}
+			return totalcount;
+		}
+
+		// 이거로 전체 조회
+		public List<Emp> list() {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<Emp> list = null;
+			try {
+				conn = ds.getConnection();
+				String sql = "select * from emp";
+				pstmt = conn.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+				list = new ArrayList<Emp>();
+				while (rs.next()) {
+
+					Emp emp = new Emp();
+					emp.setDeptno(rs.getLong("deptno"));
+					emp.setEmpno(rs.getLong("empno"));
+					emp.setEname(rs.getString("ename"));
+					emp.setJob(rs.getString("job"));
+					emp.setComm(rs.getLong("comm"));
+					emp.setHiredate(rs.getDate("hiredate"));
+					emp.setMgr(rs.getLong("mgr"));
+					emp.setSal(rs.getLong("sal"));
+
+					list.add(emp);
+				}
+
+			} catch (Exception e) {
+				System.out.println("오류 :" + e.getMessage());
+			} finally {
+				try {
+					pstmt.close();
+					rs.close();
+					conn.close();// 반환
+				} catch (Exception e2) {
+
+				}
+			}
+
+			return list;
+
+		}
+
+		public Emp detailList(Long empno) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			Emp emp = new Emp();
+			try {
+				conn = ds.getConnection();
+				String sql = "select * from emp where empno = ?";
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setLong(1, empno);
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					emp.setDeptno(rs.getLong("deptno"));
+					emp.setEmpno(rs.getLong("empno"));
+					emp.setEname(rs.getString("ename"));
+					emp.setJob(rs.getString("job"));
+					emp.setComm(rs.getLong("comm"));
+					emp.setHiredate(rs.getDate("hiredate"));
+					emp.setMgr(rs.getLong("mgr"));
+					emp.setSal(rs.getLong("sal"));
+				}
+
+			} catch (Exception e) {
+				System.out.println("오류 :" + e.getMessage());
+			} finally {
+				try {
+					pstmt.close();
+					rs.close();
+					conn.close();// 반환
+				} catch (Exception e2) {
+
+				}
+			}
+
+			return emp;
+
+		}
+
+	}
+
