@@ -10,7 +10,8 @@
 </head>
 <body>
 
-			<c:set var = "name" value = "${requestScope.name}"></c:set>
+				<c:set var = "name" value = "${requestScope.name}"/>
+				<c:set var="cpage" value="${requestScope.cpage}" />
 		   <form action="Ex03_upload_detail.jsp" method="get" name="filelist">
 		   	<input type="hidden" name="name" value="${name }">
 		   	<input type="hidden" name="title" value="<%=title %>">

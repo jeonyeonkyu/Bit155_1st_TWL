@@ -58,9 +58,9 @@ public class ImgUpService implements Action {
 				//	System.out.println(filenames.nextElement());  //filename1  ,  filename2
 				//}
 				
-				String file2 = (String)filenames.nextElement();
-				filename1 = multi.getFilesystemName(file1); //filename2 //시스템이름
-				orifilename1 = multi.getOriginalFileName(file1); //오리지날명
+				String file = (String)filenames.nextElement();
+				filename1 = multi.getFilesystemName(file); //filename2 //시스템이름
+				orifilename1 = multi.getOriginalFileName(file); //오리지날명
 				//out.print("file2  :" + file2);
 				//out.print("filename2 :" + filename2);       //a1.jpg
 				//out.print("orifilename2 :" + orifilename2); //a.jpg
