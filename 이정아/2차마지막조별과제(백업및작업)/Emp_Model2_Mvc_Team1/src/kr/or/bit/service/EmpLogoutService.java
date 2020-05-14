@@ -16,7 +16,7 @@ public class EmpLogoutService implements Action {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		String msg = "·Î±×¾Æ¿ô ¼º°ø";
+		String msg = "ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤";
 		String url = "Main.do";
 		
 		

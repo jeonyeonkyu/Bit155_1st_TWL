@@ -57,6 +57,19 @@
 tr>th {
 	text-align: center;
 }
+body{
+padding : 3px;
+}
+
+#tbody{
+background-color:white;
+}
+
+#tbody tr{
+onmouseover:backgroundColor=gray;
+onmouseout:this.style.backgroundColor=white;
+}
+
 </style>
 
 </head>
@@ -87,17 +100,14 @@ tr>th {
 			<div class="col-sm-4">
 				<div class="page-header float-left">
 					<div class="page-title">
-
-						<h1>회원 관리 테이블</h1>
+						<h1>회원 전체조회, 검색조회 페이지 입니다.</h1>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-8">
 				<div class="page-header float-right">
 					<div class="page-title">
-						<ol class="breadcrumb text-right">
-							<li class="active">회원 관리 테이블</li>
-						</ol>
+					
 					</div>
 				</div>
 			</div>
@@ -179,6 +189,8 @@ tr>th {
 									</tr>
 								</c:forEach>
 							</tbody>
+
+
 						</table>
 					</div>
 				</div>
@@ -187,9 +199,6 @@ tr>th {
 
 		<div class="d-flex justify-content-between">
 			<div class="" style="visibility: hidden;">
-				<button type="button" class="btn btn-primary">
-					<i class="fas fa-pencil-alt pr-1"></i>글쓰기
-				</button>
 			</div>
 			<!-- 공간차지용 -->
 			<ul class="pagination" style="margin: 0 auto">
@@ -218,20 +227,28 @@ tr>th {
 					</a></li>
 				</c:if>
 			</ul>
-			<div class="">
-				<button type="button" class="btn btn-primary">
+				<button type="button" id="writebutton" class="btn btn-primary" style="margin-right:50px;"
+				>
 					<i class="fas fa-pencil-alt pr-1"></i>글쓰기
 				</button>
-			</div>
 		</div>
 
-
-		<div id="divtable"></div>
-	</div>
-
+		<hr>
+		<h4 style="padding: 30px;">아래는 비동기 검색결과 입니다(사원번호, 이름)</h4>
 
 
+		<table id="order-listing" class="table text-center">
 
+			<tr class="text-center">
+				<th class="text-center" style="width: 50px;">사원번호</th>
+				<th style="width: 30px;">이름</th>
+				<th style="width: 30px;">직급</th>
+				<th style="width: 30px;">부서번호</th>
+				<th style="width: 50px;">MGR</th>
+			</tr>
+			<tbody id="tbody">
+			</tbody>
+		</table>
 </body>
 <!-- .content -->
 <!-- /#right-panel -->
@@ -255,7 +272,7 @@ tr>th {
 <script>
 	(function($) {
 		"use strict";
-
+		
 		var keyword = $("#selectBox option:selected").val();
 		$('#selectBox').change(function() {
 			keyword = $("#selectBox option:selected").val();
@@ -263,9 +280,6 @@ tr>th {
 
 		$("#search").keyup(
 				function() {
-					$('#divtable').empty();
-					console.log("검색 중입니다..");
-					console.log($("#search").val());
 					if (keyword == "사원번호") {
 						$.ajax({
 							url : "search.do",
@@ -275,25 +289,13 @@ tr>th {
 								empno : $("#search").val()
 							},
 							success : function(data) {
-								$('#divtable').empty();
-	/* 							console.log("성공 : " + data[0].empno);
-								console.log("사이즈 : " + data.length); */
+								$('#tbody').empty();
 								if($("#search").val() != ""){
-									$('#divtable').empty();
+									
 								$.each(data, function(key, value) {
 								
-								/* 	$('#a').val(value.empno);
-									$('#b').val(value.ename);
-									$('#c').val(value.job);
-									$('#d').val(value.deptno);
-									$('#e').val(value.mgr); */
-									/* 		console.log(key + " / " + value.empno);
-											console.log(key + " / " + value.ename);
-											console.log(key + " / " + value.job);
-											console.log(key + " / " + value.deptno);
-											console.log(key + " / " + value.mgr); */
-
-									let startable = "<table>";
+		
+									let startable = $("#tbody");
 										startable += "<tr>";
 											startable += "<td>" + value.empno + "</td>";
 											startable += "<td>" + value.ename + "</td>";
@@ -303,9 +305,7 @@ tr>th {
 										startable += "</tr>";
 
 									startable += "</table>";
-									console.log(startable);
-									$('#divtable').append(startable); //
-
+								 	$('#tbody').append(startable);
 								});
 							}
 								}
@@ -320,23 +320,11 @@ tr>th {
 								ename : $("#search").val()
 							},
 							success : function(data) {
-								$('#divtable').empty();
+								$('#tbody').empty();
 								if($("#search").val() != ""){
-									$('#divtable').empty();
-								$.each(data, function(key, value) {
 								
-								/* 	$('#a').val(value.empno);
-									$('#b').val(value.ename);
-									$('#c').val(value.job);
-									$('#d').val(value.deptno);
-									$('#e').val(value.mgr); */
-									/* 		console.log(key + " / " + value.empno);
-											console.log(key + " / " + value.ename);
-											console.log(key + " / " + value.job);
-											console.log(key + " / " + value.deptno);
-											console.log(key + " / " + value.mgr); */
-
-									let startable = "<table>";
+								$.each(data, function(key, value) {
+									let startable = "#tbody";
 										startable += "<tr>";
 											startable += "<td>" + value.empno + "</td>";
 											startable += "<td>" + value.ename + "</td>";
@@ -345,9 +333,8 @@ tr>th {
 											startable += "<td>" + value.mgr + "</td>";
 										startable += "</tr>";
 
-									startable += "</table>";
-									console.log(startable);
-									$('#divtable').append(startable); //
+									startable += $("#tbody");
+									$('#tbody').append(startable); 
 
 								});
 							}
@@ -355,7 +342,6 @@ tr>th {
 
 							});
 					}
-
 				})
 
 		jQuery('#vmap').vectorMap({

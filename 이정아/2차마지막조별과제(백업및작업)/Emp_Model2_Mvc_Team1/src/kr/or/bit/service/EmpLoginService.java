@@ -23,13 +23,13 @@ public class EmpLoginService implements Action {
 		String msg = "";
 		String url = "";
 		if(loginResult > 0){
-			System.out.println("·Î±×ÀÎ ¼º°ø");
-			msg = "µî·Ï ¼º°ø";
+
+			msg = "ë“±ë¡ì„±ê³µ";
 			url = "Main.do";
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 		}else {
-			msg = "µî·Ï ½ÇÆĞ";
+			msg = "ë“±ë¡ì‹¤íŒ¨";
 			url = "Main.do";
 		}
 		
