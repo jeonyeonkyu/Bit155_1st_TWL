@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpListService;
 
 @WebServlet("*.do")
@@ -20,7 +21,7 @@ public class FrontEmpController extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws Exception {
 
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
@@ -28,17 +29,18 @@ public class FrontEmpController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
+		
+		System.out.println("url_Command : " + url_Command);
 
 		if(url_Command.equals("/EmpTable.do")) {
-			forward = new ActionForward();
+			action = new EmpListService();
+			forward = action.execute(request, response);
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
 		}
-		else if (url_Command.equals("/EmpTable.do")) { // 회원관리 페이지 이동 + 리스트 출력
-			// UI+로직
-			action = new EmpListService();
-    		forward = action.execute(request, response);
-		} else if (url_Command.equals("/")) { // 회원관리 페이지 이동
-			
+		else if (url_Command.equals("/detailView.do")) { // 회원관리 페이지 이동
+			System.out.println("elseif는 타니?");
+			action = new EmpDetailService();
+			forward = action.execute(request, response);
 		}
 
 		// 4. 뷰 지정하기
@@ -53,12 +55,22 @@ public class FrontEmpController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

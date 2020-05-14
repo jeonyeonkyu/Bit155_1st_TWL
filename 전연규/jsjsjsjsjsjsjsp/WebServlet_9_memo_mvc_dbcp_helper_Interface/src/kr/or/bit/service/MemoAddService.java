@@ -1,5 +1,8 @@
 package kr.or.bit.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,6 +42,20 @@ public class MemoAddService implements Action {
       
       
       return forward;
+   }
+   
+   public Map<String, String> addMember(String id, String email, String memo) {
+	   
+	   memodao dao = new memodao(); // POINT
+       int insertResult = dao.insertMemo(id, email, memo);
+       
+       Map<String, String> result = new HashMap<>();
+       
+       result.put("boardMsg", insertResult > 0 ? "등록성공" : "등록실패");
+       result.put("boardUrl", insertResult > 0 ? "MemoList.memo" : "memo.html");
+       result.put("success", insertResult > 0 ? "true" : "false");
+       result.put("isRedirect", "false");
+	   return result;
    }
 
 }

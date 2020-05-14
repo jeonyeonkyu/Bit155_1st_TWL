@@ -336,6 +336,7 @@ public class BoardDao {
 		try {
 				conn = ds.getConnection();
 				//비인증 ..
+
 				//삭제 > 비번 
 				//처리 > 글번호 ,비번
 				
