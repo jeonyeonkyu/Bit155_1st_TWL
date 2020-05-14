@@ -103,7 +103,7 @@
 		
 			<c:choose>
 				<c:when test="${id == null}">
-					<!-- JSTML ..로그인 했을때와 안했을때 보여지는 것..  -->
+					<!-- JSTL ..로그인 했을때와 안했을때 보여지는 것..  -->
 					<div class="my-login-page">
 						<section class="h-100">
 							<div class="container h-100">
@@ -369,9 +369,6 @@ window.onload = function() {
 
 	
 	<script src="./assets/js/widgets.js"></script>
-	
-
-	<!-- <script src="./assets/js/dashboard.js"></script> -->
 	
 	<script src="./vendors/jqvmap/dist/jquery.vmap.min.js"></script>
 	<script src="./vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>

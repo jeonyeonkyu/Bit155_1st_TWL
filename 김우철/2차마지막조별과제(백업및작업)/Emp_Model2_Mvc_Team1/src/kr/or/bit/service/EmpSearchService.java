@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,67 +28,36 @@ public class EmpSearchService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 			EmpDao empDao = EmpDao.getInstance();
-			JSONArray list = new JSONArray();
+			List<Emp> list = new ArrayList<Emp>();
 			String empno = request.getParameter("empno");
 			String ename = request.getParameter("ename");
 
 			System.out.println("empno : " + empno);
 			System.out.println("ename : " + ename);
 
+
 			if (empno != null && ename == null) {
 				list = empDao.searchEmpno(empno);
-				System.out.println("여긴오냐@@@");
 			} else {
-
+				System.out.println("영어다");
+				list = empDao.searchEname(ename);
 			}
-
-			System.out.println("list : " + list);
-
-			/*
-			 * JSONArray json = JSONArray.fromObject(list); System.out.println(json);
-			 */
-
-//		  Map<String, Object> map = new HashMap<String, Object>();
-//		  map.put("beanlist", json);
-//		 
-//		  JSONObject jsonObject = JSONObject.fromObject(map);
-
-			// System.out.println("list : " + list);
-
-			String msg = "";
-			String url = "";
-			if (list != null) {
-				msg = "등록 성공";
-				url = "EmpTable.do";
-			}
-
-			request.setAttribute("msg", msg);
-			request.setAttribute("url", url);
+			
+			System.out.println(list);
 
 			JSONObject obj = new JSONObject();
-			obj.put("list", list);
+			JSONArray jsonArr = JSONArray.fromObject(list); 
+			
+			System.out.println("jsonArr : " + jsonArr);
 
-			/*
-			 * response.setContentType("application/x-json; charset=UTF-8"); try {
-			 * response.getWriter().print(list); } catch (IOException e) { // TODO
-			 * Auto-generated catch block e.printStackTrace(); }
-			 */
-
-		
-
+	    	response.setContentType("application/x-json; charset=UTF-8");
 			try {
-//				response.setContentType("application/x-json; charset=UTF-8");
-//				response.getWriter().print(obj);
-				PrintWriter out = response.getWriter();
-				  out.print(obj);
+				response.getWriter().print(jsonArr);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-			ActionForward forward = new ActionForward();
-			forward.setPath("/WEB-INF/common/redirect.jsp");
-
-			return forward;
+			
+			return null;
 		
 
 	}

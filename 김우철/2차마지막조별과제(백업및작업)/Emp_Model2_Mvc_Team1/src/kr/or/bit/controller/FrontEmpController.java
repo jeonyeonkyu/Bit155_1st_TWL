@@ -36,6 +36,7 @@ public class FrontEmpController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/index.jsp");
 		} else if (url_Command.equals("/login.do")) { // 로그인 : UI + 로직
+			System.out.println("Login..");
 			action = new EmpLoginService();
 			forward = action.execute(request, response);
 		} else if(url_Command.equals("/logout.do")) { // 로그아웃 : UI + 로직
@@ -49,7 +50,6 @@ public class FrontEmpController extends HttpServlet {
 			action = new EmpSearchService();
 			forward = action.execute(request, response);
 		}
-		
 		
 
 		// 4. 뷰 지정하기

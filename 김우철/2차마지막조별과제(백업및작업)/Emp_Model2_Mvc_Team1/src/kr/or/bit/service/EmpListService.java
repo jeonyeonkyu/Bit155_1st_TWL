@@ -36,13 +36,15 @@ public class EmpListService implements Action {
 			int pagecount = 0;
 			
 			
-			
 			if (totalcount % pagesize == 0) { 
 				pagecount = totalcount / pagesize;
 			} else {
 				pagecount = (totalcount / pagesize) + 1;
 			}
 			List<Emp> elist = empdao.list(cpage, pagesize);
+			
+			System.out.println("elist" + elist);
+			
 			request.setAttribute("list", elist);
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("pagecount", pagecount);

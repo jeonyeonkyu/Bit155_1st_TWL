@@ -110,12 +110,13 @@ tr>th {
 					<div class="col-sm-12 col-md-6 ">
 						<div class="form-group d-flex align-items-center">
 							<div class="col-sm-2" style="padding-left: 0">
-								<form name="list" action="EmpTable.do?ps=selected">
+								<!-- action="EmpTable.do?ps=selected" -->
+								<form name="list">
 									<select name="ps" class="form-control" onchange="submit()">
 										<c:forEach var="i" begin="5" end="20" step="5">
 											<c:choose>
 												<c:when test="${pagesize == i }">
-													<option value="${i}">${i}</option>
+													<option value="${i}" selected>${i}</option>
 												</c:when>
 												<c:otherwise>
 													<option value="${i}">${i}</option>
@@ -124,6 +125,7 @@ tr>th {
 										</c:forEach>
 									</select>
 								</form>
+
 							</div>
 							<label for="" style="margin-bottom: 0">개씩 보기</label>
 						</div>
@@ -163,16 +165,17 @@ tr>th {
 									<th style="width: 50px;">MGR</th>
 								</tr>
 							</thead>
+
 							<tbody>
 								<c:set var="list" value="${requestScope.list}" />
 								<c:forEach var="list2" items="${list}">
 									<tr onmouseover="this.style.backgroundColor='gray'"
 										onmouseout="this.style.backgroundColor='white'">
-										<td align="center">${list2.empno}</td>
-										<td align="center">${list2.ename}</td>
-										<td align="center">${list2.job}</td>
-										<td align="center">${list2.deptno}</td>
-										<td align="center">${list2.mgr}</td>
+										<td id="a" align="center">${list2.empno}</td>
+										<td id="b" align="center">${list2.ename}</td>
+										<td id="c" align="center">${list2.job}</td>
+										<td id="d" align="center">${list2.deptno}</td>
+										<td id="e" align="center">${list2.mgr}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -221,7 +224,13 @@ tr>th {
 				</button>
 			</div>
 		</div>
+
+
+		<div id="divtable"></div>
 	</div>
+
+
+
 
 </body>
 <!-- .content -->
@@ -252,42 +261,102 @@ tr>th {
 			keyword = $("#selectBox option:selected").val();
 		})
 
-		$("#search").keyup(function() {
-			console.log("검색 중입니다..");
-			console.log(keyword);
-			if (keyword == "사원번호") {
-				$.ajax({
-					url : "search.do",
-					type : 'POST',
-					dataType : "json",
-					data : {
-						empno : $(this).val()
-					},
-					success : function(data) {
-						console.log("성공 : " + data);
-					},
-					error : function(request, status, error) {
-						console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		$("#search").keyup(
+				function() {
+					$('#divtable').empty();
+					console.log("검색 중입니다..");
+					console.log($("#search").val());
+					if (keyword == "사원번호") {
+						$.ajax({
+							url : "search.do",
+							type : 'POST',
+							dataType : "json",
+							data : {
+								empno : $("#search").val()
+							},
+							success : function(data) {
+								$('#divtable').empty();
+	/* 							console.log("성공 : " + data[0].empno);
+								console.log("사이즈 : " + data.length); */
+								if($("#search").val() != ""){
+									$('#divtable').empty();
+								$.each(data, function(key, value) {
+								
+								/* 	$('#a').val(value.empno);
+									$('#b').val(value.ename);
+									$('#c').val(value.job);
+									$('#d').val(value.deptno);
+									$('#e').val(value.mgr); */
+									/* 		console.log(key + " / " + value.empno);
+											console.log(key + " / " + value.ename);
+											console.log(key + " / " + value.job);
+											console.log(key + " / " + value.deptno);
+											console.log(key + " / " + value.mgr); */
+
+									let startable = "<table>";
+										startable += "<tr>";
+											startable += "<td>" + value.empno + "</td>";
+											startable += "<td>" + value.ename + "</td>";
+											startable += "<td>" + value.job + "</td>";
+											startable += "<td>" + value.deptno + "</td>";
+											startable += "<td>" + value.mgr + "</td>";
+										startable += "</tr>";
+
+									startable += "</table>";
+									console.log(startable);
+									$('#divtable').append(startable); //
+
+								});
+							}
+								}
+
+							});
+					} else {
+						$.ajax({
+							url : "search.do",
+							type : 'POST',
+							dataType : "json",
+							data : {
+								ename : $("#search").val()
+							},
+							success : function(data) {
+								$('#divtable').empty();
+								if($("#search").val() != ""){
+									$('#divtable').empty();
+								$.each(data, function(key, value) {
+								
+								/* 	$('#a').val(value.empno);
+									$('#b').val(value.ename);
+									$('#c').val(value.job);
+									$('#d').val(value.deptno);
+									$('#e').val(value.mgr); */
+									/* 		console.log(key + " / " + value.empno);
+											console.log(key + " / " + value.ename);
+											console.log(key + " / " + value.job);
+											console.log(key + " / " + value.deptno);
+											console.log(key + " / " + value.mgr); */
+
+									let startable = "<table>";
+										startable += "<tr>";
+											startable += "<td>" + value.empno + "</td>";
+											startable += "<td>" + value.ename + "</td>";
+											startable += "<td>" + value.job + "</td>";
+											startable += "<td>" + value.deptno + "</td>";
+											startable += "<td>" + value.mgr + "</td>";
+										startable += "</tr>";
+
+									startable += "</table>";
+									console.log(startable);
+									$('#divtable').append(startable); //
+
+								});
+							}
+								}
+
+							});
 					}
+
 				})
-			} else {
-				$.ajax({
-					url : "search.do",
-					data : {
-						ename : $(this).val()
-					},
-					dataType : "POST",
-
-					success : function(data) {
-
-					},
-					error : function(request, status, error) {
-
-					}
-				})
-			}
-
-		})
 
 		jQuery('#vmap').vectorMap({
 			map : 'world_en',

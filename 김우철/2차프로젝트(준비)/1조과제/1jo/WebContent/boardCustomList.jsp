@@ -23,8 +23,8 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <title>게시판 UI</title>
 <style>
 tr>th {
@@ -32,10 +32,6 @@ tr>th {
 }
 </style>
 
-<script>
-	console.log($("#kwc option:checked").text());
-
-</script>
 </head>
 
 <body>

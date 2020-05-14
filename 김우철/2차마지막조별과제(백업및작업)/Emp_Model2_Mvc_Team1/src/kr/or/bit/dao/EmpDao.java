@@ -242,41 +242,83 @@ public class EmpDao {
 
 	}
 
-	public JSONArray searchEmpno(String empno) {
+	public List<Emp> searchEmpno(String empno) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<Emp> list = new ArrayList();
-		JSONArray arr = new JSONArray();
-	
-		int rowcount = 0;
+		List<Emp> list = new ArrayList<Emp>();
+
 		try {
 			conn = ds.getConnection();
 			String sql = "select empno, ename, job, deptno, mgr from emp where empno like ?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, '%' + empno + '%');
+			System.out.println("DAIO!! " + empno);
+			pstmt.setString(1, "%" + empno + "%");
 			rs = pstmt.executeQuery();
-		
+
 			while (rs.next()) {
-				JSONObject obj = new JSONObject();
-				obj.put("empno",rs.getLong(1)); 
-				obj.put("ename",rs.getString(2)); 
-				obj.put("job",rs.getString(3)); 
-				obj.put("deptno",rs.getLong(4)); 
-				obj.put("mgr",rs.getLong(5)); 
-				arr.add(obj);
+				Emp emp = new Emp();
+				emp.setEmpno(rs.getLong(1));
+				emp.setEname(rs.getString(2));
+				emp.setJob(rs.getString(3));
+				emp.setDeptno(rs.getLong(4));
+				emp.setMgr(rs.getLong(5));
+				list.add(emp);
 			}
-			System.out.println("arr : " + arr);
-			conn.close();
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DB_Close.close(rs);
-			DB_Close.close(pstmt);
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return arr;
+		return list;
+
+	}
+	
+	
+	public List<Emp> searchEname(String ename) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Emp> list = new ArrayList<Emp>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select empno, ename, job, deptno, mgr from emp where ename like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + ename + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setEmpno(rs.getLong(1));
+				emp.setEname(rs.getString(2));
+				emp.setJob(rs.getString(3));
+				emp.setDeptno(rs.getLong(4));
+				emp.setMgr(rs.getLong(5));
+				list.add(emp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 
 	}
 
