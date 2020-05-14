@@ -82,7 +82,7 @@ tr>th {
 		<c:set var="cpage" value="${requestScope.cpage}" />
 		<c:set var="pagecount" value="${requestScope.pagecount }" />
 
-
+</div>
 		<div class="breadcrumbs">
 			<div class="col-sm-4">
 				<div class="page-header float-left">
@@ -121,7 +121,7 @@ tr>th {
 													<option value="${i}">${i}</option>
 												</c:otherwise>
 											</c:choose>
-										</c:forEach> 
+										</c:forEach>
 									</select>
 								</form>
 							</div>
@@ -223,7 +223,6 @@ tr>th {
 				</button>
 			</div>
 		</div>
-	</div>
 
 </body>
 <!-- .content -->
@@ -244,6 +243,7 @@ tr>th {
 <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
+
 	(function($) {
 		"use strict";
 
