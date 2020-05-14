@@ -68,6 +68,7 @@ tr>th {
 	List<Board> list = service.list(cpage, pagesize); //List를 바로 요청하면 5개씩 묶은 1번째 페이지가 보여짐
 	%>
 
+
 	<c:set var="pagesize" value="<%=pagesize%>" />
 	<c:set var="cpage" value="<%=cpage%>" />
 	<c:set var="pagecount" value="<%=pagecount%>" />

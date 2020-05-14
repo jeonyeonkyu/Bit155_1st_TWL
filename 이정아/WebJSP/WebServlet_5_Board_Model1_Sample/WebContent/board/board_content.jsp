@@ -51,7 +51,7 @@
 		//데이터 조회 //결과값이 무조건 글번호 1건 (row)
 		Board board = service.content(Integer.parseInt(idx));
 	
-	%> --%> --%>
+	%>
 	<%
 		pageContext.include("/include/header.jsp");
 	%>

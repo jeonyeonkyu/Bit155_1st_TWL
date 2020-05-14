@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpListService;
 
 @WebServlet("*.do")
@@ -29,15 +30,18 @@ public class FrontEmpController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if(url_Command.equals("/EmpTable.do")) {
+		if(url_Command.equals("/EmpTable.do")) { //전체조회
+			
+			
+			
 			action = new EmpListService();
 			forward = action.execute(request, response);
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
 		}
-		else if (url_Command.equals("/EmpTable.do")) { // 회원관리 페이지 이동 + 리스트 출력
-			// UI+로직
+		else if (url_Command.equals("/EmpDetail.do")) { //상세보기
+			action = new EmpDetailService();
 			forward = new ActionForward();
-    		forward.setPath("/WEB-INF/Register/EmpTable.jsp");
+    		forward.setPath("/WEB-INF/Register/EmpDetail.jsp");
 		} else if (url_Command.equals("/")) { // 회원관리 페이지 이동
 			
 		}

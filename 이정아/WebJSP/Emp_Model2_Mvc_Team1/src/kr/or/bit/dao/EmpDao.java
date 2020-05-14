@@ -2,9 +2,11 @@ package kr.or.bit.dao;
 
 import javax.sql.DataSource;
 
+
 import kr.or.bit.dto.Emp;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ public class EmpDao {
 		return totalcount;
 	}
 	
-	public List<Emp> list() {
+	public List<Emp> list(int cpage, int pagesize) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -61,13 +63,24 @@ public class EmpDao {
 		List<Emp> list = null;
 		try {
 			conn = ds.getConnection();
-			String sql = "select * from emp";
+			String sql = "select * from  "
+					+ "(select rownum rn, empno, ename, job, mgr, hiredate, sal, comm, deptno"
+					+ "             from emp " + // ★form 인라인 절은
+																			// 데이터(중요)
+					"             where rownum <= ?" + // end row
+					") where rn >= ?"; // start row
 			pstmt = conn.prepareStatement(sql);
+			
+			int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1
+			int end = cpage * pagesize; // 1 * 5 = 5
+
+			pstmt.setInt(1, end);
+			pstmt.setInt(2, start);
+
 			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<Emp>();
 			while(rs.next()) {
-				
 				Emp emp = new Emp();
 				emp.setDeptno(rs.getLong("deptno"));
 				emp.setEmpno(rs.getLong("empno"));
@@ -77,8 +90,6 @@ public class EmpDao {
 				emp.setHiredate(rs.getDate("hiredate"));
 				emp.setMgr(rs.getLong("mgr"));
 				emp.setSal(rs.getLong("sal"));
-			
-				
 				list.add(emp);
 			}
 			
@@ -98,8 +109,46 @@ public class EmpDao {
 
 	}
 	
+	public Emp getContent(long empno) {
+	//상세보기
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	Emp	emp= null;
 	
+	try {
+		conn = ds.getConnection();
+		String sql="select * from emp where idx=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setLong(1, empno);
+		
 	
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			
+			long deptno = rs.getLong("deptno");
+			String ename = rs.getString("ename");
+			String job = rs.getString("job");
+			Date hiredate = rs.getDate("hiredate");
+			Long mgr = rs.getLong("mgr");
+			long comm = rs.getLong("comm");
+			Long sal = rs.getLong("sal");
+			//////////////////////////////// Emp에 생성자 추가
+			emp = new Emp(empno, deptno, ename, job, comm, hiredate, mgr, sal);
+		}
+		
+	} catch (Exception e) {
+		System.out.println("content: " + e.getMessage());
+	}finally {
+		try {
+			pstmt.close();
+			rs.close();
+			conn.close();//반환하기
+		} catch (Exception e2) {
+			
+		}
+	}
 	
-
+	return emp;
+}
 }

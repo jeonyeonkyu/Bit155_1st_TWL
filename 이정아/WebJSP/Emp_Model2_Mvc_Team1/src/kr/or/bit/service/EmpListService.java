@@ -20,44 +20,39 @@ public class EmpListService implements Action {
 
 	
 			request.setCharacterEncoding("UTF-8");
-			/*
-			 * String idx = request.getParameter("idx");
-			 * 
-			 * if (idx == null || idx.trim().equals("")) {
-			 * response.sendRedirect("EmpTable.jsp");
-			 * 
-			 * } idx = idx.trim();
-			 */
 			
 			
 			EmpDao empdao = new EmpDao();
-			List<Emp> elist = empdao.list();
-			System.out.println(elist);
-			request.setAttribute("list", elist);
+		
 			
 			String ps = request.getParameter("ps"); //pagesize
 			String cp = request.getParameter("cp");
-
-			if (cp == null || cp.trim().equals("")) {
-				cp = "5";
-			}
-
-			if (ps == null || ps.trim().equals("")) {
-				ps = "1";
-			}
 			
+			
+			if (cp == null || cp.trim().equals("")) {
+				cp = "1";
+			}
+			if (ps == null || ps.trim().equals("")) {
+				ps = "5";
+			}
 			int pagesize = Integer.parseInt(ps);
 			int cpage = Integer.parseInt(cp);
+			int totalcount = empdao.totallistCount();
 			int pagecount = 0;
 			
-
-			int totalcount = empdao.totallistCount();
+			
 			
 			if (totalcount % pagesize == 0) { 
 				pagecount = totalcount / pagesize;
 			} else {
 				pagecount = (totalcount / pagesize) + 1;
 			}
+			List<Emp> elist = empdao.list(cpage, pagesize);
+			request.setAttribute("list", elist);
+			request.setAttribute("pagesize", pagesize);
+			request.setAttribute("pagecount", pagecount);
+			request.setAttribute("cpage", cpage);
+			
 			
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/views/EmpTable.jsp");

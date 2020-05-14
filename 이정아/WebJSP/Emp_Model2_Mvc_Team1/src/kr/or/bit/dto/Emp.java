@@ -12,6 +12,25 @@ public class Emp {
 	private long comm;
 	private long deptno;
 
+
+	public Emp() {
+		
+	}
+
+	public Emp(long empno, long deptno, String ename,String job, long comm, Date hiredate, long mgr, long sal) {
+		super();
+		this.empno = empno;
+		this.deptno = deptno;
+		this.ename = ename;
+		this.job = job;
+		this.comm = comm;
+		this.hiredate = hiredate;
+		this.mgr = mgr;
+		this.sal = sal;
+
+	}
+	
+	
 	public long getEmpno() {
 		return empno;
 	}

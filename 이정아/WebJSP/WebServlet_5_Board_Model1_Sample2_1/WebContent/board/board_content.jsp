@@ -59,9 +59,9 @@
 					<tr>
 						<td colspan="4" align="center">
 							<a href="board_list.jsp?cp=${requestScope.cpage}&ps=${requestScope.pagesize}">목록가기</a> <!-- 3번페이지의 사이즈 5를 가지고 들어오면 거기로 다시 돌아간다 -->
-				            |<a href="board_edit.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}">편집</a> <!-- 글 번호와 현재 페이지. 페이지 사이즈를 유지하려면 필요  -->
-				            |<a href="board_delete.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}">삭제</a>
-				            |<a href="board_rewrite.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}&subject=${board.getSubject()}">답글</a>									
+				            <a href="board_edit.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}">편집</a> <!-- 글 번호와 현재 페이지. 페이지 사이즈를 유지하려면 필요  -->
+				            <a href="board_delete.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}">삭제</a>
+				            <a href="board_rewrite.jsp?idx=${requestScope.idx}&cp=${requestScope.cpage}&ps=${requestScope.pagesize}&subject=${board.getSubject()}">답글</a>									
 						</td>
 					</tr>
 				</table>

@@ -20,7 +20,8 @@
 	<!-- 리스트->서비스(토탈카운트)->보드->보드토탈카운트->서비스->리스트->출력 -->
 	<c:import url="/include/header.jsp" />
 	<%
-		BoardService service = BoardService.getInBoardService();
+	
+	BoardService service = BoardService.getInBoardService();
 
 	int totalboardcount = service.totalBoardCount();
 
@@ -152,7 +153,8 @@
 							<!-- 페이지 수가 1개 이상이라면, 이전으로 갈 페이지가 있다는 뜻이므로 -->
 							<a href="board_list.jsp?cp=${cpage-1}&ps=${pagesize}">이전</a>
 							<!-- 현재 페이지의 -1을 해서 가겠다 -->
-						</c:if> <!-- 페이지 목록 나열하기 --> <c:forEach var="i" begin="1"
+						</c:if> 
+						<!-- 페이지 목록 나열하기 --> <c:forEach var="i" begin="1"
 							end="${pagecount}" step="1">
 							<!-- 페이지의 개수만큼 돈다 -->
 							<c:choose>
