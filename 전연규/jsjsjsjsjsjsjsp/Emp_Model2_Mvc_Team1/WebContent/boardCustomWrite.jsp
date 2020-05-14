@@ -107,10 +107,10 @@ body {
 				</div> --%>
 			</form>
 			<div>
-			${emp.empno}
-			<!-- 	<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button> -->
-				<a href="delete.do?empno=7369" type="button" class="btn btn-sm btn-primary">삭제</a>
-				<!-- <button type="button" class="btn btn-sm btn-primary" id="btnList" onclick="location.href='emplist.jsp'">목록</button> -->
+			
+			 	<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+			<!-- 	<a href="delete.do?empno=7369" type="button" class="btn btn-sm btn-primary">삭제</a> -->
+				<button type="button" class="btn btn-sm btn-primary" id="btnList" onclick="location.href='emplist.jsp'">목록</button>
 			</div>
 		</div>
 
