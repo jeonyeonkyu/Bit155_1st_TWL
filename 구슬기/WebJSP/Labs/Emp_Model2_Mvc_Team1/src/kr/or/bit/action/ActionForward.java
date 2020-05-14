@@ -1,7 +1,6 @@
 package kr.or.bit.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 public class ActionForward  {
 	private String path = null; 
