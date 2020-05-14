@@ -182,8 +182,8 @@ tr>th {
 									<td align="center">${list2.deptno}</td>
 									<td align="center">${list2.hiredate}</td>
 									<td align="center">
-									<a href="EmpTable.do" type="button"
-											class="btn btn-sm btn-primary" id="btnSave">수정</a>
+									<a href="boardCustomEdit.do?empno=${list2.empno}" type="button"
+											class="btn btn-sm btn-primary">수정</a>
 										<a href="delete.do?empno=${list2.empno}" type="button"
 											class="btn btn-sm btn-warning">삭제</a>
 									</td>

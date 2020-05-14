@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -41,7 +43,7 @@
 <body>
 
 	<!-- Left Panel -->
-		<jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
 
 	<!-- /Left Panel -->
 
@@ -71,14 +73,14 @@
 				</div>
 			</div>
 		</div>
-
+		<!-- 컨텐트 시작 -->
 		<div class="content mt-3">
 
 			<div class="col-sm-12">
 				<div class="alert  alert-success alert-dismissible fade show"
 					role="alert">
-					<span class="badge badge-pill badge-success">Success</span> You
-					successfully read this important alert message.
+					<span class="badge badge-pill badge-success">Success</span> 자지마.
+					할수있음
 					<button type="button" class="close" data-dismiss="alert"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -214,12 +216,43 @@
 
 
 		</div>
-		<!-- .content -->
+		<!-- .content 여기다 카드 넣어보자 -->
+
+${requestScope.list}
+
+		<c:set var="list" value="${requestScope.list}" />
+		<%-- ${requestScope.emp} --%>
+		<div class="col-sm-6 col-lg-3">
+			<!--	<div class="card text-white bg-flat-color-4"> -->
+			<div class="card-body pb-0">
+				<button type="button" class="btn btn-sm btn-clear" id="btnList">
+					<a href="chartView.do">차트</a>
+				</button>
+			</div>
+
+			${list.sar} ${list.job}
+			<table border="1">
+				<tr>
+					<td>직업</td>
+					<td>급여</td>
+				</tr>
+				<c:forEach var="e" items="${list}">
+					<tr>
+						<td>${e.job}</td>
+						<td>${e.sar}</td>
+					</tr>
+				</c:forEach>
+			</table>
+
+		</div>
+		<!--  </div> -->
 	</div>
+
+
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
-</div>
+	</div>
 	<script src="vendors/jquery/dist/jquery.min.js"></script>
 	<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 	<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>

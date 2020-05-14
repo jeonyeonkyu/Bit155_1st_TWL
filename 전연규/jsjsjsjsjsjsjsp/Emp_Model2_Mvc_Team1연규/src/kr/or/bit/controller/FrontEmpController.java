@@ -51,6 +51,7 @@ public class FrontEmpController extends HttpServlet {
 			forward = postEmpDelete(request,response);
 		}else if(url_Command.equals("/boardCustomEdit.do")) { //수정
 			forward = postEmpEdit(request, response);
+			forward.setPath("boardCustomEdit.jsp");
 		}
 
 		// 4. 뷰 지정하기

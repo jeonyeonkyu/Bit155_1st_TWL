@@ -12,7 +12,7 @@ public class EmpEditService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
-		String empno = request.getParameter("empno");
+		
 		String ename = request.getParameter("ename");
 		String job = request.getParameter("job");
 		String mgr = request.getParameter("mgr");
@@ -20,6 +20,7 @@ public class EmpEditService implements Action {
 		String sal = request.getParameter("sal");
 		String comm = request.getParameter("comm");
 		String deptno = request.getParameter("deptno");
+		String empno = request.getParameter("empno");
 		  
 		  
 		EmpDao dao = new EmpDao(); // POINT
@@ -32,6 +33,9 @@ public class EmpEditService implements Action {
 			result = 0;
 		}
 		  
+			
+		
+		
 			String msg="";
 			String url="";
 			if(result > 0){
@@ -44,7 +48,17 @@ public class EmpEditService implements Action {
 			
 			request.setAttribute("emp_msg",msg);
 			request.setAttribute("emp_url",url);
-
+			request.setAttribute("ename", ename);
+			request.setAttribute("job", job);
+			request.setAttribute("mgr", mgr);
+			request.setAttribute("hiredate", hiredate);
+			request.setAttribute("sal", sal);
+			request.setAttribute("comm", comm);
+			request.setAttribute("deptno", deptno);
+			request.setAttribute("empno", empno);
+			
+			
+			
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/WEB-INF/views/redirect.jsp");

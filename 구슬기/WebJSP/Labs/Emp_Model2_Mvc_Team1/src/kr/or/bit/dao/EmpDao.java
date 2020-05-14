@@ -138,5 +138,45 @@ public class EmpDao {
 		return emp;
 
 	}
+	
+	public List<Emp> chartList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Emp> list = new ArrayList<Emp>();
+		try {
+			conn = ds.getConnection();
+			/*
+			 * String sql = "select job , avg(sal)*12 sar\r\n" + "from emp\r\n" +
+			 * "group by job\r\n" + "order by sar desc";
+			 */
+			String sql = "select * from vv2";
+			pstmt = conn.prepareStatement(sql);
+
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setJob(rs.getString("job"));
+				emp.setSal(rs.getLong("sal"));
+				
+				list.add(emp);
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 반환
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return list;
+
+	}
 
 }
