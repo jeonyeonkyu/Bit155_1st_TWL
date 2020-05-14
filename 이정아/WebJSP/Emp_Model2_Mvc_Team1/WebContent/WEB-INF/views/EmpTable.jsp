@@ -51,7 +51,33 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
+<script>
+
+$(function() {   // <input>요소에 문자가 입력될 때마다 호출됨.
+
+    $("#search_box").keyup(function() {
+
+        $.ajax({ 
+
+            url: "EmpSearch.do",
+            data: { keyword : $(this).val() },
+            method: "GET"
+
+        })       // Ajax 응답을 정상적으로 받으면 실행됨.
+
+        .done(function(result) {
+            $("#suggestion_box").html(result);
+
+        })
+
+    })
+
+});
+
+
+</script>
 
 <style>
 tr>th {
@@ -70,9 +96,7 @@ tr>th {
 
 	<!-- Right Panel -->
 
-
-
-	<div id="right-panel" class="right-panel">
+	
 
 		<!-- Header-->
 		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
@@ -82,7 +106,6 @@ tr>th {
 		<c:set var="cpage" value="${requestScope.cpage}" />
 		<c:set var="pagecount" value="${requestScope.pagecount }" />
 
-</div>
 		<div class="breadcrumbs">
 			<div class="col-sm-4">
 				<div class="page-header float-left">
@@ -133,13 +156,15 @@ tr>th {
 						<div class="d-flex justify-content-end">
 							<div class="col-sm-3" style="padding-left: 25px;">
 								<select class="form-control">
-									<option value="제목">제목</option>
-									<option value="작성자">작성자</option>
+									<option value="search">사원번호</option>
+									<option value="search">작성자</option>
+									<option value="search">작성자</option>
+									<option value="search">작성자</option>
+									
 								</select>
 							</div>
 
-
-							<label for=""> <input type="search" class="form-control"
+							<label for=""> <input id="search_box" type="text" class="form-control"
 								placeholder="Search">
 							</label>
 						</div>
@@ -147,6 +172,7 @@ tr>th {
 
 				</div>
 			</div>
+
 
 		</div>
 		<%-- ${requestScope.list} --%>
@@ -223,7 +249,7 @@ tr>th {
 				</button>
 			</div>
 		</div>
-
+		
 </body>
 <!-- .content -->
 <!-- /#right-panel -->

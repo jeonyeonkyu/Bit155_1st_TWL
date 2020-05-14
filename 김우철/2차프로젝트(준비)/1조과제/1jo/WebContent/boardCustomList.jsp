@@ -23,8 +23,8 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <title>게시판 UI</title>
 <style>
 tr>th {
@@ -32,10 +32,6 @@ tr>th {
 }
 </style>
 
-<script>
-	console.log($("#kwc option:checked").text());
-
-</script>
 </head>
 
 <body>
@@ -106,8 +102,6 @@ tr>th {
 									<c:forEach var="board" items="${list}">
 										<tr >
 											<td>${board.idx}</td>
-
-
 											<td align="left"><c:forEach var="i" begin="1" end="${board.depth}"
 													step="1">
 								&nbsp;&nbsp;&nbsp;
@@ -127,12 +121,13 @@ tr>th {
 													</c:choose>
 											</a></td>
 
-
-
-
 											<td>${board.writer}</td>
 											<td>${board.writedate}</td>
 											<td>${board.readnum}</td>
+											<td> 
+												<a href="delete.ok?${board.idx}" type="button"></a>
+												<a href="" type="button"></a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

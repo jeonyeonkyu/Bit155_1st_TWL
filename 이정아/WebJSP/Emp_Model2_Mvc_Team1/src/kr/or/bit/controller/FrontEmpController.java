@@ -12,6 +12,8 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpListService;
+import kr.or.bit.service.EmpSearchService;
+import kr.or.bit.service.ImgUpService;
 
 @WebServlet("*.do")
 public class FrontEmpController extends HttpServlet {
@@ -31,18 +33,22 @@ public class FrontEmpController extends HttpServlet {
 		ActionForward forward = null;
 
 		if(url_Command.equals("/EmpTable.do")) { //전체조회
-			
-			
-			
+					
 			action = new EmpListService();
 			forward = action.execute(request, response);
-			forward.setPath("/WEB-INF/views/EmpTable.jsp");
+
 		}
 		else if (url_Command.equals("/EmpDetail.do")) { //상세보기
 			action = new EmpDetailService();
 			forward = new ActionForward();
+			forward = action.execute(request, response);
     		forward.setPath("/WEB-INF/Register/EmpDetail.jsp");
-		} else if (url_Command.equals("/")) { // 회원관리 페이지 이동
+    		
+		
+		}else if(url_Command.equals("/WEB-INF/Register/upload.do")) {
+			action = new ImgUpService();
+			forward = new ActionForward();
+			forward = action.execute(request, response);
 			
 		}
 

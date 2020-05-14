@@ -39,6 +39,7 @@ A 사람
 요청 + service 
 
 B 사람(이사람으로 ㄱㄱ)
+
 요청에 대한 FrontController 만들어 사용 (한개 )
 
 게시판 : BoardFrontController (게시판 관련된 모든 요청)

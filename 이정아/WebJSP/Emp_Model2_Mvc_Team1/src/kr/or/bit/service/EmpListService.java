@@ -1,8 +1,6 @@
 package kr.or.bit.service;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +16,14 @@ public class EmpListService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-	
-			request.setCharacterEncoding("UTF-8");
-			
+
 			
 			EmpDao empdao = new EmpDao();
-		
+					
 			
 			String ps = request.getParameter("ps"); //pagesize
 			String cp = request.getParameter("cp");
-			
+	
 			
 			if (cp == null || cp.trim().equals("")) {
 				cp = "1";
@@ -52,6 +48,8 @@ public class EmpListService implements Action {
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("pagecount", pagecount);
 			request.setAttribute("cpage", cpage);
+			
+		
 			
 			
 		ActionForward forward = new ActionForward();

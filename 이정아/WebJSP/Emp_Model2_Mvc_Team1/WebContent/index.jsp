@@ -46,13 +46,16 @@
 	<!-- /Left Panel -->
 
 	<!-- Right Panel -->
-
 	<div id="right-panel" class="right-panel">
+
+
 
 		<!-- Header-->
 		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
 		<!-- /Header -->
 
+	<div id="right-panel" class="right-panel">
+</div>
 		<div class="breadcrumbs">
 			<div class="col-sm-4">
 				<div class="page-header float-left">
@@ -211,15 +214,12 @@
 				</div>
 			</div>
 			<!--/.col-->
-
-
-		</div>
+	</div>
 		<!-- .content -->
 	</div>
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
-</div>
 	<script src="vendors/jquery/dist/jquery.min.js"></script>
 	<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 	<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
