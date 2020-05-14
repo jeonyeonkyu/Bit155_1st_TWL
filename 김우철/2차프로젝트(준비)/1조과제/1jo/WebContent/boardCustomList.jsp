@@ -106,8 +106,6 @@ tr>th {
 									<c:forEach var="board" items="${list}">
 										<tr >
 											<td>${board.idx}</td>
-
-
 											<td align="left"><c:forEach var="i" begin="1" end="${board.depth}"
 													step="1">
 								&nbsp;&nbsp;&nbsp;
@@ -127,12 +125,13 @@ tr>th {
 													</c:choose>
 											</a></td>
 
-
-
-
 											<td>${board.writer}</td>
 											<td>${board.writedate}</td>
 											<td>${board.readnum}</td>
+											<td> 
+												<a href="delete.ok?${board.idx}" type="button"></a>
+												<a href="" type="button"></a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
