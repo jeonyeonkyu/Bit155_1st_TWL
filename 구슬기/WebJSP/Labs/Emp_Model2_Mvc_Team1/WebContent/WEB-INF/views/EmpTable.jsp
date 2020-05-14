@@ -18,6 +18,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Sufee Admin - HTML5 Admin Template</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+		$(function(){
+			$('#message').click(function(){
+				$.ajax(
+						{
+							url : "Ex02_menu.html",    //보내는 주소
+							dataType:"html",//서버가 응답하는 데이터 형식(html)로한다 !
+							success :function(responsedata){    // 정상이라면 콜백함수 만들어서 데이터 가공하는거까지 
+								// 서버의 응답이 왔고  그 응답이 정상이라면 탄다 
+								$('#menudiv').html($(responsedata).find('li'));          
+							}
+						}
+						)
+			})
+		})
+		
+		</script> -->
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

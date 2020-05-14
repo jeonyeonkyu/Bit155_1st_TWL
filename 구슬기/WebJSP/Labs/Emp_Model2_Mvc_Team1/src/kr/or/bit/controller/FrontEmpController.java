@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.EmpChartService;
 import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpListService;
 
@@ -38,8 +39,12 @@ public class FrontEmpController extends HttpServlet {
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
 		}
 		else if (url_Command.equals("/detailView.do")) { // 회원관리 페이지 이동
-			System.out.println("elseif는 타니?");
 			action = new EmpDetailService();
+			forward = action.execute(request, response);
+		
+		}else if (url_Command.equals("/chartView.do")) { // 회원관리 페이지 이동
+			System.out.println("elseif는 타니?");
+			action = new EmpChartService();
 			forward = action.execute(request, response);
 		}
 

@@ -1,0 +1,115 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <!--https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    <script>
+
+        // let publicAPI = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?";
+        // let data = { address: "서울특별시 강남구" };
+
+        let plenty = 0;
+        let some = 0;
+        let few = 0;
+        let empty = 0;
+        let none = 0;
+
+        $(function () {
+            var mask = [];
+            $.getJSON("https:8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address:서울특별시 강남구",
+                function (data) {
+                    $.each(data.stores, function (index, obj) {
+                        console.log("index : " + index);
+                        var temp = data.stores[index].remain_stat;
+                        if (temp === null || temp === undefined) {
+                            return;
+                        } else {
+                            if (temp.includes("plenty")) {
+                                plenty++;
+                            } else if (temp.includes("some")) {
+                                some++;
+                            } else if (temp.includes("few")) {
+                                few++;
+                            } else if (temp.includes("empty")) {
+                                empty++;
+                            } else if (temp.includes("break")) { //왠지 모르겠는데 break를 변수로 선언하면 자꾸 에러떠서 none으로 했음
+                                none++;
+                            }
+                        }
+                    }) //$.each 끝
+
+                        // console.log(plenty);
+                        // console.log(some);
+                        // console.log(few);
+                        // console.log(empty);
+                        // console.log(none);
+                        // console.log(Number(plenty);
+                        var ctx = $('#myChart').get(0).getContext("2d");
+                        var myChart = new Chart(ctx, {
+                            type: 'horizontalBar',//차트타입
+                            data: {
+                                labels: ["plenty", "some", "few", "empty", "none"], //차트에 들어갈 라벨명
+                                datasets: [{
+                                    data: [Number(plenty), Number(some), Number(few), Number(empty), Number(none)],
+                                    // data: [5, 10, 3, 1, 10],
+                                    backgroundColor: [
+                                        'rgba(244,99,132,0.2)',
+                                        'rgba(54,162,235,0.2)',
+                                        'rgba(255,206,86,0.2)',
+                                        'rgba(75,192,192,0.2)',
+                                        'rgba(153,102,255,0.2)',
+                                        'rgba(255,159,64,0.2)',
+                                    ],
+                                    hoverBorderWidth:[
+                                        '5',
+                                        '5',
+                                        '5',
+                                        '5',
+                                        '5'
+
+                                    ],
+                                    hoverBackgroundColor:[
+                                        'rgba(244,99,135)',
+                                        'rgba(54,162,232)',
+                                        'rgba(255,206,8)',
+                                        'rgba(75,192,193)',
+                                        'rgba(153,20.75)',
+                                        'rgba(255,159,5)',
+                                    ]
+
+                                }],
+                                
+                            },
+                            options: { //타이틀 속성 부여
+                                        title: {
+                                            display: true,
+                                            text: "직업별 평균 급여",
+                                            position: 'top',
+                                            fontsize: 1000,
+                                            
+                                        },
+                                        
+                                    }
+                        })
+
+                        
+                
+                })//function(data) 끝
+
+        });
+
+    </script>
+
+</head>
+
+
+<body>
+
+    <div style="width: 85%">
+        <canvas id="myChart"></canvas></div>
+</body>
+
+</html>
