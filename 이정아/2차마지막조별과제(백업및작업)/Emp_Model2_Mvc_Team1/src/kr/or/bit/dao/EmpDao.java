@@ -330,14 +330,14 @@ public class EmpDao {
 	
 	//사원 등록하기
 	public int insertEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
-			long deptno, String filename) {
+			long deptno) {
 		Connection conn = null;// 추가
 
 		try {
 			conn = ds.getConnection();
 
 			System.out.println(hiredate);
-			String sql = "insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno,filename) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, empno);
 			pstmt.setString(2, ename);
@@ -347,7 +347,6 @@ public class EmpDao {
 			pstmt.setLong(6, sal);
 			pstmt.setLong(7, comm);
 			pstmt.setLong(8, deptno);
-			pstmt.setString(9, filename);
 
 			result = pstmt.executeUpdate();
 
