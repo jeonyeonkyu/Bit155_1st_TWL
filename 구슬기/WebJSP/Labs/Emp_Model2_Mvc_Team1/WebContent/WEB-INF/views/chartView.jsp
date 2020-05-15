@@ -41,6 +41,11 @@
 
 <script>
 
+let plenty = 0;
+let some = 0;
+let few = 0;
+let empty = 0;
+let none = 0;
 
 $(function () {
 		$.ajax(
@@ -54,76 +59,41 @@ $(function () {
 						console.log("sal : " + data[0].sal); 
 						
 						 var ctx = $('#myChart').get(0).getContext("2d");
-			                var myChart = new Chart(ctx, 
-			                   {type: 'horizontalBar',//차트타입
+			                var myChart = new Chart(ctx, {
+			                    type: 'horizontalBar',//차트타입
 			                    data: {
 			                        labels: ["PRESIDEMT", "ANALYST", "MANAGER", "SALESMAN", "CLERK"], //차트에 들어갈 라벨명
-			                        backgroundColor: [
-		                                'rgba(244,99,132,0.2)',
-		                                'rgba(54,162,235,0.2)',
-		                                'rgba(255,206,86,0.2)',
-		                                'rgba(75,192,192,0.2)',
-		                                'rgba(153,102,255,0.2)',
-		                                'rgba(255,159,64,0.2)',
-		                            ],
-			                        datasets: [
-			                             {	
-			                            	labels:'rgba(244,99,132,0.2)',
-			                                label: "PRESIDEMT",
-			                                backgroundColor: [
-			                           
-				                                'rgba(244,99,132,0.2)',
-				                               
-				                            ],
-			                                data: [Number(data[0].sal), Number(data[1].sal), Number(data[2].sal), Number(data[3].sal), Number(data[4].sal)]
-			                            },
-			                            {
-			                            	labels:'rgba(54,162,235,0.2)',
-			                                label: "ANALYST",
-			                                backgroundColor: [
-			                                	
-				                                'rgba(54,162,235,0.2)',
-				                                
-				                            ],
-			                                display : 'none',
-			                            },
-			                            {
-			                                label: "MANAGER",
-			                                backgroundColor: [
-				                                'rgba(244,99,132,0.2)',
-				                                'rgba(54,162,235,0.2)',
-				                                'rgba(255,206,86,0.2)',
-				                                'rgba(75,192,192,0.2)',
-				                                'rgba(153,102,255,0.2)',
-				                                'rgba(255,159,64,0.2)',
-				                            ],
-			                                display : 'none',
-			                            },
-			                            {
-			                                label: "SALESMAN",
-			                                backgroundColor: [
-				                                'rgba(244,99,132,0.2)',
-				                                'rgba(54,162,235,0.2)',
-				                                'rgba(255,206,86,0.2)',
-				                                'rgba(75,192,192,0.2)',
-				                                'rgba(153,102,255,0.2)',
-				                                'rgba(255,159,64,0.2)',
-				                            ],
-			                                display : 'none',
-			                            }, 
-			                            {
-			                                label: "CLERK",
-			                                backgroundColor: [
-				                                'rgba(244,99,132,0.2)',
-				                                'rgba(54,162,235,0.2)',
-				                                'rgba(255,206,86,0.2)',
-				                                'rgba(75,192,192,0.2)',
-				                                'rgba(153,102,255,0.2)',
-				                                'rgba(255,159,64,0.2)',
-				                            ],
-			                                display : 'none',
-			                            }
-			                        ]
+			                        datasets: [{
+			                        	
+			                            data: [Number(data[0].sal), Number(data[1].sal), Number(data[2].sal), Number(data[3].sal), Number(data[4].sal)],
+			                            labels: ["PRESIDEMT", "ANALYST", "MANAGER", "SALESMAN", "CLERK"],
+			                            
+			                            backgroundColor: [
+			                                'rgba(244,99,132,0.2)',
+			                                'rgba(54,162,235,0.2)',
+			                                'rgba(255,206,86,0.2)',
+			                                'rgba(75,192,192,0.2)',
+			                                'rgba(153,102,255,0.2)',
+			                                'rgba(255,159,64,0.2)',
+			                            ],
+			                            hoverBorderWidth:[
+			                                '17',
+			                                '17',
+			                                '17',
+			                                '17',
+			                                '17'
+
+			                            ],
+			                            hoverBackgroundColor:[
+			                                'rgba(244,99,135)',
+			                                'rgba(54,162,232)',
+			                                'rgba(255,206,8)',
+			                                'rgba(75,192,193)',
+			                                'rgba(153,20.75)',
+			                                'rgba(255,159,65,0)',
+			                            ]
+
+			                        }],
 			                        
 			                    },
 			                    options: { //타이틀 속성 부여
@@ -134,15 +104,23 @@ $(function () {
 			                                    fontsize: 1000,
 			                                    
 			                                },
-			                                
-			                                /*  labels:{
-	                                        	display:true,
-	                                        	position: 'top',
-	                                        	 labels: ["PRESIDEMT", "some", "few", "empty", "none"],
-	                                        	  //차트에 들어갈 라벨명
-	                                        }  */
-	                                   
-			                                
+			                                layout: {
+			                                    padding: {
+			                                        left: 50,
+			                                        right: 0,
+			                                        top: 0,
+			                                        bottom: 0
+			                                    }
+			                                },
+			                                legend: {
+			                                    display: true,
+			                                    labels: {
+			                                        generateLabels : {
+			                                        
+			                                        	text:"seulki"
+			                                        },
+			                                    },
+			                                },
 			                            }
 			                });
 						
@@ -177,7 +155,7 @@ $(function () {
 		<c:set var="list" value="${requestScope.list}" />
 
 
-		<h1>chartView.jsp</h1>
+		
 		
 		 <div style="width: 85%">
         <canvas id="myChart"></canvas></div>
