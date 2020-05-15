@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 
 <html>
@@ -37,7 +37,6 @@
 						location.href = "boardCustomEdit.do";
 					});
 	
-	
 </script>
 
 <style>
@@ -51,7 +50,11 @@ body {
 
 <body>
 <c:set var="emp" value="${requestScope.emp}" />
-	
+<c:set var="hiredateformat" value="${emp.hiredate}"/>
+<c:set var="hiredateformat2" value="${fn:replace(hiredateformat, '-', '')}" />
+
+
+
 	<article>
 		<div class="container" role="main">
 			<h2>사원 등록</h2>
@@ -84,7 +87,7 @@ body {
 				<div class="mb-3">
 					<label for="reg_id">입사일</label> <input type="text"
 						class="form-control" name="hiredate" id="hiredate"
-						value="${emp.hiredate}">
+						value="${hiredateformat2}">
 				</div>
 				
 				<div class="mb-3">
