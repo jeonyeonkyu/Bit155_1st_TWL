@@ -29,6 +29,40 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
+<script>
+   $(document).on('click', '#btnSave', function(e) {
+      e.preventDefault();
+      $("#form").submit();
+   });
+
+</script>
+
+<script>
+
+(function($) {
+   "use strict";
+
+   $(document).on('click', '#upload', function(e) {
+	   e.preventDefault();
+               $.ajax({
+                  url : "search.do",
+                  type : 'POST',
+                  dataType : "json",
+                  data : {
+                     empno : $("#search").val()
+                  },
+                  success : function(data) {
+                	  
+                     }
+
+                  });
+         })
+
+})(jQuery);
+</script>
+
+</script>
+
 
 <title>Sufee Admin - HTML5 Admin Template</title>
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
@@ -121,12 +155,12 @@ tr>th {
 
 
 					<div class="mb-3">
-						썸네일 이미지<br /> 
-						<label for="title">사진 등록</label> <br> 
-						<img src="upload/sm_emp.jpg" style="width: 40px; height: 40px;" /><br />
-						<br /> 
-						<input type="file" id="filename" name="filename"><br> 
-						<input id="upload" value="업로드" />
+					
+						썸네일 이미지<br /> <img src="upload/sm_<%=fileName %>" /><br />
+						<br /> <label for="title">사진 등록</label> <br> <img
+							src="upload/emp.jpg" style="width: 40px; height: 40px;" /><br />
+						<br /> <input type="file" name="filename"><br> <input
+							id="upload" type="submit" value="업로드" />
 
 					</div>
 
@@ -217,12 +251,6 @@ tr>th {
 <script>
    (function($) {
       "use strict";
-      
-      $(document).on('click', '#btnSave', function(e) {
-          e.preventDefault();
-          $("#form").submit();
-       });
-
 
       jQuery('#vmap').vectorMap({
          map : 'world_en',
@@ -236,24 +264,6 @@ tr>th {
          scaleColors : [ '#1de9b6', '#03a9f5' ],
          normalizeFunction : 'polynomial'
       });
-      
-
-      $(document).on('click', '#upload', function(e) {
-   	   console.log($("#filename").val());
-                  $.ajax({
-                     url : "upload.do",
-                     type : 'POST',
-                     dataType : "json",
-                     data : {
-                        filename : $("#filename").val()
-                     },
-                     success : function(data) {
-                   	  
-                        }
-
-                     });
-            })
-      
    })(jQuery);
 </script>
 

@@ -29,6 +29,40 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
+<script>
+   $(document).on('click', '#btnSave', function(e) {
+      e.preventDefault();
+      $("#form").submit();
+   });
+
+</script>
+
+<script>
+
+(function($) {
+   "use strict";
+
+   $(document).on('click', '#upload', function(e) {
+	   console.log($("#filename").val());
+               $.ajax({
+                  url : "upload.do",
+                  type : 'POST',
+                  dataType : "json",
+                  data : {
+                     filename : $("#filename").val()
+                  },
+                  success : function(data) {
+                	  
+                     }
+
+                  });
+         })
+
+})(jQuery);
+</script>
+
+</script>
+
 
 <title>Sufee Admin - HTML5 Admin Template</title>
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
@@ -217,12 +251,6 @@ tr>th {
 <script>
    (function($) {
       "use strict";
-      
-      $(document).on('click', '#btnSave', function(e) {
-          e.preventDefault();
-          $("#form").submit();
-       });
-
 
       jQuery('#vmap').vectorMap({
          map : 'world_en',
@@ -236,24 +264,6 @@ tr>th {
          scaleColors : [ '#1de9b6', '#03a9f5' ],
          normalizeFunction : 'polynomial'
       });
-      
-
-      $(document).on('click', '#upload', function(e) {
-   	   console.log($("#filename").val());
-                  $.ajax({
-                     url : "upload.do",
-                     type : 'POST',
-                     dataType : "json",
-                     data : {
-                        filename : $("#filename").val()
-                     },
-                     success : function(data) {
-                   	  
-                        }
-
-                     });
-            })
-      
    })(jQuery);
 </script>
 
