@@ -1,0 +1,95 @@
+package kr.or.bit.service;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import kr.or.bit.action.Action;
+import kr.or.bit.action.ActionForward;
+import kr.or.bit.dao.EmpDao;
+import kr.or.bit.dto.Emp;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+public class EmpSearchService implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+			EmpDao empDao = EmpDao.getInstance();
+			JSONArray list = new JSONArray();
+			String empno = request.getParameter("empno");
+			String ename = request.getParameter("ename");
+
+			System.out.println("empno : " + empno);
+			System.out.println("ename : " + ename);
+
+			if (empno != null && ename == null) {
+				list = empDao.searchEmpno(empno);
+				System.out.println("여긴오냐@@@");
+			} else {
+
+			}
+
+			System.out.println("list : " + list);
+
+			/*
+			 * JSONArray json = JSONArray.fromObject(list); System.out.println(json);
+			 */
+
+//		  Map<String, Object> map = new HashMap<String, Object>();
+//		  map.put("beanlist", json);
+//		 
+//		  JSONObject jsonObject = JSONObject.fromObject(map);
+
+			// System.out.println("list : " + list);
+
+			String msg = "";
+			String url = "";
+			if (list != null) {
+				msg = "등록 성공";
+				url = "EmpTable.do";
+			}
+
+			request.setAttribute("msg", msg);
+			request.setAttribute("url", url);
+
+			JSONObject obj = new JSONObject();
+			obj.put("list", list);
+
+			/*
+			 * response.setContentType("application/x-json; charset=UTF-8"); try {
+			 * response.getWriter().print(list); } catch (IOException e) { // TODO
+			 * Auto-generated catch block e.printStackTrace(); }
+			 */
+
+		
+
+			try {
+//				response.setContentType("application/x-json; charset=UTF-8");
+//				response.getWriter().print(obj);
+				PrintWriter out = response.getWriter();
+				  out.print(obj);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			ActionForward forward = new ActionForward();
+			forward.setPath("/WEB-INF/common/redirect.jsp");
+
+			return forward;
+		
+
+	}
+
+}
