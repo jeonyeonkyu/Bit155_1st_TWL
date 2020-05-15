@@ -16,6 +16,7 @@ import kr.or.bit.service.EmpDeleteService;
 import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpEditOkService;
 import kr.or.bit.service.EmpEditService;
+import kr.or.bit.service.EmpFileUploadService;
 import kr.or.bit.service.EmpListService;
 import kr.or.bit.service.EmpLoginService;
 import kr.or.bit.service.EmpLogoutService;
@@ -80,6 +81,10 @@ public class FrontEmpController extends HttpServlet {
 		}else if(url_Command.equals("/chartViewok.do")) { //화면 + 로직 
 			action = new EmpChartService();
 			forward = action.execute(request, response);
+		}else if(url_Command.equals("/upload.do")) { //화면 + 로직 
+			action = new EmpFileUploadService();
+			forward = action.execute(request, response);
+			
 		}
 		
 		// 4. �� �����ϱ�
