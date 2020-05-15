@@ -223,9 +223,9 @@
 		<div class="col-sm-6 col-lg-3">
 			<!--	<div class="card text-white bg-flat-color-4"> -->
 			<div class="card-body pb-0">
-				<button type="button" class="btn btn-sm btn-clear" id="btnList">
+				<!-- <button type="button" class="btn btn-sm btn-clear" id="btnList">
 					<a href="chartView.do">차트</a>
-				</button>
+				</button> -->
 		</div>
 
 				

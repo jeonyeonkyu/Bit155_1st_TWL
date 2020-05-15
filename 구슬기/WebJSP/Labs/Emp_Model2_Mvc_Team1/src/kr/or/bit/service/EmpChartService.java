@@ -29,18 +29,22 @@ public class EmpChartService implements Action {
 		JSONArray jsonArr = JSONArray.fromObject(list); 
 		
 		System.out.println("jsonArr : " + jsonArr);
-		response.setContentType("application/x-json; charset=UTF-8");
+		
+		request.setAttribute("jsonArr", jsonArr);
+		
 		
 		try {
+			response.setContentType("application/x-json; charset=UTF-8");
 			response.getWriter().print(jsonArr);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("jsonArr", jsonArr);
-	
-		ActionForward forward = new ActionForward();
-	forward.setPath("/WEB-INF/views/chartView.jsp");
+		
+		/*
+		 * ActionForward forward = new ActionForward();
+		 * forward.setPath("/WEB-INF/views/chartView.jsp");
+		 */
 
-	return forward;
+	return null;
 	}
 }

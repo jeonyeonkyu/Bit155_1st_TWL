@@ -18,32 +18,31 @@
         let none = 0;
 
         $(function () {
-        	$('#btn').click(function(){
-    			$.ajax(
-    					 {
-    						 type:"get",
-    						 url:"/chartViewok.do",
-    						 dataType:"json", //POINT
-    						 success:function(data){
-    							console.log("오니"+data); 
-    							$.each(data,function(index,obj){
-    								console.log("오니"+obj);
-    								
-    								/* $('#emplist').append(
-    								   "<tr><td>" + index + "</td><td>"	+ obj.empno + "</td><td>"
-    								   +obj.ename + "</td><td>" + obj.sal + "</td><td>" + obj.job +
-    								   "</td><td>" + obj.comm + "</td></tr>"
-    								); */
-    							});
-    							
-    						 },
-    						 error:function(xhr){
-    							 alert(xhr.status + ":ERROR");
-    						 }
-    					 }
-    			
-    			      );
-    		});
+        	
+        	
+        	
+            var mask = [];
+            $.getJSON("https:8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address:서울특별시 강남구",
+                function (data) {
+                    $.each(data.stores, function (index, obj) {
+                        console.log("index : " + index);
+                        var temp = data.stores[index].remain_stat;
+                        if (temp === null || temp === undefined) {
+                            return;
+                        } else {
+                            if (temp.includes("plenty")) {
+                                plenty++;
+                            } else if (temp.includes("some")) {
+                                some++;
+                            } else if (temp.includes("few")) {
+                                few++;
+                            } else if (temp.includes("empty")) {
+                                empty++;
+                            } else if (temp.includes("break")) { //왠지 모르겠는데 break를 변수로 선언하면 자꾸 에러떠서 none으로 했음
+                                none++;
+                            }
+                        }
+                    }) //$.each 끝
 
                         // console.log(plenty);
                         // console.log(some);
@@ -51,14 +50,12 @@
                         // console.log(empty);
                         // console.log(none);
                         // console.log(Number(plenty);
-                        console.log("킹받네")
                         var ctx = $('#myChart').get(0).getContext("2d");
                         var myChart = new Chart(ctx, {
                             type: 'horizontalBar',//차트타입
                             data: {
                                 labels: ["plenty", "some", "few", "empty", "none"], //차트에 들어갈 라벨명
                                 datasets: [{
-                                	labels: ["plenty", "some", "few", "empty", "none"], //범례?
                                     data: [Number(plenty), Number(some), Number(few), Number(empty), Number(none)],
                                     // data: [5, 10, 3, 1, 10],
                                     backgroundColor: [
@@ -95,23 +92,23 @@
                                             text: "직업별 평균 급여",
                                             position: 'top',
                                             fontsize: 1000,
+                                            
                                         },
                                         legend:{
                                         	display:true,
                                         	 labels: ["plenty", "some", "few", "empty", "none"] //차트에 들어갈 라벨명
                                         }
-                                        },
+                                   
                                         
                                         
-                                    
+                                    }
                         })
 
                         
                 
                 })//function(data) 끝
 
-       
-        
+        });
 
     </script>
 
