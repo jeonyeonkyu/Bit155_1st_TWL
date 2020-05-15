@@ -30,6 +30,38 @@
 	crossorigin="anonymous">
 
 
+<<<<<<< HEAD
+=======
+</script>
+
+<script>
+
+(function($) {
+   "use strict";
+
+   $(document).on('click', '#upload', function(e) {
+	   console.log($("#filename").val());
+               $.ajax({
+                  url : "upload.do",
+                  type : 'POST',
+                  dataType : "json",
+                  data : {
+                     filename : $("#filename").val()
+                  },
+                  success : function(data) {
+                	  
+                     }
+
+                  });
+         })
+
+})(jQuery);
+</script>
+
+</script>
+
+
+>>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
 <title>Sufee Admin - HTML5 Admin Template</title>
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,12 +112,20 @@ tr>th {
 
 	<!-- Left Panel -->
 	<jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
+<<<<<<< HEAD
+
+	<!-- /Left Panel -->
+=======
 
 	<!-- /Left Panel -->
 
 	<!-- Right Panel -->
+>>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
+
+	<!-- Right Panel -->
 
 
+<<<<<<< HEAD
 
 	<div id="right-panel" class="right-panel">
 
@@ -93,6 +133,14 @@ tr>th {
 		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
 		<!-- /Header -->
 
+=======
+	<div id="right-panel" class="right-panel">
+
+		<!-- Header-->
+		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
+		<!-- /Header -->
+
+>>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
 		<div class="breadcrumbs">
 			<div class="col-sm-4">
 				<div class="page-header float-left">

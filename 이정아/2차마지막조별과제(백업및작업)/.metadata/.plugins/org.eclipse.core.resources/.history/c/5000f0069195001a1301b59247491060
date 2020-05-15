@@ -1,0 +1,20 @@
+( function ( $ ) {
+    "use strict";
+
+    // Counter Number
+    $('.count').each(function () {
+    	console.log("ss")
+       /* $(this).prop('Counter',0).animate({*/
+    	 $(this).prop('Counter').animate({
+            Counter: $(this).text()
+        }, {
+            duration: 3000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+
+} )( jQuery );

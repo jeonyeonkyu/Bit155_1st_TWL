@@ -12,10 +12,10 @@ import javax.servlet.annotation.WebInitParam;
 
 
 @WebFilter(
-		description = "¾î³ëÅ×ÀÌ¼Ç È°¿ëÇÏ±â", 
+		description = "ì–´ë…¸í…Œì´ì…˜ í™œìš©í•˜ê¸°", 
 		urlPatterns = { "/*" }, 
 		initParams = { 
-				@WebInitParam(name = "encoding", value = "UTF-8", description = "ÇÑ±ÛÃ³¸®")
+				@WebInitParam(name = "encoding", value = "UTF-8", description = "í•œê¸€ì²˜ë¦¬")
 		})
 public class EncodingFilter implements Filter {
 
@@ -26,7 +26,7 @@ public class EncodingFilter implements Filter {
 	}
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		if(request.getCharacterEncoding() == null) {
-			request.setCharacterEncoding(this.encoding);  //ÇÑÁÙ¸¸ ....
+			request.setCharacterEncoding(this.encoding);  //ï¿½ï¿½ï¿½Ù¸ï¿½ ....
 		}
 		chain.doFilter(request, response);
 	}

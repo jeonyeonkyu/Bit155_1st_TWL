@@ -1,5 +1,7 @@
 package kr.or.bit.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.dao.EmpDao;
+import kr.or.bit.dto.Emp;
 
 public class EmpLoginService implements Action {
 
@@ -19,17 +22,20 @@ public class EmpLoginService implements Action {
 		EmpDao empDao = EmpDao.getInstance();
 		int loginResult = empDao.login(id, password);
 		
+		
+	
+		
+		
 		System.out.println("loginResult : " + loginResult);
 		String msg = "";
 		String url = "";
 		if(loginResult > 0){
-			System.out.println("·Î±×ÀÎ ¼º°ø");
-			msg = "µî·Ï ¼º°ø";
+			msg = "ì„±ê³µ";
 			url = "Main.do";
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 		}else {
-			msg = "µî·Ï ½ÇÆÐ";
+			msg = "ì‹¤íŒ¨";
 			url = "Main.do";
 		}
 		
