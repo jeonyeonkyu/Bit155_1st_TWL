@@ -1,0 +1,68 @@
+package kr.or.bit.service;
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.or.bit.action.Action;
+import kr.or.bit.action.ActionForward;
+import kr.or.bit.dao.EmpDao;
+
+public class EmpAddService implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+
+		String empno = request.getParameter("empno");
+		String ename = request.getParameter("ename");
+		String job = request.getParameter("job");
+		String mgr = request.getParameter("mgr");
+		String hiredate = request.getParameter("hiredate");
+		String sal = request.getParameter("sal");
+		String comm = request.getParameter("comm");
+		String deptno = request.getParameter("deptno");
+		String filename = request.getParameter("filename");
+		
+		System.out.println(empno);
+		System.out.println(ename);
+		System.out.println(job);
+		System.out.println(mgr);
+		System.out.println(hiredate);
+		System.out.println(sal);
+		System.out.println(comm);
+		System.out.println(deptno);
+		System.out.println(filename);
+		
+		
+		EmpDao dao = new EmpDao(); // POINT
+		int result = 0;
+		try {
+			result = dao.insertEmp(Long.parseLong(empno), ename, job, Long.parseLong(mgr), hiredate,
+					Long.parseLong(sal), Long.parseLong(comm), Long.parseLong(deptno), filename);
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+
+		String msg = "";
+		String url = "";
+		if (result > 0) {
+			msg = "등록 성공";
+			url = "EmpTable.do";
+		} else {
+			msg = "등록 실패";
+			url = "EmpWrite.do";
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+
+		ActionForward forward = new ActionForward();
+		forward.setPath("/WEB-INF/common/redirect.jsp");
+
+		return forward;
+		
+		
+	}
+
+}
