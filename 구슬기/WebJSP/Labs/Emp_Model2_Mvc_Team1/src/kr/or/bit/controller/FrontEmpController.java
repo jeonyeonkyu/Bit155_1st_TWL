@@ -21,8 +21,7 @@ public class FrontEmpController extends HttpServlet {
 		super();
 	}
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
@@ -30,20 +29,24 @@ public class FrontEmpController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		
+
 		System.out.println("url_Command : " + url_Command);
 
-		if(url_Command.equals("/EmpTable.do")) {
+		if (url_Command.equals("/EmpTable.do")) {
 			action = new EmpListService();
 			forward = action.execute(request, response);
 			forward.setPath("/WEB-INF/views/EmpTable.jsp");
-		}
-		else if (url_Command.equals("/detailView.do")) { // 회원관리 페이지 이동
+		} else if (url_Command.equals("/detailView.do")) { // 회원관리 페이지 이동
 			action = new EmpDetailService();
 			forward = action.execute(request, response);
-		
-		}else if (url_Command.equals("/chartView.do")) { // 회원관리 페이지 이동
+
+		} else if (url_Command.equals("/chartView.do")) { // 회원관리 페이지 이동
 			System.out.println("elseif는 타니?");
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/views/chartView.jsp");
+			
+		} else if (url_Command.equals("/chartViewok.do")) { // 회원관리 페이지 이동
+			System.out.println("elseif는 타니okokokokok?");
 			action = new EmpChartService();
 			forward = action.execute(request, response);
 		}

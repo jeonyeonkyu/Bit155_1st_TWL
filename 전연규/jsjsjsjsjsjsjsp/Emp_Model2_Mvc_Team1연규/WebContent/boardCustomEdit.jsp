@@ -50,7 +50,7 @@ body {
 </head>
 
 <body>
-<c:set var="list" value="${requestScope.list}" />
+<c:set var="emp" value="${requestScope.emp}" />
 	
 	<article>
 		<div class="container" role="main">
@@ -60,47 +60,47 @@ body {
 				<div class="mb-3">
 					<label for="title">사원 번호</label> <input type="text"
 						class="form-control" name="empno" id="empno"
-						value="${list.empno}">
+						value="${emp.empno}" readonly>
 				</div>
 
 				<div class="mb-3">
 					<label for="reg_id">사원 이름</label> <input type="text"
 						class="form-control" name="ename" id="ename"
-						value="${list.ename}">
+						value="${emp.ename}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">사원 직종</label> <input type="text"
 						class="form-control" name="job" id="job"
-						value="${list.job}">
+						value="${emp.job}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">관리자 번호</label> <input type="text"
 						class="form-control" name="mgr" id="mgr"
-						value="${list.mgr}">
+						value="${emp.mgr}">
 				</div>
 
 				<div class="mb-3">
 					<label for="reg_id">입사일</label> <input type="text"
 						class="form-control" name="hiredate" id="hiredate"
-						value="${list.hiredate}">
+						value="${emp.hiredate}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="reg_id">급여</label> <input type="text"
 						class="form-control" name="sal" id="sal"
-						value="${list.sal}">
+						value="${emp.sal}">
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">커미션</label> <input type="text"
 						class="form-control" name="comm" id="comm"
-						value="${list.comm}">
+						value="${emp.comm}">
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">부서번호</label> <input type="text"
 						class="form-control" name="deptno" id="deptno"
-						value="${list.deptno}">
+						value="${emp.deptno}">
 				</div>
 			<%-- 	<div class="mb-3">
 					<label for="reg_id">사원 사진</label> <input type="file"

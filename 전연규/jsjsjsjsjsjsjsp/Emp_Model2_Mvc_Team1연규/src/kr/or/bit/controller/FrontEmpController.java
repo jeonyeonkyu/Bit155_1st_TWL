@@ -14,6 +14,7 @@ import kr.or.bit.service.EmpAddService;
 import kr.or.bit.service.EmpDeleteService;
 import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpEditService;
+import kr.or.bit.service.EmpEditServiceOk;
 import kr.or.bit.service.EmpListService;
 
 @WebServlet("*.do")
@@ -49,11 +50,11 @@ public class FrontEmpController extends HttpServlet {
 			forward = postEmpAdd(request,response);
 		}else if(url_Command.equals("/delete.do")) { //삭제
 			forward = postEmpDelete(request,response);
-		}else if(url_Command.equals("/boardCustomEdit.do")) { //수정
+		}else if(url_Command.equals("/boardCustomEdit.do") && "GET".equals(request.getMethod())) { //수정
 			forward = postEmpEdit(request, response);
-			forward.setPath("boardCustomEdit.jsp");
+		}else if(url_Command.equals("/boardCustomEdit.do") && "POST".equals(request.getMethod())) { //수정ok
+			forward = postEmpOkEdit(request, response);
 		}
-
 		// 4. 뷰 지정하기
 		// 5. forward(request 객체의 주소값을 공유)
 		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
@@ -101,4 +102,12 @@ public class FrontEmpController extends HttpServlet {
 		ActionForward forward = action.execute(request, response);
 		return forward;
 	}
+	
+	private ActionForward postEmpOkEdit(HttpServletRequest request, HttpServletResponse response) {
+		Action action = new EmpEditServiceOk();
+		System.out.println("EmpEditServiceOk 실행");
+		ActionForward forward = action.execute(request, response);
+		return forward;
+	}
+	
 }

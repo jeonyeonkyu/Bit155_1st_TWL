@@ -183,7 +183,85 @@ public class EmpDao {
 		return row;
 	}
 	//사원 수정하기
-	public int updateEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
+//	public int updateEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
+//			long deptno) {
+//		Connection conn = null;// 추가
+//
+//		try {
+//			conn = ConnectionHelper.getConnection("oracle");// 추가
+//
+//			String sql = "update emp set ename = ?, job =?, mgr = ?, hiredate = ?, sal = ?,comm = ?, deptno = ? WHERE empno = ?";
+//									
+//			
+//			pstmt = conn.prepareStatement(sql);
+//			
+//			pstmt.setString(1, ename);
+//			pstmt.setString(2, job);
+//			pstmt.setLong(3, mgr);
+//			pstmt.setDate(4, transformDate(hiredate));
+//			pstmt.setLong(5, sal);
+//			pstmt.setLong(6, comm);
+//			pstmt.setLong(7, deptno);
+//			pstmt.setLong(8, empno);
+//			
+//			result = pstmt.executeUpdate();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("Update : " + e.getMessage());
+//		} finally {
+//			DB_Close.close(pstmt);
+//			try {
+//				conn.close(); // 받환하기
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return result;
+//	}
+	//사원 수정하기 (계속 안되서 슬기누나의 상세보기를 그대로 따옴)
+	public Emp updateEmp(long empno) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Emp emp = new Emp();
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from emp where empno = ?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setLong(1, empno);
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				emp.setDeptno(rs.getLong("deptno"));
+				emp.setEmpno(rs.getLong("empno"));
+				emp.setEname(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setComm(rs.getLong("comm"));
+				emp.setHiredate(rs.getDate("hiredate"));
+				emp.setMgr(rs.getLong("mgr"));
+				emp.setSal(rs.getLong("sal"));
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 반환
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return emp;
+
+	
+
+}
+	public int updateOkEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
 			long deptno) {
 		Connection conn = null;// 추가
 
@@ -191,7 +269,6 @@ public class EmpDao {
 			conn = ConnectionHelper.getConnection("oracle");// 추가
 
 			String sql = "update emp set ename = ?, job =?, mgr = ?, hiredate = ?, sal = ?,comm = ?, deptno = ? WHERE empno = ?";
-									
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -218,9 +295,8 @@ public class EmpDao {
 			}
 		}
 		return result;
+		
 	}
-	
-	
 	// 게시물 총 건수 구하기
 		public int totallistCount() {
 			Connection conn = null;
