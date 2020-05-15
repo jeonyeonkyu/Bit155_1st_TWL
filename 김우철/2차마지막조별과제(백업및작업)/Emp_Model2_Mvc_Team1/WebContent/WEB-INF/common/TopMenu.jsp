@@ -17,9 +17,12 @@
 					</c:when>
 					<c:otherwise>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> <img
+							aria-haspopup="true" aria-expanded="false">
+							<!--  <img
 							class="user-avatar rounded-circle" src="images/admin.jpg"
-							alt="User Avatar">
+							alt="User Avatar"> -->
+							<img class="user-avatar rounded-circle" src="./custom/images/admin.svg" width="30px" height="30px"
+									alt="Admin Avatar" style="margin-top: 5px;">
 						</a>
 
 						<div class="user-menu dropdown-menu">

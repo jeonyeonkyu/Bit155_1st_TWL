@@ -11,6 +11,15 @@ public class Emp {
 	private long sal;
 	private long comm;
 	private long deptno;
+	private String filename;
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 
 	public long getEmpno() {
 		return empno;
