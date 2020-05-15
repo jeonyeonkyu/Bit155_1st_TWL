@@ -11,17 +11,38 @@
 
 <meta charset="UTF-8">
 
-<!-- jQuery -->
+<meta name="description" content="Sufee Admin - HTML5 Admin Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
+<link rel="apple-touch-icon" href="apple-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
 
-<!-- Bootstrap CSS -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
+   href="vendors/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+   href="vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+   href="vendors/themify-icons/css/themify-icons.css">
+<link rel="stylesheet"
+   href="vendors/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<link
+   href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
+   rel='stylesheet' type='text/css'>
+
+<!-- 게시판 디자인 -->
+<link rel="stylesheet"
+   href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+   integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+   crossorigin="anonymous">
+
+	
+	
 <title>board</title>
 <script>
 	$(document).on('click', '#btnSave', function(e) {
@@ -41,20 +62,40 @@
 	
 </script>
 
-<style>
-body {
-	padding-top: 70px;
-	padding-bottom: 30px;
-}
-</style>
 
 </head>
 
 <body>
+   <jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
+
+
+<div id="right-panel" class="right-panel"> 
+    <jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
+
 <c:set var="emp" value="${requestScope.emp}" />
 <c:set var="hiredateformat" value="${emp.hiredate}"/>
 <c:set var="hiredateformat2" value="${fn:replace(hiredateformat, '-', '')}" />
 	
+	
+      <div class="breadcrumbs">
+         <div class="col-sm-4">
+            <div class="page-header float-left">
+               <div class="page-title">
+
+                  <h1>회원 수정 페이지</h1>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-8">
+            <div class="page-header float-right">
+               <div class="page-title">
+                  <ol class="breadcrumb text-right">
+                     <li class="active">회원 수정 페이지</li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </div>
 	
 	<article>
 		<div class="container" role="main">
@@ -123,9 +164,21 @@ body {
 		
 
 	</article>
+	</div>
 
 </body>
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
 
+
+<script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/widgets.js"></script>
+<script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 </html>
 
 
