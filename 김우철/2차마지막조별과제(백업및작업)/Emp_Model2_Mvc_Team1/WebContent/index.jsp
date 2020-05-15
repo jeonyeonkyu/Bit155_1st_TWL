@@ -299,6 +299,18 @@
                 </div>
             </div>
 		
+		<div>
+		
+			sssss
+		</div>
+		<c:set var="list" value="${requestScope.listChart}" />
+		<c:forEach var="e" items="${list}">
+					<tr>
+						<td>${e.job}</td>
+						<td>${e.salAvg}</td>
+					</tr>
+				</c:forEach>
+		
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -307,6 +319,12 @@
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
+	
+	
+	<!-- 차트시작  -->
+	
+
+
 
 
 <script>

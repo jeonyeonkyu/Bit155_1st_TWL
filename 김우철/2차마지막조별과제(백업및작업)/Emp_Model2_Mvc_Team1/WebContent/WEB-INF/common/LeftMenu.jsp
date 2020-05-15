@@ -34,11 +34,7 @@
 						</a>
 							<ul class="sub-menu children dropdown-menu">
 								<li><i class="fa fa-puzzle-piece"></i><a
-									href="ui-buttons.html">차트1</a></li>
-								<li><i class="fa fa-id-badge"></i><a href="ui-badges.html">차트2</a></li>
-								<li><i class="fa fa-bars"></i><a href="ui-tabs.html">차트3</a></li>
-								<li><i class="fa fa-share-square-o"></i><a
-									href="ui-social-buttons.html">차트4</a></li>
+									href="chartView.do">차트1</a></li>
 							</ul></li>
 					</ul>
 				</c:when>

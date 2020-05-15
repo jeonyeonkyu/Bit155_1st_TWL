@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -34,8 +35,9 @@
 					'#btnList',
 					function(e) {
 						e.preventDefault();
-						location.href = "boardCustomEdit.do";
+						location.href = "EmpTable.do";
 					});
+	
 	
 </script>
 
@@ -52,14 +54,13 @@ body {
 <c:set var="emp" value="${requestScope.emp}" />
 <c:set var="hiredateformat" value="${emp.hiredate}"/>
 <c:set var="hiredateformat2" value="${fn:replace(hiredateformat, '-', '')}" />
-
-
-
+	
+	
 	<article>
 		<div class="container" role="main">
-			<h2>사원 등록</h2>
+			<h2>사원 수정</h2>
 			<form name="form" id="form" role="form" method="post" 
-				action="boardCustomEdit.do">
+				action="updateok.do">
 				<div class="mb-3">
 					<label for="title">사원 번호</label> <input type="text"
 						class="form-control" name="empno" id="empno"
@@ -87,7 +88,8 @@ body {
 				<div class="mb-3">
 					<label for="reg_id">입사일</label> <input type="text"
 						class="form-control" name="hiredate" id="hiredate"
-						value="${hiredateformat2}">
+						   value="${hiredateformat2}">
+
 				</div>
 				
 				<div class="mb-3">

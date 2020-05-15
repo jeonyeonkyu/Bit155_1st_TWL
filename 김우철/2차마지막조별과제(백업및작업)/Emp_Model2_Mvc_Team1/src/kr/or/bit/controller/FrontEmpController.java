@@ -10,6 +10,12 @@ import javax.servlet.RequestDispatcher;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.EmpAddService;
+import kr.or.bit.service.EmpChartService;
+import kr.or.bit.service.EmpDeleteService;
+import kr.or.bit.service.EmpDetailService;
+import kr.or.bit.service.EmpEditOkService;
+import kr.or.bit.service.EmpEditService;
 import kr.or.bit.service.EmpListService;
 import kr.or.bit.service.EmpLoginService;
 import kr.or.bit.service.EmpLogoutService;
@@ -32,28 +38,52 @@ public class FrontEmpController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if (url_Command.equals("/Main.do")) { // ¸ŞÀÎÆäÀÌÁö ÀÌµ¿ : UI
+		if (url_Command.equals("/Main.do")) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ : UI
 			forward = new ActionForward();
 			forward.setPath("/index.jsp");
-		} else if (url_Command.equals("/login.do")) { // ·Î±×ÀÎ : UI + ·ÎÁ÷
+		} else if (url_Command.equals("/login.do")) { // ï¿½Î±ï¿½ï¿½ï¿½ : UI + ï¿½ï¿½ï¿½ï¿½
 			System.out.println("Login..");
 			action = new EmpLoginService();
 			forward = action.execute(request, response);
-		} else if(url_Command.equals("/logout.do")) { // ·Î±×¾Æ¿ô : UI + ·ÎÁ÷
+		} else if(url_Command.equals("/logout.do")) { // ï¿½Î±×¾Æ¿ï¿½ : UI + ï¿½ï¿½ï¿½ï¿½
 			action = new EmpLogoutService();
 			forward = action.execute(request, response);
-		} else if(url_Command.equals("/EmpTable.do")) { //ÀüÃ¼Á¶È¸
+		} else if(url_Command.equals("/EmpTable.do")) { //ï¿½ï¿½Ã¼ï¿½ï¿½È¸
 			action = new EmpListService();
 			forward = action.execute(request, response);
-		} else if(url_Command.equals("/search.do")) { //ÀüÃ¼Á¶È¸
-			System.out.println("ÄÁÆ®·Î·¯ÀÔ´Ï´Ù~");
+		} else if(url_Command.equals("/search.do")) { //ï¿½ï¿½Ã¼ï¿½ï¿½È¸
 			action = new EmpSearchService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/EmpWrite.do")) { //ï¿½ï¿½Ã¼ï¿½ï¿½È¸
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/views/EmpWrite.jsp");
+		}else if(url_Command.equals("/EmpWriteok.do")) { //ï¿½ï¿½Ã¼ï¿½ï¿½È¸
+			action = new EmpAddService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/delete.do")) { //ï¿½ï¿½Ã¼ï¿½ï¿½È¸
+			action = new EmpDeleteService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/detailView.do")) {
+			action = new EmpDetailService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/update.do")) { //í™”ë©´ì´ë™ + ë¡œì§
+			System.out.println("í™”ë©´ì´ë™ + ë¡œì§");
+			action = new EmpEditService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/updateok.do")) { //í™”ë©´ + ë¡œì§ 
+			System.out.println("ìˆ˜ì •!!");
+			action = new EmpEditOkService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/chartView.do")) { //í™”ë©´ + ë¡œì§ 
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/views/chartView.jsp");
+		}else if(url_Command.equals("/chartViewok.do")) { //í™”ë©´ + ë¡œì§ 
+			action = new EmpChartService();
 			forward = action.execute(request, response);
 		}
 		
-
-		// 4. ºä ÁöÁ¤ÇÏ±â
-		// 5. forward(request °´Ã¼ÀÇ ÁÖ¼Ò°ªÀ» °øÀ¯)
+		// 4. ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+		// 5. forward(request ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ö¼Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());

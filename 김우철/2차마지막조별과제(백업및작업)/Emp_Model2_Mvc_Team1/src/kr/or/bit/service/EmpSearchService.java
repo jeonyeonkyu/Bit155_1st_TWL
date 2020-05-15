@@ -35,19 +35,16 @@ public class EmpSearchService implements Action {
 			System.out.println("empno : " + empno);
 			System.out.println("ename : " + ename);
 
-
 			if (empno != null && ename == null) {
 				list = empDao.searchEmpno(empno);
 			} else {
-				System.out.println("¿µ¾î´Ù");
 				list = empDao.searchEname(ename);
 			}
 			
 			System.out.println(list);
 
-			JSONObject obj = new JSONObject();
 			JSONArray jsonArr = JSONArray.fromObject(list); 
-			
+		
 			System.out.println("jsonArr : " + jsonArr);
 
 	    	response.setContentType("application/x-json; charset=UTF-8");
