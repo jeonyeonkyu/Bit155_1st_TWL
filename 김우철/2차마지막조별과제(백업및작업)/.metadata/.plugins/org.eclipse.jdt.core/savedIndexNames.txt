@@ -35,13 +35,15 @@ INDEX VERSION 1.131+C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막�
 899518542.index
 2859305590.index
 1019592911.index
-1403439079.index
 3079686767.index
+1403439079.index
 972666350.index
 1753084150.index
 1645320974.index
+3221398049.index
 982489971.index
 654618610.index
+657891829.index
 434535315.index
 418654906.index
 922314446.index
@@ -64,7 +66,6 @@ INDEX VERSION 1.131+C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막�
 1160543469.index
 3168179354.index
 1465997678.index
-3208517673.index
 3748291858.index
 2305289529.index
 3431489974.index

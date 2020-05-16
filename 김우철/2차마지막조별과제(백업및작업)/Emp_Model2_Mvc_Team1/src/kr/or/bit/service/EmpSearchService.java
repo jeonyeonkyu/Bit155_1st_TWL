@@ -1,9 +1,5 @@
 package kr.or.bit.service;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -31,9 +27,11 @@ public class EmpSearchService implements Action {
 			List<Emp> list = new ArrayList<Emp>();
 			String empno = request.getParameter("empno");
 			String ename = request.getParameter("ename");
-
+			String keyword = request.getParameter("keyword");
+			
 			System.out.println("empno : " + empno);
 			System.out.println("ename : " + ename);
+			System.out.println("keyword : " + keyword);
 
 			if (empno != null && ename == null) {
 				list = empDao.searchEmpno(empno);

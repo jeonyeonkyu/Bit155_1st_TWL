@@ -52,4 +52,11 @@ ex)게시판 만들기 클릭하면 저절로 만들어지거나 게시판과 �
 
 중간프로젝트에서는 여러개 만들어도 상관없음
 
+jquery ui
+https://jqueryui.com/datepicker/#other-months
+[많이 쓰는 것]
+Accordion
+AutoComplete 필수
+Datepicker(달력)
+
 

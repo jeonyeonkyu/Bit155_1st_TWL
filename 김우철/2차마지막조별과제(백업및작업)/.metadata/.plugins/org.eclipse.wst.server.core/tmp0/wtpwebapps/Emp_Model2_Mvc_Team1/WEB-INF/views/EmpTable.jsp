@@ -305,6 +305,7 @@ onmouseout:this.style.backgroundColor=white;
                         empno : $("#search").val()
                      },
                      success : function(data) {
+                    	
                         $('#tbody').empty();
                         if($("#search").val() != ""){
                            
@@ -319,7 +320,6 @@ onmouseout:this.style.backgroundColor=white;
                               startable += "<tr>";
                               	 startable += "<td>" + "<img src=\"upload/"  + value.filename +  
                               	 "\" style=\" width:30px; height:30px;\">" + "</td>";
-                              	 
                               	 
                                  startable += "<td>" + value.empno + "</td>";
                                  startable += "<td>" + value.ename + "</td>";

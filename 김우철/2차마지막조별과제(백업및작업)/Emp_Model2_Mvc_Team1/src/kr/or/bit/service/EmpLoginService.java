@@ -23,9 +23,6 @@ public class EmpLoginService implements Action {
 		int loginResult = empDao.login(id, password);
 		
 		
-	
-		
-		
 		System.out.println("loginResult : " + loginResult);
 		String msg = "";
 		String url = "";

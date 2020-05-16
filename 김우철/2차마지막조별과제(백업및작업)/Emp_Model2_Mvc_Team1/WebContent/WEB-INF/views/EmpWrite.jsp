@@ -1,4 +1,3 @@
-
 <%@page import="kr.or.bit.action.Action"%>
 <%@page import="kr.or.bit.service.EmpListService"%>
 <%@page import="kr.or.bit.dto.Emp"%>
@@ -30,38 +29,6 @@
 	crossorigin="anonymous">
 
 
-<<<<<<< HEAD
-=======
-</script>
-
-<script>
-
-(function($) {
-   "use strict";
-
-   $(document).on('click', '#upload', function(e) {
-	   console.log($("#filename").val());
-               $.ajax({
-                  url : "upload.do",
-                  type : 'POST',
-                  dataType : "json",
-                  data : {
-                     filename : $("#filename").val()
-                  },
-                  success : function(data) {
-                	  
-                     }
-
-                  });
-         })
-
-})(jQuery);
-</script>
-
-</script>
-
-
->>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
 <title>Sufee Admin - HTML5 Admin Template</title>
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,7 +66,6 @@
 tr>th {
 	text-align: center;
 }
-
 .divtag {
 	padding-top: 70px;
 	padding-bottom: 30px;
@@ -112,20 +78,12 @@ tr>th {
 
 	<!-- Left Panel -->
 	<jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
-<<<<<<< HEAD
-
-	<!-- /Left Panel -->
-=======
 
 	<!-- /Left Panel -->
 
 	<!-- Right Panel -->
->>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
-
-	<!-- Right Panel -->
 
 
-<<<<<<< HEAD
 
 	<div id="right-panel" class="right-panel">
 
@@ -133,14 +91,6 @@ tr>th {
 		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
 		<!-- /Header -->
 
-=======
-	<div id="right-panel" class="right-panel">
-
-		<!-- Header-->
-		<jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
-		<!-- /Header -->
-
->>>>>>> b1292e5bd9453c83fd02701695919c63f29a5086
 		<div class="breadcrumbs">
 			<div class="col-sm-4">
 				<div class="page-header float-left">
@@ -165,21 +115,18 @@ tr>th {
 			<div class="container" role="main">
 				<h2>사원 등록</h2>
 				<form name="form" id="form" role="form" method="post"
-					action="EmpWriteok.do">
-
+					action="EmpWriteok.do" enctype="multipart/form-data">
 
 					<div class="mb-3">
-						썸네일 이미지<br /> 
 						<label for="title">사진 등록</label> <br> 
-						<img src="upload/sm_emp.jpg" style="width: 40px; height: 40px;" /><br />
-						<br /> 
-						<input type="file" id="filename" name="filename"><br> 
-						<input id="upload" value="업로드" />
+			 		<img id="preview" src="upload/emp.jpg" width="300" alt="로컬에 있는 이미지가 보여지는 영역">	
+					<input type="file" id="fileName" name="fileName" class="fileName" accept="image/*">
 
 					</div>
 
 					<div class="mb-3">
-						<label for="title">사원 번호</label> <input type="text"
+						<label for="title">사원 번호</label> 
+						<input type="text"
 							class="form-control" name="empno" id="empno"
 							placeholder="ex) 2161">
 					</div>
@@ -228,8 +175,9 @@ tr>th {
             </div> --%>
 
 					<div>
-						<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
-
+						<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button> -->
+					<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>  -->
+					<input type="submit" class="btn btn-sm btn-primary" value="저장">
 						<!-- <a href="delete.do?empno=7369" type="button" class="btn btn-sm btn-primary">삭제</a> -->
 						<a href="EmpTable.do" type="button" class="btn btn-sm btn-primary">목록</a>
 						<!--  <bautton type="button" class="btn btn-sm btn-primary" id="btnList" onclick="location.href='emplist.jsp'">목록</button> -->
@@ -270,8 +218,6 @@ tr>th {
           e.preventDefault();
           $("#form").submit();
        });
-
-
       jQuery('#vmap').vectorMap({
          map : 'world_en',
          backgroundColor : null,
@@ -285,25 +231,41 @@ tr>th {
          normalizeFunction : 'polynomial'
       });
       
-
       $(document).on('click', '#upload', function(e) {
-   	   console.log($("#filename").val());
+   	   console.log($("#fileName").val());
                   $.ajax({
                      url : "upload.do",
                      type : 'POST',
                      dataType : "json",
                      data : {
-                        filename : $("#filename").val()
+                        filename : $("#fileName").val()
                      },
                      success : function(data) {
                    	  
                         }
-
                      });
             })
+            
+            
+            
+            var file = document.querySelector('#fileName');
+
+      file.onchange = function () { 
+          var fileList = file.files ;
+          
+          // 읽기
+          var reader = new FileReader();
+          reader.readAsDataURL(fileList [0]);
+
+          //로드 한 후
+          reader.onload = function  () {
+              document.querySelector('#preview').src = reader.result ;
+          }; 
+      }; 
       
    })(jQuery);
 </script>
+
 
 
 </html>

@@ -44,23 +44,6 @@
 	
 	
 <title>board</title>
-<script>
-	$(document).on('click', '#btnSave', function(e) {
-		e.preventDefault();
-		$("#form").submit();
-	});
-	
-	$(document)
-			.on(
-					'click',
-					'#btnList',
-					function(e) {
-						e.preventDefault();
-						location.href = "EmpTable.do";
-					});
-	
-	
-</script>
 
 
 </head>
@@ -101,7 +84,15 @@
 		<div class="container" role="main">
 			<h2>사원 수정</h2>
 			<form name="form" id="form" role="form" method="post" 
-				action="updateok.do">
+				action="updateok.do" enctype="multipart/form-data">
+				
+				<div class="mb-3">
+				<!-- src="upload/emp.jpg"  -->
+						<label for="title">사진 수정</label> <br> 
+			 		<img id="preview" src="upload/${emp.filename}" width="300" alt="로컬에 있는 이미지가 보여지는 영역">	
+					<input type="file" id="fileName" name="fileName" class="fileName" accept="image/*">
+					</div>
+				
 				<div class="mb-3">
 					<label for="title">사원 번호</label> <input type="text"
 						class="form-control" name="empno" id="empno"
@@ -167,6 +158,8 @@
 	</div>
 
 </body>
+ <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -179,6 +172,56 @@
 <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
 <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+
+<script>
+	$(document).on('click', '#btnSave', function(e) {
+		e.preventDefault();
+		$("#form").submit();
+	});
+	
+	$(document)
+			.on(
+					'click',
+					'#btnList',
+					function(e) {
+						e.preventDefault();
+						location.href = "EmpTable.do";
+					});
+	
+	 $(document).on('click', '#upload', function(e) {
+	   	   console.log($("#fileName").val());
+	                  $.ajax({
+	                     url : "upload.do",
+	                     type : 'POST',
+	                     dataType : "json",
+	                     data : {
+	                        filename : $("#fileName").val()
+	                     },
+	                     success : function(data) {
+	                   	  
+	                        }
+	                     });
+	            })
+	            
+	            
+	    var file = document.querySelector('#fileName');
+	 
+      file.onchange = function () { 
+          var fileList = file.files ;
+          
+          // 읽기
+          var reader = new FileReader();
+          reader.readAsDataURL(fileList [0]);
+
+          //로드 한 후
+          reader.onload = function  () {
+              document.querySelector('#preview').src = reader.result ;
+          }; 
+      }; 
+	
+	
+</script>
+
 </html>
 
 

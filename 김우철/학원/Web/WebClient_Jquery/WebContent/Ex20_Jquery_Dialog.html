@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=_UZE6MIBFxMcF2QsMl6YP9fS9jYKrRaPelduKqkPUsQiqGwWOaxQFH14EqruD6QVAWzwaIqe0xe9wX4YXOFnvAWMI9mSfJZuP7NNpSB8tUSeV4l-VNYpHR1iJtAh1eeJPTpaxjFt8gu2xRZwB1UzSg" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<style type="text/css">
@@ -12,7 +13,17 @@
 	</style>
 	<script type="text/javascript">
 		$(function(){
+			$('#dialog').dialog(
+				{
+					autoOpen: false,
+					show: {effect:"blind",duration: 2000},
+					hide: {effect:"explode",duration: 1000}
+				}		
+			);
 			
+		$('#opener').click(function(){
+				$('#dialog').dialog('open');
+			});	
 		});		
 	</script>
 </head>
@@ -21,7 +32,7 @@
 	<button id="opener">open dialog</button>
 	<!-- POPUP DIV  -->
 	<div id="dialog" title="Basic dialog">
-  		<p>오늘은 목요일</p>
+  		<p>오늘은 금요일</p>
 	</div>
 </body>
 </html>

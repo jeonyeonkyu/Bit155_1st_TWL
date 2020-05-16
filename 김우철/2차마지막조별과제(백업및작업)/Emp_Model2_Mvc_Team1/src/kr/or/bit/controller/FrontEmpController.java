@@ -42,46 +42,61 @@ public class FrontEmpController extends HttpServlet {
 		if (url_Command.equals("/Main.do")) { // ���������� �̵� : UI
 			forward = new ActionForward();
 			forward.setPath("/index.jsp");
+			
 		} else if (url_Command.equals("/login.do")) { // �α��� : UI + ����
 			System.out.println("Login..");
 			action = new EmpLoginService();
 			forward = action.execute(request, response);
+			
 		} else if(url_Command.equals("/logout.do")) { // �α׾ƿ� : UI + ����
 			action = new EmpLogoutService();
 			forward = action.execute(request, response);
+			
 		} else if(url_Command.equals("/EmpTable.do")) { //��ü��ȸ
 			action = new EmpListService();
 			forward = action.execute(request, response);
+			
 		} else if(url_Command.equals("/search.do")) { //��ü��ȸ
 			action = new EmpSearchService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/EmpWrite.do")) { //��ü��ȸ
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/EmpWrite.jsp");
+			
 		}else if(url_Command.equals("/EmpWriteok.do")) { //��ü��ȸ
 			action = new EmpAddService();
 			forward = action.execute(request, response);
+			System.out.println("등록되라고!!");
+			
 		}else if(url_Command.equals("/delete.do")) { //��ü��ȸ
 			action = new EmpDeleteService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/detailView.do")) {
 			action = new EmpDetailService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/update.do")) { //화면이동 + 로직
 			System.out.println("화면이동 + 로직");
 			action = new EmpEditService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/updateok.do")) { //화면 + 로직 
 			System.out.println("수정!!");
 			action = new EmpEditOkService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/chartView.do")) { //화면 + 로직 
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/chartView.jsp");
+			
 		}else if(url_Command.equals("/chartViewok.do")) { //화면 + 로직 
 			action = new EmpChartService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/upload.do")) { //화면 + 로직 
+			System.out.println("파일 업로드..여긴오니???");
 			action = new EmpFileUploadService();
 			forward = action.execute(request, response);
 			

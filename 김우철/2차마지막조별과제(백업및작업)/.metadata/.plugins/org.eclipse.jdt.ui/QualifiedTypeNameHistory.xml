@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpLoginService"/>
 <fullyQualifiedTypeName name="kr.or.bit.utils.DB_Close"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="kr.or.bit.dao.EmpDao"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpLogoutService"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpListService"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -21,4 +20,16 @@
 <fullyQualifiedTypeName name="java.text.ParseException"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpAddService"/>
+<fullyQualifiedTypeName name="kr.or.bit.action.ActionForward"/>
+<fullyQualifiedTypeName name="kr.or.bit.dao.EmpDao"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpDeleteService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpDetailService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpEditService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpChartService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpFileUploadService"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
 </qualifiedTypeNameHistroy>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
@@ -8,23 +9,46 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<style type="text/css">
-	
+
 	</style>
 	<script type="text/javascript">
-		$(function(){
-			
-			
+		$(function () {
+			$('#datepicker').datepicker({
+				dateFormat: "yy년mm월dd일"
+			});
+
+			$('#dialog').dialog(
+				{
+					autoOpen: false, //false면 opener 클릭 이벤트 해줘야됨
+					show: { effect: "blind", duration: 2000 },
+					hide: { effect: "explode", duration: 1000 },
+					buttons: {
+						"확인": function () { $(this).dialog('close') },
+						"취소": function () { $(this).dialog('close') },
+					},
+					resizable: false,
+					modal: true//★★★ 팝업창을 닫기 전까지는 부모창 작업 불가, false면 작업 가능
+				}, 
+			);
+
+
+			$('#opener').click(function () {
+				$('#dialog').dialog('open');
+			});
+
 		});		
 	</script>
 </head>
+
 <body>
-	
+
 	Date:<input type="text" id="datepicker">
-	<hr>	
+	<hr>
 	<button id="opener">open dialog</button>
 	<!-- POPUP DIV  -->
 	<div id="dialog" title="Basic dialog">
-  		<p>오늘은 목요일</p>
+		<p>오늘은 목요일</p>
 	</div>
 </body>
+
 </html>

@@ -99,6 +99,12 @@
 			<h2>상세보기</h2>
 			<form name="form" id="form" role="form" method="post"
 				action="boardCustomWrite.do">
+				
+				<div class="mb-3">
+						<label for="title">사진</label> <br> 
+			 		<img id="preview" src="upload/${emp.filename}" width="300" alt="로컬에 있는 이미지가 보여지는 영역">	
+				</div>
+				
 				<div class="mb-3">
 					<label for="title">사원번호</label> 
 						<input type="text"

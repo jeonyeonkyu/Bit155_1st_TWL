@@ -33,9 +33,9 @@ public class EmpChart extends HttpServlet {
 		obj.put("empSalAvg", empSalAvg);
 		obj.put("deptTotal", deptTotal);
 		obj.put("empJobTotal", empJobTotal);
-		jsonArr.add(obj);
 		
-    	
+		jsonArr.add(obj);
+				
     	response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(jsonArr);
     }

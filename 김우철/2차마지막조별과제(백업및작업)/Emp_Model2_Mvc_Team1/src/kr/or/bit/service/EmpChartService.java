@@ -25,13 +25,11 @@ public class EmpChartService implements Action {
 		
 		System.out.println("emp!!  ì•„ë‹ˆê³  list" + list);
 		
-		JSONObject obj = new JSONObject();
 		JSONArray jsonArr = JSONArray.fromObject(list); 
 		
 		System.out.println("jsonArr : " + jsonArr);
 		
-		request.setAttribute("jsonArr", jsonArr);
-		
+//		request.setAttribute("jsonArr", jsonArr);
 		
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");

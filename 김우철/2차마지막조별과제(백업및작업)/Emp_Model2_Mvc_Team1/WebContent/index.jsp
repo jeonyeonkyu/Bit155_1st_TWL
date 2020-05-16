@@ -300,8 +300,7 @@
             </div>
 		
 		<div>
-		
-			sssss
+	
 		</div>
 		<c:set var="list" value="${requestScope.listChart}" />
 		<c:forEach var="e" items="${list}">
