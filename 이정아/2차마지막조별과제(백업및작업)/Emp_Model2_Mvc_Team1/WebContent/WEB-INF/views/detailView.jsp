@@ -56,6 +56,8 @@
 						e.preventDefault();
 						location.href = "EmpTable.do";
 					});
+	
+	
 </script>
 
 

@@ -21,6 +21,7 @@ public class EmpAddService implements Action {
 		String sal = request.getParameter("sal");
 		String comm = request.getParameter("comm");
 		String deptno = request.getParameter("deptno");
+		String filename = request.getParameter("filename");
 		
 		System.out.println(empno);
 		System.out.println(ename);
@@ -30,13 +31,14 @@ public class EmpAddService implements Action {
 		System.out.println(sal);
 		System.out.println(comm);
 		System.out.println(deptno);
+		System.out.println(filename);
 		
 		
 		EmpDao dao = new EmpDao(); // POINT
 		int result = 0;
 		try {
 			result = dao.insertEmp(Long.parseLong(empno), ename, job, Long.parseLong(mgr), hiredate,
-					Long.parseLong(sal), Long.parseLong(comm), Long.parseLong(deptno));
+					Long.parseLong(sal), Long.parseLong(comm), Long.parseLong(deptno),filename);
 		} catch(Exception e) {
 			e.printStackTrace();
 			result = 0;

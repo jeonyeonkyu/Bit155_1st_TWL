@@ -19,12 +19,13 @@ public class EmpEditOkService implements Action {
 		String comm = request.getParameter("comm");
 		String deptno = request.getParameter("deptno");
 		String empno = request.getParameter("empno");
+		String filename = request.getParameter("filename");
 
 		EmpDao dao = new EmpDao(); // POINT
 		int result = 0;
 		try {
 			result = dao.updateOkEmp(Long.parseLong(empno), ename, job, Long.parseLong(mgr), hiredate,
-					Long.parseLong(sal), Long.parseLong(comm), Long.parseLong(deptno));
+					Long.parseLong(sal), Long.parseLong(comm), Long.parseLong(deptno), filename);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = 0;
@@ -53,6 +54,7 @@ public class EmpEditOkService implements Action {
 		request.setAttribute("comm", comm);
 		request.setAttribute("deptno", deptno);
 		request.setAttribute("empno", empno);
+		request.setAttribute("filename", filename);
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/common/redirect.jsp");

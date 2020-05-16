@@ -330,14 +330,14 @@ public class EmpDao {
 	
 	//사원 등록하기
 	public int insertEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
-			long deptno) {
+			long deptno, String filename ) {
 		Connection conn = null;// 추가
 
 		try {
 			conn = ds.getConnection();
 
 			System.out.println(hiredate);
-			String sql = "insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno,filename) values(?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, empno);
 			pstmt.setString(2, ename);
@@ -347,6 +347,7 @@ public class EmpDao {
 			pstmt.setLong(6, sal);
 			pstmt.setLong(7, comm);
 			pstmt.setLong(8, deptno);
+			pstmt.setString(9, filename);
 
 			result = pstmt.executeUpdate();
 
@@ -492,6 +493,7 @@ public class EmpDao {
 				emp.setHiredate(rs.getDate("hiredate"));
 				emp.setMgr(rs.getLong("mgr"));
 				emp.setSal(rs.getLong("sal"));
+				emp.setFilename(rs.getString("filename"));
 			}
 
 		} catch (Exception e) {
@@ -511,14 +513,14 @@ public class EmpDao {
 	}
 	
 	public int updateOkEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
-			long deptno) {
+			long deptno, String filename) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = ds.getConnection();
 
-			String sql = "update emp set ename = ?, job =?, mgr = ?, hiredate = ?, sal = ?,comm = ?, deptno = ? WHERE empno = ?";
+			String sql = "update emp set ename = ?, job =?, mgr = ?, hiredate = ?, sal = ?,comm = ?, deptno = ?, filename = ? WHERE empno = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -530,6 +532,7 @@ public class EmpDao {
 			pstmt.setLong(6, comm);
 			pstmt.setLong(7, deptno);
 			pstmt.setLong(8, empno);
+			pstmt.setString(9, filename);
 			
 			result = pstmt.executeUpdate();
 

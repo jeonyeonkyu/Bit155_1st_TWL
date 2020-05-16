@@ -30,6 +30,7 @@ public class EmpListService implements Action {
 			if (ps == null || ps.trim().equals("")) {
 				ps = "5";
 			}
+			
 			int pagesize = Integer.parseInt(ps);
 			int cpage = Integer.parseInt(cp);
 			int totalcount = empdao.totallistCount();

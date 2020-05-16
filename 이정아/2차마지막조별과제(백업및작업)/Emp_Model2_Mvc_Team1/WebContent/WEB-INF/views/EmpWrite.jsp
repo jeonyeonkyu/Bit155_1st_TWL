@@ -42,7 +42,7 @@
 (function($) {
    "use strict";
 
-   $(document).on('click', '#upload', function(e) {
+   $(document).on('click', '#btnSave', function(e) {
 	   console.log($("#filename").val());
                $.ajax({
                   url : "upload.do",
@@ -59,8 +59,6 @@
          })
 
 })(jQuery);
-</script>
-
 </script>
 
 
@@ -151,17 +149,17 @@ tr>th {
 			<div class="container" role="main">
 				<h2>사원 등록</h2>
 				<form name="form" id="form" role="form" method="post"
-					action="EmpWriteok.do">
-
+					action="FileUpload.jsp">
 
 					<div class="mb-3">
-						썸네일 이미지<br /> 
-						<label for="title">사진 등록</label> <br> 
-						<img src="upload/sm_emp.jpg" style="width: 40px; height: 40px;" /><br />
+						썸네일 이미지<br/> 
+						<label for="title" >사진 등록</label> <br> 
+						<img id = "preview" src="" style="width: 40px; height: 40px;" /><br /><!-- 썸네일 -->
 						<br /> 
-						<input type="file" id="filename" name="filename"><br> 
-						<input id="upload" value="업로드" />
-
+						<input type="file" id="upload" accept="image/*"><br> 
+						<input value="업로드" />
+						
+						
 					</div>
 
 					<div class="mb-3">
@@ -214,8 +212,7 @@ tr>th {
             </div> --%>
 
 					<div>
-						<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
-
+						<input type="submit" id="btnSave" name="filename" value="저장">
 						<!-- <a href="delete.do?empno=7369" type="button" class="btn btn-sm btn-primary">삭제</a> -->
 						<a href="EmpTable.do" type="button" class="btn btn-sm btn-primary">목록</a>
 						<!--  <bautton type="button" class="btn btn-sm btn-primary" id="btnList" onclick="location.href='emplist.jsp'">목록</button> -->
@@ -265,6 +262,41 @@ tr>th {
          normalizeFunction : 'polynomial'
       });
    })(jQuery);
+   
+   
+   var file = document.querySelector('#upload');
+   
+   file.onchange= funtion(){
+	   var fileList = file.files;
+	   
+	   var reader = new FileReader();
+	   reader.readAsDataURL(fileList[0]);
+	   
+	   reader.onload = function(){
+		   document.querySelector('#img').src = reader.result;
+		   
+		   var tempImage = new Image();
+		   tempImage.src = reader.result;
+		   tempImage.onload = function(){
+			   
+			   var canvas = document.createElement('canvas');
+			   var canvasContext = canvas.getContext("2d");
+			   
+			   canvas.width = 50;
+			   canvas.height = 100;
+			   
+			   canvasContext.drawImage(this, 0, 0 ,100, 100);
+			   
+			   var dataURI = canvas.toDataURL("image/jpeg");
+			   
+			   document.querySelector('#thumbnail').src = dataURI;
+			   
+			   document.querySelector('#download').href = dataURI;
+		   };
+	   };
+   };
+   
+   
 </script>
 
 

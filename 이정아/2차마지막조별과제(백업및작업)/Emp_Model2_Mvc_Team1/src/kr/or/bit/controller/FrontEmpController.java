@@ -61,8 +61,10 @@ public class FrontEmpController extends HttpServlet {
 		}else if(url_Command.equals("/EmpWriteok.do")) { //��ü��ȸ
 			action = new EmpAddService();
 			forward = action.execute(request, response);
+			
 		}else if(url_Command.equals("/delete.do")) { //��ü��ȸ
 			action = new EmpDeleteService();
+			
 			forward = action.execute(request, response);
 		}else if(url_Command.equals("/detailView.do")) {
 			action = new EmpDetailService();
@@ -81,15 +83,11 @@ public class FrontEmpController extends HttpServlet {
 		}else if(url_Command.equals("/chartViewok.do")) { //화면 + 로직 
 			action = new EmpChartService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/upload.do")) { //화면 + 로직 
+		}/*else if(url_Command.equals("/upload.do")) { //화면 + 로직 
 			action = new EmpFileUploadService();
-			forward = action.execute(request, response);
-			
-		}
+			forward = action.execute(request, response);*/
 		
-		// 4. �� �����ϱ�
-		// 5. forward(request ��ü�� �ּҰ��� ����)
-		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
+		
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);
