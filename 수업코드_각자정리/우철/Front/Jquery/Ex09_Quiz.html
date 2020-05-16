@@ -1,0 +1,331 @@
+<html>
+
+<head>
+    <title> 회원가입 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: "malgun gothic";
+            font-size: 9pt;
+        }
+
+        th {
+            text-align: right;
+            background-color: #dbdbdb
+        }
+
+        th.title {
+            text-align: center;
+            font-size: 12pt;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="signForm" id="signForm" method="post" action="MemberJoinOK.jsp">
+        <table>
+            <tr>
+                <th colspan="2" class="title">회원가입</th>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" maxlength="20" id="userId" name="userId" title="3~16자리의 영문+숫자 조합으로 입력해주세요">
+                    <div id="idFeedback"></div>
+                </td>
+                <td class="tdid"></td>
+            </tr>
+
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" maxlength="20" id="userName" name="userName" title="이름">
+                    <div id="nameFeedback"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>패스워드</th>
+                <td>
+                    <input type="password" maxlength="20" id="userPass" name="userPass"
+                        title="3~16자리의 영문+숫자 조합으로 입력해주세요">
+                    <div id="passwordFeedback"></div>
+                </td>
+                <td class="tdpw"></td>
+            </tr>
+            <tr>
+                <th>패스워드 확인</th>
+                <td><input type="password" maxlength="20" id="userPassCheck" name="userPassCheck" title="패스워드 확인">
+                    <div id="passwordCheckFeedback"></div>
+                </td>
+                <td class="tdpwch"></td>
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td><input type="radio" name="gender" value="male" checked>남 &nbsp&nbsp;
+                    <input type="radio" name="gender" value="female">여 </td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td><input type="text" maxlength="50" id="userEmail" name="userEmail" title="이메일">
+                    <div id="emailFeedback"></div>
+                </td>
+                <td class="tdmail"></td>
+            </tr>
+            <tr>
+                <th>주민번호</th>
+                <td>
+                    <input type="text" maxlength="6" id="userSsn1" name="userSsn1" title="주민번호1"> -
+                    <input type="text" maxlength="7" id="userSsn2" name="userSsn2" title="주민번호2 ">
+                    <div id="ssnCheckFeedback"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>우편번호</th>
+                <td>
+                    <input type="text" maxlength="10" id="userZipCode" name="userZipCode" size="9" title="주소-우편번호">
+                    <input type="button" value="우편번호검색" />
+                </td>
+            </tr>
+            <tr>
+                <th>주소1</th>
+                <td>
+                    <input type="text" maxlength="20" size="45" id="userAddr1" name="userAddr1" title="주소-기본주소">
+                </td>
+            </tr>
+            <tr>
+                <th>주소2</th>
+                <td>
+                    <input type="text" maxlength="20" size="45" id="userAddr2" name="userAddr2" title="주소-상세주소">
+                </td>
+            </tr>
+            <tr>
+                <th>핸드폰번호</th>
+                <td>
+                    <input type="text" size="30" maxlength="20" id="userPhone" name="userPhone"
+                        title="'010','-'없이 입력하세요">
+                    <div id="phoneFeedback"></div>
+                </td>
+                <td class="tdphone"></td>
+            </tr>
+            <tr>
+                <th>취미</th>
+                <td>
+                    <input type="checkbox" class="hobby" name="box[]" value="등산">등산
+                    &nbsp;&nbsp;
+                    <input type="checkbox" class="hobby" name="box[]" value="자전거">자전거
+                    &nbsp;&nbsp;
+                    <input type="checkbox" class="hobby" name="box[]" value="컴퓨터">컴퓨터
+                    &nbsp;&nbsp;
+                    <input type="checkbox" class="hobby" name="box[]" value="영화감상">영화감상
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <input type="text" name="year"> 년
+                    <select name="month">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                    </select> 월
+                    <select name="day">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                    </select> 일
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="가입완료">
+                    <input type="reset" value="입력취소">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+
+<script>
+
+    $(function () {
+
+        function submitCheck(id, str1, str2) {
+            if ($(id).val() == "") {
+                alert(str1);
+                $(id).focus();
+                return false;
+            } else {
+                alert(str2);
+                $(id).focus();
+                return false;
+            }
+        }
+
+        $('#signForm').submit(function () {
+            if ($('#userId').val() == "" || regArr[0] === false) { // 아이디 검사
+                return submitCheck('#userId', 'ID를 입력해주세요', 'ID의 정규표현식에 맞춰주세요');
+            } else if ($('#userName').val() == "" || regArr[1] === false) { // 이름 검사
+                return submitCheck('#userName', 'name를 입력해 주세요.', '이름 정규표현식에 맞춰주세요.');
+            }
+            else if ($('#userPass').val() == "" || regArr[2] === false) { // 비밀번호 검사
+                return submitCheck('#userPass', '비밀번호를 입력해 주세요.', 'PW의 정규표현식에 맞춰주세요.');
+            } else if ($('#userPassCheck').val() == "" || regArr[3] === false) { // 비밀번호체크 검사
+                return submitCheck('#userPassCheck', '비밀번호 확인을 입력해 주세요.', '비밀번호를 일치시켜주세요.');
+            } else if ($('#userEmail').val() == "" || regArr[4] === false) { // 이메일 검사
+                return submitCheck('#userEmail', 'email를 입력해 주세요.', '이메일 정규표현식에 맞춰주세요.');
+            } else if ($('#userSsn1').val() == "" || regArr[5] === false) { // 주민 앞자리 검사
+                return submitCheck('#userSsn1', '주민앞자리를 입력해 주세요.', '주민앞자리 정규표현식에 맞춰주세요');
+            } else if ($('#userSsn2').val() == "" || regArr[6] === false) { // 주민 뒷자리 검사
+                return submitCheck('#userSsn2', '주민 뒷자리를 입력해 주세요.', '주민뒷자리 정규표현식에 맞춰주세요');
+            } else if ($('#userPhone').val() == "" || regArr[7] === false) { // 핸드폰 검사
+                return submitCheck('#userPhone', '핸드폰을 입력해 주세요.', '핸드폰 정규표현식에 맞춰주세요.');
+            } else { //취미 검사(반드시 1개이상 체크)
+                var chkbox = $(".hobby");
+                var checkboxCount = 0;
+                chkbox.each(function (index) {
+                    if (chkbox[index].checked) {
+                        checkboxCount++;
+                    }
+                });
+                if (checkboxCount < 1) {
+                    alert('취미를 1개이상 선택해주세요.');
+                    return false;
+                }
+            }
+        });
+
+        var id = /^[a-zA-z0-9]{4,12}$/;  //아이디 패스워드 같이, 영문 대소문자 숫자 4~12자리
+        var name = /^[가-힣]{2,4}$/;  //한글이름 2~4글자이면 됨
+        var pwd = /^[a-zA-z0-9]{4,12}$/; // 비밀번호는 영문 대소문자와 숫자 4~12자리
+        var email = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; //"*@*.*) 이메일 양식
+        var ssn1 = /^[0123456789]{6}$/;
+        var ssn2 = /^[0123456789]{7}$/;
+        var phone = /^(01[01679]{1})[-.\s]([0-9]{3,4})[-.\s]?([0-9]{4})$/;
+        var regArr = [false, false, false, false, false, false, false, false];
+        //정규표현식에 맞출때마다 true 변환 
+        //아이디, 이름, 패스1, 패스2, 이메일, 주민앞자리, 주민뒷자리, 핸드폰
+
+        function regCheck(reg, value, Feedback, error, index) {
+            if (reg.test(value) != true) {
+                $(Feedback).show();
+                $(Feedback).text(error);
+                $(Feedback).css('color', 'red');
+                regArr[index] = false;
+            } else {
+                $(Feedback).hide();
+                regArr[index] = true;
+            }
+        }
+
+        $('#userId').keyup(function () {
+            regCheck(id, $('#userId').val(), "#idFeedback", '영문 대소문자 숫자 4~12자리', 0);
+        });
+
+        $('#userName').keyup(function () {
+            regCheck(name, $('#userName').val(), "#nameFeedback", '한글이름 2~4글자', 1);
+        });
+
+        $('#userPass').keyup(function () {
+            regCheck(pwd, $('#userPass').val(), "#passwordFeedback", '영문 대소문자 숫자 4~12자리', 2);
+        });
+
+        $('#userPassCheck').keyup(function () {
+            if ($('#userPass').val() != $('#userPassCheck').val()) {
+                $("#passwordCheckFeedback").show();
+                $('#passwordCheckFeedback').text('암호가 일치하지 않습니다.');
+                $('#passwordCheckFeedback').css('color', 'red');
+                regArr[3] = false;
+            } else {
+                $("#passwordCheckFeedback").hide();
+                regArr[3] = true;
+            }
+        })
+
+        $('#userEmail').keyup(function () {
+            regCheck(email, $('#userEmail').val(), "#emailFeedback", '*@*.* 양식에 맞춰주세요', 4);
+        });
+
+        $('#userSsn1').keyup(function () {
+            regCheck(ssn1, $('#userSsn1').val(), "#ssnCheckFeedback", '주민번호 양식에 맞춰주세요', 5);
+        });
+
+        $('#userSsn2').keyup(function () {
+            regCheck(ssn2, $('#userSsn2').val(), "#ssnCheckFeedback", '주민번호 양식에 맞춰주세요', 6);
+        });
+
+        $('#userPhone').keyup(function () {
+            regCheck(phone, $('#userPhone').val(), "#phoneFeedback", 'OOO-OOOO-OOOO 양식에 맞춰주세요', 7);
+        });
+
+        // console.log($('input:checkbox[name=hobby]').val());
+
+        // console.log($('input:checkbox[name=hobby]:checked').val());
+
+        // $(".hobby").change(function () {
+        //     if ($(".hobby").is(":checked")) {
+        //         console.log("ss");
+        //     }else{
+        //         console.log("ssss");
+        //     }
+        // });
+
+        // console.log($("input[type='checkbox']").val())
+
+        // var chkbox = $(".hobby");
+        // console.log(chkbox);
+
+        // $('.hobby').click(function () {
+        //     chkbox.each(function (index) {
+        //         if (chkbox[index].checked) {
+        //             console.log(chkbox[index].defaultValue);
+        //         }
+
+        //     });
+        // });
+
+        // $("input:checkbox[name=hobby]").on('click', function () {
+        //     if ($(this).prop('checked')) {
+        //         console.log($('input:checkbox[name=hobby]:checked').val());
+        //     } else {
+
+        //     }
+        // });
+
+
+        // $('input:checkbox[name=hobby]').is(':checked')click(function(){
+        //     var ischecked = $(this).attr('checked');
+        //     if(ischecked){
+        //         console.log("ss");
+        //     }else{
+        //         console.log("아나");
+        //     }
+        // })
+
+
+        // $('.hobby').change(function () {
+        //     if ($('.hobby').is(":checked")) {
+        //         console.log($("input[type='checkbox']:checked").val())
+        //     }else{
+        //         console.log("ss")
+        //     }
+        // })
+
+
+        // $("input:checkbox").on('click', function () {
+        //     if ($(this).prop('checked')) {
+        //         $(this).parent().addClass("selected");
+        //     } else {
+        //         $(this).parent().removeClass("selected");
+        //     }
+        // });
+    });
+
+</script>
+
+</html>

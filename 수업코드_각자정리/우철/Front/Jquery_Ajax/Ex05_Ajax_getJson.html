@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	/* jQuery.getJSON()
+	Load JSON-encoded data from the server using a GET HTTP request. */
+	
+	//dataType >> getJSON() >> json >> default
+	//jQuery.getJSON( url [, data ] [, success ] )
+	$(function(){
+		$('#btn .btnload').click(function(){
+			$.getJSON("Ex05_json.json", function(data){ //데이터가 성공적으로 도착했다면 콜백함수 실행, 여기까지가 비동기 끝
+				//console.log(data);
+				//[{}, {}, {}, {}]
+				//문제) Table 만들고 let table = "<table>" Table td 안에 
+				//td안에 num값이랑 name값을 출력
+				//힌트 : $.each() 활용하기
+				//최종 Table display append 하세요 
+				let html;
+				$.each(data, function(index, element) {
+					html += "<tr><td>" + "Num : " + element.num + "</td>" 
+					html += "<td>" + "Name : " + element.Name + "</td></tr>"
+				})
+				$('#display').append(html);
+			}); //$.getJSON_end
+		}); //click_end
+	});
+	
+	
+	//선생님 답
+	/* 
+	let table="<table border='1'>";
+            		//each 문사용해서 tr , td 만들고 서버에서 받은 데이터 넣고 ....
+            		table+="<tr><th>INDEX</th><th>NUM</th><th>NAME</th></tr>";
+            			$.each(data,function(index,obj){
+            				//key point
+            				
+            				//여기서 for문을 돌려서 key값만 빼기 가능
+            				for(let key in obj){
+								console.log("key : " + key);
+								console.log(obj[key]); //데이터 출력								
+            				}
+            				
+            				//1. 객체.속성명
+            				//2. 객체["속성명"]
+            				  table+="<tr>";
+            				  		table+="<td>" + index + "</td>";
+            				  		table+="<td>" + obj.num + "</td>";
+            				  		if(obj.num){
+            					  		table+="<td>" + obj["Name"] + "</td>";
+            				  		}else{
+            					 		 table+="<td>" + "EMPTY" + "</td>";
+            				 		 }
+            				  table+="</tr>";
+            			});
+            		
+            		table+="</table>";
+            		
+            		//$('#display').html(table); //이걸쓰면 덮어써버림
+                	$('#display').append(table); //뒤에 추가하는 개념
+                	*/
+	
+	</script>
+</head>
+<body>
+	<div id="btn">
+		<div class="btnload">JSON DATA LOAD</div>
+	</div>
+	<div>
+		<table id="display"></table>
+	</div>
+</body>
+</html>

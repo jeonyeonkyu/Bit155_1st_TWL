@@ -1,2 +1,0 @@
-//콜백함수
-https://beomy.tistory.com/10

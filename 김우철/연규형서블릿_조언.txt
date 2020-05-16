@@ -1,0 +1,55 @@
+벨리데이션 체크 / 값이 유효한지 체크만 : 컨트롤러의 역할 
+응답하는 dto만 담느거 : 코ㅓㄴ트롤러
+
+서비스에서는 dao랑 통신
+db에서 가져오는 객체를 가지고 조작 : 서비스
+
+dao는 실제 db랑 연동
+
+
+9번예제
+컨트롤러 : 
+
+request를 다넣어주면 안됨
+
+컨트롤러에서는
+forward를 받는게 아님
+
+MemoAddService memoAddService = new MemoAddService();
+memoAddService.addMember(request.getA.., 
+
+
+(질문)
+클래스명 이름 양식 
+
+카멜케이스, 파스칼 케이스(클래스)
+
+서블릿 하나당 3~4개정도요청받아도되느닞? (O)
+
+Map을 안쓰면 어떤걸 쓰는지
+
+sendRedirect를 꼭해야하는지?
+
+request, response가 서비스로 가면 안됨 -그럼 getParameter를 컨트롤러에서받아야하는지?
+OO
+
+컨트롤러하나에 여러개에대한 path를 널수 있음 : 
+
+하나씩 나누는게 편하다..
+
+dao는 잘짬 -> 하나만써라..
+dbpc가 있으니 하나만..
+
+
+컨트롤러에서 처리할꺼에대한 값들만 넘겨줌 -> 서비스에서는
+
+컨트롤러에서 redirect를 할지 결정해야함
+
+
+서ㅏ비스에서는 데이터들을 컨트롤러로 ㄴ머겨준뒤 컨트롤러가 판단해야함
+
+메서드는 url마다 나누기..
+
+
+request 는 map형식이다
+

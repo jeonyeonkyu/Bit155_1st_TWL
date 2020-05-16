@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('#btn1').click(function () {
+                alert("text: " + $('#test').text()); //getter, bold가 적용되지 않고 오로지 텍스트만..(태그를 인식 X)
+            });
+            $('#btn2').click(function () {
+                alert("text: " + $('#test').html()); //getter, 태그를인식
+            });
+            //★★차이 확실히 구분!!★★
+            $('#btn3').click(function () {
+                //$('#test').html("<div>AAA</div>"); //html은 태그가 적용됨
+                $('#test').text("<div>AAA</div>"); //그냥 text로 인식(div태그를 특수문자로 인식..)
+            });
+              //★★차이 확실히 구분2!!★★
+              //html 의 사용 빈도가 높다
+        })
+
+    </script>
+</head>
+
+<body>
+    <p id="test">안녕하세요<b>정말</b>방가방가</p>
+    <button id="btn1">show text</button>
+    <button id="btn2">show html</button>
+    <button id="btn3">html</button>
+</body>
+
+</html>

@@ -9,7 +9,7 @@
 					(request : 요청)
 					
 	Server 				 -> 		Client
-					(response:응답 >> 클아이언트 브라우저가 해석할 수 있는 내용)
+					(response:응답 >> 클라이언트 브라우저가 해석할 수 있는 내용)
 	지원 : 아파치 톰캣(자원 : javax)
 	
 	response
