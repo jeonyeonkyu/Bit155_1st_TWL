@@ -64,8 +64,10 @@ $(function () {
 			                    data: {
 			                        labels: ["PRESIDEMT", "ANALYST", "MANAGER", "SALESMAN", "CLERK"], //차트에 들어갈 라벨명
 			                        datasets: [{
+			                        	
 			                            data: [Number(data[0].sal), Number(data[1].sal), Number(data[2].sal), Number(data[3].sal), Number(data[4].sal)],
 			                            labels: ["PRESIDEMT", "ANALYST", "MANAGER", "SALESMAN", "CLERK"],
+			                            
 			                            backgroundColor: [
 			                                'rgba(244,99,132,0.2)',
 			                                'rgba(54,162,235,0.2)',
@@ -75,11 +77,11 @@ $(function () {
 			                                'rgba(255,159,64,0.2)',
 			                            ],
 			                            hoverBorderWidth:[
-			                                '5',
-			                                '5',
-			                                '5',
-			                                '5',
-			                                '5'
+			                                '17',
+			                                '17',
+			                                '17',
+			                                '17',
+			                                '17'
 
 			                            ],
 			                            hoverBackgroundColor:[
@@ -88,7 +90,7 @@ $(function () {
 			                                'rgba(255,206,8)',
 			                                'rgba(75,192,193)',
 			                                'rgba(153,20.75)',
-			                                'rgba(255,159,5)',
+			                                'rgba(255,159,65,0)',
 			                            ]
 
 			                        }],
@@ -102,15 +104,23 @@ $(function () {
 			                                    fontsize: 1000,
 			                                    
 			                                },
-			                                
-			                             /*    legend:{
-	                                        	display:true,
-	                                        	position: 'top',
-	                                        	 labels: ["plenty", "some", "few", "empty", "none"],
-	                                        	  //차트에 들어갈 라벨명
-	                                        } */
-	                                   
-			                                
+			                                layout: {
+			                                    padding: {
+			                                        left: 50,
+			                                        right: 0,
+			                                        top: 0,
+			                                        bottom: 0
+			                                    }
+			                                },
+			                                legend: {
+			                                    display: true,
+			                                    labels: {
+			                                        generateLabels : {
+			                                        
+			                                        	text:"seulki"
+			                                        },
+			                                    },
+			                                },
 			                            }
 			                });
 						
@@ -145,7 +155,7 @@ $(function () {
 		<c:set var="list" value="${requestScope.list}" />
 
 
-		<h1>chartView.jsp</h1>
+		
 		
 		 <div style="width: 85%">
         <canvas id="myChart"></canvas></div>

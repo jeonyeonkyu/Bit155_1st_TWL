@@ -116,16 +116,9 @@ tr>th {
 				</div>
 			</div>
 		</div>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
+
 
     <form name="list"> 
         <div class="container">
@@ -257,13 +250,11 @@ tr>th {
 				</button>
 			</div>
 		</div>
-	</div>
+	
 
-	</div>
-
-
+</body>
 	<!-- .content -->
-	</div>
+	
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
@@ -298,6 +289,6 @@ tr>th {
 					});
 				})(jQuery);
 			</script>
-</body>
+
 
 </html>
