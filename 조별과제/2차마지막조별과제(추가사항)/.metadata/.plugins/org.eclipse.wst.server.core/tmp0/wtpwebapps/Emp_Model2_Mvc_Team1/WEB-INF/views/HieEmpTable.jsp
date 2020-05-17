@@ -208,7 +208,7 @@ onmouseout:this.style.backgroundColor=white;
 												<td align="center"><a
 											href="#" type="button"
 											class="btn btn-sm btn-primary">수정</a> <a
-											href="HieEmpDelete.do" type="button"
+											href="#" type="button"
 											class="btn btn-sm btn-warning">삭제</a></td>
 										</tr>
 									</c:forEach>

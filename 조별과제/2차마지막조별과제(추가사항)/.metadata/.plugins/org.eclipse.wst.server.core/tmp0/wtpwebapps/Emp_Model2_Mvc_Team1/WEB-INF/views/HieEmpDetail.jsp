@@ -153,7 +153,7 @@ onmouseout:this.style.backgroundColor=white;
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<textarea class="form-control" rows="5" name="content" id="content"
-						readonly>${board.content}</textarea>
+						value="${board.content} " readonly></textarea>
 				</div>
 				
 				<div class="mb-3">
