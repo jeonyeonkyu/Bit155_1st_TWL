@@ -4067,3 +4067,166 @@ select * from memo;
 
 
 select * from jspboard;
+------------------------------------------------------------------------------------------------------------------------------------
+select * from emp;
+
+CREATE TABLE koreaMember
+(
+    id VARCHAR2(50) PRIMARY KEY ,
+    pwd VARCHAR2(50) NOT NULL,
+    NAME VARCHAR2(50) NOT NULL,
+    age NUMBER ,
+    gender CHAR(4),
+    email VARCHAR2(50),
+    ip   VARCHAR2(50)
+)
+----------------------------------------------------------------------------------------------------------------------------- 
+select * from jspboard;
+
+select * from memo;
+
+CREATE TABLE jspboard(
+  idx NUMBER PRIMARY KEY , -- 글번호 (DB : 오라클(sequence 객체) , Ms-sql, Mysql(테이블 종속 자동증가)
+  writer VARCHAR2(30) NOT NULL , --글쓴이 (회원전용: 로그인한 ID , 별칭     비회원용: 입력값 )
+  pwd VARCHAR2(20) NOT NULL , --회원전용(x)  , 비회원전용(0 : 수정 ,삭제 )
+  subject VARCHAR2(50) NOT NULL, --글제목
+  content VARCHAR2(100) NOT NULL, --글내용
+  writedate DATE DEFAULT SYSDATE, -- 작성일
+  readnum NUMBER DEFAULT 0 , --글조회 (insert default 0)
+  filename VARCHAR2(200),  --파일명 (test.txt)
+  filesize NUMBER ,              --파일크기(byte)
+  homepage VARCHAR2(50) ,
+  email VARCHAR2(100), --필수 입력 사항 (not null) null값을 허용
+  --답변형 게시판 구축
+  refer   NUMBER DEFAULT 0 , -- 답변형 게시판 (참조글 or 글의 그룹번호)
+  depth   NUMBER DEFAULT 0,  -- 답변형 게시판(depth(글의 깊이 , 들여쓰기)
+  step    NUMBER DEFAULT 0   -- 답변형 게시판 (글의 정렬 순서 : 답글정렬순서)
+);
+select * from reply;
+CREATE TABLE reply(
+  no NUMBER PRIMARY KEY ,
+  writer VARCHAR2(30),
+  userid VARCHAR2(30),
+  pwd VARCHAR2(30),
+  content VARCHAR2(100),
+  writedate DATE DEFAULT SYSDATE ,
+  idx_fk  REFERENCES jspboard(idx) --jspboard 의 테이블: reply    ==  1: n   , 기본적으로 글을 지우기전에 댓글을 먼저 지워야 한다      글번호로 리플라이가서 다 찾아온다 
+);
+--꼬리말, 댓글을 만들 테이블 
+
+CREATE SEQUENCE reply_no
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+select * from jspboard;
+select * from reply;
+
+CREATE SEQUENCE jspboard_idx
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+select * from jspboard;
+
+commit;
+rollback;
+
+
+SELECT * 
+	     FROM 
+	             ( SELECT ROWNUM rn , idx ,  writer , email, homepage, pwd , subject , content, writedate, readnum
+	                      , filename, filesize , refer , depth , step 
+	               FROM 
+	                      ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC )
+	              )
+	     WHERE rn BETWEEN 1 AND 5;
+         
+         
+select * from jspboard where refer = 14 order by refer desc, step asc;
+
+
+-----------------------------------------------------------------------------
+
+create table mvcregister(
+ id number constraint pk_mvcregister_id primary key,
+ pwd varchar2(20) not null,
+ email varchar2(20) not null
+);
+
+select * from mvcregister;  --WebServlet_7_Member_Model2_Mvc_Command
+
+
+
+-----------------------------------------------------------------------------
+select * from emp;
+select * from dept;
+select * from salgrade;
+
+--직업별 급여평균
+select job , avg(sal)*12 sal
+from emp
+group by job
+order by sal desc;
+
+--부서별 급여평균
+select deptno, avg(sal)
+from emp
+group by deptno;
+
+create view vv2
+as 
+    select job , avg(sal)*12 sal
+from emp
+group by job
+order by sal desc; 
+
+
+
+select * from vv2;
+
+commit;
+
+select * from adminlist;
+
+
+create table adminlist(
+userid varchar2(20) not null,
+pwd varchar2(20) not null
+);
+
+insert into adminlist values('admin', '1004');
+insert into adminlist values('adminkim', '1234');
+----------------------------------------------------------------------------------------
+
+select * from emp where empno = '7369';
+
+----------------------------------------------------------------
+--view 실험
+create table viemp
+as 
+      select * from emp; 
+      
+select * from viemp;
+
+
+create view viemptest
+as 
+    select job , avg(sal)*12 sal
+from emp
+group by job
+order by sal desc; 
+
+select * from viemptest;
+commit;
+rollback;
+
+
+update viemp
+set sal =0
+where deptno = 20;
+
+select * from viemp;
+select * from viemptest;
+
+alter table emp add(filename varchar(100) default 'emp.jpg');
