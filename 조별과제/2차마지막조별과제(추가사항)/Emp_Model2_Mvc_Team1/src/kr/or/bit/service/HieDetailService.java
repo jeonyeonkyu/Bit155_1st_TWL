@@ -35,20 +35,11 @@ public class HieDetailService  implements Action {
 		dao.getReadNum(idx);
 		board = dao.getContent(Integer.parseInt(idx));
 		
-		request.setAttribute("board", board);
+		request.setAttribute("board", board);			
 		
-		String msg = "";
-		String url = "";
-		/*
-		 * if (Result > 0) { msg = ""; url = "HieEmpTable.do"; } else { msg =
-		 * "계층형 등록 실패"; url = "history.back()"; }
-		 */
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-			
+		System.out.println("board : + " + board);
 	
-		forward.setPath("/WEB-INF/common/redirect.jsp");
+		forward.setPath("/WEB-INF/views/HieEmpDetail.jsp");
 
 		return forward;
 		}

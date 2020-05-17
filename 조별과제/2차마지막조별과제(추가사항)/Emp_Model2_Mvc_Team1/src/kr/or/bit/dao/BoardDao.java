@@ -43,7 +43,8 @@ public class BoardDao {
 		// 1. ������ : refer, step(0) default, depth(0) default
 		// 2. �亯�� : refer, step + 1, depth + 1
 
-		// ������ : step, depth >> NUMBER DEFAULT 0 (insert ���� ������.. 0�� default�� ��)
+		// ������ : step, depth >> NUMBER DEFAULT 0 (insert ���� ������.. 0�� default��
+		// ��)
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int row = 0;
@@ -86,7 +87,8 @@ public class BoardDao {
 
 	// �����ۿ� ���� refer �� ���ϱ�
 	public int getMaxRefer() {
-		// select nvl(max(refer),0) from jspboard //���� �ϳ��� �Ⱦ����¼��� refer�� null�̱� ������ nvl
+		// select nvl(max(refer),0) from jspboard //���� �ϳ��� �Ⱦ����¼��� refer��
+		// null�̱� ������ nvl
 		// ������ -> ó�����ΰ�� 0�� ����
 		// >> refer�� ó�� ���� 1�� �����ϰ� �Ұ�� ... refer + 1
 		// select nvl(max(refer),0) from jspboard >> ó�� �� >> 0 >> refer + 1 ����
@@ -136,7 +138,8 @@ public class BoardDao {
 			String sql = "select * from  "
 					+ "(select rownum rn , idx ,writer , email, homepage, pwd , subject , content, writedate, readnum "
 					+ "	                 , filename, filesize , refer , depth , step "
-					+ "             from ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) " + // ��frmo �ζ��� ����
+					+ "             from ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) " + // ��frmo �ζ���
+																										// ����
 																										// ������ �Ǵ�
 																										// ������(�߿�)
 					"             where rownum <= ?" + // end row
@@ -189,20 +192,22 @@ public class BoardDao {
 		/*
 		 * [1][2][3][4][5][����] [����][6][7][8][9][10][����] [����][11][12]
 		 * 
-		 * [1] page ũ�� > pagesize ���� totaldata > 54�� pagesize = 5 ��Ģ > totalpagecount=11
-		 * (��ü ������ ����)
+		 * [1] page ũ�� > pagesize ���� totaldata > 54�� pagesize = 5 ��Ģ >
+		 * totalpagecount=11 (��ü ������ ����)
 		 * 
 		 * int cpage >> currentpage(���� ������ ��ȣ) >> 1page ,2page
 		 * 
-		 * ���� ������ 100�� cpage : 1 , pagesize : 5 > start(���۱۹�ȣ) 1 ~ end(�۹�ȣ) 5 cpage : 2
-		 * , pagesize : 5 > start(���۱۹�ȣ) 6 ~ end(�۹�ȣ) 10 cpage : 11 , pagesize : 5 >
-		 * start(���۱۹�ȣ) 51 ~ end(�۹�ȣ) 55 -5���� ��� 11��° ������ �����ּ���
+		 * ���� ������ 100�� cpage : 1 , pagesize : 5 > start(���۱۹�ȣ) 1 ~ end(�۹�ȣ) 5
+		 * cpage : 2 , pagesize : 5 > start(���۱۹�ȣ) 6 ~ end(�۹�ȣ) 10 cpage : 11 ,
+		 * pagesize : 5 > start(���۱۹�ȣ) 51 ~ end(�۹�ȣ) 55 -5���� ��� 11��° ������
+		 * �����ּ���
 		 * 
 		 * 
-		 * //����ǥ ���� �������� �̾Ƴ� �Ʒ� 2���� ������ ����¡ó�� ���� �׽�Ʈ �ϱ� SELECT * FROM ( SELECT ROWNUM rn
-		 * , idx , writer , email, homepage, pwd , subject , content, writedate, readnum
-		 * , filename, filesize , refer , depth , step FROM ( SELECT * FROM jspboard
-		 * ORDER BY refer DESC , step ASC ) ) WHERE rn BETWEEN ? AND ?;
+		 * //����ǥ ���� �������� �̾Ƴ� �Ʒ� 2���� ������ ����¡ó�� ���� �׽�Ʈ �ϱ� SELECT *
+		 * FROM ( SELECT ROWNUM rn , idx , writer , email, homepage, pwd , subject ,
+		 * content, writedate, readnum , filename, filesize , refer , depth , step FROM
+		 * ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) ) WHERE rn BETWEEN
+		 * ? AND ?;
 		 * 
 		 * -------------------------------------------------------------------- select *
 		 * from ( select rownum rn , idx , writer , email, homepage, pwd , subject ,
@@ -334,88 +339,25 @@ public class BoardDao {
 	}
 
 	// �Խñ� �����ϱ�(���� ����)(���⿹���� case 1)
-	public int deleteOk(String idx, String pwd) {
-		// �ϹݰԽ��� : ���� ...
-
-		// ������ �Խ��� : ���
-		/*
-		 * 1. ������ (����� �ִ� ���) 2. ������ (����� ���� ���) : �׳� ����
-		 * 
-		 * ������ (����� �ִ� ���) case 1: �������� ������ �亯�� ������ �� ���� (���� refer delete) case 2:
-		 * (���̹�)�����۸� ���� -> ������ ó�� (�ؽ�Ʈ ���� (������ ���� ǥ��) (step, depth) case 3: ������ �����Ǿ��� ǥ��
-		 * (���Ǽ� �̰� ��������) ( �Խ��� ���� (delok :�������� �÷� :1) >> ���� : 0 >> update .. 0 case 4:
-		 * ���� ���ϰ� �Ѵ� (����� ������) refer count > 1
-		 */
+	public int deleteOk(String idx) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int row = 0;
 		try {
 			conn = ds.getConnection();
-			// ������ ..
-			// ���� > ���
-			// ó�� > �۹�ȣ ,���
-
-			// �������
-			String sql_pwd = "select pwd from jspboard where idx=?";
-
-			// �ΰ��� ���̺� (FK) : �ڽĺ��� ���� , �θ� ����
-			// jspboard(pk) , reply(fk:idx)
-			// reply idx_fk=1 delete, jspboard idx=1 delete
-			String sql_reply = "delete from reply where idx_fk=?";
-			// ����� ���� ������ ������ foreign key ���� �߻�
-
-			// �Խñ� ����
 			String sql_board = "delete from jspboard where idx=?";
-
-			pstmt = conn.prepareStatement(sql_pwd);
 			pstmt.setString(1, idx);
 			rs = pstmt.executeQuery();
-			if (rs.next()) { // �������� ����
-				// ����ڰ� �Է��� ��� , DB ���
-				if (pwd.equals(rs.getString("pwd"))) {
-					// �� ���� ó��
-					// Ʈ����� (�Ѵ� ó�� , �Ѵ� ����)
-					// �ΰ��� �ϳ��� ���� ����
-					// JDBC : auto commit
-					conn.setAutoCommit(false);// �����ڰ� rollback , commit ����
-					// ��ۻ���
-					pstmt = conn.prepareStatement(sql_reply);
-					pstmt.setString(1, idx);
-					pstmt.executeUpdate();
-
-					// �Խñ� ���� (������ , ���)
-					pstmt = conn.prepareStatement(sql_board);
-					pstmt.setString(1, idx);
-					row = pstmt.executeUpdate();
-
-					if (row > 0) {
-						conn.commit(); // �ΰ��� delete �ǹݿ�
-					}
-
-				} else { // ��й�ȣ�� ��ġ ���� �ʴ� ���
-					row = -1;
-				}
-			} else { // �����ϴ� ���� �������� �ʴ� ���
-				row = 0;
-			}
-
 		} catch (Exception e) {
-			// rollback
-			// ���ܰ� �߻��ϸ�
-			try {
-				conn.rollback();
-			} catch (SQLException e1) {
-
-				e1.printStackTrace();
-			}
+			e.printStackTrace();
 		} finally {
 			try {
 				pstmt.close();
 				rs.close();
 				conn.close();// ��ȯ
 			} catch (Exception e2) {
-
+				e2.printStackTrace();
 			}
 		}
 		return row;
@@ -571,8 +513,8 @@ public class BoardDao {
 			/*
 			 * 1.������(���� read�� �Խñ�) : refer, depth, step >> select�ʿ�
 			 * 
-			 * 2.��ۿ� ���� ���� : ���߿� �� ����� ���� �ö󰡰� ��(�ֽű� ����) -> update�� ������ String
-			 * step_update_sql =
+			 * 2.��ۿ� ���� ���� : ���߿� �� ����� ���� �ö󰡰� ��(�ֽű� ����) -> update��
+			 * ������ String step_update_sql =
 			 * "update jspboard set step= step+1 where step  > ? and refer =? "; //
 			 * "update jspboard set step= step+1 where step > 0 and refer =1 ";
 			 * 

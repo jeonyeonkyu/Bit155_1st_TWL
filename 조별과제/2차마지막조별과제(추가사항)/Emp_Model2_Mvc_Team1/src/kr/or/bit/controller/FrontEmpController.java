@@ -26,6 +26,7 @@ import kr.or.bit.service.EmpListService;
 import kr.or.bit.service.EmpLoginService;
 import kr.or.bit.service.EmpLogoutService;
 import kr.or.bit.service.EmpSearchService;
+import kr.or.bit.service.HieDeleteService;
 import kr.or.bit.service.HieDetailService;
 
 @WebServlet("*.do")
@@ -122,6 +123,9 @@ public class FrontEmpController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(url_Command.equals("/HieEmpDetail.do")) { //화면 + 로직 )
 			action = new HieDetailService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/HieEmpDelete.do")) { //화면 + 로직 )
+			action = new HieDeleteService();
 			forward = action.execute(request, response);
 		}
 	
