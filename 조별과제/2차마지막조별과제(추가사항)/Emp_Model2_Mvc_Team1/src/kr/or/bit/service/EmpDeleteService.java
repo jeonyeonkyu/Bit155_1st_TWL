@@ -13,6 +13,7 @@ public class EmpDeleteService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
 			String empno = request.getParameter("empno");
+			String table = request.getParameter("table");
 	
 		   EmpDao dao = new EmpDao(); // POINT
 			int result = 0;
@@ -28,10 +29,19 @@ public class EmpDeleteService implements Action {
 			String url = "";
 			if (result > 0) {
 				msg = "삭제 성공";
-				url = "EmpTable.do";
+				if(table != null) {
+					url = "dataTable.do";
+				}else {
+					url = "EmpTable.do";
+				}
+				
 			} else {
 				msg = "삭제 실패";
-				url = "EmpTable.do";
+				if(table != null) {
+					url = "dataTable.do";
+				}else {
+					url = "EmpTable.do";
+				}
 			}
 
 			request.setAttribute("msg", msg);

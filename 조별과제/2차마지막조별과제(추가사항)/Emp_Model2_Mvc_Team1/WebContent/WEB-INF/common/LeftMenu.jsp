@@ -27,6 +27,10 @@
 						<!-- <h3 class="menu-title">UI elements</h3>/.menu-title -->
 						<li class="menu-item"><a href="EmpTable.do"><i
 								class="menu-icon fa fa-laptop"></i>회원관리</a></li>
+						<li class="menu-item"><a href="dataTable.do"><i
+								class="menu-icon fa fa-laptop"></i>dataTable</a></li>
+						<li class="menu-item"><a href="HieEmpTable.do"><i
+								class="menu-icon fa fa-laptop"></i>계층형 게시판</a></li>
 						<li class="menu-item-has-children dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"> <i

@@ -41,8 +41,8 @@ public class EmpAddService implements Action {
 		String job = multi.getParameter("job");
 		String mgr = multi.getParameter("mgr");
 		String hiredate = multi.getParameter("hiredate");
-		String sal = multi.getParameter("sal");
-		String comm = multi.getParameter("comm");
+		String sal = multi.getParameter("sal").replaceAll(",", "");
+		String comm = multi.getParameter("comm").replaceAll(",", "");;
 		String deptno = multi.getParameter("deptno");
 		
 		Enumeration filenames = multi.getFileNames();
@@ -79,8 +79,7 @@ public class EmpAddService implements Action {
 		request.setAttribute("url", url);
 		
 		List jobList = dao.jobList();
-		System.out.println(jobList);
-		request.setAttribute("jobList", jobList);
+		
 		
 		forward.setPath("/WEB-INF/common/redirect.jsp");
 		

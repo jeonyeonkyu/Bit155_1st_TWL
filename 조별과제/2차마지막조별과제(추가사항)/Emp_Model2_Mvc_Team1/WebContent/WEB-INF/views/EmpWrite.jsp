@@ -173,9 +173,14 @@ tr>th {
 							class="form-control" name="comm" id="comm" placeholder="ex) 300">
 					</div>
 					<div class="mb-3">
-						<label for="reg_id">부서번호</label> <input type="text"
+						<label for="reg_id">부서번호</label> 
+						<select name="deptno" id="selectBox2" class="form-control">
+							<!-- <option value="dd">dd</option> -->
+						</select>
+						<!-- 
+						<input type="text"
 							class="form-control" name="deptno" id="deptno"
-							placeholder="ex) 20">
+							placeholder="ex) 20"> -->
 					</div>
 					<%--    <div class="mb-3">
                <label for="reg_id">사원 사진</label> <input type="file"
@@ -223,10 +228,6 @@ tr>th {
 <script>
 	(function($) {
 		"use strict";
-		
-		$('#datepicker').datepicker({
-			dateFormat: "yymmdd"
-		});
 
 		$(document).on('click', '#btnSave', function(e) {
 			e.preventDefault();
@@ -275,6 +276,11 @@ tr>th {
 				document.querySelector('#preview').src = reader.result;
 			};
 		};
+		
+		
+		$('#datepicker').datepicker({
+			dateFormat: "yymmdd"
+		});
 
 			$.ajax({
 				url : "jobList.do",
@@ -291,6 +297,23 @@ tr>th {
 				 }
 				
 			});
+			
+			$.ajax({
+				url : "deptNoList.do",
+				type : 'POST',
+				dataType : "json",
+				success : function(data) {
+					$.each(data, function(i){
+						console.log(i + " / " + data[i])
+						 $("#selectBox2").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+					});  
+				},
+				 error:function(request,status,error){
+					    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				 }
+				
+			});
+
 
 			$("input[id='sal'], #comm" ).bind('keyup', function(e){
 				var rgx1 = /\D/g;

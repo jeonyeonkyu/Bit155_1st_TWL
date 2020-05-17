@@ -12,16 +12,21 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.EmpAddService;
 import kr.or.bit.service.EmpChartService;
+import kr.or.bit.service.EmpDataTableService;
 import kr.or.bit.service.EmpDeleteService;
+import kr.or.bit.service.EmpDeptNoListService;
 import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpEditOkService;
 import kr.or.bit.service.EmpEditService;
 import kr.or.bit.service.EmpFileUploadService;
+import kr.or.bit.service.HieTableService;
+import kr.or.bit.service.HieWriteService;
 import kr.or.bit.service.EmpJobListService;
 import kr.or.bit.service.EmpListService;
 import kr.or.bit.service.EmpLoginService;
 import kr.or.bit.service.EmpLogoutService;
 import kr.or.bit.service.EmpSearchService;
+import kr.or.bit.service.HieDetailService;
 
 @WebServlet("*.do")
 public class FrontEmpController extends HttpServlet {
@@ -45,7 +50,7 @@ public class FrontEmpController extends HttpServlet {
 			forward.setPath("/index.jsp");
 			
 		} else if (url_Command.equals("/login.do")) { // �α��� : UI + ����
-			System.out.println("Login..");
+			System.out.println("여긴오냐?!!");
 			action = new EmpLoginService();
 			forward = action.execute(request, response);
 			
@@ -68,7 +73,6 @@ public class FrontEmpController extends HttpServlet {
 		}else if(url_Command.equals("/EmpWriteok.do")) { //��ü��ȸ
 			action = new EmpAddService();
 			forward = action.execute(request, response);
-			System.out.println("등록되라고!!");
 			
 		}else if(url_Command.equals("/delete.do")) { //��ü��ȸ
 			action = new EmpDeleteService();
@@ -79,12 +83,10 @@ public class FrontEmpController extends HttpServlet {
 			forward = action.execute(request, response);
 			
 		}else if(url_Command.equals("/update.do")) { //화면이동 + 로직
-			System.out.println("화면이동 + 로직");
 			action = new EmpEditService();
 			forward = action.execute(request, response);
 			
 		}else if(url_Command.equals("/updateok.do")) { //화면 + 로직 
-			System.out.println("수정!!");
 			action = new EmpEditOkService();
 			forward = action.execute(request, response);
 			
@@ -102,7 +104,29 @@ public class FrontEmpController extends HttpServlet {
 		}else if(url_Command.equals("/jobList.do")) { //화면 + 로직 
 			action = new EmpJobListService();
 			forward = action.execute(request, response);
+		}else if(url_Command.equals("/deptNoList.do")) { //화면 + 로직 
+			action = new EmpDeptNoListService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/dataTable.do")) { //화면 + 로직 )
+			action = new EmpDataTableService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/HieEmpTable.do")) { //화면 + 로직 )
+			action = new HieTableService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/HieEmpWrite.do")) { //화면 )
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/views/HieEmpWrite.jsp");
+		
+		}else if(url_Command.equals("/HieEmpWriteok.do")) { //화면 + 로직 )
+			action = new HieWriteService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/HieEmpDetail.do")) { //화면 + 로직 )
+			action = new HieDetailService();
+			forward = action.execute(request, response);
 		}
+	
+	
+		
 		
 		// 4. �� �����ϱ�
 		// 5. forward(request ��ü�� �ּҰ��� ����)

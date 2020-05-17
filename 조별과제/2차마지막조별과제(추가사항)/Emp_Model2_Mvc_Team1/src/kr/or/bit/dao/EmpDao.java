@@ -628,5 +628,72 @@ public class EmpDao {
 
 	}
 	
+	public List<Emp> deptNoList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = new ArrayList();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select distinct deptno from emp order by deptno asc";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
+	
+	
+	public List<Emp> dataTablelist() {
+		String sql = "select * from emp";
+		List<Emp> list = new ArrayList<>();
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setDeptno(rs.getLong("deptno"));
+				emp.setEmpno(rs.getLong("empno"));
+				emp.setEname(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setComm(rs.getLong("comm"));
+				emp.setHiredate(rs.getDate("hiredate"));
+				emp.setMgr(rs.getLong("mgr"));
+				emp.setSal(rs.getLong("sal"));
+				emp.setFilename(rs.getString("filename"));
+				list.add(emp);
+			}
+			conn.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			System.err.println("selectList SQLException error");
+		} finally {
+	
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+		}
+		return list;
+	}
+	
+	
 	
 }

@@ -34,6 +34,9 @@
 <link
    href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
    rel='stylesheet' type='text/css'>
+   
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <!-- 게시판 디자인 -->
 <link rel="stylesheet"
@@ -106,9 +109,16 @@
 				</div>
 				
 				<div class="mb-3">
-					<label for="reg_id">사원 직종</label> <input type="text"
+					<label for="reg_id">사원 직종</label> 
+					
+					<select value="${emp.job}" name="job" id="selectBox" class="form-control">
+							<option value="${emp.job}" selected>${emp.job}(기존)</option>
+							<!-- <option value="dd">dd</option> -->
+						</select>
+						
+					<%-- <input type="text"
 						class="form-control" name="job" id="job"
-						value="${emp.job}">
+						value="${emp.job}"> --%>
 				</div>
 				
 				<div class="mb-3">
@@ -119,7 +129,7 @@
 
 				<div class="mb-3">
 					<label for="reg_id">입사일</label> <input type="text"
-						class="form-control" name="hiredate" id="hiredate"
+						class="form-control" name="hiredate" id="datepicker"
 						   value="${hiredateformat2}">
 
 				</div>
@@ -135,17 +145,15 @@
 						value="${emp.comm}">
 				</div>
 				<div class="mb-3">
-					<label for="reg_id">부서번호</label> <input type="text"
+					<label for="reg_id">부서번호</label> 
+					
+					<select value="${emp.deptno}" name="deptno" id="selectBox2" class="form-control">
+							<option value="${emp.deptno}" selected>${emp.deptno}(기존)</option> 
+						</select>
+				<%-- 	<input type="text"
 						class="form-control" name="deptno" id="deptno"
-						value="${emp.deptno}">
+						value="${emp.deptno}"> --%>
 				</div>
-			<%-- 	<div class="mb-3">
-					<label for="reg_id">사원 사진</label> <input type="file"
-						class="form-control" name="filename" id="filename"
-						placeholder="사진 첨부">
-						<img src="upload/${param.filename}">
-				</div> --%>
-			
 			<div>
 				<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
 				<a href="EmpTable.do" type="button" class="btn btn-sm btn-primary">목록</a>
@@ -164,6 +172,7 @@
 <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
@@ -174,6 +183,9 @@
 <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 
 <script>
+(function($) {
+	"use strict";
+	
 	$(document).on('click', '#btnSave', function(e) {
 		e.preventDefault();
 		$("#form").submit();
@@ -218,8 +230,59 @@
               document.querySelector('#preview').src = reader.result ;
           }; 
       }; 
+      
+  	$('#datepicker').datepicker({
+		dateFormat: "yymmdd"
+	});
+  	
+  	$.ajax({
+		url : "jobList.do",
+		type : 'POST',
+		dataType : "json",
+		success : function(data) {
+			$.each(data, function(i){
+				console.log(i + " / " + data[i])
+				if($("#selectBox option:selected").val() != data[i]){
+					
+				
+				 $("#selectBox").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+				}
+				});  
+		},
+		 error:function(request,status,error){
+			    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		 }
+	});
 	
+	$.ajax({
+		url : "deptNoList.do",
+		type : 'POST',
+		dataType : "json",
+		success : function(data) {
+			$.each(data, function(i){
+				console.log(i + " / " + data[i])
+					if($("#selectBox2 option:selected").val() != data[i]){
+				 $("#selectBox2").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+					}
+				});  
+		},
+		 error:function(request,status,error){
+			    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		 }
+		
+	});
+
+
+	$("input[id='sal'], #comm" ).bind('keyup', function(e){
+		var rgx1 = /\D/g;
+		var rgx2 = /(\d+)(\d{3})/;
+		var num = this.value.replace(rgx1,"");
+		
+		while (rgx2.test(num)) num = num.replace(rgx2, '$1' + ',' + '$2');
+		this.value = num;
+	});
 	
+})(jQuery);
 </script>
 
 </html>
