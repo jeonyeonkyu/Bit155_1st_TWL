@@ -17,6 +17,7 @@ import kr.or.bit.service.EmpDetailService;
 import kr.or.bit.service.EmpEditOkService;
 import kr.or.bit.service.EmpEditService;
 import kr.or.bit.service.EmpFileUploadService;
+import kr.or.bit.service.EmpJobListService;
 import kr.or.bit.service.EmpListService;
 import kr.or.bit.service.EmpLoginService;
 import kr.or.bit.service.EmpLogoutService;
@@ -96,10 +97,11 @@ public class FrontEmpController extends HttpServlet {
 			forward = action.execute(request, response);
 			
 		}else if(url_Command.equals("/upload.do")) { //화면 + 로직 
-			System.out.println("파일 업로드..여긴오니???");
 			action = new EmpFileUploadService();
 			forward = action.execute(request, response);
-			
+		}else if(url_Command.equals("/jobList.do")) { //화면 + 로직 
+			action = new EmpJobListService();
+			forward = action.execute(request, response);
 		}
 		
 		// 4. �� �����ϱ�

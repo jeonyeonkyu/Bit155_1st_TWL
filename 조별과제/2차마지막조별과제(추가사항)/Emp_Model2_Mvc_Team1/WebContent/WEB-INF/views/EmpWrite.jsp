@@ -54,6 +54,8 @@
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <!-- 게시판 디자인 -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -66,6 +68,7 @@
 tr>th {
 	text-align: center;
 }
+
 .divtag {
 	padding-top: 70px;
 	padding-bottom: 30px;
@@ -118,15 +121,15 @@ tr>th {
 					action="EmpWriteok.do" enctype="multipart/form-data">
 
 					<div class="mb-3">
-						<label for="title">사진 등록</label> <br> 
-			 		<img id="preview" src="upload/emp.jpg" width="300" alt="로컬에 있는 이미지가 보여지는 영역">	
-					<input type="file" id="fileName" name="fileName" class="fileName" accept="image/*">
+						<label for="title">사진 등록</label> <br> <img id="preview"
+							src="upload/emp.jpg" width="300" alt="로컬에 있는 이미지가 보여지는 영역">
+						<input type="file" id="fileName" name="fileName" class="fileName"
+							accept="image/*">
 
 					</div>
 
 					<div class="mb-3">
-						<label for="title">사원 번호</label> 
-						<input type="text"
+						<label for="title">사원 번호</label> <input type="text"
 							class="form-control" name="empno" id="empno"
 							placeholder="ex) 2161">
 					</div>
@@ -138,9 +141,14 @@ tr>th {
 					</div>
 
 					<div class="mb-3">
-						<label for="reg_id">사원 직종</label> <input type="text"
-							class="form-control" name="job" id="job"
-							placeholder="ex) SALESMAN">
+						<label for="reg_id">사원 직종</label> 
+						<select name="job" id="selectBox" class="form-control">
+							<!-- <option value="dd">dd</option> -->
+						</select>
+
+						<!-- <input type="text" class="form-control" name="job" id="job"
+							placeholder="ex) SALESMAN"> -->
+
 					</div>
 
 					<div class="mb-3">
@@ -149,9 +157,11 @@ tr>th {
 					</div>
 
 					<div class="mb-3">
-						<label for="reg_id">입사일</label> <input type="text"
-							class="form-control" name="hiredate" id="hiredate"
-							placeholder="ex) 19940405">
+						<label for="reg_id">입사일</label> 
+					<input type="text" class="form-control" name="hiredate" id="datepicker"
+						placeholder="ex) 19940405"> 
+						
+						
 					</div>
 
 					<div class="mb-3">
@@ -176,8 +186,8 @@ tr>th {
 
 					<div>
 						<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button> -->
-					<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>  -->
-					<input type="submit" class="btn btn-sm btn-primary" value="저장">
+						<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>  -->
+						<input type="submit" class="btn btn-sm btn-primary" value="저장">
 						<!-- <a href="delete.do?empno=7369" type="button" class="btn btn-sm btn-primary">삭제</a> -->
 						<a href="EmpTable.do" type="button" class="btn btn-sm btn-primary">목록</a>
 						<!--  <bautton type="button" class="btn btn-sm btn-primary" id="btnList" onclick="location.href='emplist.jsp'">목록</button> -->
@@ -202,7 +212,7 @@ tr>th {
 <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
 <script src="assets/js/dashboard.js"></script>
@@ -211,59 +221,89 @@ tr>th {
 <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
-   (function($) {
-      "use strict";
-      
-      $(document).on('click', '#btnSave', function(e) {
-          e.preventDefault();
-          $("#form").submit();
-       });
-      jQuery('#vmap').vectorMap({
-         map : 'world_en',
-         backgroundColor : null,
-         color : '#ffffff',
-         hoverOpacity : 0.7,
-         selectedColor : '#1de9b6',
-         enableZoom : true,
-         showTooltip : true,
-         values : sample_data,
-         scaleColors : [ '#1de9b6', '#03a9f5' ],
-         normalizeFunction : 'polynomial'
-      });
-      
-      $(document).on('click', '#upload', function(e) {
-   	   console.log($("#fileName").val());
-                  $.ajax({
-                     url : "upload.do",
-                     type : 'POST',
-                     dataType : "json",
-                     data : {
-                        filename : $("#fileName").val()
-                     },
-                     success : function(data) {
-                   	  
-                        }
-                     });
-            })
-            
-            
-            
-            var file = document.querySelector('#fileName');
+	(function($) {
+		"use strict";
+		
+		$('#datepicker').datepicker({
+			dateFormat: "yymmdd"
+		});
 
-      file.onchange = function () { 
-          var fileList = file.files ;
-          
-          // 읽기
-          var reader = new FileReader();
-          reader.readAsDataURL(fileList [0]);
+		$(document).on('click', '#btnSave', function(e) {
+			e.preventDefault();
+			$("#form").submit();
+		});
 
-          //로드 한 후
-          reader.onload = function  () {
-              document.querySelector('#preview').src = reader.result ;
-          }; 
-      }; 
-      
-   })(jQuery);
+		jQuery('#vmap').vectorMap({
+			map : 'world_en',
+			backgroundColor : null,
+			color : '#ffffff',
+			hoverOpacity : 0.7,
+			selectedColor : '#1de9b6',
+			enableZoom : true,
+			showTooltip : true,
+			values : sample_data,
+			scaleColors : [ '#1de9b6', '#03a9f5' ],
+			normalizeFunction : 'polynomial'
+		});
+
+		$(document).on('click', '#upload', function(e) {
+			console.log($("#fileName").val());
+			$.ajax({
+				url : "upload.do",
+				type : 'POST',
+				dataType : "json",
+				data : {
+					filename : $("#fileName").val()
+				},
+				success : function(data) {
+
+				}
+			});
+		})
+
+		var file = document.querySelector('#fileName');
+
+		file.onchange = function() {
+			var fileList = file.files;
+
+			// 읽기
+			var reader = new FileReader();
+			reader.readAsDataURL(fileList[0]);
+
+			//로드 한 후
+			reader.onload = function() {
+				document.querySelector('#preview').src = reader.result;
+			};
+		};
+
+			$.ajax({
+				url : "jobList.do",
+				type : 'POST',
+				dataType : "json",
+				success : function(data) {
+					$.each(data, function(i){
+						console.log(i + " / " + data[i])
+						 $("#selectBox").append("<option value='"+data[i]+"'>"+data[i]+"</option>")
+					});  
+				},
+				 error:function(request,status,error){
+					    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				 }
+				
+			});
+
+			$("input[id='sal'], #comm" ).bind('keyup', function(e){
+				var rgx1 = /\D/g;
+				var rgx2 = /(\d+)(\d{3})/;
+				var num = this.value.replace(rgx1,"");
+				
+				while (rgx2.test(num)) num = num.replace(rgx2, '$1' + ',' + '$2');
+				this.value = num;
+			});
+			
+			
+			
+	})(jQuery);
 </script>
 
 

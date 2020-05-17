@@ -3,6 +3,7 @@ package kr.or.bit.service;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +49,11 @@ public class EmpAddService implements Action {
 		
 		String file = (String)filenames.nextElement();
 		String filename = multi.getFilesystemName(file);
-		String orifilename = multi.getOriginalFileName(file);
+		
+		if(filename == null) {
+			filename = "emp.jpg";
+		}
+		//String orifilename = multi.getOriginalFileName(file);
 		
 		EmpDao dao = new EmpDao(); // POINT
 		int result = 0;
@@ -72,6 +77,10 @@ public class EmpAddService implements Action {
 
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
+		
+		List jobList = dao.jobList();
+		System.out.println(jobList);
+		request.setAttribute("jobList", jobList);
 		
 		forward.setPath("/WEB-INF/common/redirect.jsp");
 		
