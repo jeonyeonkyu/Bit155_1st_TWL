@@ -1,0 +1,43 @@
+
+create table article(
+ article_no int(11) primary key,
+ title  varchar(255) , 
+ tot_reply_cnt int(11), 
+ tot_like_cnt int(11),
+ read_cnt int(11), 
+ regdate datetime,
+ moddate datetime,
+ writer_id  int(11), 
+ nickname varchar(50), 
+ profile_image varchar(255) 
+);
+
+
+create table article_content(
+ article_no   int(11) primary key,
+ content      text
+);
+
+
+create table article_reply(
+  reply_no    int(11) primary key,
+  member_id   int(11),
+  nickname    varchar(50),
+  content     text,
+  regdate     datetime,
+  article_no  int(11),
+  foreign key(article_no) references article(article_no)
+);
+
+
+create table mynoti(
+ noti_no           int(11) primary key,
+ article_no        int(11),
+ another_member_id int(11),
+ noti_type         enum('like','reply'),
+ read_check        tinyint(1),
+ regdate           datetime, 
+ my_id             int(11) 
+);
+ 
+ 

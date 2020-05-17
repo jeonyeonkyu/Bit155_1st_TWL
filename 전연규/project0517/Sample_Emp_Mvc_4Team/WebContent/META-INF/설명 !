@@ -1,0 +1,12 @@
+--Controller에서 uploads 폴더 패스 설정
+--EditEmpOk에서 폴더 패스설정
+
+
+context.xml : db 내용 변경
+
+
+
+ALTER TABLE emp ADD(file_path varchar2(50));
+
+
+image 업로드 하기
