@@ -1,0 +1,39 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+* {
+	font-family : 'Nanum Gothic';
+}
+h1 {
+	font-family : 'Hanna';
+}
+
+table th {
+	background-color:#eeeeee; 
+	text-align:center;
+}
+
+
+
+input[type="radio"] {
+    display:none;
+}
+
+.gender-check input[type="radio"]:checked + label.btn-primary {
+	border-color:#000 !important;
+	background-color:#000 !important;
+}
+
+.naver-login{
+	width: 102px;
+    height: 39px;
+    font-size: 0;
+    border: none;
+    background: url(/BBS/img/naver_login.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float: right;
+    margin-right: 5px;
+}
+.form-pw{
+	margin-bottom:10px;
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="EUC-KR">
+
+<title>Insert title here</title>
+
+<style>
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+a{
+
+ text-decoration: none;
+
+}
+
+table {
+
+ font-family: 'Nanum Pen Script', serif;
+
+ font-size:x-large;
+
+ }
+
+table>tbody>tr:nth-child(2n){
+
+ background:yellow;
+
+ 
+
+}
+
+ 
+
+table>tbody>tr:nth-child(2n+1){
+
+ background:orange;
+
+ 
+
+}
+
+td:hover{
+
+ background:black;
+
+ color:white;
+
+}
+
+.s{
+
+ background:black;
+
+ color: white;
+
+}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-1.7.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+ 
+
+ var num=1;
+
+ 
+
+ function display(data){
+
+  var output='';
+
+  var items = $(data).find('item');
+
+  items.each(function(index,item){
+
+   with(item){
+
+   var title = $(this).find('title').text();
+
+   var link = $(this).find('link').text();
+
+   var img = $(this).find('image').text();
+
+   var lprice = $(this).find('lprice').text();
+
+   var hprice = $(this).find('hprice').text();
+
+   var mallName = $(this).find('mallName').text();
+
+   var productId = $(this).find('productId').text();
+
+   var productType = $(this).find('productType').text();
+
+ 
+
+   output += '<table border = "1">';
+
+   output += '<tr>';
+
+   output += '<td rowspan=\"4\">';
+
+   output += '<img width=\"300\"height=\"300\"src=\"'+img+'\">';
+
+   output += '</td>';
+
+   output += '<td>';
+
+   output += 'TYPE: '+productType+' / '+'ID: '+productId;
+
+   output += '</td>';
+
+   output += '</tr>';
+
+   output += '<tr>';
+
+   output += '<td>';
+
+   output += 'TITLE: '+title;
+
+   output += '</td>';
+
+   output += '</tr>';
+
+   output += '<tr>';
+
+   output += '<td>';
+
+   output += 'PRICE: '+lprice+' ~ '+hprice+'원';
+
+   output += '</td>';
+
+   output += '</tr>';
+
+   output += '<tr>';
+
+   output += '<td align=\"center\">';
+
+   output += 'MallName: '+mallName+' / 링크: '+'<a href=\"'+link+'\">'+' 상세페이지로 이동'+'</a>';
+
+   output += '</td>';
+
+   output += '</tr>';
+
+   output += '</table>';
+
+   
+
+   }
+
+  });
+
+  
+
+  $('body').append(output);
+
+  
+
+ 
+
+ };
+
+ 
+
+ function requestAjax(searchWord){
+
+  var uri = "http://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?"; 
+
+  
+
+  $.ajax({
+
+   url:uri,
+
+   type:'GET',
+
+   success:function(data){
+
+    display(data);
+
+   }
+
+  });
+
+ };
+
+ 
+
+ $('#search').click(function(){
+
+  $('table').remove();
+
+  num=1;
+
+  var searchWord = $('#category').val();
+
+  requestAjax(searchWord);
+
+  
+
+ });
+
+  
+
+ $(window).scroll(function(){
+
+  var docH = $(document).height(); //document의 높이
+
+  var scrollH = $(window).height()+$(window).scrollTop();
+
+  
+
+  if(scrollH + 50 >= docH){
+
+   num+=5;
+
+   var searchWord = $('#category').val();
+
+   requestAjax(searchWord);
+
+   
+
+  }
+
+ });
+
+ 
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Naver Shopping</h1>
+
+<span>Category:</span><input type="text" id="category"><input type="button" value="검색" id="search">
+
+</body>
+
+</html>

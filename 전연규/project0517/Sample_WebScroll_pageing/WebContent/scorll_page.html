@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container { width: 400px; }
+		#panel { height:  300px; border: 1px solid black; overflow: auto; }
+		#processing { display: none; text-align: center; }
+	</style>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+		$(document).ready(function() {
+			var no = 1;
+			var maxNo = 30;
+			
+			// 다음 데이터 불러오기
+			function getNextData() {
+				var str = "";
+				for(var i=0; i<10; i++) {
+					str += "<h2>" + no + "번째 글 입니다.</h2>";
+					no++;
+				}
+				$("#panel").append(str);
+			}
+			getNextData();
+			
+			// 스크롤 이벤트
+			$("#panel").on("scroll", function(e) {
+				var p = $(this);
+				var sh = p[0].scrollHeight - p.height();
+				var sp = p.scrollTop();
+				
+				// 스크롤을 끝까지 내렸다면 다음 글 목록 읽어옴
+				if (sp >= sh) {
+					// 존재하는 전체데이터를 다 읽어왔음을 의미하는 조건문
+					if(no < maxNo) {
+						$("#processing").show().delay(300).fadeOut(50,function() {
+							getNextData();	
+						});
+					} else {
+						alert('데이터를 다 읽어 왔습니다!');
+					}
+				}
+			});
+			
+			// 스크롤바 맨 위로
+			$("#goFirst").on("click", function() {
+				$("#panel").scrollTop(0);
+			});
+			
+			// 스크롤바 맨 아래로
+			$("#goLast").on("click", function() {
+				var sh = $("#panel")[0].scrollHeight;
+				$("#panel").scrollTop(sh);
+			});
+		});
+	</script>	
+</head>
+<body>
+	<button id="goFirst">처음으로</button>
+	<button id="goLast">마지막으로</button>
+	<div id="container">
+		<div id="panel"></div>
+		<div id="processing">
+			<img id="imgPro" src="images/processing.gif">
+		</div>
+	</div>	
+</body>
+</html>
+<!-- https://blog.naver.com/blacksw1102/221337584908 -->
