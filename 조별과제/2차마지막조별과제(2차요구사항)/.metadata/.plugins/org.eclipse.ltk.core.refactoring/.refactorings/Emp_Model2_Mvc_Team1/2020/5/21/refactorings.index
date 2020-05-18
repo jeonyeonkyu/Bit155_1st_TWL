@@ -1,0 +1,7 @@
+1589702360688	Move 'datatables.min.css' to 'css'
+1589702843873	Delete elements
+1589711424594	Rename type 'EmpHieTableService'
+1589711510207	Move compilation units
+1589720276045	Rename type 'HieEmpDetailService'
+1589733569021	Rename compilation unit 'HieEditService.java'
+1589797154972	Rename type 'dataTableSearchService'
