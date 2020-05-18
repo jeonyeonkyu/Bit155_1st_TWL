@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#btn').click(function() {
+                var url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+                var data = {
+                    key: 'a81cd9ea397a4afb4eb53ebfca377ee2',
+                    targetDt: $('#search').val()
+                };
+                $.getJSON(url, data, function(data, textStatus, xhr) {
+                    // console.log(data.boxOfficeResult.dailyBoxOfficeList);
+                    var table = "<table border='1px';>";
+                        table += "<tr><td>순위</td><td>영화제목</td><td>개봉일</td><td>누적관객수</td></tr>";
+                    $.each(data.boxOfficeResult.dailyBoxOfficeList, function(index, obj) {
+                        // console.log(obj.movieNm);
+                        table += "<tr>";
+                            table += "<td>" + obj.rank + "</td>";
+                            table += "<td>" + obj.movieNm + "</td>";
+                            table += "<td>" + obj.openDt + "</td>";
+                            table += "<td>" + obj.audiAcc + "</td>";
+                            table += "</tr>";
+                    });
+                    table += "</table>";
+                    $('#display').append(table);
+                });
+ 
+            });
+        });
+    </script>
+</head>
+<body>
+    검색하고 싶은 날짜를 입력하세요 (yyyymmdd형식)
+    <input type="text" id="search">
+    <input type="button" value="검색하기" id="btn">
+    <hr>
+    <div id="display"></div>
+</body>
+</html>

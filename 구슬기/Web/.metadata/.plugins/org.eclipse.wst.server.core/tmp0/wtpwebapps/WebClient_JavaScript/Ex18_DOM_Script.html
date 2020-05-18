@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    When a web page is loaded, the browser creates a Document Object Model of the page.
+
+    JavaScript can change all the HTML elements in the page
+    JavaScript can change all the HTML attributes in the page
+    JavaScript can change all the CSS styles in the page
+    JavaScript can remove existing HTML elements and attributes
+    JavaScript can add new HTML elements and attributes
+    JavaScript can react to all existing HTML events in the page
+    JavaScript can create new HTML events in the page
+
+    id="demo" 하나의 page 안에 같은 id 이름을 만들지 않는다
+    <p id="kglim"></p>
+    <p id="kglim"></p> (x)  같은페이지에 같은 이름의 id존재하면 안된다! 존재해봤자 맨위에서 걸린애로 하고 나머지애들은 아무 일도 없기때문
+
+    */
+    </script>
+
+</head>
+<body>
+    <div id="demo">첫번째</div>
+    <div id="demo">
+        두번째 요소 (계층트리(DOM) 형태에서 id 를 찾으면 <br>
+        stop한다. 에러나는게 아니라, 찾으면 만났네!하고 끝
+    </div>
+    
+</body>
+    <script type="text/javascript">
+    var ele_dev=document.getElementById("demo");
+    console.log(ele_dev);
+    ele_dev.innerHTML="<b>Hello World</b>";
+    </script>
+</html>

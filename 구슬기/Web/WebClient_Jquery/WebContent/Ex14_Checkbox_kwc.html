@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   <!--  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+사용시 
+size() > length 변경 
+-->
+
+   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+   <style>
+      .float_center {
+         float: center;
+      }
+
+      .layout {
+         margin: 10px;
+         width: 700px;
+      }
+
+      .pocket {
+         border: solid 1px #000;
+         height: 300px;
+         padding: 0px;
+         vertical-align: top;
+      }
+
+      .dnd {
+         width: 100%;
+      }
+
+      .dnd tr {
+         height: 30px;
+      }
+
+      .dnd td {
+         border-bottom: solid 1px #aaa;
+      }
+
+      .btn {
+         height: 20px;
+         border: solid 2px black;
+         padding: 5px;
+         font-weight: bold;
+         cursor: pointer;
+      }
+
+      .center {
+         text-align: center;
+      }
+   </style>
+   <!--  
+https://api.jquery.com/category/selectors/
+
+조별 : selector 정리 올리기 (조별 게시판에)
+:has >> 사용방법
+//select 연습!!
+-->
+   <script type="text/javascript">
+      $(document).ready(function () {
+         $("#add").click(function () {
+            move($("#leftTable"), $("#rightTable"));
+         });
+         $("#del").click(function () {
+            move($("#rightTable"), $("#leftTable"));
+         });
+      });
+      function move(from, to) {
+         var target = from.find("tr:has(:checked)");
+         //target에 객체형태로 저장
+         if (target.size() == 0) {
+            alert("선택된 요소가 없습니다.");
+         } else {
+            for (var i = target.size() - 1; i >= 0; i--) {
+               var item = target.eq(i);
+               console.log("item : " + item.text());
+               copy(from, to, item); //copy함수 안에서도 for문이 있다는것에 유의!!
+            }
+            target = from.find("tr:has(:checked)"); //옮긴뒤 기존에 있던것 지우기
+            target.each(function (i) { //없어도 됨, 이전에 다 처리하지만 혹시나 체크되어있는거 처리하기 위한 역할인듯?
+               //$(this).remove();
+              
+            });
+         }
+      }
+      function copy(from, to, item) {
+         var appended = false;
+         var targettext = item.find("td").eq(1).text(); //이전에 체크한 텍스트 저장
+         var trs = to.find("tr");  //객체 저장
+         // console.log(trs.size());
+         for (var i = trs.size() - 1; i >= 0; i--) {
+             console.log("뷁 : " + trs.eq(i).find("td").eq(1).text());
+             console.log("targettext : " + targettext);
+            if (trs.eq(i).find("td").eq(1).text() < targettext) { //오른쪽 테이블에서 삭제할때!!, if문 타는 조건 예시 : test1 < test2 
+               console.log("뷁22 : " + trs.eq(i).find("td").eq(1).text());
+             console.log("targettext22 : " + targettext);
+               console.log("여긴오니?");
+               item.find(":checked").removeAttr("checked"); //체크해제
+               trs.eq(i).after(item); //선택한 trs(leftTable)요소에 item을 추가, 2뒤에3 , 4뒤에 5등 숫자를 일치시키기 위한 것..
+               appended = true;
+               break; //하나 완료됬으니 반복문 탈출
+            }
+         } //for_end
+         if (!appended) { //조건에 맞으면
+            item.find(":checked").removeAttr("checked"); //추가되면서 체크박스 해제
+            to.prepend(item); //추가시 오른쪽 테이블에 추가, 제거시 왼쪽 테이블에 추가(tr추가)
+            
+         }
+         return true;
+      }
+
+   </script>
+</head>
+
+<body>
+   <table class="layout float_center">
+      <colgroup>
+         <col width="45%">
+         <col width="10%">
+         <col width="45%">
+      </colgroup>
+      <tr>
+         <td class="pocket center">
+            <table id="leftTable" class="dnd">
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test1</td>
+               </tr>
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test2</td>
+               </tr>
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test3</td>
+               </tr>
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test4</td>
+               </tr>
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test5</td>
+               </tr>
+               <tr>
+                  <td><input type="checkbox"></td>
+                  <td>test6</td>
+               </tr>
+            </table>
+         </td>
+         <td class="center"><span id="add" class="btn">추가</span> <br>
+            <br> <span id="del" class="btn">삭제</span></td>
+         <td class="pocket center">
+            <table id="rightTable" class="dnd">
+            </table>
+         </td>
+      </tr>
+   </table>
+</body>
+
+</html>

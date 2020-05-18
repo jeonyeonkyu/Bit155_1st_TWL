@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> class , id , 선택자 적용</title>
+	<style type="text/css">
+	/* 중요하다고 계속 강조하심. 
+	
+		CSS 적용
+		1. 일반 태그에 적용하는 방법 (p, h3 ,div, hr)\
+		2. 사용자가 CSS 이름 정의 해서 사용 (.이름, #이름)
+			. >> 태그 class 속성 반영
+			# >> 태그 id 속성 반영
+			                                                  암기 :     . > class , # > id
+			                                                  *** id, class 속성은 css, javascript , jquery 에서도 활용함. 
+		3. 다중 선택자 : h1, h2, h3 {color:pink}                                              
+}
+	*/
+	/*
+	h1 {color : pink}
+	h2 {color : pink}
+	h3 {color : pink}
+	*/
+	h1, h2, h3 {color : pink}
+	p{background-color: gold}    
+	#kkksksk {color :red}  /* internal Css 는 head안에 들어가있다.    .으로 한건  class여서 여러번 쓸 수 있다. */
+	.hong {color:blue} 
+	
+	
+	</style>
+</head>
+<body>
+	<p>일반 CSS 적용</p>
+	<p id= "kkksksk">id 속성을 사용#</p>
+	<p class ="hong">class 속성을 사용.</p>
+	<p class ="hong">class 속성을 사용.</p>
+	<h1>핑크 다중 선택자</h1>
+	<h2>핑크 다중 선택자</h2>
+	<h3>핑크 다중 선택자</h3>
+	<img src = "https://movie-phinf.pstatic.net/20200408_236/1586357780099S2kdl_PNG/%BF%B5%C8%AD_%BD%BA%C6%F7%C6%AE%B6%F3%C0%CC%C6%AE_210x190.png">
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

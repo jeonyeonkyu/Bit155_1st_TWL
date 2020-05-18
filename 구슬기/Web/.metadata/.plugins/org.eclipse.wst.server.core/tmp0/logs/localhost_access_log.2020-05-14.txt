@@ -1,0 +1,10 @@
+127.0.0.1 - - [14/May/2020:16:55:19 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:55:19 +0900] "GET /WebClient_Jquery_Ajax/Ex01_Ajax_load.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:55:21 +0900] "GET /WebClient_Jquery_Ajax/Ex01_Ajax_Load.jsp?msg= HTTP/1.1" 200 44
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:55:24 +0900] "POST /WebClient_Jquery_Ajax/Ex01_Ajax_Load.jsp HTTP/1.1" 200 44
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:55:37 +0900] "GET /Emp_Model2_Mvc_Team1/index.html HTTP/1.1" 404 785
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:55:39 +0900] "GET /Emp_Model2_Mvc_Team1/detailView.do?empno=%207369 HTTP/1.1" 404 788
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:56:09 +0900] "GET /WebClient_Jquery_Ajax/Ex02_Ajax_ajax.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/May/2020:16:56:12 +0900] "GET /WebClient_Jquery_Ajax/Ex02_menu.html HTTP/1.1" 304 -
+127.0.0.1 - - [14/May/2020:19:45:02 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [14/May/2020:19:45:02 +0900] "GET /WebClient_Jquery_Ajax/Ex10_jsonlib_emplist.html HTTP/1.1" 304 -

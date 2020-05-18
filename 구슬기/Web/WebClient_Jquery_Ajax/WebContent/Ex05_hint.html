@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#b").click(function(){
+     var tag = $("<div><div>").html("<b>Hello world</b>");
+     //jquery 에서는 createElement없다 (DOM 만 갖거 잇음) .. 
+     //8번 코드로 써줘도 19 번 div 안에다가 div 태그를 만든다. ....
+     //var tag = $("<table></table>").html("<b>Hello world</b>");  얘를 한다면 19번 div 안에다가 table 태그를 만든다 
+     alert(tag);
+     $('#a').append(tag);
+  });
+});
+</script>
+</head>
+<body>
+	<div id="a"></div>
+	<p id="b">If you click on me</p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	
+		$(function(){
+			$('p').each(function(){
+				console.log('1번방법');
+				console.log('this : '+$(this).text()); //p태그의 글가져오기 
+			})
+			
+			$('p').each(function(index){
+				console.log('2번방법');
+				console.log("index:"+index);
+				console.log('this: ' + $(this).text());
+				//글자가 빨간색으로 바뀜
+				$(this).attr({
+					"id":"param-"+index,
+					"style":"color:red"
+				})
+			})
+			//활용도 70%
+			$('p').each(function(index,element){
+				console.log('3번방법');
+				console.log("index: "+index);
+				console.log("element :" + element + "/" + $(element).text());
+				
+			})
+			$('#btn').click(function(){
+				alert($('#param-1').text());
+			})
+			
+			//응용학습
+			var array=[{
+				"name":"naver",
+				"link":"www.naver.com"
+			},{
+				"name":"daum",
+				"link":"www.daum.com"
+			},{
+				"name":"bit",
+				"link":"www.bit.or.kr"
+			}];
+			
+			
+			//문제 : name 값, link 값을 출력
+			$(array).each(function(index,element){
+				console.log(element.name + element.link);
+				console.log(element["name"]+element["link"]);
+				//두개 다 가능
+			})
+			var board ={
+					values :[{
+						no:1,
+						title : "hello wolrd"
+					
+					},{
+						no:2,
+						title : "korea"
+					},{
+						no:3,
+						title : "bit"
+					}],
+					search:"검색"
+			};
+			
+			//2. $.each() 사용해서 no값, title 값을 출력하세ㅛ
+			$.each(board,(function(index,value){
+				console.log(index+value);
+			}))
+			$.each(board, function(key, value) {
+				console.log(key + "/" + value);
+			});
+
+			
+			//3
+			$.each(board, function(key,value){
+				if(typeof(value)== "object"){
+					$.each(value,function(index,element){
+						console.log(index + "/" + element.no + ","
+								+ element["title"]);
+					});
+				}else{
+					console.log(key+"/"+value);
+				}
+			})
+		});
+</script>
+
+
+</head>
+<body>
+
+	<p>java</p>
+	<p>jsp</p>
+	<p>oracle</p>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

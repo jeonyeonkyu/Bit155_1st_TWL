@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="UTF-8">
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <input type="text" id="user_id" v-model="userId">
+        <input type="password" id="user_password" v-model="userPassword">
+        <button type="button">로그인</button>
+        <br />
+        아이디 : {{ userId }}
+        <br/>
+        비밀번호 : {{ userPassword }}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:'#app' ,
+        components:{
+            'my-component' : {template : '<div>A custom component</div>'}
+        } ,
+        data() {
+            return {
+                userId:'',
+                userPassword:''
+            }
+        }
+        //Vue 객체 생성시 
+        //template , el , methods 속성 등이 있다
+        //인스턴스 초기화 작업 수행시
+        //데이터 관찰 -> 템플릿 컴파일 -> DOM 에 객체 연결 -> 데이터 변경시 DOM 업데이트
+        //이벤트 : created , mounted , updated , destoryed 등 라이프 사이클에 메서드 사용
+    });
+</script>
+</html>

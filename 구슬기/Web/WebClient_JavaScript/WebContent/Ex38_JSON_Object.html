@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON   진짜완전엄청중요!!!</title>
+    <script type="text/javascript">
+    /*
+   //////////////////////////////////////////////////////////////////////////////////////////
+                                     자바 설계도(클래스) => 재사용성
+  class Product{
+   private String carname="pony";
+   
+   public Product(){}
+   public Product(String carname){
+    this.carname= carname;
+   }
+   public void print(){
+    System.out.println(this.carname);
+   }
+  }
+ 
+  메모리 load ... (new)
+  Product p = new Product();
+  Product p2 = new Product("pony2");
+  p.print();
+  p2.print();
+  ///////////////////////////////////////////////////////////////////////////////////////////
+                                     
+                                     
+                                     javaScript >> 객체지향언어(OOP)
+  
+  클래스 정의 3가지 방법
+
+  1. 프로토타입 방식 : 일반적인 클래스 제작 방법
+                         인스턴스마다 공통된 메서드를 공유해서 사용하는 장점     
+                         Jquery 도 prototype 방식으로 설계
+
+
+  2. 함수 방식 :  간단한 클래스 제작 시 사용 
+                 인스턴스마다 메서드가 독립적으로 만들어지는 단점
+
+    
+  3. 리터럴 방식  :  클래스 만드는 용도는 아니며 
+   (가장중요)        주로 여러개의 매개변수를 그룹으로 묶어 함수의 매개변수로 보낼때
+                    정의와 함께 인스턴스가 만들어지는 장점이 있음 단 인스턴스는 오직 하나
+     (초보자에게도 중요 ^^)
+     
+  
+  4. ECMA6 버전부터 : class 키워드 제공
+      class Person {
+         constructor(name) {
+           this._name = name;
+         }
+ 
+         sayHi() {
+           console.log(`Hi! ${this._name}`);
+         }
+       }
+     ***************************  [ javascript 객체 생성 ]   *********************************
+     지금은 3 . 리터럴 방식 먼저 . JSON
+
+ 1.오브젝트 리터럴 방식 (객체를 만드는 방법): 클래스 생성과 동시에 객체가 만들어 져요
+ 리터럴 방식 == JSON 표기
+ 1.1 리터럴 방식 >> 제일 간단한 방법 >> var obj = {}; // var objarr = [] 배열   
+ 1.2 JSON 표기 : {} >> JSON: JavaScript Object Notation
+                             자바스크립트에서 객체를 표기하는 문법!
+
+ ex) var myObj = { "name":"John", "age":31, "city":"New York" }; "변수명":"value", 반복..
+
+ 굳이 자바로 예를들면 class Person{private String name="John";}   >> Person p = new Person(); 
+
+ TIP) JSON >> XML (텍스트 기반의 형식화된 문서 제공)
+ XML :이기종간의 데이터 호환  (한 때는 서점 : xml webservice 90%가 이책이었음 )
+ XML 이란?   이기종간의 데이터 호환을 위한, 텍스트 기반의 형식화(약속)된 문서  ㅋㅋㅋㅋ
+             이기종(맥, 윈도우 등...)
+             지금은 너무 무겁고 문법이 많아서 많이 죽고,
+        ㅎㅎㅎㅎ 얘를 대체하고자 나온게 JSON  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!완전 중요!  JSON ㅎㅎㅎㅎ
+                                         text 기반, 형식, 가벼움   현재는 다 JSON 으로 주고받는다. 
+                                   JSON : 자바 스크립트로 객체를 표기하는 방법
+                                   JSON : XML 이 가진 장점 + 가벼움 + 재사용성을 버리고 심플함을 취함 
+
+    *******************************************************************************************
+ 
+ 다른 이야기 
+ 객체지향언어 장점 : 설계도 (재사용성)  이지만!!!!!!!!!! JSON 은 다르다 !!!!!!!!!
+ 
+ *오브젝트 리터럴 방식 : 재사용을 지원하는 않는다 
+ *설계도를 생성과 동시에 객체 생성(장점 : 편하고 , 빠르다 )
+ *설계도를 미리 만들어 놓고 재사용하는 방식은 아니다
+ *설계도당 하나의 객체만 생성 사용 (only object)     JSON is only object.
+    
+ var product = {};  
+ var product2 = {제품명:'사과',년도:'2018',원산지:'대구'};  변수명:밸류값
+ 
+ var 인스턴스 ={
+       프로퍼티:초기값,
+       프로퍼티:초기값,
+     .....
+     메서드:function(){},
+     메서드:function(){}....
+              }
+        리터럴 방식 > 선언과 동시에 인스턴스 자동 생성
+    var 인스턴스 = {}
+        특징 : 생성자 존재하지 않는다.
+                   프로퍼티와 메서드만 정의 가능
+        단점 : 객체 하나 생성(재사용성 없다)  
+        접근방법 : 인스턴스이름.자원 >> product2.제품명
+    */
+
+    var product={제품명:'사과',년도:'2020',원산지:'대구'};
+    console.log(product);  //콘솔창에 Object 하고 내용물이 찍힌다 
+    document.write(product.제품명+"<br>"); //사과 
+    document.write(product.년도+"<br>"); // 2020
+    document.write(product.원산지+"<br>"); //대구
+    document.write(product.toString()+"<br>");  //[object Object]
+
+    var person ={    //  " "    , ' '     문자열은 둘증뭘써도 상관없다.
+            name:"홍길동",
+            addr:'서울시 강남구 역삼동',
+            eat:function(food){
+                document.write(this.name+"/"+this.addr + "/"+ food+ "냠냠"); //여기서의 this는 person을 가리킨다.
+            }
+            
+
+
+    };  //JSON 객체를 하나 만들었다!!
+    document.write("<br>");
+    person.eat("apple");  //홍길동/서울시 강남구 역삼동/apple냠냠
+
+    //1. 속성 제거
+    //var product={제품명:'사과',년도:'2020',원산지:'대구'};
+    delete(product.년도);  
+    console.log(product);  //{제품명:'사과',원산지:'대구'}  년도 삭제됨
+
+    //javascript [Array 개선된 for문]
+    //for(let index in Array){ arr[index]}
+
+    //JSON 객체도 개선된 for 문 사용해서 제어할수 있음
+    //JSON {키:값,키:값,키:값,....} 
+    for(let key in product){
+        console.log("key : "+key ); //제품명, 원산지
+        console.log(product[key]); //key 를 던지면 value 얻는다
+
+    }
+    for(let i in product){
+        console.log("키 값 : "+ i + ", 속성 값: "+ product[i]);
+    }
+    
+    
+    //   위에서 만든 person 은  eat 함수를 갖고있음
+    for(let key in person){
+        console.log("key : "+key+" 하면!! "+ person[key]); //함수전체를 text로 가져옴. 주석까지 가져오넹
+    }
+
+    /*    ****************************** JSON 객체 와 외부 API *************************************
+
+    //JSON 객체 (XML)  을 공부하는 목적은 외부의 API 를 가져와서 쓰려고하는 목적  ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+
+    //외부 API(우편번호 , 서울시 화장실 정보 , 날씨정보, 대법원 판례, 등등...)
+    //    https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do   영화정보  api
+    //  http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20200401   끝에날짜 바꾸면 안에 내용도 바뀜
+    //  http://postcode.map.daum.net/guide  우편번호 가져오기 .. 등등
+    //  https://api.flickr.com/services/feeds/photos_public.gne?tags=raccoon&tagmode=any&format=json&jsoncallback=?  라쿤 
+    // 여기 안에서 라쿤 이미지를 뽑아라 하면 "https:\/\/live.staticflickr.com\/65535\/49799972308_218fdb39ba_m.jpg" 이렇게 가져와서 사용하면됨 
+    //  KEY POINT 제공받은 JSON 가공해서 원하는 정보 추출 후 사용하는 목적 (중간 프로젝트 의무)
+        ******************************************************************************************
+    */  
+
+    document.write("<br><br> ----빈 객체 만들고 내용물 추가하기 ----<br><br>");
+
+    //빈 객체  만들고 내용물 추가하기 
+
+    var Member ={}; 
+    Member.name="hong"; //{name:"hong"} 과 같은 역할
+    console.log(Member);  // {name:"hong"} 
+    console.log(Member.name); //hong
+
+    Member.age = 100;
+    console.log(Member);  //{name:"hong",age:100} 
+    console.log(Member.age); //100
+
+    //기능 함수 추가!!!!!
+    Member.print = function(){
+        document.write(this.name +"/"+ this.age +"<br>");
+    }
+    //객체이름.함수명
+    Member.print(); //hong/100 이렇게 나온다
+
+
+    //객체가 객체를 가질 수 있다.
+    document.write("<br> ----객체가 객체를 가질 수 있다 ----<br><br>");
+    var Grade ={  
+
+            "list":{
+
+                    "hong": 10,
+                    "kim" : 20,
+                    "park": 30
+            },
+            "show":function(){
+                for(let key in this.list){
+                    document.write(key + ":"+ this.list[key]+ "<br>");
+                }
+            }
+
+    }
+    Grade.show();  // hong:10  kim:20  park:30
+    document.write("<br>");
+
+    var listobj = Grade.list;  //list 라는 제이슨 객체를 listobj 가 갖는다.
+    
+    document.write(listobj.kim+"<br>"); //20
+    
+    for(let key in listobj){
+        document.write(key + ", "+ listobj[key] + "<br>"); // hong,10  kim,20  park,30
+    }
+
+ 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
