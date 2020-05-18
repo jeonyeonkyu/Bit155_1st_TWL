@@ -1,4 +1,0 @@
-JS에 select로 정해진 값 가져오기
-https://frhyme.github.io/web/html_select_javascript/
-https://gocoder.tistory.com/51
-

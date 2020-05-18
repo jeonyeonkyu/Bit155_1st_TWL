@@ -1,0 +1,4 @@
+https://blog.naver.com/codingspecialist/221330910500
+
+Model2 기반 MVC 패턴 사용해서 Blog 구현하기
+

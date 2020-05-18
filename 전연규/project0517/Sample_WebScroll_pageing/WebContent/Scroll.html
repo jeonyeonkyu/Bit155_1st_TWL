@@ -1,0 +1,41 @@
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+
+// Add contents for max height
+
+$(function(){
+	$(document).scroll(function(){
+		maxHeight = $(document).height();
+		currentScroll = $(window).scrollTop() + $(window).height();
+		if(maxHeight <= currentScroll){
+			console.log("go");
+		}
+	});
+});
+	
+/*  
+1. 스크롤이 페이지 최하단에 위치했는지를 확인
+2. 1번에서 최하단이라면 예정된 이벤트(추가 콘텐츠)를 실시
+3. 이벤트를 통해 추가되는 콘텐츠가 비동기식으로 하단에 추가됨
+4. 결론적으로 스크롤이 계속 늘어남
+
+
+이 무한 스크롤을 구현하기 위해서는 필요한 몇가지 함수를 알아야만하는데요... 여기에 사용되는 함수들은 다음과 같습니다.
+
+$(document).scroll()// 스크롤이 변경될때마다 이벤트를 발생시킴
+$(document).height()// 현재페이지(문서)의 높이
+$(window).height()// 윈도우의 크기
+$(window).scrollTop()// 브라우저의 스크롤 위치값
+
+위의 함수가 이 무한 스크롤의 핵심적인 부분이라 할 수 있습니다. 현재 페이지의 전체높이가 화면의 스크롤의 위치값과 윈도우의 크기를 합산한 값이 클 경우 해당 함수를 실행하게 됩니다. 
+
+현재페이지(문서)의 높이 <= 윈도우의 크기 + 브라우저의 스크롤 위치값
+[출처] [jQuery] 무한 스크롤 구현하기, 스크롤 이벤트 scroll()|작성자 EnSSo
+
+  
+ 
+*/
+</script>
+</html>
+
+

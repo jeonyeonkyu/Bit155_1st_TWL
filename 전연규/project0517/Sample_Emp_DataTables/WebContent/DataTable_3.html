@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script
+	src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script type="text/javascript">
+  $(function(){
+	 $('#datatable').DataTable(
+	   {
+		   pageLength : 10,
+		   ajax :{
+			   url:"/user/listView",
+			   type:"POST",
+			   dataType:"JSON",
+			   data:function(row,type,set){
+				   
+			   }
+		   },
+		   colums :[
+			         {data:"sortOrder"},
+			         {data:"id"},
+			         {data:"name"},
+			         {data:"email"}
+			   
+		   		   ]
+		   
+	   }
+	 ); 
+  });
+</script>
+</body>
+</html>

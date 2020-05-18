@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- DataTable cdn -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css" />
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		dataTable = $('#dataTable').DataTable({
+		    "order": [[ 5, "desc" ]],
+		    "columns": 
+		        [
+		            {
+		                "searchable": false,
+		                "orderable": false,
+		                "data":null,
+		                "render":function(data,type,full,meta){
+		                    if(full.pds_event == "Stop" || full.pds_event == "Collect"){
+		                        return "";
+		                    }else{
+		                        return "<button class='btn btn-block btn-info btn-sm' id='pdsSelect'> 선택</button>";
+		                    }
+		                }
+		            },
+		            {data: "pds_key"},
+		            {
+		                data: "pds_event",
+		                render:function(data,type,full,meta){
+		                    var returnStr = "";
+		                    switch (data){
+		                        case "Start":
+		                            returnStr = "<span class=\"label label-success\">Start</span>";
+		                            break;
+		                        case "Stop":
+		                            returnStr = "<span class=\"label label-danger\">Stop</span>";
+		                            break;
+		                        case "Pause":
+		                            returnStr = "<span class=\"label label-default\">Pause</span>";
+		                            break;
+		                        case "UnPause":
+		                            returnStr = "<span class=\"label label-warning\">UnPause</span>";
+		                            break;
+		                        case "Collect":
+		                            returnStr = "<span class=\"label label-danger\">Collect</span>";
+		                            break;
+		                        case "Ready":
+		                            returnStr = "<span class=\"label label-info\">Ready</span>";
+		                            break;
+		                        default : 
+		                            returnStr = data;
+		                            break;
+		                    }
+		                     
+		                    return returnStr;
+		                }
+		            },
+		            {
+		                data: "pds_users_cnt",
+		                render:function(data,type,full,meta){
+		                    if(data == 0){
+		                        return "0 명";
+		                    }else{
+		                        return "<button class='btn btn-block btn-default btn-sm' id='pdsUsers'> "+data+" 명</button>";
+		                    }
+		                     
+		                }
+		            },
+		            {
+		                data: "pds_cid",
+		                "render":function(data,type,full,meta){
+		                    if(data == null){
+		                        return data;
+		                    }else{
+		                        return phone_format(data);
+		                    }
+		                     
+		                }
+		            },
+		            {data: "dt_frt"},
+		            {
+		                data: "totalCnt",
+		                render:function(data,type,full,meta){
+		                    if(data == 0){
+		                        return " 0 ";
+		                    }else{
+		                        return "<button class='btn btn-block btn-default btn-sm' id='pdsTarget'> "+data+" </button>";
+		                    }
+		                     
+		                }
+		            },
+		            {
+		                data: "processCnt",
+		                render:function(data,type,full,meta){
+		                    if(data == 0){
+		                        return " 0 ";
+		                    }else{
+		                        return "<button class='btn btn-block btn-default btn-sm' id='pdsProcess'> "+data+" </button>";
+		                    }
+		                     
+		                }
+		            },
+		            {
+		                "searchable": false,
+		                "orderable": false,
+		                "data":null,
+		                render:function(data,type,full,meta){
+		                    if(full.pds_event == "Stop" || full.pds_event == "Collect"){
+		                        return "";
+		                    }else{
+		                        return "<button type='button' class='btn btn-info btn-sm' id='pdsTargetCollect'> 고객회수</button>";
+		                    }
+		                     
+		                }
+		            },
+		        ],
+		    "ajax" : {
+		        url : "/pds/getPdsList",
+		        type : "POST",
+		        data : function(d){
+		            d.searchStartDate         = dateRangeFormat($("#searchDate").val()).getStartDate();
+		            d.searchEndDate         = dateRangeFormat($("#searchDate").val()).getEndDate();
+		        }
+		    }
+		});
+	});
+	</script>
+</head>
+<body>
+	<table id="dataTable" class="table table-bordered table-striped" width="100%">
+    <thead>
+        <tr>
+            <th>선택</th>
+            <th>pds_key</th>
+            <th>진행상태</th>
+            <th>pds_users</th>
+            <th>pds_cid</th>
+            <th>등록일</th>
+            <th>배분수량</th>
+            <th>진행수량</th>
+            <!-- <th>상담회수</th> -->
+            <th>고객회수</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>선택</th>
+            <th>pds_key</th>
+            <th>진행상태</th>
+            <th>pds_users</th>
+            <th>pds_cid</th>
+            <th>등록일</th>
+            <th>배분수량</th>
+            <th>진행수량</th>
+            <!-- <th>상담회수</th> -->
+            <th>고객회수</th>
+        </tr>
+    </tfoot>
+</table>
+</body>
+</html>

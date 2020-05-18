@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 객체(제공받는..)</title>
+
+    <!-- https://www.w3schools.com/js/js_math.asp -->
+
+    <script type="text/javascript">
+        //javascript 다양한 내장 객체 >> java class 제공 >> new 사용
+        //Date(), Array()
+        //내장객체(class) new 연산자를 통해서 객체 만들고 재사용가능
+        //var d = new Date()
+
+        //찾아써라!!
+        var today = new Date();
+        document.write(today);
+        document.write(today.getFullYear() + "년<br>");
+        document.write(today.getMonth() + 1 + "월<br>");
+        document.write(today.getDate() + "일<br>");
+        document.write(today.getHours() + "시<br>");
+        document.write(today.getMinutes() + "분<br>");
+        document.write(today.getSeconds() + "초<br>");
+
+
+        //Math
+        document.write(Math.random() + '<br>'); //0<= x < 1;
+        document.write((parseInt(Math.random() * 45) + 1) + '<br>');
+
+        document.write(Math.round(3.5678) + '<br>'); //4
+        document.write(Math.max(3,8,7,41,22) + '<br>'); //41
+
+        //POINT 문자열 관련 함수
+        var str = 'ABCDEF'
+        with(document) { //블럭 안에 document 객체 생략 가능
+            write(str + "<br>");
+            write(str.length + "<br>");
+            write(str.charAt(2) + "<br>");
+            write(str.indexOf("D") + '<br>');
+            write(str.concat('홍길동')+'<br>');
+
+            var str2 = str.replace("E", "ZZZZZ");
+            write(str2 + '<br>');
+            write(str.substring(2,4)+'<br>');
+            write(str.substring(1,1)+'<br>'); //뒤숫자 -1
+            write(str.substring(1,2)+'<br>');
+            write(str.substring(1)+'<br>');
+
+            
+            var starr = "A B C D";
+            var strarr = 'ss';
+            
+            var arr = starr.split(" ");
+            write(arr);
+            //POINT
+            //개선된 for문
+            //java >> for(String s : arr) {}
+            //C# >> for(String s in arr) {}
+            //javascript >> for(var s in arr) {}
+            //주의경항 : s 출력되는 값은 : index 입니다.★★★
+            //약속 : 개선된 for문의 변수명은 >> index라고 한다.
+            write('<br>');
+            for(var index in arr){
+                write(index + "<br>");
+                // write(arr[index] + "<br>");
+            }
+
+            
+
+
+        }
+        
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

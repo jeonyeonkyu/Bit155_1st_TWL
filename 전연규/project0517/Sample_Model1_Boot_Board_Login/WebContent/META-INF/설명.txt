@@ -1,0 +1,7 @@
+https://blog.naver.com/codingspecialist/221330910500
+
+일반적인 게시판 
+
+Model1 방식의 게시판 
+
+회원가입 -> 로그인 -> 게시판 글쓰기 등 처리 (Boot 처리)

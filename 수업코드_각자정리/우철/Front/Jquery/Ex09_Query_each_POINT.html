@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<!-- Jquery 제일 중요!!!! !★ -->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    /*
+     JAVA : for(String str : 배열(Collection)){}
+
+     JavaScript : for(let index in Array){Array[index]}
+     JavaScript(Object json) : for(let key in Object(json)){key}
+                             { Object[key] }  
+
+    Jquery : each() 반복구문
+    
+    Jquery : 
+    1. $(selector).each(function(){this});
+    2. $(selector).each(function(index){this});
+    3. $(selector).each(function(index, element){element}); ★ 70% 이거 이용(제일 편한방법)
+
+     Jquery : selector에 들어오는 자원은 보통 객체
+     선택자가 없는 each문
+     1. $.each(selector, function(){this}); 
+     1. $.each(selector, function(index){this}); 
+     1. $.each(selector, function(index, element){element}); ★ 70% 이거 이용(제일 편한방법)
+ 
+     selector가 json 객체인 경우
+     var obj = {name:'홍길동', age:100}
+     $(obj).each(function(key, value){});
+     */
+
+    //$(selector).each(function(){this});
+    $(document).ready(function () {
+      $('p').each(function () { //p태그의 개수만큼 호출(콜백함수 = 재귀함수 )
+        console.log("this : " + $(this).text()); //this >> 각각 p xorm
+        //해외소스가 this를 많이 사용 this 반드시 알아두자
+      });
+
+      // $(selector).each(function(index){this});
+      $('p').each(function (index) {
+        console.log("index : " + index);
+        console.log("this : " + $(this).text());
+
+        $(this).attr('id', "param-" + index);
+        // 다수의 동일한 p태그에 id값을 동적으로 부여
+        //$(this).attr("id" , "param-"+index);
+				//다수의 동일한 p 태그에 식별값
+
+        //응용 : attr() 사용해서 다수의 속성을 정의
+        //Jquery 함수 ... 다수의 parameter를 받을 수 있다. 근데 파라미터가 JSON 객체가 들어온다면?(이것이 최상의 방법!! 반드시 숙달) ★
+        $(this).attr(
+          {
+            "id": "param-" + index,
+            "style": "color:red"
+          } //태그를 한번에 부여
+        );
+
+      });
+
+  	//활용도 70%	
+		//$(selector).each(function(index,element){element});	
+      $('p').each(function (index, element) {
+        console.log("ssssindex: " + index);
+        //element parameter >> <p>java</p>
+        console.log("sssselement : " + element + " / " + $(element).text());
+      })
+
+      $('#btn').click(function () {
+        alert($('#param-1').text());
+      })
+
+      /*
+        응용
+        javaScript에서 배열만드는건 무조껀 중요(3개 암기 및 숙달)
+        let arr = ['사과', '배', '수박']; //Array
+        let obj = {} //json 객체 만듬
+        let arrobj = [{},{},{}] //객체 배열
+      */
+
+      var array = [
+        { "name": "naver", "link": "www.naver.com" },
+        { "name": "daum", "link": "www.daum.net" },
+        { "name": "bit", "link": "www.bit.or.kr" },
+      ];
+
+      //문제 : name의 값과 link 값을 출력
+      //객체$(obj).each(function(key, value){});
+      // $(selector).each(function(index, element){element}); element가 받는 값은 뭘까? -> 객체를 받음
+      $(array).each(function (index, element) { //다못외우겠으면 이것만이라도 외워라
+        //$.each(array, function(index, element){element}); 이렇게 쓰는게 더 이쁨(결과는 동일)
+        console.log(element); //객체.속성명, 객체["속성명"]
+        console.log(element.name + " / " + element["link"]);
+      });
+
+      //구분
+      //$(selector).each(function(index, element){element});
+      //body안에 있는 태그를 불러올 때
+      //$('p')
+
+      // $.each(selector, function(index, element){element});
+      //스크립트 안에 있는 배열이나 객체를 불러올 때
+      //$.each(Array.)
+
+      var board = {
+        values: [
+          { no: 1, title: "hello world" },
+          { no: 2, title: "korea" },
+          { no: 3, title: "bit" }
+        ],
+        search: "검색"
+      };
+
+      //1. $.each() 사용해서 no 값하고 title값을 출력
+      $.each(board.values, function (index, element) {
+        console.log(index + " / " + element.no + "," + element.title);
+      });
+
+      //2. $.each(board) >> key, value ★
+      $.each(board, function (key, value) {
+        console.log(key + " / " + value);
+      });
+
+      //3.$.each() no, title, search 값을 출력하세요(실무에서는 다중 each 및 객체값을 파라미터로 받는 등 이런 코드 많음)
+      $.each(board, function (key, value) {
+        //value >> text도 있고 Array도 있음..
+        //타입 비교해서 조건을 달리해줘야 됨
+        if (typeof (value) == "object") { //배열인경우
+          $.each(value, function (index, element) {
+            console.log(index + " / " + element.no + "," + element["title"]);
+          });
+        } else { //text 경우
+          console.log(key + " / " + value);
+        }
+      });
+
+
+
+    })
+
+
+  </script>
+</head>
+
+<body>
+  <p>java</p>
+  <p>jsp</p>
+  <p>oracle</p>
+  <input type="button" value="click" id="btn">
+
+</body>
+
+</html>

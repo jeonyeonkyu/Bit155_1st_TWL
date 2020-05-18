@@ -1,0 +1,281 @@
+package kr.or.bit.dao;
+
+import javax.sql.DataSource;
+
+import kr.or.bit.dto.Emp;
+import kr.or.bit.utils.DB_Close;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.Connection;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+public class EmpDao {
+
+	private static EmpDao empDao;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	private int result;
+	DataSource ds = null;
+
+	public EmpDao() {
+		try {
+			Context context = new InitialContext(); // 현재 프로젝트에 이름기반 검색
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static synchronized EmpDao getInstance() {
+		if (empDao == null) {
+			empDao = new EmpDao();
+		}
+		return empDao;
+	}
+	// +-------------싱글톤 패턴 적용-------------+
+
+	public int login(String userId, String userPw) {
+		Connection conn = null;
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT pwd").append(" FROM adminlist").append(" WHERE userid = ?");
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if (rs.getString("pwd").equals(userPw)) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+			conn.close(); // 반환하기
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("login SQLException error");
+		} finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+
+		}
+		return -1;
+	}
+
+	public int EmpTotal() { // 총 사원 수 OO
+		String sql = "select count(*) from emp";
+		Connection conn = null;
+		int total = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+			conn.close(); // 반환하기
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("EmpTotal SQLException error");
+		} finally {
+			DB_Close.close(pstmt);
+			DB_Close.close(rs);
+		}
+		return total;
+	}
+
+	public int EmpSalAvg() { // 연봉 평균 OO
+		String sql = "select round(avg(sal),0) from emp";
+		Connection conn = null;
+		int avg = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				avg = rs.getInt(1);
+			}
+			conn.close(); // 반환하기
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("EmpSalAvg SQLException error");
+		} finally {
+			DB_Close.close(pstmt);
+			DB_Close.close(rs);
+		}
+		return avg;
+	}
+
+	public int DeptTotal() { // 부서 개수 XX
+		String sql = "select count(distinct deptno) from emp";
+		Connection conn = null;
+		int total = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				System.out.println("부서개수 : " + total);
+				total = rs.getInt(1);
+			}
+
+			conn.close(); // 반환하기
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("DeptTotal SQLException error");
+		} finally {
+			DB_Close.close(pstmt);
+			DB_Close.close(rs);
+		}
+		return total;
+	}
+
+	public int EmpJobTotal() { // 직업 종류 개수 XX
+		String sql = "select count(distinct job) from emp";
+		Connection conn = null;
+		int total = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+			System.out.println("직업 종류 개수 : " + total);
+			conn.close(); // 반환하기
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("EmpJobTotal SQLException error");
+		} finally {
+			DB_Close.close(pstmt);
+			DB_Close.close(rs);
+		}
+		return total;
+	}
+
+	// 게시물 총 건수 구하기
+	public int totallistCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int totalcount = 0;
+		try {
+			conn = ds.getConnection(); // dbcp 연결객체 얻기
+			String sql = "select count(*) cnt from emp";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				totalcount = rs.getInt("cnt");
+			}
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 반환 connection pool 에 반환하기
+			} catch (Exception e) {
+
+			}
+		}
+		return totalcount;
+	}
+
+	public List<Emp> list(int cpage, int pagesize) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<Emp> list = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from  " + "(select rownum rn, empno, ename, job, mgr, hiredate, sal, comm, deptno"
+					+ "             from emp " + // ★form 인라인 절은
+													// 데이터(중요)
+					"             where rownum <= ?" + // end row
+					") where rn >= ?"; // start row
+			pstmt = conn.prepareStatement(sql);
+
+			int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1
+			int end = cpage * pagesize; // 1 * 5 = 5
+
+			pstmt.setInt(1, end);
+			pstmt.setInt(2, start);
+
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Emp>();
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setDeptno(rs.getLong("deptno"));
+				emp.setEmpno(rs.getLong("empno"));
+				emp.setEname(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setComm(rs.getLong("comm"));
+				emp.setHiredate(rs.getDate("hiredate"));
+				emp.setMgr(rs.getLong("mgr"));
+				emp.setSal(rs.getLong("sal"));
+				list.add(emp);
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return list;
+
+	}
+
+	public List<Emp> searchEmpno(String empno) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Emp> list = new ArrayList<Emp>();
+	
+		int rowcount = 0;
+		try {
+			conn = ds.getConnection();
+			String sql = "select empno, ename, job, deptno, mgr from emp where empno like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, '%' + empno + '%');
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setEmpno(rs.getLong(1));
+				emp.setEname(rs.getString(2));
+				emp.setJob(rs.getString(3));
+				emp.setDeptno(rs.getLong(4));
+				emp.setEmpno(rs.getLong(5));
+				list.add(emp);
+			}
+			conn.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+		}
+		return arr;
+
+	}
+
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	//jQuery.get( url [, data ] [, success ] [, dataType ] )
+	//
+	$(function() {
+		$('#btn').click(function() {
+			$.get("Ex03_Company.xml", function(data) {
+				//console.log(data); //서버에서 받은 xml 데이터
+				//POINT는 가공(우리마음대로)
+				$('#display').empty(); //자식요소를 제거(자기자신은 제외)
+				console.log($(data).find('Company'));
+				//find() 필터함수 >> return Array [Company, Company]
+
+				$(data).find('Company').each(function() { //function안에 파라미터 적는게 편하긴 함, 그러나 여기선 어려운 방법인 this를 이용해봄
+					//console.log(this); //company 엘리먼트(태그)를 하나씩 출력
+					let entry = $(this); //★ 제이쿼리로 만든것들을 변수에 넣기가능(문법공부임, 굳이 이렇게할 필요는 전혀 없음)
+					console.log(entry);
+					/*
+					<Company CompanyType="private">
+						<CompanyName>Bit</CompanyName>
+						<CompanyNumber>2019</CompanyNumber>
+						<CompanyAddress>서울시 서초구</CompanyAddress>
+						<Name></Name>
+					</Company>
+					return ....
+					 */
+					//★★★현업 가서 하는 코드!!!!★★★, 신입때는 서버에서 데이터를 받아서 프론트에서 꾸미는 일을 주로 함
+					let html = "<div>" + entry.attr('CompanyType') + "</div>";
+					html += "<div>" + entry.find('CompanyName').text() + "</div>";
+					html += "<div>" + entry.find('CompanyNumber').text() + "</div>";
+					html += "<div>" + entry.find('CompanyAddress').text() + "</div>";
+					html += "<div>" + entry.find('Name').text() + "</div>";
+					$('#display').append(html);
+					
+					//이런식으로도 사용 가능..
+					//var companyarr = $(data).find('Company');
+					//$.each(companyarr, function(index, obj) {
+						
+					//})
+				});
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="button" id="btn" value="회사소개" />
+	<div id="display" style="background-color: gray">DATA</div>
+
+</body>
+</html>

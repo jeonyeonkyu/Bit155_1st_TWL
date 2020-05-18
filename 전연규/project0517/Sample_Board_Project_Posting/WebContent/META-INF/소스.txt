@@ -1,0 +1,61 @@
+https://github.com/luke-hanwook/web_study
+
+
+https://blog.naver.com/gksdnr89/221114807350
+
+create table article(
+ article_no int(11) primary key,
+ title  varchar(255) , --제목
+ tot_reply_cnt int(11), --댓글수
+ tot_like_cnt int(11), --좋아요수
+ read_cnt int(11), --조회수
+ regdate datetime, --생성일자
+ moddate datetime, --수정일자
+ writer_id  int(11), --작성자ID
+ nickname varchar(50), --작성자 이름
+ profile_image varchar(255) --작성자 프로필 이미지 경로
+
+);
+
+
+create table article_content(
+ article_no   int(11) primary key,
+ content      text  --내용
+);
+
+
+create table article_reply(
+  reply_no    int(11) primary key,
+  member_id   int(11),
+  nickname    varchar(50),
+  content     text,
+  regdate     datetime,
+  article_no  int(11) foreign key references article(article_no)
+);
+
+
+create table mynoti(
+ noti_no           int(11) primary key,
+ article_no        int(11), --게시글ID 
+ another_member_id int(11), --알림 회원 ID
+ noti_type         enum('like','reply'), --알림타입
+ read_check        tinyint(1), --읽음 확인
+ regdate           datetime, --생성일자
+ my_id             int(11) --나의 회원ID
+
+);
+ 
+create table members(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 create table members(
+  member_id  int(11) primary key,
+  email varchar(255),
+  password varchar(255), 
+  nickname varchar(50),
+  regdate datetime,
+  profile_image varchar(255),
+  register_code varchar(255), --인증코드
+  register_check tinyint(1), --인증확인
+  remember_token varchar(255) , --자동로그인 쿠키 토큰
+  access_token varchar(255) --네이버 로그인 토큰
+
+)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
