@@ -23,7 +23,6 @@ public class EmpChartService implements Action {
 		
 		request.setAttribute("list", list);
 		
-		System.out.println("emp!!  ì•„ë‹ˆê³  list" + list);
 		
 		JSONArray jsonArr = JSONArray.fromObject(list); 
 		

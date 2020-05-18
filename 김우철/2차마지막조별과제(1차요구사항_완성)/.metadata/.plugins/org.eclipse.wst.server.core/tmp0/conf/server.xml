@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -105,8 +105,12 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
-
+    <!--
+    <Connector protocol="AJP/1.3"
+               address="::1"
+               port="8009"
+               redirectPort="8443" />
+    -->
 
     <!-- An Engine represents the entry point (within Catalina) that processes
          every request.  The Engine implementation for Tomcat stand alone
@@ -149,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막조별과제(백업및작업)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막조별과제(백업및작업)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Emp_Model2_Mvc_Team1" path="/Emp_Model2_Mvc_Team1" reloadable="true" source="org.eclipse.jst.jee.server:Emp_Model2_Mvc_Team1">
+      <Context docBase="C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막조별과제(1차요구사항_완성)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\wlsgm\Desktop\1조 학습기록 저장소\김우철\2차마지막조별과제(1차요구사항_완성)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Emp_Model2_Mvc_Team1" path="/Emp_Model2_Mvc_Team1" reloadable="true" source="org.eclipse.jst.jee.server:Emp_Model2_Mvc_Team1">
 	<!-- maxActive : 최대 동시 대여 가능 커넥션수
 	     maxIdle : 최소 보유 커넥션수 
 	     maxWait : 최대 대기 시간 

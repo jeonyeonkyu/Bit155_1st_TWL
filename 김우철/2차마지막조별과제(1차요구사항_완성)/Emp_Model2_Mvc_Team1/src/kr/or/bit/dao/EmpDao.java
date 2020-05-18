@@ -32,7 +32,7 @@ public class EmpDao {
 	public EmpDao() {
 		try {
 			Context context = new InitialContext(); 
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,7 +127,6 @@ public class EmpDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				System.out.println("�μ����� : " + total);
 				total = rs.getInt(1);
 			}
 
@@ -153,7 +152,6 @@ public class EmpDao {
 			if (rs.next()) {
 				total = rs.getInt(1);
 			}
-			System.out.println("���� ���� ���� : " + total);
 			conn.close(); 
 		} catch (SQLException e) {
 			System.err.println(e);
@@ -165,7 +163,6 @@ public class EmpDao {
 		return total;
 	}
 
-	// �Խù� �� �Ǽ� ���ϱ�
 	public int totallistCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -236,7 +233,7 @@ public class EmpDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ
+				conn.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

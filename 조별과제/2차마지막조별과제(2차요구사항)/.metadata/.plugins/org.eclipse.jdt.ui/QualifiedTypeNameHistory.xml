@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpJobListService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpDeptNoListService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpDataTableService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.EmpHieTableService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieWriteService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieEmpDetailService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieEditService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieEditServiceok"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieReWriteService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieReWriteServiceok"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.dataTableSearchService"/>
+<fullyQualifiedTypeName name="kr.or.bit.dto.Emp"/>
+<fullyQualifiedTypeName name="kr.or.bit.dao.BoardDao"/>
+<fullyQualifiedTypeName name="kr.or.bit.dto.Board"/>
+</qualifiedTypeNameHistroy>
