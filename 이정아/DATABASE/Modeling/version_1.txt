@@ -1,0 +1,49 @@
+/* 사원 */
+CREATE TABLE EMP (
+	empno NUMBER NOT NULL, /* 사원번호 */
+	ename VARCHAR(20) NOT NULL, /* 사원명 */
+	sal NUMBER NOT NULL, /* 급여 */
+	job VARCHAR(20) NOT NULL, /* 직종 */
+	deptno NUMBER /* 부서번호 */
+);
+
+CREATE UNIQUE INDEX PK_EMP
+	ON EMP (
+		empno ASC
+	);
+
+ALTER TABLE EMP
+	ADD
+		CONSTRAINT PK_EMP
+		PRIMARY KEY (
+			empno
+		);
+
+/* 부서 */
+CREATE TABLE DEPT (
+	deptno NUMBER NOT NULL, /* 부서번호 */
+	dname VARCHAR(20) NOT NULL, /* 부서이름 */
+	loc VARCHAR(20) /* 부서위치 */
+);
+
+CREATE UNIQUE INDEX PK_DEPT
+	ON DEPT (
+		deptno ASC
+	);
+
+ALTER TABLE DEPT
+	ADD
+		CONSTRAINT PK_DEPT
+		PRIMARY KEY (
+			deptno
+		);
+
+ALTER TABLE EMP
+	ADD
+		CONSTRAINT FK_DEPT_TO_EMP
+		FOREIGN KEY (
+			deptno
+		)
+		REFERENCES DEPT (
+			deptno
+		);
