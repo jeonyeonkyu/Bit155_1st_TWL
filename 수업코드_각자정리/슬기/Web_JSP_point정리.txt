@@ -1,0 +1,12 @@
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP\WebContent\Ex05_request.jsp     //request 객체
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP\WebContent\Ex09_Response.jsp  //response 객체
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP\WebContent\Ex16_Error_Local.jsp //에러페이지 설정
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP\WebContent\Ex21_Session.jsp  //session 에대해서
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP\WebContent\Ex24_Object_Scope.jsp // tomcat 기본적인 내장객체들
+
+
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP_JDBC_EL_JSTL\WebContent\Ex03_EL_JSTL.jsp //el_jstl 기본개념
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP_JDBC_EL_JSTL\WebContent\Ex05_EL_JSTL.jsp // <c:이것저것>
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebJSP_JDBC_EL_JSTL\WebContent\Ex06_EL_JSTL_ForEach_Keypoint.jsp //keypoint
+
+C:\Users\ksks7\OneDrive\바탕 화면\WEB_JSP\WebServlet_1\src\com\board\FrontBoardController.java //controlloer 기본 개념

@@ -1,0 +1,103 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20120101-->
+    <!--"http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=128c1b018422127293c9b438200c8ab8"-->
+    <style type="text/css">
+        .table {
+            background-color: rgb(255, 174, 0);
+            border: pink black;
+        }
+
+        #dy {
+            background-color: rgb(49, 166, 202);
+            font-family: 함초롬돋움;
+        }
+        
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $('#btn').click(function () {
+                let publicAPI = "http://api.openweathermap.org/data/2.5/weather?";
+                let data = { q: $('#myInput').val(), units:"metric", appid: "128c1b018422127293c9b438200c8ab8"};
+                $.getJSON(publicAPI, data, function (data, textStatus, xhr) {
+                    $('#result').empty();
+                    // console.log(data.weather);
+                    // console.log(data.weather[0].description);
+                    // console.log(data.weather[0]);
+
+                    var table = "<table>";
+                    table += "<tr><td>지역</td><td>날씨</td><td>상세</td><td>바람</td><td>구름</td><td>온도</td></tr>";
+
+                    // console.log("data.weather[0].des==="+data.weather[0].description);//o
+                    // console.log("data.wind.speed==="+data.wind.speed);//0
+                    // console.log("data.weather[0].main==="+data.weather[0].main);//o
+                    // console.log("data[clouds].all==="+data["clouds"].all); //o
+                    console.log(data.weather[0].icon);
+                    table += "<tr>";
+                    table += "<td>" + data.name + "</td>";
+                    table += "<td>" + data.weather[0].main + "</td>";
+                    table += "<td>" + data.weather[0].description + "</td>";
+                    table += "<td>" + data.wind.speed + "</td>";
+                    table += "<td>" + data["clouds"].all + "</td>";
+                    table += "<td>" + data.main.temp+ "℃" + "</td>";
+                    table += "</tr>";
+                    table += "</table>";
+                    // $('#result').append(table);
+                    var imgURL = "http://api.openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+                    $('.imo').attr("src", imgURL);
+                    $('#result').empty();
+                    $('#result').append(table);
+                    $('table').addClass('table');
+
+                });
+            });
+        });
+    </script>
+</head>
+
+<body id="dy">
+
+    <div class="ml-3 mr-3">
+
+
+        <img class="imo"
+            width="50px" style="float: left;">
+        <img class="imo"
+            width="50px" style="float: right;">
+        <h2 class="text-center" style="font-size: 25px;">오늘의 날씨 </h2>
+        <br>
+        <p>지역명으로 검색 ex) seoul</p>
+        <div class="row">
+        <input type="text" class="form-control col-8" id="myInput" placeholder="seoul" >
+        <input type="button" value="검색" id="btn" class="col-4">
+        </div>
+        <br>
+        <div id="result"></div>
+
+
+    </div>
+
+    <!-- <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script> -->
+    <!-- <script src="child.js"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery 는 필수로 스크립트 걸어야 함 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       /*
+       window.onload=function(){
+            document.getElementById("btn").click = function(){
+                alert("DOM Script");
+            }   //이건 기존 js 방식 
+        }
+        */
+        /*
+        $(document).ready(function(){
+            $('#btn').click(function(){ //익명함수
+                $(this).hide();  //css 속성에서 display none 으로 바뀐다.  
+            });
+        });
+        */
+        $(function(){ //단축표현
+            $('#btn').click(function(){ //익명함수
+                $(this).hide();  //css 속성에서 display none 으로 바뀐다.  
+            });
+        });
+
+        //w3schools.com/jquery/jquery_selectors.asp
+        //가장 기본적인 선택자 사용하기 
+
+        
+    </script>
+</head>
+
+
+<body>
+    <input type="button" id="btn" value="버튼">
+    
+</body>
+</html>

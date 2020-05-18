@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>var , let , const</title>
+	<script type="text/javascript">
+		var v = "hello"; //전역변수(global)  //class Car { private int door;  public void run(){door=100;}}
+		var p = "PPPP";
+		//전역 ... 모든 함수에 사용가능해
+		function func(){
+			var v = "world"  //지역변수(local)
+			p = "QQQQ";
+			//함수 안에서 
+			//var v ; 지역변수
+			//v ; 전역변수  (쓰지 말자 )
+			document.write("func : " + v + "<br>");
+		}
+		
+		func(); //호출
+	    document.write(v + "<br>");
+		document.write(p);
+		/*  
+			function makePlan(){
+			   var name;
+			   
+			   if(){
+				   let id;				   
+			   }
+			
+			}
+		*/
+		//ES6 이전
+		//var 혼자서 살던 시대
+		
+		//var 는 function 단위 .... {}단위 아님
+		var hello='hello';
+			if(true)  {
+	  			var hello = 'hello in if';
+			}
+		console.log(hello); // hello in if
+		
+		//let 은 블럭레벨  
+		
+		//const 상수
+		const hello6 ='hello';
+		hello6 = "change hello";
+		//
+		
+		//Scope 은 { } 블럭입니다
+		const hello2='hello!';
+		{	
+  			const hello2='inner hello!'; 
+  			console.log(hello2); // inner hello!
+		}
+		console.log(hello2); // hello!  블럭 밖이라서 이렇게 나온다. 
+		
+		//let 변수는 재정의 가능
+		let hello3='first hello';  // first hello
+		hello3 = 'changed hello';  // changed hello
+		console.log(hello3);
+		
+		//Scope 은 { } 블럭입니다
+		let hello4='first hello';  
+		{
+		  let hello4 = 'inner hello';  
+		  console.log(hello4); // inner hello
+		}
+		console.log(hello4); // first hello
+		
+		
+		let hello5='first hello';  
+		//let hello5='second hello'; // error  같은범위 내에서 let 으로 선언을 반복하지 못함
+		//Uncaught SyntaxError: Identifier 'hello5' has already been declared
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+

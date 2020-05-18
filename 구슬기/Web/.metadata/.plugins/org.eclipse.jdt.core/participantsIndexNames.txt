@@ -1,0 +1,9 @@
+INDEX VERSION 1.131
+C:\Users\ksks7\OneDrive\πŸ≈¡ »≠∏È\WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3884334354.index
+\WebClient_Jquery_Ajax\src
+C:\Users\ksks7\OneDrive\πŸ≈¡ »≠∏È\WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2389963910.index
+\WebClient_JavaScript\src
+C:\Users\ksks7\OneDrive\πŸ≈¡ »≠∏È\WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2965147790.index
+\WebClient_JavaScript_Ajax\src
+C:\Users\ksks7\OneDrive\πŸ≈¡ »≠∏È\WEB\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\889149064.index
+\WebClient\src

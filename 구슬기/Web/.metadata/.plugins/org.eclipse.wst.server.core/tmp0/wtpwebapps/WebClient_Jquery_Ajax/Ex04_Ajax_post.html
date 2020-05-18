@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>파라메터 여러개있는거 어떻게 처리하나요~~?</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#btn').click(function(){
+				
+				//jsp?name=kglim&pwd=1004
+				//권장하지 않아요
+				
+				/*
+				let name = $('#name').val();
+				let pwd = $('#pwd').val();
+				let param = 'name='+name+'&pwd='+pwd;
+					
+				$.post('Ex04_Server.jsp',param,function(responsedata){
+					$('#message').html(responsedata);
+				});
+				*/
+				//권장방법 : 두번째 parameter 설정 : {}객체        //파라메터를 제이슨 객체형태로 쓰자!
+				let data = {"name":$('#name').val() , "pwd":$('#pwd').val()}  //이렇게 담아서 2번 parameter 에 줘도 되고, 이거 그대로 넣어줘도 된다. (복잡해보일수 있음)
+				$.post('Ex04_Server.jsp',data,function(responsedata){ //post함수 ? post방식  비동기에서는 get/post 큰 차이가 없다. 
+					$('#message').html(responsedata);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	이름 :<input type="text" id="name"><br>
+	비번 :<input type="text" id="pwd"><br>
+	<input type="button" id="btn" value="비동기전송">
+	<hr>
+	<div id="message"></div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>달력 datepicker</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  <!--  7,8 필수테마임  -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<style type="text/css">
+	
+	
+	</style>
+	<!-- 
+		날짜 형식 : yy-mm-dd
+		
+		https://jqueryui.com/datepicker/
+	 -->
+	<script type="text/javascript">
+		$(function(){
+			  $('#datepicker').datepicker(   //날짜를 찢어서 본다던가 다른형태로볼수있다 
+					  {
+				  dateFormat : "yy-mm-dd",
+				  numberOfMonths: 2,
+				  onSelect : function(date){
+					  alert("onSelect : " + date);
+					  
+				  },
+				  onClose: function(date){
+					  let currentdate =  $('#datepicker').datepicker('getDate');
+					  console.log(date + "/" + currentdate);
+					  //2020-05-01/Fri May 01 2020 00:00:00 GMT+0900 (대한민국 표준시)
+					  let date2 = new Date(currentdate); //date 변수로날짜 가고잉 가능해짐 ㄴ
+					  alert(date2.getFullYear()+"/"+date2.getDate());
+				  }
+			 			 }
+					  )
+		});		
+	</script>
+</head>
+<body>
+	<p>Date: <input type="text" id="datepicker"></p>
+</body>
+</html>

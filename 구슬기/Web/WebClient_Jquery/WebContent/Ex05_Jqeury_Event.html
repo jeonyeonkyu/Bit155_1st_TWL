@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ON / Off</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        //DOM Script 사용
+        //http://www.w3cschools.com/js/js_htmldom_eventlistener.asp
+
+        //Jquery 도 다중 이벤트 처리(on, off) : JSON 객체 형태로 준다
+        //event attach
+        //2.x : bind() > unbind()
+        //3.x : on() > off()
+        $(function(){
+            //$('p').click(function(){});
+            //$('p').mouseenter(function(){});
+            $('p').on(
+                {  //parameter 로 json객체를 전달  장점: 여러개의 함수를 만들수있음
+                    mouseleave:function(){$(this).css('background-color',"red")},
+                    click:function(){$(this).css('background-color',"green")},
+                    mouseenter:function(){$(this).css('background-color',"blue")}
+
+            }
+            );
+
+            $('button').click(function(){
+                $('p').off('click');   //click 이벤트에 걸었떤 함수가 사라진다 
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>on 함수를 사용해서 다중 이벤트 처리하기</p>
+    <hr>
+    <button>이벤트 제거</button>
+</body>
+</html>
