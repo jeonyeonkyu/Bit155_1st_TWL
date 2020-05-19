@@ -11,7 +11,7 @@
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			//순서를 보장하는 형태의 꽁수 ....
+			//순서를 보장하는 형태의 꼼수 .... 이 방법은 꼼수이고 promise 패턴을 사용하는 것이 좋다. (비동기 함수는 순서가 없으나 순서대로 실행하도록 제어하는 것)
 			GetBoardList();
 			RowUpdateBoard();
 		});
@@ -19,7 +19,7 @@
 		function RowUpdateBoard(){
 			//https://www.w3schools.com/jquery/ajax_serialize.asp
 			$('#updateForm').on("submit",function(){
-				var param = $(this).serialize();
+				var param = $(this).serialize(); //form태그의 name값이 가진 value를 $('')으로 가져오지 않아도, 자동으로 name안의 value를 파라미터값으로 받아준다. name속성 꼭 필요!
 				//console.log(param);
 				//alert("submit");
 				$.ajax({
@@ -28,7 +28,8 @@
 					type : "POST",
 					data : param, //{"seq" :"1" ,"title" : "A" , "content":"A" , "regdate":"11" , "hit":"1"} ,
 					success : function(returndata){
-						    alert(returndata.result);
+						//만약  returndata에 데이터가 넘어왔으나 json이 아니라면 JSON.parse(parameter)로 json객체로 바꿔주기
+						    alert(returndata.result); //알람이 안뜨면 json객체가 아닌 것. 그럼 parse해주면 됨
 						 	if(returndata.result){
 								alert("수정성공");
 								GetBoardList(); //데이터 갱신하기
@@ -39,7 +40,7 @@
 					
 					});
 				
-			 	return false; //기본적인 submit 하지 말아라  (동기식 하지 말아라 ...)
+			 	return false; //기본적인 submit 하지 말아라  (동기식 하지 말아라 ...) 비동기처리를 우선으로 하려고
 			});
 		}
 		
@@ -57,9 +58,9 @@
  				    //console.log(data);
 					//https://www.w3schools.com/jquery/misc_data.asp
 					$('#listView').empty();
-					$('#listView').data("list",data); //key "data" value Array객체
+					$('#listView').data("list",data); //data함수는 key, value형태로 저장해줌. 안써도됨 "list"라는 이름을 지어주고, 가져온 json을 key, value형태의 배열로 만들어주는 것
 					
-					//data -> [{},{},{},{}]
+					//data -> [{},{},{},{}] 
 					//data -> json 형태의 ArrayObject
 					//테이블 구성하기
 					//$.each(data,function(index , obj){
@@ -68,7 +69,7 @@
 					
 					for(var k=0 ; k < data.length ; k++){
 						var tr="";
-						tr += "<tr index='"+ (k) +"'>";
+						tr += "<tr index='"+ k +"'>";
 						tr += "<td>" + data[k].seq + "</td>";
 						tr += "<td>" + data[k].title + "</td>";
 						tr += "<td>" + data[k].content + "</td>";
@@ -90,7 +91,7 @@
 								//console.log(index);
 								var data = $("#listView").data("list");
 								console.log("데이터 : " + data);
-								var rowdata = data[index];  //[{},{},{}]
+								var rowdata = data[index];  //[{},{},{}] 몇번째 인덱스 값을 선택할건지
 								//rowdata = {"content":"0 번째 내용","hit":0,"regdate":"2017-11-12","seq":0,"title":"0 번쨰 제목"}
 								//console.log(data);
 							    //rowdata {}객체 	
