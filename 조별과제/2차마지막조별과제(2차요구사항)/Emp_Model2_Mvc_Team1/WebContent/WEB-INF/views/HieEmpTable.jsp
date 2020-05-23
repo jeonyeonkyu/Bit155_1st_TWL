@@ -330,7 +330,6 @@ onmouseout:this.style.backgroundColor=white;
 	    		[keyname] : value.pop()
 	    }
 		
-			console.log("검색이 되고 있습니까..");
 			console.log($("#selectBox option:selected").val());
 			console.log("입력값 : " + $("#search").val());
 			keyname = $("#selectBox option:selected").val();

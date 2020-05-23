@@ -214,7 +214,9 @@ onmouseout:this.style.backgroundColor=white;
          <div class="" style="visibility: hidden;">
          </div>
          <!-- 공간차지용 -->
-         <ul class="pagination" style="margin: 0 auto">
+         
+         <!-- 페이징 시작  ★★★★★★★★★★★★★★★★★★★★★★-->
+         <ul id="page" class="pagination" style="margin: 0 auto">
             <!-- justify-content-end -->
             <c:if test="${cpage>1 }">
                <li class="page-item"><a
@@ -225,7 +227,7 @@ onmouseout:this.style.backgroundColor=white;
             <c:forEach var="i" begin="1" end="${pagecount}" step="1">
                <c:choose>
                   <c:when test="${cpage == i }">
-                     <li class="page-item"><a href="" class="page-link">${i}</a></li>
+                     <li class="page-item"><a href="" class="page-link" style="color:red">${i}</a></li>
                   </c:when>
                   <c:otherwise>
                      <li class="page-item"><a
@@ -240,6 +242,8 @@ onmouseout:this.style.backgroundColor=white;
                </a></li>
             </c:if>
          </ul>
+          <!-- 페이징 끝  ★★★★★★★★★★★★★★★★★★★★★★★★★★ -->
+         
          
            <div class="">
 			<a href="EmpWrite.do" type="button"
@@ -370,18 +374,6 @@ onmouseout:this.style.backgroundColor=white;
                }
             })
 
-      jQuery('#vmap').vectorMap({
-         map : 'world_en',
-         backgroundColor : null,
-         color : '#ffffff',
-         hoverOpacity : 0.7,
-         selectedColor : '#1de9b6',
-         enableZoom : true,
-         showTooltip : true,
-         values : sample_data,
-         scaleColors : [ '#1de9b6', '#03a9f5' ],
-         normalizeFunction : 'polynomial'
-      });
    })(jQuery);
 </script>
 

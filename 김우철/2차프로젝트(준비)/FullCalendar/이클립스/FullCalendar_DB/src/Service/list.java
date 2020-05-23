@@ -18,12 +18,12 @@ public class list implements LCalendar {
 		response.setCharacterEncoding("utf-8");
 		try {
     		CalendarDAO dao = new CalendarDAO();
-    		List<CalendarDTO> boardList = dao.selectList();
-    		
+    		List<CalendarDTO> boardList = dao.selectList();	
     		
     		JSONArray jsonlist = JSONArray.fromObject(boardList);
     		
     		response.setContentType("application/x-json; charset=UTF-8");
+    		System.out.println("service!!");
     		response.getWriter().print(jsonlist);
 
     	}catch (Exception e) {

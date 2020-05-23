@@ -21,7 +21,9 @@ public class EmpAddService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException  {
 		
 		String uploadpath = request.getSession().getServletContext().getRealPath("upload");
-		System.out.println(uploadpath);
+		
+		String type = request.getParameter("type");
+		
 		
 		int size = 1024*1024*10; //10M 네이버 계산기
 		ActionForward forward = new ActionForward();
@@ -69,7 +71,11 @@ public class EmpAddService implements Action {
 		String url = "";
 		if (result > 0) {
 			msg = "사원 등록 성공";
-			url = "EmpTable.do";
+			if(type.equals("dataTable")) {
+				url = "dataTable.do";
+			}else {
+				url = "EmpTable.do";
+			}
 		} else {
 			msg = "사원 등록 실패";
 			url = "EmpWrite.do";
@@ -79,7 +85,6 @@ public class EmpAddService implements Action {
 		request.setAttribute("url", url);
 		
 		List jobList = dao.jobList();
-		
 		
 		forward.setPath("/WEB-INF/common/redirect.jsp");
 		

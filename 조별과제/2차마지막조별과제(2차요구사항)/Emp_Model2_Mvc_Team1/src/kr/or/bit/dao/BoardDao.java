@@ -16,13 +16,13 @@ import javax.sql.DataSource;
 import kr.or.bit.dto.Board;
 import kr.or.bit.dto.Reply;
 
-/* CRUD �Լ�  >> ConnectionPool > �Լ� ���� ����, ��ȯ*/
+
 public class BoardDao {
 	DataSource ds = null;
 
 	public BoardDao() {
 		try {
-			Context context = new InitialContext(); // ���� ������Ʈ�� �̸���� �˻�
+			Context context = new InitialContext();
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,21 +30,9 @@ public class BoardDao {
 		}
 	}
 
-	// �۾��� (������)
+
 	public int writeok(Board boarddata) {
-		// insert into
-		// jspboard(idx,writer,pwd,subject,cntent,email,homepage,writedate,readnum,filename,filesize,refer)
-		// values(jspboard_idx.nextval,?,?,?,?,?,?,sysdate,0,?,0,?)
-		// nextval�� �ι����� ������ ���� �׷��� refer���� ���α��ϴ� �Լ��� ����
-		// insert�� ���ÿ� refer���� ���� ���� ����..
-
-		// ������ �Խ���
-		// refer, step, depth
-		// 1. ������ : refer, step(0) default, depth(0) default
-		// 2. �亯�� : refer, step + 1, depth + 1
-
-		// ������ : step, depth >> NUMBER DEFAULT 0 (insert ���� ������.. 0�� default��
-		// ��)
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int row = 0;
@@ -77,7 +65,7 @@ public class BoardDao {
 		} finally {
 			try {
 				pstmt.close();
-				conn.close(); // Ŀ�ؼ�Ǯ ��ȯ
+				conn.close(); // 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -85,19 +73,15 @@ public class BoardDao {
 		return row;
 	}
 
-	// �����ۿ� ���� refer �� ���ϱ�
+
 	public int getMaxRefer() {
-		// select nvl(max(refer),0) from jspboard //���� �ϳ��� �Ⱦ����¼��� refer��
-		// null�̱� ������ nvl
-		// ������ -> ó�����ΰ�� 0�� ����
-		// >> refer�� ó�� ���� 1�� �����ϰ� �Ұ�� ... refer + 1
-		// select nvl(max(refer),0) from jspboard >> ó�� �� >> 0 >> refer + 1 ����
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int refer_max = 0;
 		try {
-			conn = ds.getConnection(); // �����ּ���^^ �̵� �ݳ��ҰԿ�
+			conn = ds.getConnection(); // 
 			String sql = "select nvl(max(refer),0) from jspboard";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -110,7 +94,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close(); // �ݳ��̿� ^^
+				conn.close(); // �
 			} catch (Exception e) {
 
 			}
@@ -124,8 +108,6 @@ public class BoardDao {
 	// �Խù� ��Ϻ���
 	public List<Board> list(int cpage, int pagesize) {
 
-		// int cpage : ���� ������� ������ ��ȣ [5]
-		// int pagesize ������ ���� pagesize 5
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -134,22 +116,14 @@ public class BoardDao {
 
 		try {
 			conn = ds.getConnection();
-			// �ڡڡڡ� �߿�
 			String sql = "select * from  "
 					+ "(select rownum rn , idx ,writer , email, homepage, pwd , subject , content, writedate, readnum "
 					+ "	                 , filename, filesize , refer , depth , step "
-					+ "             from ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) " + // ��frmo �ζ���
-																										// ����
-																										// ������ �Ǵ�
-																										// ������(�߿�)
+					+ "             from ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) " + // 
+																										// 
 					"             where rownum <= ?" + // end row
 					") where rn >= ?"; // start row
 			pstmt = conn.prepareStatement(sql);
-
-			// ���İ��� ����(� �����ڰ� ����) 3~4���� ���� (���� �������� ���̽��� ����ߵ�)
-			// ��뷮�Խ����� ���̴� ����
-			// cpage >> 1
-			// pagesize >> 5
 
 			int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1
 			int end = cpage * pagesize; // 1 * 5 = 5
@@ -166,12 +140,11 @@ public class BoardDao {
 				board.setWriter(rs.getString("writer"));
 				board.setWritedate(rs.getDate("writedate"));
 				board.setReadnum(rs.getInt("readnum"));
-				// ������
 				board.setRefer(rs.getInt("refer"));
 				board.setStep(rs.getInt("step"));
 				board.setDepth(rs.getInt("depth"));
 
-				list.add(board); // ������ ...
+				list.add(board); 
 				System.out.println(list);
 			}
 
@@ -181,7 +154,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close(); // ��ȯ
+				conn.close(); // 
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
@@ -189,59 +162,20 @@ public class BoardDao {
 		}
 		return list;
 
-		/*
-		 * [1][2][3][4][5][����] [����][6][7][8][9][10][����] [����][11][12]
-		 * 
-		 * [1] page ũ�� > pagesize ���� totaldata > 54�� pagesize = 5 ��Ģ >
-		 * totalpagecount=11 (��ü ������ ����)
-		 * 
-		 * int cpage >> currentpage(���� ������ ��ȣ) >> 1page ,2page
-		 * 
-		 * ���� ������ 100�� cpage : 1 , pagesize : 5 > start(���۱۹�ȣ) 1 ~ end(�۹�ȣ) 5
-		 * cpage : 2 , pagesize : 5 > start(���۱۹�ȣ) 6 ~ end(�۹�ȣ) 10 cpage : 11 ,
-		 * pagesize : 5 > start(���۱۹�ȣ) 51 ~ end(�۹�ȣ) 55 -5���� ��� 11��° ������
-		 * �����ּ���
-		 * 
-		 * 
-		 * //����ǥ ���� �������� �̾Ƴ� �Ʒ� 2���� ������ ����¡ó�� ���� �׽�Ʈ �ϱ� SELECT *
-		 * FROM ( SELECT ROWNUM rn , idx , writer , email, homepage, pwd , subject ,
-		 * content, writedate, readnum , filename, filesize , refer , depth , step FROM
-		 * ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) ) WHERE rn BETWEEN
-		 * ? AND ?;
-		 * 
-		 * -------------------------------------------------------------------- select *
-		 * from ( select rownum rn , idx , writer , email, homepage, pwd , subject ,
-		 * content, writedate, readnum , filename, filesize , refer , depth , step from
-		 * ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) where rownum <= 6
-		 * --endrow ) where rn >= 4; --firstrow
-		 * 
-		 * SELECT * FROM ( SELECT ROWNUM rn , idx , writer , email, homepage, pwd ,
-		 * subject , content, writedate, readnum , filename, filesize , refer , depth ,
-		 * step FROM ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) ) WHERE
-		 * rn BETWEEN 1 AND 5;
-		 * 
-		 * 
-		 * select * from ( select rownum rn , idx , writer , email, homepage, pwd ,
-		 * subject , content, writedate, readnum ,filename, filesize , refer , depth ,
-		 * step from ( SELECT * FROM jspboard ORDER BY refer DESC , step ASC ) where
-		 * rownum <= 10 --endrow ) where rn >= 6; --firstrow
-		 */
-
 	}
 
-	// �Խù� �� �Ǽ�
 	public int totalBoardCount() {
 		Connection conn = null;
-		PreparedStatement pstmt = null; // �Ķ���͸� �Ƚ��Ƿ� ���� �ʿ�� ����
+		PreparedStatement pstmt = null; //
 		ResultSet rs = null;
 		int totalcount = 0;
 		try {
 			conn = ds.getConnection();
-			String sql = "select count(*) cnt from jspboard"; // alias��
+			String sql = "select count(*) cnt from jspboard"; //
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				totalcount = rs.getInt("cnt"); // alias �ֱ� ������ 1�־�ε�
+				totalcount = rs.getInt("cnt"); //
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -249,7 +183,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close(); // ��ȯ�ϱ�
+				conn.close(); // 
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
@@ -257,7 +191,6 @@ public class BoardDao {
 		return totalcount;
 	}
 
-	// �Խù� �󼼺���
 	public Board getContent(int idx) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -266,7 +199,7 @@ public class BoardDao {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select * from jspboard where idx=?"; // * ���� ����
+			String sql = "select * from jspboard where idx=?"; // 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 
@@ -292,7 +225,6 @@ public class BoardDao {
 				int readnum = rs.getInt("readnum");
 				int filesize = rs.getInt("filesize");
 
-				// ������
 				int refer = rs.getInt("refer");
 				int step = rs.getInt("step");
 				int depth = rs.getInt("depth");
@@ -307,7 +239,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ�ϱ�
+				conn.close();// 
 			} catch (Exception e2) {
 
 			}
@@ -316,7 +248,6 @@ public class BoardDao {
 		return board;
 	}
 
-	// �Խñ� ��ȸ�� ����
 	public boolean getReadNum(String idx) {
 		// update jspboard set readnum = readnum + 1 where idx=?
 		Connection conn = null;
@@ -338,7 +269,7 @@ public class BoardDao {
 		} finally {
 			try {
 				pstmt.close();
-				conn.close();// ��ȯ
+				conn.close();// 
 			} catch (Exception e) {
 
 			}
@@ -346,7 +277,6 @@ public class BoardDao {
 		return result;
 	}
 
-	// �Խñ� �����ϱ�(���� ����)(���⿹���� case 1)
 	public int deleteOk(String idx) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -371,7 +301,6 @@ public class BoardDao {
 		return row;
 	}
 
-	// ��� �Է��ϱ� (Table reply : fk(jspboard idx) )
 	public int replywrite(int idx_fk, String writer, String userid, String content, String pwd) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -393,7 +322,7 @@ public class BoardDao {
 		} finally {
 			try {
 				pstmt.close();
-				conn.close();// ��ȯ
+				conn.close();
 			} catch (Exception e) {
 
 			}
@@ -402,46 +331,53 @@ public class BoardDao {
 		return row;
 	}
 
-	// ��� ��ȸ�ϱ�
 	public List<Reply> replylist(String idx_fk) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		ArrayList<Reply> list = null;
 
+		System.out.println("idx_fk " + idx_fk);
+		
 		try {
 			conn = ds.getConnection();
 			String reply_sql = "select * from reply where idx_fk=? order by no desc";
-			// select * �� �������� Į�����?
-
+		
 			pstmt = conn.prepareStatement(reply_sql);
 			pstmt.setString(1, idx_fk);
-
 			rs = pstmt.executeQuery();
+			//pstmt.close();
+			String sql2 = "select to_char(writedate, 'yyyy-MM-dd') as cDate from reply where idx_fk=?";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, idx_fk);
+			rs2 = pstmt.executeQuery();
 
 			list = new ArrayList<>();
-			while (rs.next()) {
+			while (rs.next() && rs2.next()) {
 				int no = Integer.parseInt(rs.getString("no"));
 				String writer = rs.getString("writer");
 				String userid = rs.getString("userid");
 				String pwd = rs.getString("pwd");
 				String content = rs.getString("content");
-				java.sql.Date writedate = rs.getDate("writedate");
+				//java.sql.Date writedate = rs.getDate("writedate");
+				String date = rs2.getString("cDate");
 				int idx = Integer.parseInt(rs.getString("idx_fk"));
 
-				Reply replydto = new Reply(no, writer, userid, pwd, content, writedate, idx);
+				Reply replydto = new Reply(no, writer, userid, pwd, content, date, idx);
 				list.add(replydto);
 			}
-
+			System.out.println("리스트DAO");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ
-			} catch (Exception e) {
-
+				rs2.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -449,57 +385,64 @@ public class BoardDao {
 	}
 
 	// ��� �����ϱ�
-	public int replyDelete(String no, String pwd) {
+	public int replyDelete(String no) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		int row = 0;
 
 		try {
-
-			// �̺κ��� �ڱ⸶��
-			String replyselect = "select pwd from reply where no=?";
 			String replydelete = "delete from reply where no=?";
-
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(replyselect);
+			pstmt = conn.prepareStatement(replydelete);
 			pstmt.setString(1, no);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				String dbpwd = rs.getString("pwd");
-				if (pwd.equals(dbpwd)) {
-					pstmt.close();
-					pstmt = conn.prepareStatement(replydelete);
-					pstmt.setString(1, no);
-					row = pstmt.executeUpdate();
-				} else {
-					row = 0;
-				}
-			} else {
-				row = -1;
-			}
+			row = pstmt.executeUpdate();
+			System.out.println("삭제DAO");
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		} finally {
 			try {
 				pstmt.close();
-				rs.close();
-				conn.close();// ��ȯ
+				conn.close();// 
 			} catch (Exception e) {
-
+				e.printStackTrace();
 			}
 		}
 
 		return row;
 	}
+	
+	public int replyUpdate(int idx_fk, int no, String content) {
 
-	// �Խñ� �� (��� ����)
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int row = 0;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "update reply set content = ? where no = ? and idx_fk = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, content);
+				pstmt.setInt(2, no);
+				pstmt.setInt(3, idx_fk);
+				row = pstmt.executeUpdate();
+				System.out.println("댓글수정..row : " + row);
+			} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+
+		return row;
+	}
+	
+	
+
 	public int reWriteOk(Board boardata) {
-		// content.jsp ->(���)-> rewrite.jsp(�Է�) -> submit() -> rewriteok.jsp
-		// �Խù� �۾���(INSERT > ��� ....) : refer , step , depth
-		// ���� ����� �޷��ϴ� �ϴ� ���� �۹�ȣ�� �ʿ��ؿ�
-
-		// refer , step , depth ������ �Ϸ��� ���� ����(read ��)
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -507,7 +450,7 @@ public class BoardDao {
 		try {
 			conn = ds.getConnection();
 
-			int idx = boardata.getIdx(); // ���� ���� ���� �۹�ȣ
+			int idx = boardata.getIdx(); 
 
 			String writer = boardata.getWriter();
 			String email = boardata.getEmail();
@@ -535,14 +478,12 @@ public class BoardDao {
 				int depth = rs.getInt("depth");
 
 				pstmt = conn.prepareStatement(step_update_sql);
-				// prepareStatement�� ��Ȱ�� �Ҷ�� �ٽ� �������ؾߵ�(����)
-				// ���� step�� +1�ϴ� ������Ʈ ���� ����, ���� �� �ڸ��� �������
 				pstmt.setInt(1, step);
 				pstmt.setInt(2, refer);
 				pstmt.executeUpdate();
 
 				// filename,filesize,refer,depth,step
-				pstmt = conn.prepareStatement(rewrite_sql); // ������
+				pstmt = conn.prepareStatement(rewrite_sql); // 
 				pstmt.setString(1, writer);
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, subject);
@@ -553,8 +494,8 @@ public class BoardDao {
 
 				// �亯
 				pstmt.setInt(8, refer);
-				pstmt.setInt(9, depth + 1); // ��Ģ ���� ���� �ۿ� depth + 1 �ڡڡڡڡ�
-				pstmt.setInt(10, step + 1); // ���� update ���ؼ� �ڸ� Ȯ�� + 1 �ڡڡڡڡ�
+				pstmt.setInt(9, depth + 1); //
+				pstmt.setInt(10, step + 1); //
 
 				int row = pstmt.executeUpdate();
 				if (row > 0) {
@@ -571,7 +512,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ
+				conn.close();// 
 			} catch (Exception e) {
 
 			}
@@ -580,14 +521,10 @@ public class BoardDao {
 		return result;
 	}
 
-	// �Խñ� �����ϱ� ȭ��(���)
 	public Board getEditContent(String idx) {
 		return this.getContent(Integer.parseInt(idx));
-		// ��ȸȭ�� ���� (������ �ִ� �Լ� ��Ȱ��)
 	}
 
-	// �Խñ� �����ϱ� ó��(�̷��� �ص� ��)
-	// public int boardEdit(Board boarddata){}
 	public int boardEdit(Board board) {
 
 		Connection conn = null;
@@ -615,7 +552,7 @@ public class BoardDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ
+				conn.close();//
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
@@ -647,7 +584,7 @@ public class BoardDao {
 				pstmt.setString(1, "%" + sen + "%");
 				rs = pstmt.executeQuery();
 			}
-			
+	
 		String sql2 = "select to_char(writedate, 'yyyy-MM-dd') as cDate from jspboard where subject like ?";
 		pstmt = conn.prepareStatement(sql2);
 		pstmt.setString(1, "%" + sen + "%");

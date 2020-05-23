@@ -79,6 +79,8 @@ tr>th {
 
 <body>
 
+<c:set var="type" value="${requestScope.type}" />
+
 	<!-- Left Panel -->
 	<jsp:include page="/WEB-INF/common/LeftMenu.jsp"></jsp:include>
 
@@ -118,7 +120,7 @@ tr>th {
 			<div class="container" role="main">
 				<h2>사원 등록</h2>
 				<form name="form" id="form" role="form" method="post"
-					action="EmpWriteok.do" enctype="multipart/form-data">
+					action="EmpWriteok.do?type=${type}" enctype="multipart/form-data">
 
 					<div class="mb-3">
 						<label for="title">사진 등록</label> <br> <img id="preview"
@@ -232,19 +234,6 @@ tr>th {
 		$(document).on('click', '#btnSave', function(e) {
 			e.preventDefault();
 			$("#form").submit();
-		});
-
-		jQuery('#vmap').vectorMap({
-			map : 'world_en',
-			backgroundColor : null,
-			color : '#ffffff',
-			hoverOpacity : 0.7,
-			selectedColor : '#1de9b6',
-			enableZoom : true,
-			showTooltip : true,
-			values : sample_data,
-			scaleColors : [ '#1de9b6', '#03a9f5' ],
-			normalizeFunction : 'polynomial'
 		});
 
 		$(document).on('click', '#upload', function(e) {

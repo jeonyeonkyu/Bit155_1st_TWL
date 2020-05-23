@@ -65,6 +65,8 @@ public class EmpEditService implements Action {
 //			forward.setPath("/WEB-INF/views/redirect.jsp");
 //
 //			return forward;
+		
+		String type = request.getParameter("type");
 
 		String empnoStr = request.getParameter("empno");
 		Long empno = Long.parseLong(empnoStr.trim());
@@ -73,6 +75,7 @@ public class EmpEditService implements Action {
 		Emp emp = empdao.detailList(empno);
 		
 		request.setAttribute("emp", emp);
+		request.setAttribute("type", type);
 		
 		/*
 		 * EmpDao empdao = new EmpDao(); List<Emp> delist = empdao.detailList(elist);

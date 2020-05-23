@@ -90,7 +90,7 @@ $(document).ready(function () {
 			action: function (e, dt, node, config)
 			{
 				        //This will send the page to the location specified
-				  window.location.href = 'EmpWrite.do';s
+				  window.location.href = 'EmpWrite.do?type=dataTable';
 			}
 		}
 		]
@@ -100,13 +100,14 @@ $(document).ready(function () {
     $('#myTable_filter').prepend('<select id="select"></select>');
     $('#myTable > thead > tr').children().each(function (indexInArray, valueOfElement) { 
     	if(valueOfElement.innerHTML != '사진' && valueOfElement.innerHTML != 'Button'){
-    		$('#select').append('<option>'+valueOfElement.innerHTML+'</option>');
+    		$('#select').append('<option class=visibility:hidden;>'+valueOfElement.innerHTML+'</option>');
     	}
     });
     
+    
     $('.dataTables_filter input').unbind().bind('keyup', function () {
         var colIndex = document.querySelector('#select').selectedIndex;
-        table.column(colIndex).search(this.value).draw();
+        table.column(colIndex+1).search(this.value).draw();
     });
 
     /* 날짜검색 이벤트 리바인딩 */

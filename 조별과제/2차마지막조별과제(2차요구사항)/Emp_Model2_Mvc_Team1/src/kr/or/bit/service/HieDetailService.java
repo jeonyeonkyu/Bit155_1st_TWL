@@ -1,5 +1,7 @@
 package kr.or.bit.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.dao.BoardDao;
 import kr.or.bit.dto.Board;
+import kr.or.bit.dto.Reply;
 
 public class HieDetailService  implements Action {
 
@@ -35,9 +38,12 @@ public class HieDetailService  implements Action {
 		dao.getReadNum(idx);
 		board = dao.getContent(Integer.parseInt(idx));
 		
-		request.setAttribute("board", board);			
+		List<Reply> replyList = dao.replylist(idx);
 		
-		System.out.println("board : + " + board);
+		request.setAttribute("board", board);		
+		request.setAttribute("idx", idx);	
+		request.setAttribute("replyList", replyList);	
+		
 	
 		forward.setPath("/WEB-INF/views/HieEmpDetail.jsp");
 

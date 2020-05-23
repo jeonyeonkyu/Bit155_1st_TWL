@@ -59,6 +59,10 @@
 <!-- 부트스트랩 end  -->
 
 
+
+
+<link rel="stylesheet" href="./vendors/summer/summernote-lite.css">
+
 <style>
 tr>th {
    text-align: center;
@@ -152,15 +156,11 @@ onmouseout:this.style.backgroundColor=white;
 				<!-- 썸머노트 반영 -->
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content"
-						placeholder="내용을 입력해 주세요"></textarea>
+				<!-- 	<textarea class="form-control" rows="5" name="content" id="content"
+						placeholder="내용을 입력해 주세요"></textarea> -->
+						<textarea id="summernote" name="editordata"></textarea>
 				</div>
 				
-				<div class="mb-3">
-					<label for="reg_id">비밀번호</label> <input type="text"
-						class="form-control" name="pwd" id="reg_id"
-						placeholder="비밀번호를 입력해 주세요">
-				</div>
 			</form>
 			<div>
 				<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
@@ -196,14 +196,30 @@ onmouseout:this.style.backgroundColor=white;
 
 <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
+<script src="./vendors/summer/summernote-lite.js"></script>
+<script src="./vendors/summer/summernote-ko-KR.js"></script>
+
 <script>
    (function($) {
       "use strict";
       
-  	CKEDITOR.replace('content', {
+      $(document).ready(function() {
+    		//여기 아래 부분
+    		$('#summernote').summernote({
+    			  height: 300,                 // 에디터 높이
+    			  minHeight: null,             // 최소 높이
+    			  maxHeight: null,             // 최대 높이
+    			  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+    			  lang: "ko-KR",					// 한글 설정
+    			  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+    	          
+    		});
+    	});
+      
+  /* 	CKEDITOR.replace('content', {
 		width:'100%',
 		height:'350'
-	});
+	}); */
       
       $(document).on('click', '#btnSave', function(e) {
   		e.preventDefault();

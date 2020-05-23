@@ -58,6 +58,7 @@
 <div id="right-panel" class="right-panel"> 
     <jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
 
+<c:set var="type" value="${requestScope.type}" />
 <c:set var="emp" value="${requestScope.emp}" />
 <c:set var="hiredateformat" value="${emp.hiredate}"/>
 <c:set var="hiredateformat2" value="${fn:replace(hiredateformat, '-', '')}" />
@@ -87,7 +88,7 @@
 		<div class="container" role="main">
 			<h2>사원 수정</h2>
 			<form name="form" id="form" role="form" method="post" 
-				action="updateok.do" enctype="multipart/form-data">
+				action="updateok.do?type=${type}" enctype="multipart/form-data">
 				
 				<div class="mb-3">
 				<!-- src="upload/emp.jpg"  -->

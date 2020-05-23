@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.AjaxTableListService;
 import kr.or.bit.service.EmpAddService;
 import kr.or.bit.service.EmpChartService;
 import kr.or.bit.service.EmpDataTableService;
@@ -33,6 +34,9 @@ import kr.or.bit.service.HieEditService;
 import kr.or.bit.service.HieEditServiceok;
 import kr.or.bit.service.HieReWriteService;
 import kr.or.bit.service.HieReWriteServiceok;
+import kr.or.bit.service.HieReplyAddService;
+import kr.or.bit.service.HieReplyDeleteService;
+import kr.or.bit.service.HieReplyUpdateService;
 
 @WebServlet("*.do")
 public class FrontEmpController extends HttpServlet {
@@ -51,36 +55,37 @@ public class FrontEmpController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if (url_Command.equals("/Main.do")) { // ���������� �̵� : UI
+		if (url_Command.equals("/Main.do")) { // 
 			forward = new ActionForward();
 			forward.setPath("/index.jsp");
 			
-		} else if (url_Command.equals("/login.do")) { // �α��� : UI + ����
-			System.out.println("여긴오냐?!!");
+		} else if (url_Command.equals("/login.do")) { // 
 			action = new EmpLoginService();
 			forward = action.execute(request, response);
 			
-		} else if(url_Command.equals("/logout.do")) { // �α׾ƿ� : UI + ����
+		} else if(url_Command.equals("/logout.do")) { // 
 			action = new EmpLogoutService();
 			forward = action.execute(request, response);
 			
-		} else if(url_Command.equals("/EmpTable.do")) { //��ü��ȸ
+		} else if(url_Command.equals("/EmpTable.do")) { //
 			action = new EmpListService();
 			forward = action.execute(request, response);
 			
-		} else if(url_Command.equals("/search.do")) { //��ü��ȸ
+		} else if(url_Command.equals("/search.do")) { 
 			action = new EmpSearchService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/EmpWrite.do")) { //��ü��ȸ
+		}else if(url_Command.equals("/EmpWrite.do")) { //
 			forward = new ActionForward();
+			String type = request.getParameter("type");
+			request.setAttribute("type", type);
 			forward.setPath("/WEB-INF/views/EmpWrite.jsp");
 			
-		}else if(url_Command.equals("/EmpWriteok.do")) { //��ü��ȸ
+		}else if(url_Command.equals("/EmpWriteok.do")) { //
 			action = new EmpAddService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/delete.do")) { //��ü��ȸ
+		}else if(url_Command.equals("/delete.do")) { 
 			action = new EmpDeleteService();
 			forward = action.execute(request, response);
 			
@@ -88,29 +93,29 @@ public class FrontEmpController extends HttpServlet {
 			action = new EmpDetailService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/update.do")) { //화면이동 + 로직
+		}else if(url_Command.equals("/update.do")) { //
 			action = new EmpEditService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/updateok.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/updateok.do")) { //
 			action = new EmpEditOkService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/chartView.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/chartView.do")) { //
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/views/chartView.jsp");
 			
-		}else if(url_Command.equals("/chartViewok.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/chartViewok.do")) { //
 			action = new EmpChartService();
 			forward = action.execute(request, response);
 			
-		}else if(url_Command.equals("/upload.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/upload.do")) { //
 			action = new EmpFileUploadService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/jobList.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/jobList.do")) { //
 			action = new EmpJobListService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/deptNoList.do")) { //화면 + 로직 
+		}else if(url_Command.equals("/deptNoList.do")) { //
 			action = new EmpDeptNoListService();
 			forward = action.execute(request, response);
 		}else if(url_Command.equals("/dataTable.do")) { //화면 + 로직 )
@@ -121,39 +126,54 @@ public class FrontEmpController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(url_Command.equals("/HieEmpWrite.do")) { //화면 )
 			forward = new ActionForward();
+			String type = request.getParameter("type");
+			request.setAttribute("type", type);
 			forward.setPath("/WEB-INF/views/HieEmpWrite.jsp");
-		
-		}else if(url_Command.equals("/HieEmpWriteok.do")) { //화면 + 로직 )
+		}else if(url_Command.equals("/HieEmpWriteok.do")) { //
 			action = new HieWriteService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpDetail.do")) { //화면 + 로직 )
+		}else if(url_Command.equals("/HieEmpDetail.do")) { //
 			action = new HieDetailService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpDelete.do")) { //화면 + 로직 )
+		}else if(url_Command.equals("/HieEmpDelete.do")) { //
 			action = new HieDeleteService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpEdit.do")) { //화면 + 로직 )
+		}else if(url_Command.equals("/HieEmpEdit.do")) { //
 			action = new HieEditService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpEditok.do")) { //화면 + 로직 )
+		}else if(url_Command.equals("/HieEmpEditok.do")) { //
 			action = new HieEditServiceok();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpReWrite.do")) { //화면 + 로직
+		}else if(url_Command.equals("/HieEmpReWrite.do")) { //
 			action = new HieReWriteService();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieEmpReWriteok.do")) { //화면 +로직
+		}else if(url_Command.equals("/HieEmpReWriteok.do")) { //
 			action = new HieReWriteServiceok();
 			forward = action.execute(request, response);
-		}else if(url_Command.equals("/HieSearch.do")) { //화면 +로직
+		}else if(url_Command.equals("/HieSearch.do")) { //
 			action = new HieSearchService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/replyDelete.do")) { //
+			action = new HieReplyDeleteService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/replyAdd.do")) { //
+			action = new HieReplyAddService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/replyUpdate.do")) { //
+			action = new HieReplyUpdateService();
+			forward = action.execute(request, response);
+		}else if(url_Command.equals("/ajaxPaging.do")) { //화면 )
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/views/ajaxPaging.jsp");
+		}else if(url_Command.equals("/ajaxTable.do")) { //화면 )
+			action = new AjaxTableListService();
 			forward = action.execute(request, response);
 		}
 		
+		
+	
 	
 		
-		// 4. �� �����ϱ�
-		// 5. forward(request ��ü�� �ּҰ��� ����)
-		// RequestDispatcher dis = request.getRequestDispatcher(viewpage);
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);

@@ -62,7 +62,7 @@ public class EmpDao {
 					return 0;
 				}
 			}
-			conn.close(); // ��ȯ�ϱ�
+			conn.close(); // 
 		} catch (SQLException e) {
 			System.err.println(e);
 			System.err.println("login SQLException error");
@@ -107,7 +107,7 @@ public class EmpDao {
 			if (rs.next()) {
 				avg = rs.getInt(1);
 			}
-			conn.close(); // ��ȯ�ϱ�
+			conn.close(); // 
 		} catch (SQLException e) {
 			System.err.println(e);
 			System.err.println("EmpSalAvg SQLException error");
@@ -165,7 +165,6 @@ public class EmpDao {
 		return total;
 	}
 
-	// �Խù� �� �Ǽ� ���ϱ�
 	public int totallistCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -236,14 +235,62 @@ public class EmpDao {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();// ��ȯ
+				conn.close();// 
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 
 		return list;
+	}
+	
+	public List<Emp> ajaxList(int cpage, int pagesize) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		List<Emp> list = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from emp";
+			pstmt = conn.prepareStatement(sql);
+
+			/*
+			 * int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1 int end =
+			 * cpage * pagesize; // 1 * 5 = 5
+			 * 
+			 * pstmt.setInt(1, end); pstmt.setInt(2, start);
+			 */
+
+			rs = pstmt.executeQuery();
+			list = new ArrayList<Emp>();
+			while (rs.next()) {
+				Emp emp = new Emp();
+				emp.setDeptno(rs.getLong("deptno"));
+				emp.setEmpno(rs.getLong("empno"));
+				emp.setEname(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setComm(rs.getLong("comm"));
+				//emp.setHiredate(rs.getDate("hiredate"));
+				emp.setMgr(rs.getLong("mgr"));
+				emp.setSal(rs.getLong("sal"));
+				emp.setFilename(rs.getString("filename"));
+				list.add(emp);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 
 	public List<Emp> searchEmpno(String empno) {
@@ -508,9 +555,7 @@ public class EmpDao {
 
 			}
 		}
-
 		return emp;
-
 	}
 	
 	public int updateOkEmp(long empno, String ename, String job, long mgr, String hiredate, long sal, long comm,
@@ -693,6 +738,37 @@ public class EmpDao {
 			DB_Close.close(pstmt);
 		}
 		return list;
+	}
+	
+	public String empFilename(Long empno) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String filename = "";
+		try {
+			conn = ds.getConnection();
+			String sql = "select filename from emp where empno = ?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setLong(1, empno);
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				filename = rs.getString("filename");
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();// 반환
+			} catch (Exception e2) {
+				System.out.println("오류 :" + e2.getMessage());
+			}
+		}
+		return filename;
 	}
 	
 	

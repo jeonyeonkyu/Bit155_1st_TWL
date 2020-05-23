@@ -39,11 +39,12 @@ public class FrontServletController extends HttpServlet {
 		if (command.equals("/list.do")) {
 			lc = new list();
 			lc.execute(request, response);
+			System.out.println("여긴오냐!!");
 			//viewPage = "index.html";
 		}else if(command.equals("/input.do")) {
 			lc = new input();
 			lc.execute(request, response);
-			viewPage = "index.html";
+			viewPage = "index.jsp";
 			// 3.결과저장
 
 			System.out.println("viewPage : " + viewPage);

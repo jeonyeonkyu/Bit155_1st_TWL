@@ -19,14 +19,9 @@ public class HieEditService implements Action {
 		
 		String idx = request.getParameter("idx");
 		
-		System.out.println("왜안와 확");
-		System.out.println("idx : " + idx);
-		
 		board = dao.getEditContent(idx);
 	
 		request.setAttribute("board", board);			
-		
-		System.out.println("board : + " + board);
 	
 		forward.setPath("/WEB-INF/views/HieEmpEdit.jsp");
 

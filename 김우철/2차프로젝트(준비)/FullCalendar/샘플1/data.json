@@ -11,7 +11,7 @@
     "allDay": false
   }, {
     "_id": 2,
-    "title": "치과예약",
+    "title": "주방 오픈 날",
     "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
     "start": "2019-05-01T12:30",
     "end": "2019-05-01T15:30",
@@ -64,7 +64,8 @@
     "backgroundColor": "#63e6be",
     "textColor": "#ffffff",
     "allDay": true
-  }, {
+  }, 
+  {
     "_id": 7,
     "title": "휴가",
     "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
@@ -75,7 +76,8 @@
     "backgroundColor": "#a9e34b",
     "textColor": "#ffffff",
     "allDay": true
-  },{
+  },
+  {
     "_id": 8,
     "title": "세차예약",
     "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="adminlist"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="t"/>
-			<item value="trans"/>
+			<item value="adminlist"/>
 			<item value="select"/>
-			<item value="sql.date"/>
-			<item value="date"/>
-			<item value="sql"/>
-			<item value="searchTitle"/>
-			<item value="search"/>
-			<item value="reWriteOk"/>
-			<item value="boardedit"/>
-			<item value="getEditContent"/>
-			<item value="board_Edit"/>
-			<item value="updateok"/>
+			<item value="selectbox"/>
+			<item value="pi"/>
+			<item value="numPerPage"/>
+			<item value="$.each"/>
+			<item value="EmpTable.do"/>
+			<item value="updateBtn"/>
 			<item value="update"/>
-			<item value="MENU"/>
+			<item value="replylist"/>
+			<item value="searchhie"/>
+			<item value="replydelete"/>
+			<item value="cdate"/>
+			<item value="ㅊㅇㅁㅅㄷ"/>
+			<item value="pstmt2"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="824"/>
-		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_X_ORIGIN" value="1287"/>
+		<item key="DIALOG_Y_ORIGIN" value="125"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

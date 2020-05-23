@@ -15,6 +15,10 @@ public class HieWriteService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		String type = request.getParameter("type");
+		
+		System.out.println("type33 : " + type);
+		
 		String subject = request.getParameter("subject");
 		String writer = request.getParameter("writer");
 		String email = request.getParameter("email");

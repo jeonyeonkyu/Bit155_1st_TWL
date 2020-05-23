@@ -21,12 +21,8 @@ public class EmpDeptNoListService implements Action {
 			EmpDao dao = new EmpDao(); 
 			List deptNoList = dao.deptNoList();
 		
-			System.out.println("deptNoList : " + deptNoList);
-			
 			JSONArray jsonArr = JSONArray.fromObject(deptNoList); 
 			
-			System.out.println("jsonArr : " + jsonArr);
-
 	    	response.setContentType("application/x-json; charset=UTF-8");
 			try {
 				response.getWriter().print(jsonArr);

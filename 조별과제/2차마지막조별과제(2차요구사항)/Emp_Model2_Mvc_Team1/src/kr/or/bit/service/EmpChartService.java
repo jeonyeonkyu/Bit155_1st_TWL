@@ -20,14 +20,10 @@ public class EmpChartService implements Action {
 		EmpDao empdao = new EmpDao();
 		List<Emp> list = empdao.chartList();
 		
-		
 		request.setAttribute("list", list);
-		
-		System.out.println("emp!!  ì•„ë‹ˆê³  list" + list);
 		
 		JSONArray jsonArr = JSONArray.fromObject(list); 
 		
-		System.out.println("jsonArr : " + jsonArr);
 		
 //		request.setAttribute("jsonArr", jsonArr);
 		

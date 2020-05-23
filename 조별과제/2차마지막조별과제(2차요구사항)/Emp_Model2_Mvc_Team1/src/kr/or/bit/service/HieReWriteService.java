@@ -16,8 +16,6 @@ public class HieReWriteService implements Action {
 		String idx = request.getParameter("idx");
 		String subject = request.getParameter("subject");
 		
-		System.out.println("re idx : " + idx);
-		System.out.println("re subject : " + subject);
 		
 		Board board = new Board();
 		board.setSubject(subject);

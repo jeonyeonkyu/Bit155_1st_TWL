@@ -29,9 +29,6 @@ public class HieSearchService implements Action {
 		String title = request.getParameter("something[title]");
 		String writer = request.getParameter("something[writer]");
 		
-		System.out.println("title :... " + title);
-		System.out.println("writer :... " + writer);
-		
 		
 		  	if (title != null && writer == null) { 
 		  		System.out.println("일로와라..");
@@ -39,13 +36,9 @@ public class HieSearchService implements Action {
 			  } else { 
 				  list = boardDao.searchHie(writer, "writer"); 
 			  }
-		 
 
-		System.out.println("Hie Search : " + list);
 		
 		JSONArray jsonArr = JSONArray.fromObject(list); 
-		
-		System.out.println("jsonArr : " + jsonArr);
 		
 		response.setContentType("application/x-json; charset=UTF-8");
 		try {

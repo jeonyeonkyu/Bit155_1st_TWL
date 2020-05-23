@@ -22,8 +22,6 @@ public class EmpLoginService implements Action {
 		EmpDao empDao = EmpDao.getInstance();
 		int loginResult = empDao.login(id, password);
 		
-		
-		System.out.println("loginResult : " + loginResult);
 		String msg = "";
 		String url = "";
 		if(loginResult > 0){

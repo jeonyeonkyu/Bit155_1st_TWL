@@ -28,10 +28,6 @@ public class EmpSearchService implements Action {
 			String empno = request.getParameter("empno");
 			String ename = request.getParameter("ename");
 			String keyword = request.getParameter("keyword");
-			
-			System.out.println("empno : " + empno);
-			System.out.println("ename : " + ename);
-			System.out.println("keyword : " + keyword);
 
 			if (empno != null && ename == null) {
 				list = empDao.searchEmpno(empno);
@@ -39,11 +35,9 @@ public class EmpSearchService implements Action {
 				list = empDao.searchEname(ename);
 			}
 			
-			System.out.println(list);
 
 			JSONArray jsonArr = JSONArray.fromObject(list); 
 		
-			System.out.println("jsonArr : " + jsonArr);
 
 	    	response.setContentType("application/x-json; charset=UTF-8");
 			try {

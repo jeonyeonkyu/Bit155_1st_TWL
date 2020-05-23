@@ -16,7 +16,6 @@ public class HieDeleteService implements Action {
 		String idx = request.getParameter("idx");
 		
 		BoardDao board = new BoardDao();
-		System.out.println("idx : " + idx);
 		int result = board.deleteOk(idx);
 	
 		

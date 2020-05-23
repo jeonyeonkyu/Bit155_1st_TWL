@@ -22,7 +22,6 @@ public class EmpFileUploadService implements Action {
 		
 		
 		String uploadpath = request.getSession().getServletContext().getRealPath("upload");
-		System.out.println(uploadpath);
 		
 		int size = 1024*1024*10; //10M 네이버 계산기
 		String filename="";

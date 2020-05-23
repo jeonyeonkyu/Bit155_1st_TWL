@@ -19,8 +19,6 @@ public class HieTableService implements Action {
 			
 		BoardDao dao = new BoardDao();
 		int totalboardcount = dao.totalBoardCount();
-		
-		System.out.println("totalboardcount : " + totalboardcount);
 
 		String ps = request.getParameter("ps"); // pagesize
 		System.out.println("ps : " + ps);

@@ -136,18 +136,19 @@ onmouseout:this.style.backgroundColor=white;
 											style="width: 30px; heigfht: 30px;"></td>
 										<td align="center">${list2.empno}</td>
 										<td align="center">
-											<a href="detailView.do?empno=${list2.empno}">${list2.ename}</a>
+											<a href="detailView.do?empno=${list2.empno}&type=dataTable">${list2.ename}</a>
 										</td>
 										<td align="center">${list2.job}</td>
 										<td align="center">${list2.deptno}</td>
 										<td align="center">${list2.mgr}</td>
 										<td align="center">
 										<a
-											href="update.do?empno=${list2.empno}" type="button"
+											href="update.do?empno=${list2.empno}&type=dataTable" type="button"
 											class="btn btn-sm btn-primary">수정</a> 
 											<a
 											href="delete.do?empno=${list2.empno}&table=data" type="button"
-											class="btn btn-sm btn-warning">삭제</a></td>
+											class="btn btn-sm btn-warning">삭제</a>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -186,13 +187,6 @@ onmouseout:this.style.backgroundColor=white;
 <script src="./custom/dataTable/js/buttons.html5.min.js"></script>
 <script src="./custom/dataTable/js/main.js"></script>
 <!-- dataTaBle end -->
-
-<script>
-   (function($) {
-      "use strict";
-
-   })(jQuery);
-</script>
 
 
 </html>

@@ -42,21 +42,6 @@
 
 
 <title>board</title>
-<script>
-	$(document).on('click', '#btnSave', function(e) {
-		e.preventDefault();
-		$("#form").submit();
-	});
-	
-	$(document)
-			.on(
-					'click',
-					'#btnList',
-					function(e) {
-						e.preventDefault();
-						location.href = "EmpTable.do";
-					});
-</script>
 
 
 
@@ -71,6 +56,7 @@
     <jsp:include page="/WEB-INF/common/TopMenu.jsp"></jsp:include>
 
 
+<c:set var="type" value="${requestScope.type}" />
 <c:set var="emp" value="${requestScope.emp}" />
 <%--  ${requestScope.emp}  --%>
 
@@ -94,75 +80,86 @@
          </div>
       </div>
 
-	<article>
-		<div class="container" role="main">
-			<h2>상세보기</h2>
-			<form name="form" id="form" role="form" method="post"
-				action="boardCustomWrite.do">
-				
-				<div class="mb-3">
-						<label for="title">사진</label> <br> 
-			 		<img id="preview" src="upload/${emp.filename}" width="300" alt="로컬에 있는 이미지가 보여지는 영역">	
-				</div>
-				
-				<div class="mb-3">
-					<label for="title">사원번호</label> 
-						<input type="text"
-						class="form-control" name="empno" id="empno" value="${emp.empno} " readonly>
-				</div>
+		<article>
+			<div class="container" role="main">
+				<h2>상세보기</h2>
+				<form name="form" id="form" role="form" method="post"
+					action="boardCustomWrite.do">
 
-				<div class="mb-3">
-					<label for="reg_id">사원이름</label> 
-						<input type="text"
-						class="form-control" name="ename" id="ename" value="${emp.ename}" readonly>
-				</div>
-				
-				<div class="mb-3">
-					<label for="reg_id">사원직급</label> 
-						<input type="text"
-						class="form-control" name="job" id="job" value="${emp.job}" readonly>
-				</div>
-				
-				<div class="mb-3">
-					<label for="reg_id">사원직급</label> 
-						<input type="text"
-						class="form-control" name="mgr" id="mgr" value="${emp.mgr}" readonly>
-				</div>
+					<div class="mb-3">
+						<label for="title">사진</label> <br> <img id="preview"
+							src="upload/${emp.filename}" width="300"
+							alt="로컬에 있는 이미지가 보여지는 영역">
+					</div>
 
-				<!-- 썸머노트 반영 -->
-				<div class="mb-3">
-					<label for="content">고용일자</label>
-					<!-- <textarea class="form-control" rows="5" name="content" id="content"
+					<div class="mb-3">
+						<label for="title">사원번호</label> <input type="text"
+							class="form-control" name="empno" id="empno"
+							value="${emp.empno} " readonly>
+					</div>
+
+					<div class="mb-3">
+						<label for="reg_id">사원이름</label> <input type="text"
+							class="form-control" name="ename" id="ename" value="${emp.ename}"
+							readonly>
+					</div>
+
+					<div class="mb-3">
+						<label for="reg_id">사원직급</label> <input type="text"
+							class="form-control" name="job" id="job" value="${emp.job}"
+							readonly>
+					</div>
+
+					<div class="mb-3">
+						<label for="reg_id">사원직급</label> <input type="text"
+							class="form-control" name="mgr" id="mgr" value="${emp.mgr}"
+							readonly>
+					</div>
+
+					<!-- 썸머노트 반영 -->
+					<div class="mb-3">
+						<label for="content">고용일자</label>
+						<!-- <textarea class="form-control" rows="5" name="content" id="content"
 						placeholder="내용을 입력해 주세요"></textarea> -->
-						<input type="text"
-						class="form-control" name="hiredate" id="hiredate" value="${emp.hiredate}" readonly>
+						<input type="text" class="form-control" name="hiredate"
+							id="hiredate" value="${emp.hiredate}" readonly>
+					</div>
+
+					<div class="mb-3">
+						<label for="reg_id">급여</label> <input type="text"
+							class="form-control" name="sal" id="sal" value="${emp.sal}"
+							readonly>
+					</div>
+					<div class="mb-3">
+						<label for="reg_id">커미션</label> <input type="text"
+							class="form-control" name="comm" id="comm" value="${emp.comm}"
+							readonly>
+					</div>
+					<div class="mb-3">
+						<label for="reg_id">부서번호</label> <input type="text"
+							class="form-control" name="deptno" id="deptno"
+							value="${emp.deptno}" readonly>
+					</div>
+				</form>
+				<div>
+					<c:choose>
+						<c:when test="${type eq 'dataTable'}"> 
+							<button type="button" class="btn btn-sm btn-primary" id="btnListData">목록(dataTable)</button>
+						</c:when>
+						<c:otherwise> 
+							<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+						</c:otherwise>
+					</c:choose>
+					
 				</div>
-				
-				<div class="mb-3">
-					<label for="reg_id">급여</label> 
-						<input type="text"
-						class="form-control" name="sal" id="sal" value="${emp.sal}" readonly>
-				</div>
-				<div class="mb-3">
-					<label for="reg_id">커미션</label> 
-						<input type="text"
-						class="form-control" name="comm" id="comm" value="${emp.comm}" readonly>
-				</div>
-				<div class="mb-3">
-					<label for="reg_id">부서번호</label> 
-						<input type="text"
-						class="form-control" name="deptno" id="deptno" value="${emp.deptno}" readonly>
-				</div>
-			</form>
-			<div>
-				<!-- <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
- -->				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
 			</div>
-		</div>
 
-	</article>
-
-</body>
+		</article>
+		
+		</body>
+		
+		<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -175,6 +172,25 @@
 <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
 <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+
+<script>
+	(function($) {
+		"use strict";
+
+		$(document).on('click', '#btnList', function(e) {
+			e.preventDefault();
+			location.href = "EmpTable.do?";
+
+		});
+
+		$(document).on('click', '#btnListData', function(e) {
+			e.preventDefault();
+			location.href = "dataTable.do?";
+
+		});
+	})(jQuery);
+</script>
+
 
 </html>
 

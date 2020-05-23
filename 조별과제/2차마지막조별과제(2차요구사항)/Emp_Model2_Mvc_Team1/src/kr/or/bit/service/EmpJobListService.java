@@ -25,11 +25,7 @@ public class EmpJobListService implements Action {
 			EmpDao dao = new EmpDao(); 
 			List jobList = dao.jobList();
 		
-			System.out.println("jobList : " + jobList);
-			
 			JSONArray jsonArr = JSONArray.fromObject(jobList); 
-			
-			System.out.println("jsonArr : " + jsonArr);
 
 	    	response.setContentType("application/x-json; charset=UTF-8");
 			try {

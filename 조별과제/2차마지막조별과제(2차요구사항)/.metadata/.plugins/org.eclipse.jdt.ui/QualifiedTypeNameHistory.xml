@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpJobListService"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpDeptNoListService"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.EmpDataTableService"/>
@@ -12,7 +11,13 @@
 <fullyQualifiedTypeName name="kr.or.bit.service.HieReWriteService"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.HieReWriteServiceok"/>
 <fullyQualifiedTypeName name="kr.or.bit.service.dataTableSearchService"/>
-<fullyQualifiedTypeName name="kr.or.bit.dto.Emp"/>
 <fullyQualifiedTypeName name="kr.or.bit.dao.BoardDao"/>
 <fullyQualifiedTypeName name="kr.or.bit.dto.Board"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="kr.or.bit.dto.Reply"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieReplyDeleteService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieReplyAddService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.HieReplyUpdateService"/>
+<fullyQualifiedTypeName name="kr.or.bit.service.AjaxTableListService"/>
+<fullyQualifiedTypeName name="kr.or.bit.dto.Emp"/>
 </qualifiedTypeNameHistroy>

@@ -12,13 +12,14 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.dao.EmpDao;
+import kr.or.bit.dto.Emp;
 
 public class EmpEditOkService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)  throws IOException {
 		String uploadpath = request.getSession().getServletContext().getRealPath("upload");
-		System.out.println(uploadpath);
+		EmpDao dao = new EmpDao(); // POINT
 		
 		int size = 1024*1024*10; //10M 네이버 계산기
 		ActionForward forward = new ActionForward();
@@ -34,6 +35,8 @@ public class EmpEditOkService implements Action {
 		
 		try {
 			
+			String type = multi.getParameter("type");
+			
 			String empno = multi.getParameter("empno");
 			String ename = multi.getParameter("ename");
 			String job = multi.getParameter("job");
@@ -47,10 +50,18 @@ public class EmpEditOkService implements Action {
 			
 			String file = (String)filenames.nextElement();
 			String filename = multi.getFilesystemName(file);
-			String orifilename = multi.getOriginalFileName(file);
 			
-
-		EmpDao dao = new EmpDao(); // POINT
+			String tempFileName = dao.empFilename(Long.parseLong(empno));
+			System.out.println("Long.parseLong(empno) " + Long.parseLong(empno));
+			System.out.println("이름 " + tempFileName);
+			
+		
+			if(filename == null) {
+				filename = tempFileName;
+			}
+		
+			String orifilename = multi.getOriginalFileName(file);
+		
 		int result = 0;
 		try {
 			result = dao.updateOkEmp(Long.parseLong(empno), ename, job, Long.parseLong(mgr), hiredate,
@@ -66,7 +77,12 @@ public class EmpEditOkService implements Action {
 		System.out.println("result : " + result);
 		if (result > 0) {
 			msg = "수정 성공";
-			url = "EmpTable.do";
+			if(type.equals("dataTable")) {
+				url = "dataTable.do";
+			}else {
+				url = "EmpTable.do";
+			}
+			
 		} else {
 			msg = "수정 실패";
 			url = "update.do?empno=" + empno;

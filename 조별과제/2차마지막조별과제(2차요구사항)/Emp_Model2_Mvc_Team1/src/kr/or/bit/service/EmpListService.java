@@ -43,8 +43,6 @@ public class EmpListService implements Action {
 			}
 			List<Emp> elist = empdao.list(cpage, pagesize);
 			
-			System.out.println("elist" + elist);
-			
 			request.setAttribute("list", elist);
 			request.setAttribute("pagesize", pagesize);
 			request.setAttribute("pagecount", pagecount);

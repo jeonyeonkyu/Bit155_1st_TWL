@@ -38,10 +38,6 @@ public class HieEditServiceok implements Action {
 		int result = dao.boardEdit(board);
 	
 		request.setAttribute("board", board);			
-		
-		System.out.println("result :saasd" + result);
-		
-		System.out.println("board : + " + board);
 	
 		forward.setPath("/WEB-INF/views/HieEmpDetail.jsp");
 

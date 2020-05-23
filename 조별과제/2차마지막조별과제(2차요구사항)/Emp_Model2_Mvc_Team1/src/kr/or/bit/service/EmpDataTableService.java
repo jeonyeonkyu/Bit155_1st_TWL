@@ -19,8 +19,6 @@ public class EmpDataTableService implements Action {
 			
 			List<Emp> elist = empdao.dataTablelist();
 			
-			System.out.println("elist(datatable)" + elist);
-			
 			request.setAttribute("list", elist);
 			
 			

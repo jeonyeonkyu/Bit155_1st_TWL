@@ -25,23 +25,26 @@ public class EmpDetailService implements Action {
 		 * } idx = idx.trim();
 		 */
 		
+		String type = request.getParameter("type");
+		
 		String empnoStr = request.getParameter("empno");
 		Long empno = Long.parseLong(empnoStr.trim());
 		
 		EmpDao empdao = new EmpDao();
 		Emp emp = empdao.detailList(empno);
 		
-		System.out.println("emp!!" + emp);
 		
 		request.setAttribute("emp", emp);
+		request.setAttribute("type", type);
 		
 		/*
 		 * EmpDao empdao = new EmpDao(); List<Emp> delist = empdao.detailList(elist);
 		 * System.out.println(elist); request.setAttribute("list", elist);
 		 */
 		
-	ActionForward forward = new ActionForward();
-	forward.setPath("/WEB-INF/views/detailView.jsp");
+		ActionForward forward = new ActionForward();
+		forward.setPath("/WEB-INF/views/detailView.jsp");
+	
 
 	return forward;
 	}
