@@ -24,7 +24,7 @@
                     </div>
                     <div class="card fat">
                         <div class="card-body">
-                            <div class="mx-auto"> sssssssssss
+                            <div class="mx-auto"> 
                                 <h4 class="card-title">회원가입</h4>
                             </div>
 
